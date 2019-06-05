@@ -1,18 +1,13 @@
-.footer .container{
-  width: 600px;
+footer{
+  height:  40px;
 }
 
-.footer{
-  height:           40px;
-  background-color: #EEEEEE;
-}
-
-.footer .fab{
-  color:     #535353;
+.fab{
+  // color:     #535353;
   font-size: 30px;
   padding:   0 5px;
 }
 
-.footer .fab:hover{
-  color: #212121;
+.fab:hover{
+  color: #3073b3;
 }
