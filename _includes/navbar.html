@@ -1,8 +1,20 @@
-<div>
-  <ul>
-    <li>Home</li>
-    <li>Articles</li>
-    <li>Contact</li>
-    <li>Contact</li>
-  </ul>
+<div class="container">
+  <header class="inner  border-bottom border-dark d-flex align-items-center justify-content-center">
+    <nav class="mr-auto p-2">
+      <a class="{% if page.url == '/' %} selected {% endif %}" href="/">Home</a>
+      <a class="{% if page.url == '/blog.html' %} selected {% endif %}" href="/blog/">Blog</a>
+      <a class="{% if page.url == '/portfolio.html' %} selected {% endif %}" href="/">Portfolio</a>
+      <a class="{% if page.url == '/contact.html' %} selected {% endif %}" href="/contact/">Contact</a>
+    </nav>
+
+    <div class="pull-right d-flex align-items-center">
+      <div class="name">
+        <p>Alexandre Bouvier</p>
+        <small>
+          <em>Développeur freelance RoR</em>
+        </small>
+      </div>
+      <img class="avatar" src="/images/alexandrebk.jpeg" alt="My profile picture" />
+    </div>
+  </header>
 </div>
