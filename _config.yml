@@ -23,7 +23,9 @@ twitter_username: jekyllrb
 github_username:  alexandrebk
 
 # Build settings
-markdown: kramdown
+# markdown: kramdown
+markdown: redcarpet
+highlighter: pygments
 theme: minima
 plugins:
   - jekyll-feed

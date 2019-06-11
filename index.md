@@ -6,5 +6,6 @@ layout: default
 title:  Alexandre Bouvier
 ---
 
-
-<h1>Mon blog</h1>
+<div class="inner">
+  <h1>Mon blog</h1>
+</div>
