@@ -11,14 +11,14 @@ Dans ce tuto nous allons apprendre comment afficher dynamiquement le prix de la 
 
 ### D'abord on récupère les prix avec GetElementbyId
 
-```
+```js
 const startDate = document.getElementById("booking_start_date");
 const endDate = document.getElementById("booking_end_date");
 ```
 
 ### Ensuite on fait les calculs
 
-```
+```js
 if(endDate) {
   endDate.addEventListener("change", (event) => {
     let dateDiffInMilliseconds = new Date(endDate.value) - new Date(startDate.value) + 86400000;

@@ -17,7 +17,7 @@ Le tuto officiel de FlatPickr pour désactiver des dates spécifiques est [ici](
 On va créer un tableau de hash avec toutes les locations. Tout d'abord on récupère l'id de l'appartement et on regarde quand il est loué.
 
 
-{% highlight ruby %}
+```ruby
 class FlatsController < ApplicationController
   def show
     @flat           = Flat.find(params[:id])
@@ -30,25 +30,25 @@ class FlatsController < ApplicationController
     end
   end
 end
-{% endhighlight %}
+```
 
 ### Seconde Étape: on passe les données dans la vue avec un dataset
 
-{% highlight html %}
+```html
 # app/views/flats/show.html.erb
 
 <div
   id="renting-form-div"
   data-rentings="<%= @rentings_dates.to_json %>"
 >
-{% endhighlight %}
+```
 
 
 ### Trosième Étape: on récupère les données pour les injecter dans le calendrier
 
 Dans le fichier `app/javascript/plugins/flatpickr.js` on récupère les données dans la div `getElementbyID`. On les parse en Json puis on grise les renting avec le `disable`.
 
-{% highlight js %}
+```js
 import flatpickr from "flatpickr"
 import "flatpickr/dist/themes/airbnb.css" // Note this is important!
 
@@ -63,4 +63,4 @@ if (rentingForm) {
     "disable": rentings,
   })
 }
-{% endhighlight %}
+```
