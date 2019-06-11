@@ -25,7 +25,7 @@ github_username:  alexandrebk
 # Build settings
 # markdown: kramdown
 markdown: redcarpet
-highlighter: pygments
+highlighter: rouge
 theme: minima
 plugins:
   - jekyll-feed
