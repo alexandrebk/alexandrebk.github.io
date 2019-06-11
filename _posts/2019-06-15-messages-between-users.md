@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Comment griser des dates avec FlatPickr"
+title:  "Comment envoyer des messages privés?"
 author: alexandre
 ---
 
