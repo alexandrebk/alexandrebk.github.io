@@ -64,11 +64,11 @@ Enfin nous allons récupérer les messages dans la vue. Tout d'abord il faut en 
 Message.create(sender: User.first, receiver: User.last, content: "Hello World!")
 ```
 
-Pour afficher les messages envoyés:
+Pour afficher la liste des utilisateurs avec qui on discute.
 
 ```ruby
 # app/views/messages/index.html.erb
-<%= current_user.messages_as_sender.each do |message| %>
-  <%= message.content %>
+<%= current_user.messages_as_sender.map(&:receiver).uniq do |message| %>
+  From : <%= user.name %>
 <%= end %>
 ```
