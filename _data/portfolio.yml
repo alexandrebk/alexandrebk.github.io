@@ -1,15 +1,15 @@
-- title : 'Lorem ipsum'
-  link : 'https://philippineberton.fr'
-  content : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus pellentesque cursus nulla non posuere. Sed tortor mauris, efficitur at facilisis.'
-  techno : 'Ruby, Rails'
-  img : '/images/capture.png'
-- title : 'Lorem ipsum'
-  link : 'https://philippineberton.fr'
-  content : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus pellentesque cursus nulla non posuere. Sed tortor mauris, efficitur at facilisis.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus pellentesque cursus nulla non posuere. Sed tortor mauris, efficitur at facilisis.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus pellentesque cursus nulla non posuere. Sed tortor mauris, efficitur at facilisis.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus pellentesque cursus nulla non posuere. Sed tortor mauris, efficitur at facilisis.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus pellentesque cursus nulla non posuere. Sed tortor mauris, efficitur at facilisis.'
-  techno : 'Ruby, Rails'
-  img : '/images/cabane.jpg'
-- title : 'Lorem ipsum'
-  link : 'https://philippineberton.fr'
-  content : 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus pellentesque cursus nulla non posuere. Sed tortor mauris, efficitur at facilisis.'
-  techno : 'Ruby, Rails'
-  img : '/images/wesh.gif'
+- title:   "Monsieur Peinture"
+  link:    "https://www.monsieurpeinture.com/"
+  content: "Création d'un espace client avec outil d'orientation, devis, facturation, chat et d'un espace partenaire avec allocation des projets, agenda et suivi des projets"
+  techno:  "Ruby on Rails"
+  img:     "/images/capture.png"
+- title:   "Les Ateliers NX"
+  link:    "https://www.lesateliersnx.fr/"
+  content: "Création de landing pages, d'un parcours prospect et d'un espace client"
+  techno:  "Ruby on Rails"
+  img:     "/images/cabane.jpg"
+- title:   "Artoche"
+  link:    "https://artoche-staging.herokuapp.com"
+  content: "Création d'un espace client pour gérer ses devis, facturations et chantiers"
+  techno:  "Ruby on Rails"
+  img:     "/images/wesh.gif"
