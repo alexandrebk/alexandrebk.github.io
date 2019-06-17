@@ -2,14 +2,16 @@
   link:    "https://www.monsieurpeinture.com/"
   content: "Création d'un espace client avec outil d'orientation, devis, facturation, chat et d'un espace partenaire avec allocation des projets, agenda et suivi des projets"
   techno:  "Ruby on Rails"
-  img:     "/images/capture.png"
+  img:     "/images/mr-peinture.png"
 - title:   "Les Ateliers NX"
   link:    "https://www.lesateliersnx.fr/"
   content: "Création de landing pages, d'un parcours prospect et d'un espace client"
   techno:  "Ruby on Rails"
-  img:     "/images/cabane.jpg"
+  img:     "/images/ateliers-nx.png"
 - title:   "Artoche"
   link:    "https://artoche-staging.herokuapp.com"
   content: "Création d'un espace client pour gérer ses devis, facturations et chantiers"
   techno:  "Ruby on Rails"
   img:     "/images/wesh.gif"
+  
+
