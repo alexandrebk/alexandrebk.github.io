@@ -52,32 +52,32 @@ class Person
   end
 end
 
-bobby = Person.new('Bobby', 'bobby@drivy.com')
-drivy = Company.new(bobby)
+bobby = Person.new('Bobby', 'bobby@korium.com')
+korium = Company.new(bobby)
 ```
 
 In this context if I wanted to access Drivy’s employee name I woud probably do the following:
 
 ```
-puts drivy.employee.name
+puts korium.employee.name
 # => Bobby
 ```
 
-However, this only works in an environment where none of the elements in the chain (except possibly for the last one) can be nil. Now, let’s imagine a case where the company does not really have any employee. The drivy object would be instantiated as follows and the above code would raise an error:
+However, this only works in an environment where none of the elements in the chain (except possibly for the last one) can be nil. Now, let’s imagine a case where the company does not really have any employee. The korium object would be instantiated as follows and the above code would raise an error:
 
 ```
-drivy = Company.new(nil)
+korium = Company.new(nil)
 
-puts drivy.employee.name
+puts korium.employee.name
 # => NoMethodError: undefined method `name' for nil:NilClass
 ```
 
 In order to prevent this behaviour, ruby has the & operator (since version 2.3) which behaves a bit like the try method in rails. It tries to fetch the object attribute and returns nil if any element in the chain is nil. For instance:
 
 ```
-drivy = Company.new(nil)
+korium = Company.new(nil)
 
-puts drivy&.employee&.name
+puts korium&.employee&.name
 # => nil
 
 google = Company.new(bobby)
@@ -116,3 +116,6 @@ end
 ```
  ## send
 
+# Send
+
+Exemple avec un nom de méthode dynamique sur un objet
