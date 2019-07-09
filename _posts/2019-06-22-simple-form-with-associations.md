@@ -1,10 +1,10 @@
 ---
 layout: post
-title:  "Simple form: Liste déroulante "
+title:  "Les listes déroulantes avec Simple form"
 author: alexandre
 ---
 
-Dans ce tuto nous allons apprendre à construire une formulaire avec des listes déroulantes.
+Dans ce tuto nous allons apprendre à construire une formulaire Simple Form avec des listes déroulantes.
 
 Nous supposons qu'il y a un model `Flat` et qu'il y'a déjà une application Rails avec plusieurs modèles.
 

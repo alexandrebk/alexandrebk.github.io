@@ -1,16 +1,16 @@
 ---
 layout: post
-title:  "Comment envoyer des messages privés?"
+title:  "Configurer une messagerie privée"
 author: alexandre
 ---
 
-Dans ce tuto nous allons apprendre comment envoyer des messages privés entre utilisateurs dans une application Ruby on Rails.
+Dans ce tuto nous allons apprendre comment envoyer des messages privés entre utilisateurs.
 
 Nous supposons qu'il y a une table Users (géré par Devise) et qu'il y'a déjà une application Rails avec plusieurs modèles.
 
 ### Première étape
 
-On va créer une migration pour la tables `messages` avec un champ `content`, et deux champs faisant références au modèle `User`.
+On crée d'abord une migration pour la tables `messages` avec un champ `content`, et deux champs faisant références au modèle `User`.
 
 ```sh  
 rails generate Message content:text sender:references receiver:references

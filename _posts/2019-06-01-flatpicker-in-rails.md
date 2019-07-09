@@ -4,7 +4,7 @@ title:  "Comment griser des dates avec FlatPickr"
 author: alexandre
 ---
 
-Dans ce tuto nous allons apprendre comment griser des dates avec FlatPickr. Cela suppose que vous avez déjà installé FlatPickr.
+Dans ce tuto nous allons apprendre comment griser des dates indisponibles avec FlatPickr. Cela suppose que vous avez déjà installé FlatPickr.
 
 La doc de flatpicker est [ici](https://flatpickr.js.org/examples/#basic)
 
