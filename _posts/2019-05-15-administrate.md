@@ -49,20 +49,24 @@ On va donc ajouter une méthode dans le `user_dashboard` pour afficher le nom de
 
 ```
 # app/dashboards/user_dashboard.rb
+class UserDashboard < Administrate::BaseDashboard
   [...]
   def display_resource(user)
     "#{user.first_name} #{user.last_name}"
   end
+end
 ```
 
 Et de même pour les `Flat`
 
 ```
 # app/dashboards/user_dashboard.rb
+class FlatDashboard < Administrate::BaseDashboard
   [...]
   def display_resource(flat)
     "#{flat.address}"
   end
+end
 ```
 
 Et on peut même modifier les options d'edit et de new dans les controller (voir la [doc](https://administrate-prototype.herokuapp.com/customizing_controller_actions)). Par exemple si vous souhaitez envoyer un email après avoir modifier un `booking`.
