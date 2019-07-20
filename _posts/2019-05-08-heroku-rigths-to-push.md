@@ -12,15 +12,15 @@ Tout d'abord il faut ajouter vos utilisateurs sur Heroku.
 
 #### Allez dans l'onglet Access
 
-![Allez dans l'onglet Access](/assets/images/heroku-tabs.png)
+![Allez dans l'onglet Access](/images/posts/heroku-tabs.png)
 
 #### Cliquer sur Add Collaborator
 
-![Cliquer sur Add Collaborator](/assets/images/heroku-button.png)
+![Cliquer sur Add Collaborator](/images/posts/heroku-button.png)
 
 #### Ajoutez son email rattaché à son compte Heroku
 
-![Ajoutez son email rattaché à son compte Heroku](/assets/images/heroku-email.png)
+![Ajoutez son email rattaché à son compte Heroku](/images/posts/heroku-email.png)
 
 ### Seconde Étape:
 
