@@ -23,6 +23,8 @@ $ bundle install
 $ rails generate administrate:install
 ```
 
+Le dashboard est maintenant disponible sur [localhost:3000/admin](localhost:3000/admin)
+
 Les routes ont été générés automatiquement
 
 ```
@@ -39,7 +41,11 @@ Rails.application.routes.draw do
 end
 ```
 
-Le dashboard est maintenant disponible sur [localhost:3000/admin](localhost:3000/admin)
+Il a été crée aussi des controlleurs dans `app/controllers/admin` et des modèles dans `app/dashboards`.
+
+Pour modifier les options d'edit et de new il faut aller dans les controller (voir la [doc](https://administrate-prototype.herokuapp.com/customizing_controller_actions)). Par exemple si vous souhaitez envoyer un email après avoir modifier un `booking`.
+
+Pour modifier ce qui est affiché dans les dashboard il faut aller dans les modèles. Dans l'array `COLLECTION_ATTRIBUTES` vous avez ce qui est affiché dans l'index. Dans l'array `SHOW_PAGE_ATTRIBUTES`, vous avez ce qui est affiché sur la page show de la partie admin. Et dans `FORM_ATTRIBUTES`, les variables qui s'affichent lorsque vous créez un nouvel object dans administrate. Vous pouvez enlevez ou ajouter des variables venant de l'array `ATTRIBUTE_TYPES`.
 
 ### Trosième Étape:
 
@@ -68,8 +74,6 @@ class FlatDashboard < Administrate::BaseDashboard
   end
 end
 ```
-
-Et on peut même modifier les options d'edit et de new dans les controller (voir la [doc](https://administrate-prototype.herokuapp.com/customizing_controller_actions)). Par exemple si vous souhaitez envoyer un email après avoir modifier un `booking`.
 
 ### Quatrième étape: Ajoutez une variable d'instance
 
