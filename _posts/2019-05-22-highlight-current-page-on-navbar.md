@@ -16,7 +16,7 @@ Nous supposons qu'il y a une application Rails avec Bootstrap installé et une `
 </li>
 ```
 
-### La méthode `current_page?`
+### La méthode current page
 
 La méthode `current_page?` prend comme argument une route et vérifie que nous bien sur celle ci. Donc dans notre exemple nous allons verifier que nous sommes bien dans `flats_path` avec `current_page?(flats_path)`. Si oui alors je veux mettre la classe `active` si non je ne mets rien. En code cela se traduit par `'active' if current_page?(flats_path)`. Nous avons donc:
 
