@@ -2,6 +2,7 @@
 layout: post
 title:  "Ajouter des collaborateurs sur Heroku"
 author: alexandre
+difficulty: 1
 ---
 
 Dans ce tuto nous allons apprendre à comment ajouter des utilisateurs sur Heroku
