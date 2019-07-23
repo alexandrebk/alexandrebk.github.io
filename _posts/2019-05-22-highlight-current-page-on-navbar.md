@@ -23,7 +23,7 @@ Dans un pemier temps nous allons mettre en surbrillance l'onglet "Publier une an
 
 ### La méthode current page
 
-Pour mettre en surbrillance, nous allons utiliser la méthode`current_page?`. Elle prend comme argument une route et vérifie que nous sommes bien sur celle ci. Donc dans notre exemple nous allons verifier que nous sommes bien dans `new_flat_path` avec `current_page?(new_flat_path)`. Si oui alors je veux mettre la classe `active` si non je ne mets rien. En code cela se traduit par `'active' if current_page?(new_flat_path)`. Nous avons donc:
+Pour mettre en surbrillance, nous allons utiliser la méthode `current_page?`. Elle prend comme argument une route et vérifie que nous sommes bien sur celle ci. Donc dans notre exemple nous allons verifier que nous sommes bien dans `new_flat_path` avec `current_page?(new_flat_path)`. Si oui alors je veux mettre la classe `active` si non je ne mets rien. En code cela se traduit par `'active' if current_page?(new_flat_path)`. Nous avons donc:
 
 ```
 <li class="nav-item <%= 'active' if current_page?(new_flat_path) %>">
