@@ -7,9 +7,11 @@ difficulty: 1
 
 Dans ce tuto nous allons apprendre comment mettre en surbrillance la page sur laquel se trouve l'utilisateur dans une barre de navigation. Pour cela nous allons utiliser la classe `active` de Boostrap.
 
+Nous supposons qu'il y a une application Rails avec Bootstrap installé et une `navbar` classique avec des classes bootstrap à l'intérieur. Dans notre navbar nous avons 4 liens plus un avatar. 
+
 ![Barre de navigation](/images/posts/navbar.png)
 
-Nous supposons qu'il y a une application Rails avec Bootstrap installé et une `navbar` classique avec des classes bootstrap à l'intérieur. Dans notre navbar nous avons 4 liens plus un avatar. Dans un pemier temps nous allons mettre en surbrillance l'onglet "Publier une annonce" ci-dessous:
+Dans un pemier temps nous allons mettre en surbrillance l'onglet "Publier une annonce" ci-dessous:
 
 ```
 # app/views/shared/_navabar.html.erb
