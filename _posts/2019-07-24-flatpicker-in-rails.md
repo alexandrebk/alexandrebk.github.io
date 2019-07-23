@@ -19,9 +19,9 @@ On va créer un tableau de hash avec toutes les locations.
 Tout d'abord on récupère l'id de l'appartement à l'aide de before_action (ou on ajoute l'action :show si le before_action est déjà existant)
 
 ```ruby
-# app/controllers/bookings_controller.rb
+# app/controllers/flats_controller.rb
 
-class BookingsController < ApplicationController
+class FlatsController < ApplicationController
   before_action :set_flat, only: [:show]
 
     [...]
@@ -67,7 +67,7 @@ end
 
 Dans cet exemple nous avons ajouté le plugin "range" pour que l'utilisateur reste sur le même calendrier pour choisir la date de début et la date de fin de son séjour.
 
-Dans le fichier `app/javascript/plugins/flatpickr.js` on récupère les données dans la div avec `getElementbyID`. On les parse en Json puis on grise les renting avec le `disable`.
+Dans le fichier `app/javascript/plugins/flatpickr.js` on récupère les données dans la div avec `getElementbyID`. On les parse en JSON pour les mettre dans la variables `bookings` et on les grise avec le `disable: bookings`
 
 ```js
 # app/javascript/plugins/flatpickr.js
