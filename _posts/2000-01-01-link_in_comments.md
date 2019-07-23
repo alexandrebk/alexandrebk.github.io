@@ -1,13 +1,13 @@
 ---
 layout: post
-title:  "Ajouter des liens cliquables dans les commentaires"
+title:  "Ajouter de liens cliquables par des utilsateurs"
 author: alexandre
 status: draft
 ---
 
 Dans ce tuto nous allons apprendre à comment rendre des liens cliquables dans un texte rentré par des utilisateurs.
 
-Nous supposons qu'il y a un model `Comment` et qu'il y'a déjà une application Rails avec plusieurs modèles.
+Nous supposons qu'il y a un model `Review` et qu'il y'a déjà une application Rails avec plusieurs modèles.
 
 ### Première étape
 
