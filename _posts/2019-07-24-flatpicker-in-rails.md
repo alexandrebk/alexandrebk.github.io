@@ -15,18 +15,36 @@ Le tuto officiel de FlatPickr pour désactiver des dates spécifiques est [ici](
 
 ### Première étape:
 
-On va créer un tableau de hash avec toutes les locations. Tout d'abord on récupère l'id de l'appartement et on regarde quand il est loué.
+On va créer un tableau de hash avec toutes les locations.
+Tout d'abord on récupère l'id de l'appartement à l'aide de before_action (ou on ajoute l'action :show si le before_action est déjà existant)
+
+```ruby
+# app/controllers/bookings_controller.rb
+
+class BookingsController < ApplicationController
+  before_action :set_flat, only: [:show]
+
+    [...]
+
+    private
+
+    def set_flat
+      @flat = Flat.find(params[:flat_id])
+    end
+  end
+```
+
+Ensuite on regarde quand l'appartement est loué et on stocke les dates.
 
 
 ```ruby
 class FlatsController < ApplicationController
   def show
-    @flat           = Flat.find(params[:id])
-    @rentings       = Renting.where(flat_id: @flat.id)
-    @rentings_dates = @rentings.map do |renting|
+    @bookings       = Booking.where(flat: @flat)
+    @bookings_dates = @bookings.map do |booking|
       {
-        from: renting.start_date,
-        to:   renting.end_date
+        from: booking.start_date,
+        to:   booking.end_date
       }
     end
   end
@@ -47,21 +65,26 @@ end
 
 ### Trosième Étape: on récupère les données pour les injecter dans le calendrier
 
-Dans le fichier `app/javascript/plugins/flatpickr.js` on récupère les données dans la div `getElementbyID`. On les parse en Json puis on grise les renting avec le `disable`.
+Dans cet exemple nous avons ajouté le plugin "range" pour que l'utilisateur reste sur le même calendrier pour choisir la date de début et la date de fin de son séjour.
+
+Dans le fichier `app/javascript/plugins/flatpickr.js` on récupère les données dans la div avec `getElementbyID`. On les parse en Json puis on grise les renting avec le `disable`.
 
 ```js
+# app/javascript/plugins/flatpickr.js
+
 import flatpickr from "flatpickr"
-import "flatpickr/dist/themes/airbnb.css" // Note this is important!
+import "flatpickr/dist/flatpickr.min.css" // Note this is important!
+import rangePlugin from "flatpickr/dist/plugins/rangePlugin"
 
-const rentingForm = document.getElementById('renting-form-div');
-const rentings = JSON.parse(rentingForm.dataset.rentings);
+const bookingForm = document.getElementById('booking-form-div');
 
-if (rentingForm) {
-  flatpickr(".datepicker", {
+if (bookingForm) {
+  const bookings = JSON.parse(bookingForm.dataset.bookings);
+  flatpickr("#range_start", {
+    plugins: [new rangePlugin({ input: "#range_end"})],
     minDate: "today",
-    inline: true,
     dateFormat: "Y-m-d",
-    "disable": rentings,
-  })
+    "disable": bookings,
+ })
 }
 ```
