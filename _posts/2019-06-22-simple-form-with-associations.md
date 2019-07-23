@@ -2,6 +2,7 @@
 layout: post
 title:  "Les listes déroulantes avec Simple form"
 author: alexandre
+status: draft
 ---
 
 Dans ce tuto nous allons apprendre à construire une formulaire Simple Form avec des listes déroulantes.

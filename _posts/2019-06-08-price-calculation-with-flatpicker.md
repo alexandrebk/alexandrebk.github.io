@@ -2,6 +2,7 @@
 layout: post
 title:  "Afficher le prix du renting avec FlatPickr"
 author: alexandre
+status: draft
 ---
 
 Dans ce tuto nous allons apprendre comment afficher dynamiquement le prix de la location au moment de la réservation. Cela suppose que vous ayez déjà installé FlatPickr.

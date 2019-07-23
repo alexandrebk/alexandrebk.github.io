@@ -2,6 +2,7 @@
 layout: post
 title:  "Configurer une messagerie privée"
 author: alexandre
+status: draft
 ---
 
 Dans ce tuto nous allons apprendre comment envoyer des messages privés entre utilisateurs.
