@@ -36,8 +36,8 @@ class FlatsController < ApplicationController
 
 Ensuite on regarde quand l'appartement est loué et on stocke les dates.
 
-
 ```ruby
+# app/controllers/flats_controller.rb
 class FlatsController < ApplicationController
   def show
     @bookings       = Booking.where(flat: @flat)
@@ -61,7 +61,6 @@ end
   data-rentings="<%= @rentings_dates.to_json %>"
 >
 ```
-
 
 ### Trosième Étape: on récupère les données pour les injecter dans le calendrier
 
@@ -88,3 +87,22 @@ if (bookingForm) {
  })
 }
 ```
+
+### Quatrième Étape: On embellit notre formulaire
+
+Nous allons ajouter un input_html
+
+```
+<div class="row justify-content-center">
+  <div class="row justify-content-center">
+  <div class="col-md-8">
+    <%= simple_form_for [flat, booking] do |f| %>
+      <%= f.input :start_date, label: "Sélectionnez vos dates:", as: :string, required: false, input_html: { id: "range_start", class: "d-none"} %>
+      <%= f.input :end_date, label: false, as: :string, required: false, input_html: { id: "range_end", class: "d-none" } %>
+      <%= f.submit text, class: 'btn btn-principal' %>
+    <% end %>
+  </div>
+</div>
+```
+
+Vous trouverez un exemple de code [ici](https://github.com/alexandrebk/airbnb-copycat/commit/fce1dc96b3d0c2d25b9656ab836cbe88e18747ff)
