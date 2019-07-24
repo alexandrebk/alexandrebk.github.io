@@ -90,19 +90,18 @@ if (bookingForm) {
 
 ### Quatrième Étape: On embellit notre formulaire
 
-Nous allons ajouter un input_html
+Nous allons modifier notre formulaire `simple_form` pour qu'il ne fasse apparaître que un calendrier.
+
+Tout d'abord sur la date de début je vais ajouter un label disant `Sélectionnez vos dates`. Et dans `input_html` j'ajoute un `id: "range_start"` pour dire à `Flatpickr` de mettre la valeur sélectionnée dans cette input. Enfin je vais cacher la champ original avec `class: "d-none"`.
 
 ```
-<div class="row justify-content-center">
-  <div class="row justify-content-center">
-  <div class="col-md-8">
-    <%= simple_form_for [flat, booking] do |f| %>
-      <%= f.input :start_date, label: "Sélectionnez vos dates:", as: :string, required: false, input_html: { id: "range_start", class: "d-none"} %>
-      <%= f.input :end_date, label: false, as: :string, required: false, input_html: { id: "range_end", class: "d-none" } %>
-      <%= f.submit text, class: 'btn btn-principal' %>
-    <% end %>
-  </div>
-</div>
+<%= f.input :start_date, label: "Sélectionnez vos dates:", as: :string, required: false, input_html: { id: "range_start", class: "d-none"} %>
+```
+
+Pour la date de fin je vais dire de ne pas mettre de lable avec l'option 'label: false'
+
+```
+<%= f.input :end_date, label: false, as: :string, required: false, input_html: { id: "range_end", class: "d-none" } %>
 ```
 
 Vous trouverez un exemple de code [ici](https://github.com/alexandrebk/airbnb-copycat/commit/fce1dc96b3d0c2d25b9656ab836cbe88e18747ff)
