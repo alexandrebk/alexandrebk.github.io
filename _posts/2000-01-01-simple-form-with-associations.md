@@ -1,31 +1,46 @@
 ---
-layout: post
-title:  "Les listes déroulantes avec Simple form"
-author: alexandre
-status: draft
+layout:     post
+title:      "Utilisation avancées de Simple Form"
+author:     alexandre
+difficulty: 1
+status:     draft
 ---
 
-Dans ce tuto nous allons apprendre à construire une formulaire Simple Form avec des listes déroulantes.
+Dans ce tuto nous allons apprendre à ajouter des reviews sur notre application de réservations d'appartement avec une liste déroulante grâce à simple form.
 
-Nous supposons qu'il y a un model `Flat` et qu'il y'a déjà une application Rails avec plusieurs modèles.
+Nous supposons qu'il y a un model `Booking` et `User`, et qu'il y'a déjà une application Rails avec plusieurs modèles.
 
-Nous allons ajouter un formulaire pour la création d'un `flat`.
+Les utilisateurs vont avoir la possibilité de laisser une commentaire sur une location.
 
 ### Première étape
 
-Tout d'abord nous allons créer les routes.
+Tout d'abord nous allons générer une migration pour créer la table `reviews`
 
-Et faire les migrations pour que le modèle acceuille toutes les données.
+```
+class CreateReviews < ActiveRecord::Migration[5.2]
+  def change
+    create_table :reviews do |t|
+      t.text       :content
+      t.integer    :rating,  default: 0
+      t.references :user,    foreign_key: true
+      t.references :booking, foreign_key: true
 
-### Seconde Étape: 
+      t.timestamps
+    end
+  end
+end
+```
+
+### Seconde Étape:
 
 Ensuite nous allons dans le controlleur pour passer les bonnes variables.
 
-### Trosième Étape: 
+### Trosième Étape:
 
 ```ruby
-<%= simple_form_for(@flat) do |f| %>
-  <%= f.input :name %>
-  <%= f.association :race %>
+<%= simple_form_for(@review) do |f| %>
+  <%= f.input :content %>
+  <%= f.input :rating %>
+  <%= f.association :booking %>
 <% end %>
 ```
