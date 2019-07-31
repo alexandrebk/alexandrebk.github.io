@@ -85,11 +85,13 @@ Ensuite nous allons créer les routes. Tout d'abord une route qui recense toutes
 
 ```ruby
 # config/routes.rb
+Rails.application.routes.draw do
   [...]
   get 'conversations', to: 'messages#conversations'
   resources :users do
     resources :messages, only: [:index, :create]
   end
+end
 ```
 
 Maintenant que nous avons créé les routes, il faut créer le `controller` associé.
