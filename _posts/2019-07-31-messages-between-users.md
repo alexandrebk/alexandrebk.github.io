@@ -136,7 +136,7 @@ end
 
 Pour afficher la liste des utilisateurs avec qui on discute.
 
-```ruby
+```erb
 # app/views/messages/conversations.html.erb
 <% @friends.each do |friend| %>
   <%= link_to messages_path(friend) do %>
@@ -147,7 +147,7 @@ Pour afficher la liste des utilisateurs avec qui on discute.
 
 Et pour afficher une conversation avec un utilisateur.
 
-```ruby
+```erb
 # app/views/messages/index.html.erb
 <ul>
   <% @messages.each do |message| %>
