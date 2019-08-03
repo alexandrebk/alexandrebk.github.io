@@ -210,3 +210,5 @@ Pour finir ajoutons un lien depuis la show d'un booking pour pouvoir contacter l
   <button class="btn btn-principal btn-margin-top">Contacter le propriétaire</button>
 <% end %>
 ```
+
+Vous pouvez retrouver un exemple de code [ici](https://github.com/alexandrebk/airbnb-copycat/commit/9d882d532ea3c53ca52673a0d407bc600dbb3a68)

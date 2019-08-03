@@ -65,3 +65,5 @@ if (rentingForm) {
   })
 }
 ```
+
+Vous pouvez retrouver un exemple de code [ici](https://github.com/alexandrebk/airbnb-copycat/commit/fce1dc96b3d0c2d25b9656ab836cbe88e18747ff)
