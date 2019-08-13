@@ -33,7 +33,7 @@ $ rails generate administrate:install
 
 Le dashboard est maintenant disponible sur [localhost:3000/admin](localhost:3000/admin)
 
-Les routes ont été générés automatiquement
+Dans le fichier `routes.rb` on peut voir que les routes ont été générées automatiquement.
 
 ```
 #config/routes.rb
