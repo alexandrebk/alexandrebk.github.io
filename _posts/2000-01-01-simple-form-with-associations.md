@@ -35,6 +35,15 @@ end
 
 Ensuite nous allons dans le controlleur pour passer les bonnes variables.
 
+Un petit tricks dans Rails. Si vous créez une méhtode `name` dans le modèle, Simple_form va automatique aller la chercher pour afficher les dropdown.
+```
+# app/models/user.rb
+
+def name
+  "#{first_name] #{last_name}"
+end
+```
+
 ### Trosième Étape:
 
 ```ruby
