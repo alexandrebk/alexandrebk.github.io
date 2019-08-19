@@ -7,11 +7,11 @@ difficulty: 3
 
 Dans ce tuto nous allons apprendre comment permettre aux utilisateurs de s'envoyer des messages privés.
 
-Nous supposons qu'il y a une application Rails avec modèle `User` (généré par Devise).
+Nous supposons qu'il y a une application Rails avec un modèle `User` (généré par Devise).
 
 ### Première étape
 
-On crée d'abord une migration pour la table `messages` avec un champ `content`, et deux champs faisant références au modèle `User`.
+On crée d'abord une migration pour la table `messages` avec un champ `content` et deux champs faisant références au modèle `User`.
 
 ```sh
 rails generate model Message content:text sender:references receiver:references
@@ -39,7 +39,7 @@ Ensuite nous pouvons faire tourner la migration.
 rails db:migrate
 ```
 
-### Seconde Étape:
+### Seconde étape
 
 Une fois que la migration a été jouée, nous allons modifier le modèle `Message` pour indiquer à Ruby que `sender` et `receiver` font bien référence à notre modèle `User`. Et que le contenu des messages ne doivent pas être vide ni supérieur à 100 caractères.
 
@@ -74,16 +74,17 @@ class User < ApplicationRecord
 end
 ```
 
-### Troisième Étape:
+### Troisième étape
 
 Enfin nous allons récupérer les messages dans la vue. Tout d'abord il faut créer un message dans la console que vous lancez avec `rails c`
 
-```ruby
+```sh
 Message.create(sender: User.first, receiver: User.last, content: "Hello, how are you?")
 Message.create(sender: User.last, receiver: User.first, content: "Hello, good and you?")
 ```
 
-Ensuite nous allons créer les routes. Tout d'abord une route qui recense toutes les conversations `get 'conversations', to: 'messages#conversations'`. Ensuite une route pour afficher les conversations avec un autre utilisateur et une route pour créer un message. Comme nous avons besoin de l'`id` d'un autre utilisateur il faudra nester la ressource.
+Ensuite nous allons créer les routes. Tout d'abord une route qui recense toutes les conversations `get 'conversations', to: 'messages#conversations'`.
+Ensuite une route pour afficher les conversations avec un autre utilisateur et une route pour créer un message. Comme nous avons besoin de l'`id` d'un autre utilisateur il faudra nester la ressource.
 
 ```ruby
 # config/routes.rb
@@ -112,7 +113,7 @@ Commençons par la liste des conversations.
 
 class MessagesController < ApplicationController
   def conversations
-    @friends = current_user.friends
+    @users_with_conversation = current_user.friends
   end
 end
 ```
@@ -122,13 +123,13 @@ Pour afficher la liste des utilisateurs avec qui on discute on s'occupe de la vu
 ```erb
 # app/views/messages/conversations.html.erb
 
-<% if @friends.empty? %>
+<% if @users_with_conversation.empty? %>
   <h3>Vous n'avez pas de conversation</p>
 <% else %>
   <h3>Mes conversations</h3>
-  <% @friends.each do |friend| %>
-    <%= link_to user_messages_path(friend) do %>
-      <p>Conversation avec <%= friend.first_name %></p>
+  <% @users_with_conversation.each do |user| %>
+    <%= link_to user_messages_path(user) do %>
+      <p>Conversation avec <%= user.first_name %></p>
     <% end %>
   <% end %>
 <% end %>
