@@ -5,23 +5,19 @@ author: alexandre
 difficulty: 4
 ---
 
-Dans ce tuto nous allons apprendre comment griser des dates indisponibles avec FlatPickr. Cela suppose que vous avez déjà installé FlatPickr.
+Dans ce tuto nous allons apprendre comment installer Flatpickr dans une application Rails et comment griser des dates.
 
-La doc de flatpicker est [ici](https://flatpickr.js.org/examples/#basic)
+La doc officielle de flatpicker est disponible [ici](https://flatpickr.js.org/examples/#basic)
 
-Le tuto officiel de FlatPickr pour désactiver des dates spécifiques est [ici](https://flatpickr.js.org/examples/#disabling-specific-dates)
+### Première étape: Installation
 
-[Ici](https://medium.com/@rodloboz/ruby-on-rails-date-validation-in-a-booking-and-disabling-dates-in-date-picker-3e5b4e9b4640) un article Medium en anglais qui explique comment faire.
-
-### Première étape: le setup
-
-Tout d'abord il faut installer flatpickr dans votre terminal.
+Tout d'abord il faut ajouter le module flatpickr dans votre application.
 
 ```sh
 yarn add flatpickr
 ```
 
-Ensuite on va ajouter Javascript à votre `application.html` si ce n'est pas déjà fait:
+Ensuite on va ajouter Webpack à votre `application.html` si ce n'est pas déjà fait:
 
 ```erb
 <!-- app/views/layouts/application.html.erb -->
@@ -34,12 +30,12 @@ Ensuite on va ajouter Javascript à votre `application.html` si ce n'est pas dé
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
-    <%= stylesheet_pack_tag 'application' %> <!-- NEW! -->
+    <%= stylesheet_pack_tag 'application' %> <!-- à ajouter! -->
   </head>
   <body>
     <%= yield %>
     <%= javascript_include_tag 'application' %>
-    <%= javascript_pack_tag 'application' %> <!-- NEW! -->
+    <%= javascript_pack_tag 'application' %> <!-- à ajouter! -->
   </body>
 </html>
 ```
@@ -51,39 +47,39 @@ mkdir -p  app/javascript/plugins
 touch app/javascript/plugins/flatpickr.js
 ```
 
-Ensuite dans le fichier `application.js` il faut importer le plugin.
+Ensuite dans le fichier `application.js` il faut importer le code que nous allons mettre dans flatpickr.
 
 ```js
 // app/javascript/packs/application.js
 import "../plugins/flatpickr"
 ```
 
-Enfin nous allons créer notre formulaire dans ma page `show` des mes `Flat`.
+Nous allons maintenant créer notre formulaire dans ma page `show` des mes `Flat`.
 
 ```erb
 <div class="container">
-  <div class="form-wrapper" style="width: 400px; margin: 0 auto;">
-    <h2>Flatpickr Demo</h2>
-
+  <div class="form-wrapper">
+    <h2>Book a flat</h2>
     <%= simple_form_for [@flat, @booking] do |f| %>
-      <%= f.input :starts_at, as: :string, required: false, input_html: {id: "range_start"} %>
-      <%= f.input :ends_at, as: :string, required: false, input_html: {id: "range_end"} %>
+      <%= f.input  :start_date, as: :string, required: false, input_html: {id: "range_start"} %>
+      <%= f.input  :end_date,   as: :string, required: false, input_html: {id: "range_end"} %>
       <%= f.button :submit, "Book", class: "btn btn-primary" %>
     <% end %>
   </div>
 </div>
 ```
 
-## Seconde étape
+## Seconde étape: le controlleur
 
-Maintenant que le formulaire est créer nous allons créer un tableau de hash avec toutes les locations. Tout d'abord on récupère l'id de l'appartement et on regarde quand il est loué.
+Maintenant que le formulaire est créer nous allons créer un tableau de hash avec toutes les locations déjà existantes. Comme dans toute les méthodes `show` on récupère d'abord l'id de l'appartement. Puis on regarde quand il est loué. Enfin, avec une méthode `.map` on transforme les réservations en hash avec la date de début et de fin.
 
 
 ```ruby
 class FlatsController < ApplicationController
+  [...]
   def show
     @flat           = Flat.find(params[:id])
-    @bookings       = Booking.where(flat_id: @flat.id)
+    @bookings       = Booking.where(flat_id: @flat.id, end_date) # prendre les réservations après aujourd'hui.
     @bookings_dates = @bookings.map do |booking|
       {
         from: booking.start_date,
@@ -91,12 +87,15 @@ class FlatsController < ApplicationController
       }
     end
   end
+  [...]
 end
 ```
 
-### Troisième Étape: on passe les données dans la vue avec un dataset
+### Troisième Étape: on passe les données à la vue
 
-```html
+Une fois le tableau de hash créé, on le place dans la vue sous forme de data-set.
+
+```erb
 # app/views/flats/show.html.erb
 
 <div
@@ -105,12 +104,12 @@ end
 >
 ```
 
-
 ### Quatrième Étape: on récupère les données pour les injecter dans le calendrier
 
 Dans le fichier `app/javascript/plugins/flatpickr.js` on récupère les données dans la div `getElementbyID`. On les parse en Json puis on grise les bookings avec le `disable`.
 
 ```js
+// app/javascript/plugins/flatpickr.js
 import flatpickr from "flatpickr"
 import "flatpickr/dist/flatpickr.min.css" // Note this is important!
 import rangePlugin from "flatpickr/dist/plugins/rangePlugin"
@@ -128,5 +127,3 @@ import rangePlugin from "flatpickr/dist/plugins/rangePlugin"
   })
 }
 ```
-
-Vous pouvez retrouver un exemple de code [ici](https://github.com/alexandrebk/airbnb-copycat/commit/fce1dc96b3d0c2d25b9656ab836cbe88e18747ff)
