@@ -17,7 +17,7 @@ Tout d'abord il faut ajouter le module flatpickr dans votre application.
 yarn add flatpickr
 ```
 
-Ensuite on va ajouter Webpack à votre `application.html` si ce n'est pas déjà fait:
+Ensuite on va ajouter Webpack à votre `layout/application.html` si ce n'est pas déjà fait:
 
 ```erb
 <!-- app/views/layouts/application.html.erb -->
@@ -79,7 +79,7 @@ class FlatsController < ApplicationController
   [...]
   def show
     @flat           = Flat.find(params[:id])
-    @bookings       = Booking.where(flat_id: @flat.id, end_date) # prendre les réservations après aujourd'hui.
+    @bookings       = Booking.where(flat_id: @flat.id, end_date: Date.today) # prendre les réservations après aujourd'hui.
     @bookings_dates = @bookings.map do |booking|
       {
         from: booking.start_date,
@@ -126,4 +126,30 @@ import rangePlugin from "flatpickr/dist/plugins/rangePlugin"
     "disable": bookings,
   })
 }
+```
+
+### Cinquième étape: Afficher uniquement le calendrier.
+
+
+```erb
+<div class="container">
+  <div class="form-wrapper">
+    <h2>Book a flat</h2>
+    <%= simple_form_for [@flat, @booking] do |f| %>
+      <%= f.input  :start_date, as: :string, required: false, input_html: {id: "range_start"} %>
+      <%= f.input  :end_date,   as: :string, required: false, input_html: {id: "range_end"} %>
+      <%= f.button :submit, "Book", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+```
+
+Maintenant je vais cacher les champs du dates pour ne laisser apparaître que le calendrier. Tout d'abord il faut ajouter un label pour que l'utilisateur comprenne à quoi sert ce calendrier. Ensuite on va cacher les deux champs avec la classe Bootstrap `d-none`.
+
+```
+<%= simple_form_for [flat, booking] do |f| %>
+  <%= f.input :start_date, label: "Sélectionnez vos dates:", as: :string, required: false, input_html: { id: "range_start", class: "d-none"} %>
+  <%= f.input :end_date, label: false, as: :string, required: false, input_html: { id: "range_end", class: "d-none" } %>
+  <%= f.submit text, class: 'btn btn-principal' %>
+<% end %>
 ```
