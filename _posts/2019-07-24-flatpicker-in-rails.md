@@ -5,11 +5,11 @@ author: alexandre
 difficulty: 4
 ---
 
-Dans ce tuto nous allons apprendre comment installer Flatpickr dans une application Rails et comment griser des dates.
+Dans ce tuto nous allons apprendre à installer Flatpickr dans une application Rails et comment griser des dates.
 
 La doc officielle de flatpicker est disponible [ici](https://flatpickr.js.org/examples/#basic)
 
-### Première étape: Installation
+### Première étape : installation
 
 Tout d'abord il faut ajouter le module flatpickr dans votre application.
 
@@ -20,7 +20,8 @@ yarn add flatpickr
 Ensuite on va ajouter Webpack à votre `layout/application.html` si ce n'est pas déjà fait:
 
 ```erb
-<!-- app/views/layouts/application.html.erb -->
+# app/views/layouts/application.html.erb
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -40,21 +41,21 @@ Ensuite on va ajouter Webpack à votre `layout/application.html` si ce n'est pas
 </html>
 ```
 
-Si vous l'avez pas encore fait vous devez créer un dossier `plugins` dans `app/javascript` puis créez un fichier pour mettre le code de `flatpickr`.
+S'il n'est pas déjà existant vous devez créer un dossier `plugins` dans `app/javascript` puis créer un fichier `flatpickr.js` dans ce dossier pour mettre le code de `flatpickr`.
 
 ```sh
 mkdir -p  app/javascript/plugins
 touch app/javascript/plugins/flatpickr.js
 ```
 
-Ensuite dans le fichier `application.js` il faut importer le code que nous allons mettre dans flatpickr.
+Ensuite dans le fichier `application.js` il faut importer le code que nous allons mettre dans le fichier `flatpickr.js`.
 
 ```js
 // app/javascript/packs/application.js
 import "../plugins/flatpickr"
 ```
 
-Nous allons maintenant créer notre formulaire dans ma page `show` des mes `Flat`.
+Nous allons maintenant créer notre formulaire dans la page `show` des `Flat`.
 
 ```erb
 <div class="container">
@@ -69,9 +70,9 @@ Nous allons maintenant créer notre formulaire dans ma page `show` des mes `Flat
 </div>
 ```
 
-## Seconde étape: le controlleur
+## Seconde étape : le controlleur
 
-Maintenant que le formulaire est créer nous allons créer un tableau de hash avec toutes les locations déjà existantes. Comme dans toute les méthodes `show` on récupère d'abord l'id de l'appartement. Puis on regarde quand il est loué. Enfin, avec une méthode `.map` on transforme les réservations en hash avec la date de début et de fin.
+Maintenant que le formulaire est créé nous allons créer un tableau de hash avec toutes les locations déjà existantes. Comme dans toutes les méthodes `show` on récupère d'abord l'id de l'appartement. Puis on regarde quand il est loué. Enfin, avec une méthode `.map` on transforme les réservations en hash avec la date de début et de fin.
 
 
 ```ruby
@@ -108,11 +109,11 @@ Une fois le tableau de hash créé, on le place dans la vue sous forme de data-s
 
 ### Quatrième étape : on récupère les données pour les injecter dans le calendrier
 
+
 Dans le fichier `app/javascript/plugins/flatpickr.js` on récupère les données dans la div `getElementbyID`. On les parse en Json puis on grise les bookings avec le `disable`.
->>>>>>> 8c0a8b427bf3ac9f689e52e9ab600a40c7511f88
 
 ```js
-# app/javascript/plugins/flatpickr.js
+// app/javascript/plugins/flatpickr.js
 
 import flatpickr from "flatpickr"
 import "flatpickr/dist/flatpickr.min.css" // Note this is important!
@@ -132,7 +133,7 @@ import rangePlugin from "flatpickr/dist/plugins/rangePlugin"
 }
 ```
 
-### Cinquième étape : afficher uniquement le calendrier.
+### Cinquième étape : afficher uniquement le calendrier
 
 Maintenant je vais cacher les champs du dates pour ne laisser apparaître que le calendrier. Tout d'abord il faut ajouter un label pour que l'utilisateur comprenne à quoi sert ce calendrier. Ensuite on va cacher les deux champs avec la classe Bootstrap `d-none`.
 
