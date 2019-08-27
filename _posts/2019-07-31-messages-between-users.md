@@ -91,7 +91,7 @@ Ensuite nous allons créer les routes. Tout d'abord une route qui recense toutes
 Rails.application.routes.draw do
   [...]
   get 'conversations', to: 'messages#conversations'
-  resources :users do
+  resources :users, only [] do
     resources :messages, only: [:index, :create]
   end
 end
