@@ -17,7 +17,7 @@ Tout d'abord il faut ajouter le module flatpickr dans votre application.
 yarn add flatpickr
 ```
 
-Ensuite on va ajouter Webpack à votre `layout/application.html` si ce n'est pas déjà fait:
+Ensuite on va ajouter Webpack à votre `layout/application.html` si ce n'est pas déjà fait :
 
 ```erb
 # app/views/layouts/application.html.erb
