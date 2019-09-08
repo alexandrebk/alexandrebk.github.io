@@ -11,7 +11,7 @@ Dans ce tuto nous allons apprendre comment ajouter plusieurs photos à un modèl
 
 Si vous n'êtes pas dans Rails 6, il vous faudra ajouter la gem Active Storage dans votre Gemfile.
 
-Ensuite il faut l'installer avec la commande et créer les tables:
+Ensuite il faut l'installer avec la commande `rails active_storage:install` et créer les tables avec `rails db:migrate`.
 
 ```
 rails active_storage:install
@@ -37,7 +37,9 @@ end
 
 ```erb
 <!-- app/views/flats/new.html.erb -->
-
+[...]
+<%= form.file_field :pictures, multiple: true, class: "form-control" %>
+[...]
 ```
 
 ### Trosième Étape: Configurer AWS
@@ -96,7 +98,7 @@ amazon:
   region: "eu-west-1" # pour Paris "eu-west-3"
 ```
 
-Il faut sépcifier à l'environnement de production (c'est à dire sur Heroku) que Active Storage doit utiliser Amazon.
+Il faut sépcifier à l'environnement de production (c'est à dire sur Heroku) que Active Storage doit utiliser Amazon. Pour cela nous allons modifier le fichier de config pour la production.
 
 ```ruby
 # config/environments/production.rb
