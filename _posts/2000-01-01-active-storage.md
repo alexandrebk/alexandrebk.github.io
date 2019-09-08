@@ -109,4 +109,6 @@ config.active_storage.service = :amazon
 
 ```ruby
 # db/seeds.rb
+Flat.first.images.attach(io: File.open(my_image_path), filename: 'image_name.png', content_type: 'image/png')
+
 ```
