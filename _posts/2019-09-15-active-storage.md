@@ -1,31 +1,32 @@
 ---
 layout: post
-title:  "Ajouter des photos avec Active Storage"
+title:  "Ajouter des images avec Active Storage"
 author: alexandre
 ---
 
-Dans ce tuto nous allons apprendre comment ajouter plusieurs photos à un modèle avec Active Storage.
+Dans ce tuto nous allons apprendre comment ajouter plusieurs images à un modèle avec Active Storage.
 
 ### Première étape: Installer Active Storage
 
-Si vous n'êtes pas dans Rails 6, il vous faudra ajouter la gem Active Storage dans votre Gemfile.
+Si vous n'êtes pas dans Rails 6, il vous faudra ajouter la [gem Active Storage](https://github.com/rails/activestorage/tree/archive) dans votre Gemfile.
 
-Ensuite il faut l'installer avec la commande `rails active_storage:install` et créer les tables avec `rails db:migrate`.
+On va l'installer avec la commande `rails active_storage:install` et créer les tables avec `rails db:migrate`.
 
-```
+```sh
 rails active_storage:install
 rails db:migrate
 ```
 
-### Seconde Étape: Ajouter les photos au model
+### Seconde Étape: Ajouter les images au model
 
-Ensuite nous allons attacher des photos à notre modèle `Flat` mais sans ajouter un nouvelle colonne à notre base de données. Il faut s'assurer que les images vont bien passer dans les params. Et ajouter dans la vue la possibilité dans le formulaire la possibilité d'ajouter des photos.
+Ensuite nous allons attacher des images à notre modèle `Flat`. Contrairement à d'autres gems il n'y a pas de générer une migration.
 
 ```ruby
 class Flat < ApplicationRecord
   has_many_attached :images
 end
 ```
+Il faut s'assurer que les images vont bien passer dans les params.
 
 ```ruby
 # app/controllers/flats_controller.html.erb
@@ -33,6 +34,8 @@ end
     params.require(:flat).permit(:title, :content, images: [])
   end
 ```
+
+Et ajouter dans la vue la possibilité dans le formulaire la possibilité d'ajouter des images.
 
 ```erb
 <!-- app/views/flats/new.html.erb -->
@@ -75,9 +78,7 @@ Pour les utilisateurs il faut choisir un nom d'utilisateur et ensuite un service
 ![](/images/posts/active-storage/14.png)
 ![](/images/posts/active-storage/15.png)
 
-### Trosième Étape:
-
-Ajouter votre bucket AWS
+### Quatrième Étape: Configuration sur l'app.
 
 ```yaml
 # config/storage.yml
@@ -104,10 +105,9 @@ Il faut sépcifier à l'environnement de production (c'est à dire sur Heroku) q
 config.active_storage.service = :amazon
 ```
 
-### Quatrième étape: Intégrer au seeds
+### Cinquième étape: Seeder des images
 
 ```ruby
 # db/seeds.rb
 Flat.first.images.attach(io: File.open(my_image_path), filename: 'image_name.png', content_type: 'image/png')
-
 ```
