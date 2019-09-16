@@ -10,7 +10,7 @@ Dans ce tuto nous allons apprendre comment ajouter plusieurs images à un modèl
 
 Si vous n'êtes pas dans Rails 6, il vous faudra ajouter la [gem Active Storage](https://github.com/rails/activestorage/tree/archive) dans votre Gemfile.
 
-On va l'installer avec la commande `rails active_storage:install` et créer les tables avec `rails db:migrate`.
+On va l'installer avec la commande `rails active_storage:install` et créer les tables liant les photos aux modèles avec `rails db:migrate`.
 
 ```sh
 rails active_storage:install
@@ -19,14 +19,15 @@ rails db:migrate
 
 ### Seconde Étape: Ajouter les images au model
 
-Ensuite nous allons attacher des images à notre modèle `Flat`. Contrairement à d'autres gems il n'y a pas de générer une migration.
+Ensuite nous allons attacher des images à notre modèle `Flat`. Contrairement à d'autres gems il n'y a pas besoin de créer une nouvelle colonne dans la table du modèle.
 
 ```ruby
 class Flat < ApplicationRecord
   has_many_attached :images
 end
 ```
-Il faut s'assurer que les images vont bien passer dans les params.
+
+Puis il faut autoriser les images dans les paramètres de notre formulaire de `Flat`.
 
 ```ruby
 # app/controllers/flats_controller.html.erb
@@ -35,7 +36,7 @@ Il faut s'assurer que les images vont bien passer dans les params.
   end
 ```
 
-Et ajouter dans la vue la possibilité dans le formulaire la possibilité d'ajouter des images.
+Et ajouter dans la vue du formulaire un champ pour ajouter des images.
 
 ```erb
 <!-- app/views/flats/new.html.erb -->
@@ -46,7 +47,7 @@ Et ajouter dans la vue la possibilité dans le formulaire la possibilité d'ajou
 
 ### Trosième Étape: Configurer AWS
 
-Pour créer un compte rendez-vous sur [ce lien](https://aws.amazon.com/).
+Pour créer un compte suivez [ce lien](https://aws.amazon.com/).
 
 Ensuite connectez vous à la console AWS. La configuration va se faire en 3 temps.
 
@@ -57,7 +58,7 @@ Ensuite connectez vous à la console AWS. La configuration va se faire en 3 temp
 
 #### Créer son bucket
 
-Vous cliquer sur `Services` et vous recherchez `S3`. Ensuite vous cliquez sur `Créer un compartiment`. Dans le nom du compartiment vous mettez le nom de votre app. Et pour la région, il faut choisir l'Irlande si vous êtes chez Heroku (afin que les 2 serveurs soit le plus proche possible).
+Vous devez cliquer sur `Services` puis recherchez `S3`. Ensuite vous cliquez sur `Créer un compartiment`. Dans le nom du compartiment vous mettez le nom de votre app. Et pour la région, il faut choisir l'Irlande si vous êtes chez Heroku (afin que les 2 serveurs soit le plus proche possible).
 
 ![](/images/posts/active-storage/02.png)
 
@@ -65,7 +66,7 @@ Vous cliquer sur `Services` et vous recherchez `S3`. Ensuite vous cliquez sur `C
 
 Vous faites une nouvelle recherche dans `Services` et vous recherchez `IAM`. Nous allons maintenant créer une stratégie.
 
-Pour les actions manuelles, il faut cocher `Toutes les actions S3` et sélectionnez toutes les ressources. Pour le nom il faut être le plus clair possible en explicitant le nom du bucket et quels sont les droit (ici full access, l'utilisateur peut lire et écrire). Et pour le type d'accès ca sera `programatique` c'est à dire que c'est un programme et non un humain qui va y accéder. Il n'y aura pas de mot de passe mais un token.
+Pour les actions manuelles, il faut cocher `Toutes les actions S3` et sélectionnez toutes les ressources. Pour le nom il faut être le plus clair possible en explicitant le nom du bucket et quels sont les droit (ici full access, l'utilisateur peut lire et écrire). Et pour le type d'accès ca sera `programatique` c'est à dire que c'est un programme qui va y accéder et non un humain. Il n'y aura pas de mot de passe mais un token.
 
 ![](/images/posts/active-storage/10.png)
 ![](/images/posts/active-storage/12.png)
