@@ -142,5 +142,6 @@ Comme on ne sait pas combien d'images l'utilisateur va attacher à son apparteme
 ```ruby
 # db/seeds.rb
 flat = Flat.new
-flat.images.attach(io: File.open(my_image_path), filename: 'image_name.png', content_type: 'image/png')
+flat.images.attach(io: File.open(my_first_image_path), filename: 'image_name.png', content_type: 'image/png')
+flat.images.attach(io: File.open(my_second_image_path), filename: 'image_name.png', content_type: 'image/png')
 ```
