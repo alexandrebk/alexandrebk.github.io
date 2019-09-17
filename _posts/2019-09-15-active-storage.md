@@ -40,9 +40,11 @@ Et ajouter dans la vue du formulaire un champ pour ajouter des images.
 
 ```erb
 <!-- app/views/flats/new.html.erb -->
-[...]
-<%= form.file_field :pictures, multiple: true, class: "form-control" %>
-[...]
+<%= simple_form_for flat do |f| %>
+  [...]
+  <%= f.file_field :images, multiple: true, class: "form-control" %>
+  [...]
+<% end %>
 ```
 
 ### Trosième Étape: Configurer AWS
@@ -96,19 +98,49 @@ amazon:
   access_key_id: ENV['S3_ACCESS_KEY_ID']
   secret_access_key: ENV['S3_SECRET_ACCESS_KEY']
   bucket: "airbnb-copycat"
-  region: "eu-west-1" # pour Paris "eu-west-3"
+  region: "eu-west-1"
+  # Si vous avez choisi un bucket à Paris
+  # region: "eu-west-3"
 ```
 
-Il faut sépcifier à l'environnement de production (c'est à dire sur Heroku) que Active Storage doit utiliser Amazon. Pour cela nous allons modifier le fichier de config pour la production.
+Il faut spécifier à Heroku (c'est à dire sur l'environnement de production) que Active Storage doit utiliser Amazon. Pour cela nous allons modifier le fichier de config de la production.
 
 ```ruby
 # config/environments/production.rb
 config.active_storage.service = :amazon
 ```
 
-### Cinquième étape: Seeder des images
+### Cinquième étape: Afficher les images
+
+Comme on ne sait pas combien d'images l'utilisateur va attacher à son appartement, je vais itérer sur les images et les inclure dans un caroussel Bootstrap.
+
+```erb
+# app/views/flats/show.html.erb
+<div class="flat-content">
+   <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+     <div class="carousel-inner">
+       <% @flat.images.each_with_index do |image, index| %>
+         <div class="carousel-item <%= "active" if index == 0%>">
+           <%= image_tag image, height: 500, width: 700 %>
+         </div>
+       <% end %>
+     </div>
+     <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+       <span class="sr-only">Previous</span>
+     </a>
+     <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+       <span class="carousel-control-next-icon" aria-hidden="true"></span>
+       <span class="sr-only">Next</span>
+     </a>
+   </div>
+ </div>
+```
+
+### Sixième étape: Seeder des images
 
 ```ruby
 # db/seeds.rb
-Flat.first.images.attach(io: File.open(my_image_path), filename: 'image_name.png', content_type: 'image/png')
+flat = Flat.new
+flat.images.attach(io: File.open(my_image_path), filename: 'image_name.png', content_type: 'image/png')
 ```
