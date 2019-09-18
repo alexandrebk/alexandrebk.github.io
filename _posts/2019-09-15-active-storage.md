@@ -8,7 +8,12 @@ Dans ce tuto nous allons apprendre comment ajouter plusieurs images à un modèl
 
 ### Première étape: Installer Active Storage
 
-Si vous n'êtes pas dans Rails 6, il vous faudra ajouter la [gem Active Storage](https://github.com/rails/activestorage/tree/archive) dans votre Gemfile.
+Si vous n'êtes pas dans Rails 6, il vous faudra ajouter la [gem Active Storage](https://github.com/rails/activestorage/tree/archive) dans votre Gemfile et l'installer avec la commande `bundle install`.
+
+```ruby
+# Gemfile
+gem 'activestorage'
+```
 
 On va l'installer avec la commande `rails active_storage:install` et créer les tables liant les photos aux modèles avec `rails db:migrate`.
 
@@ -48,6 +53,13 @@ Et ajouter dans la vue du formulaire un champ pour ajouter des images.
 ```
 
 ### Trosième Étape: Configurer AWS
+
+Tout d'abord il faut ajouter la gem AWS dans son Gemfile et l'installer avec `bundle install`
+
+```ruby
+# Gemfile
+gem "aws-sdk-s3", require: false
+```
 
 Pour créer un compte suivez [ce lien](https://aws.amazon.com/).
 
@@ -95,8 +107,8 @@ test:
 
 amazon:
   service: S3
-  access_key_id: ENV['S3_ACCESS_KEY_ID']
-  secret_access_key: ENV['S3_SECRET_ACCESS_KEY']
+  access_key_id: <%= ENV['S3_ACCESS_KEY_ID'] %>
+  secret_access_key: <%= ENV['S3_SECRET_ACCESS_KEY'] %>
   bucket: "airbnb-copycat"
   region: "eu-west-1"
   # Si vous avez choisi un bucket à Paris
@@ -115,7 +127,7 @@ config.active_storage.service = :amazon
 Comme on ne sait pas combien d'images l'utilisateur va attacher à son appartement, je vais itérer sur les images et les inclure dans un caroussel Bootstrap.
 
 ```erb
-# app/views/flats/show.html.erb
+<!-- app/views/flats/show.html.erb -->
 <div class="flat-content">
    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
      <div class="carousel-inner">
