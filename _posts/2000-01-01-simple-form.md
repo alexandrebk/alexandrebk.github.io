@@ -35,21 +35,21 @@ class CreateReviews < ActiveRecord::Migration[5.2]
     t.integer :rating, default: 0
     t.references :user, foreign_key: true
     t.references :booking, foreign_key: true
-    t t.references :flat, foreign_key: true
+    t.references :flat, foreign_key: true
     t.timestamps
   end
 end
 ```
 
-Nous allons indiqué aux modèles `User`, `Booking` et `Flat` qu’ils ont has_many :reviews. Un petit tricks dans Rails. Si vous créez une méthode `name` dans le modèle, Simple_form va automatique aller la chercher pour afficher les dropdown. On profite d’être dans le modèle `User` pour la créer.
+Nous allons indiquer aux modèles `User`, `Booking` et `Flat` qu’ils ont plusieurs `reviews`. Un petit tricks dans Rails. Si vous créez une méthode `name` dans le modèle, `simple_form` va automatique aller la chercher pour afficher les données. On profite donc d’être dans le modèle `User` pour la créer.
 
 ```ruby
 # app/models/user.rb
-class User < XXX
+class User < ApplicationRecord
   [...]
   has_many :reviews, dependent: :destroy
-  [...]
 
+  [...]
   def name
     "#{first_name} #{last_name}"
   end
@@ -58,7 +58,7 @@ end
 
 ```ruby
 # app/models/flat.rb
-class Flat < XXX
+class Flat < ApplicationRecord
   [...]
   has_many :reviews, dependent: :destroy
 end
@@ -66,20 +66,20 @@ end
 
 ```ruby
 # app/models/booking.rb
-class Booking < XXX
+class Booking < ApplicationRecord
   [...]
   has_many :reviews, dependent: :destroy
 end
 ```
 
-### Seconde étape
+### Seconde étape: les routes
 
-Nous allons créer les routes.
+Nous allons mettre à jour nos routes pour la création de `reviews`.
 
 ```ruby
 # config/routes.rb
 Rails.application.routes.draw do
-[...]
+  [...]
   resources :flats do
     resources :bookings, only: [:create, :new, :show, :destroy] do
       resources :reviews
@@ -91,10 +91,10 @@ end
 Puis créer le controller
 
 ```
-rails g controller reviews new create
+rails g controller reviews
 ```
 
-Ensuite nous allons dans le controlleur pour lui passer les bonnes variables.
+Ensuite nous allons dans le controlleur pour écrire les méthodes.
 
 ```ruby
 # app/controllers/reviews_controllers.rb
@@ -150,7 +150,7 @@ end
 ```
 
 ```erb
-# app/views/flats/show.html.erb
+<!-- app/views/flats/show.html.erb -->
 
 <% @reviews.each do |review| %>
   <p><%= review.user.name %></p>
