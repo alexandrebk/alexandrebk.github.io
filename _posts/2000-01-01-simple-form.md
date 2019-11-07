@@ -1,9 +1,9 @@
 ---
-layout: post
-title: “Utilisation avancées de Simple Form”
-author: alexandre
+layout:     post
+title:      "Utilisation avancées de Simple Form"
+author:     alexandre
 difficulty: 1
-status: draft
+status:     draft
 ---
 
 Dans ce tuto nous allons apprendre à ajouter des reviews sur notre application de réservations d’appartement avec une liste déroulante grâce à simple form.
