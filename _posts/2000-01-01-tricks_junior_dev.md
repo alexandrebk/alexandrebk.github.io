@@ -119,3 +119,37 @@ end
 # Send
 
 Exemple avec un nom de méthode dynamique sur un objet
+
+Ici la méthode c'est `field_name` et on lui passe.
+
+BEFORE
+
+```ruby
+def update_surfaces_to_paint
+  @project = Project.find(params[:project_id])
+  rooms    = @project.rooms
+  rooms.each do |room|
+    room.should_paint_walls     = params[field_name] == "on"
+    room.should_paint_ceiling   = params[field_name] == "on"
+    room.should_paint_furniture = params[field_name] == "on"
+    room.save
+  end
+  redirect_to project_edit_contact_infos_path(@project)
+end
+```
+
+AFTER
+
+```ruby
+def update_surfaces_to_paint
+  @project = Project.find(params[:project_id])
+  rooms    = @project.rooms
+  rooms.each do |room|
+    [:should_paint_walls, :should_paint_ceiling, :should_paint_furniture].each do |field_name|
+      room.send("#{field_name}=", params[field_name] == "on")
+      room.save
+    end
+  end
+  redirect_to project_edit_contact_infos_path(@project)
+end
+```
