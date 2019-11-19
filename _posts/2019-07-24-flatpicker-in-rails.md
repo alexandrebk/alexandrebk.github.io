@@ -82,7 +82,7 @@ class FlatsController < ApplicationController
   [...]
   def show
     @flat           = Flat.find(params[:id])
-    @bookings       = Booking.where(flat_id: @flat.id, end_date: Date.today) # prendre les réservations après aujourd'hui.
+    @bookings       = Booking.where(flat_id: @flat.id)
     @bookings_dates = @bookings.map do |booking|
       {
         from: booking.start_date,
