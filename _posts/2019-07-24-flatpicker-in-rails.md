@@ -20,7 +20,7 @@ yarn add flatpickr
 Ensuite on va ajouter Webpack à votre `layout/application.html` si ce n'est pas déjà fait :
 
 ```erb
-# app/views/layouts/application.html.erb
+<!-- app/views/layouts/application.html.erb -->
 
 <!DOCTYPE html>
 <html>
@@ -99,7 +99,7 @@ end
 Une fois le tableau de hash créé, on le place dans la vue sous forme de data-set.
 
 ```erb
-# app/views/flats/show.html.erb
+<!-- app/views/flats/show.html.erb -->
 
 <div
   id="booking-form-div"
@@ -138,7 +138,7 @@ import rangePlugin from "flatpickr/dist/plugins/rangePlugin"
 Maintenant je vais cacher les champs du dates pour ne laisser apparaître que le calendrier. Tout d'abord il faut ajouter un label pour que l'utilisateur comprenne à quoi sert ce calendrier. Ensuite on va cacher les deux champs avec la classe Bootstrap `d-none`.
 
 ```erb
-# app/views/flats/show.html.erb
+<!-- app/views/flats/show.html.erb -->
 
 <div class="container">
   <div class="form-wrapper">
