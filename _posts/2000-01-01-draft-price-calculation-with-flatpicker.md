@@ -13,6 +13,8 @@ Dans ce tuto nous allons apprendre comment afficher dynamiquement le prix de la 
 ### D'abord on récupère les prix avec GetElementbyId
 
 ```js
+// app/javascript/plugins/flatpicker.js
+// [..]
 const startDate = document.getElementById("booking_start_date");
 const endDate = document.getElementById("booking_end_date");
 ```
@@ -20,6 +22,8 @@ const endDate = document.getElementById("booking_end_date");
 ### Ensuite on fait les calculs
 
 ```js
+// app/javascript/plugins/flatpicker.js
+// [..]
 if(endDate) {
   endDate.addEventListener("change", (event) => {
     let dateDiffInMilliseconds = new Date(endDate.value) - new Date(startDate.value) + 86400000;
@@ -29,3 +33,6 @@ if(endDate) {
   });
 }
 ```
+
+### Ensuite on injecte le prix dans la vue.
+
