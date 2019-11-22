@@ -70,7 +70,7 @@ Nous allons maintenant créer notre formulaire dans la page `show` des `Flat`.
 </div>
 ```
 
-## Seconde étape : le controlleur
+### Seconde étape : le controlleur
 
 Maintenant que le formulaire est créé nous allons créer un tableau de hash avec toutes les locations déjà existantes. Comme dans toutes les méthodes `show` on récupère d'abord l'id de l'appartement. Puis on regarde quand il est loué. Enfin, avec une méthode `.map` on transforme les réservations en hash avec la date de début et de fin.
 
