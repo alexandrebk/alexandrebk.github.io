@@ -158,3 +158,7 @@ end
   <p><%= review.rating %></p>
 <% end %>
 ```
+
+### [BONUS] On remplace le rating par des étoiles.
+
+Pour une interface plus friendly on va remplacer le rating par une sélection d'étoile. Pour cela il faut cacher l'input et ajouter 5 étoiles que l'on va sélectionner en cliquant dessus.
