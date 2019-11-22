@@ -70,7 +70,7 @@ Nous allons maintenant créer notre formulaire dans la page `show` des `Flat`.
 </div>
 ```
 
-## Seconde étape : le controlleur
+### Seconde étape : le controlleur
 
 Maintenant que le formulaire est créé nous allons créer un tableau de hash avec toutes les locations déjà existantes. Comme dans toutes les méthodes `show` on récupère d'abord l'id de l'appartement. Puis on regarde quand il est loué. Enfin, avec une méthode `.map` on transforme les réservations en hash avec la date de début et de fin.
 
@@ -152,9 +152,26 @@ Maintenant je vais cacher les champs du dates pour ne laisser apparaître que le
 </div>
 ```
 
-## [BONUS] Calcul automatique de Prix
+### [BONUS] Calcul automatique de Prix
 
-### D'abord on récupère les prix avec GetElementbyId
+On ajoute un prix total de réservation à la fin du formulaire. Et on veut que le prix se mette à jour à chaque changement de date.
+
+<!-- Essayer de metter un gif pour montrer le résultat-->
+
+```erb
+<!-- app/views/flats/show.html.erb -->
+
+<div class="container">
+  <div class="form-wrapper">
+    <h2>Book a flat</h2>
+    <!-- Formulaire -->
+    <p>Total price : <span id="total-price">0</span> € </p>
+    <p><span id="total-days">0 day</span></p>
+  </div>
+</div>
+```
+
+#### D'abord on récupère les prix avec GetElementbyId
 
 ```js
 // app/javascript/plugins/flatpicker.js
@@ -163,7 +180,9 @@ const startDate = document.getElementById("booking_start_date");
 const endDate = document.getElementById("booking_end_date");
 ```
 
-### Ensuite on fait les calculs
+<!-- je crois que les 2 élements existent déjà -->
+
+#### Ensuite on calcule le prix à chaque changement de date
 
 ```js
 // app/javascript/plugins/flatpicker.js
@@ -172,11 +191,21 @@ if(endDate) {
   endDate.addEventListener("change", (event) => {
     let dateDiffInMilliseconds = new Date(endDate.value) - new Date(startDate.value) + 86400000;
     let days = dateDiffInMilliseconds / 86400000;
-    document.getElementById("days").innerText = `${days} days`
-    document.getElementById("price_per_day").innerText = `${(dateDiffInMilliseconds/ 86400000) * 75}€`
+    console.log("days");
   });
 }
+// Faire le même code pour start Date
 ```
 
-### Ensuite on injecte le prix dans la vue.
+#### Enfin on injecte le prix dans la vue.
 
+<!-- Récup -->
+
+```js
+// app/javascript/plugins/flatpicker.js
+// [..]
+const totalPriceElement = document.getElementById("total-price");
+const endDate = document.getElementById("booking_end_date");
+document.getElementById("total-days").innerText = `${days} days`
+totalPriceElement.innerText = `${(dateDiffInMilliseconds/ 86400000) * 75}€`
+```
