@@ -121,10 +121,10 @@ end
 Pour afficher la liste des utilisateurs avec qui on discute on s'occupe de la vue.
 
 ```erb
-# app/views/messages/conversations.html.erb
+<!-- app/views/messages/conversations.html.erb -->
 
 <% if @users_with_conversation.empty? %>
-  <h3>Vous n'avez pas de conversation</p>
+  <h3>Vous n'avez pas encore de conversation</p>
 <% else %>
   <h3>Mes conversations</h3>
   <% @users_with_conversation.each do |user| %>
@@ -139,7 +139,6 @@ Ensuite nous voulons afficher les messages échangés avec une personne.
 
 ```ruby
 # app/controllers/messages_controller.rb
-
 class MessagesController < ApplicationController
   [...]
   def index
@@ -151,7 +150,7 @@ end
 ```
 
 ```erb
-# app/views/messages/index.html.erb
+<!-- app/views/messages/index.html.erb -->
 
 <h3>Ma conversation avec <%= @friend.first_name %></h3>
   <% @messages.each do |message| %>
@@ -167,13 +166,12 @@ Puis nous voulons envoyer un message depuis une conversation.
 
 ```ruby
 # app/controllers/messages_controller.rb
-
 class MessagesController < ApplicationController
   [...]
 
   def create
-    @message = Message.new(message_params)
-    @message.sender = current_user
+    @message          = Message.new(message_params)
+    @message.sender   = current_user
     @message.receiver = User.find(params[:user_id])
     if @message.save
       redirect_to user_messages_path(@message.receiver)
@@ -193,7 +191,7 @@ end
 ```
 
 ```erb
-# app/views/messages/index.html.erb
+<!-- app/views/messages/index.html.erb -->
 
 [...]
 <%= simple_form_for [@friend, @message] do |f| %>
@@ -205,7 +203,7 @@ end
 Pour finir ajoutons un lien depuis la show d'un booking pour pouvoir contacter le propriétaire.
 
 ```erb
-# app/views/bookings/show.html.erb
+<!-- app/views/bookings/show.html.erb -->
 
 <%= link_to user_messages_path(@flat.user) do %>
   <button class="btn btn-principal btn-margin-top">Contacter le propriétaire</button>
