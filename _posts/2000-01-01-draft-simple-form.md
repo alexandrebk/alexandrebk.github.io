@@ -85,6 +85,7 @@ Rails.application.routes.draw do
       resources :reviews
     end
   end
+  #  AB: il faut nester reviews seulement dans bookings
 end
 ```
 
@@ -131,6 +132,7 @@ end
 On créé le formulaire de review dans la vue d’un booking.
 
 ```erb
+#  AB: <%= simple_form_for [@booking, @review] do |f| %>
 <%= simple_form_for [@flat, @booking, @review] do |f| %>
   <%= f.input :content %>
   <%= f.input :rating %>
@@ -156,9 +158,10 @@ end
   <p><%= review.user.name %></p>
   <p><%= review.content %></p>
   <p><%= review.rating %></p>
+  # AB: remplacer la note par des étoiles.
 <% end %>
 ```
 
-### [BONUS] On remplace le rating par des étoiles.
+### [BONUS] On remplace le rating par des étoiles dans le formulaire
 
 Pour une interface plus friendly on va remplacer le rating par une sélection d'étoile. Pour cela il faut cacher l'input et ajouter 5 étoiles que l'on va sélectionner en cliquant dessus.
