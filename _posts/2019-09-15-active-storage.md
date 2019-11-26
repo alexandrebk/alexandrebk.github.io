@@ -24,7 +24,7 @@ rails db:migrate
 
 ### Seconde Étape: Ajouter les images au model
 
-Ensuite nous allons attacher des images à notre modèle `Flat`. Contrairement à d'autres gems il n'y a pas besoin de créer une nouvelle colonne dans la table du modèle.
+Ensuite nous allons attacher des images à notre modèle `Flat`. Attention, contrairement à d'autres gems, il n'y a pas besoin de créer une nouvelle colonne dans la table du modèle.
 
 ```ruby
 class Flat < ApplicationRecord
@@ -34,7 +34,7 @@ class Flat < ApplicationRecord
 end
 ```
 
-Puis il faut autoriser les images dans les paramètres de notre formulaire de `Flat`.
+Dans le `flats_controller`, il faut autoriser l'upload d'images.
 
 ```ruby
 # app/controllers/flats_controller.html.erb
@@ -43,7 +43,7 @@ Puis il faut autoriser les images dans les paramètres de notre formulaire de `F
   end
 ```
 
-Et ajouter dans la vue du formulaire un champ pour ajouter des images.
+Et dans la vue du formulaire, on ajoute un champ pour les images.
 
 ```erb
 <!-- app/views/flats/new.html.erb -->
@@ -54,8 +54,7 @@ Et ajouter dans la vue du formulaire un champ pour ajouter des images.
 <% end %>
 ```
 
-Le formulaire est utilisable sur `localhost`. On va donc afficher les
-images sur la `show` d'un flat.
+Le formulaire est désormais utilisable sur `localhost`. On va donc afficher les images sur la `show` d'un flat.
 
 ### Troisième étape: Afficher les images
 
