@@ -57,7 +57,7 @@ Et ajouter dans la vue du formulaire un champ pour ajouter des images.
 Le formulaire est utilisable sur `localhost`. On va donc afficher les
 images sur la `show` d'un flat.
 
-### Trosième étape: Afficher les images
+### Troisième étape: Afficher les images
 
 Comme je récupère un tableau d'images, je vais pouvoir itérer dessus et les inclure dans un caroussel Bootstrap.
 
