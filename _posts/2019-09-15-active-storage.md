@@ -29,6 +29,8 @@ Ensuite nous allons attacher des images à notre modèle `Flat`. Contrairement �
 ```ruby
 class Flat < ApplicationRecord
   has_many_attached :images
+  # Si vous ne souhaitez attacher qu'une seule image :
+  # has_one_attached :image
 end
 ```
 
@@ -52,31 +54,59 @@ Et ajouter dans la vue du formulaire un champ pour ajouter des images.
 <% end %>
 ```
 
-### Trosième Étape: Configurer AWS
+Le formulaire est utilisable sur `localhost`. On va donc afficher les
+images sur la `show` d'un flat.
 
-Tout d'abord il faut ajouter la gem AWS dans son Gemfile et l'installer avec `bundle install`
+### Trosième étape: Afficher les images
+
+Comme je récupère un tableau d'images, je vais pouvoir itérer dessus et les inclure dans un caroussel Bootstrap.
+
+```erb
+<!-- app/views/flats/show.html.erb -->
+<div class="flat-content">
+  <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+    <!-- Vous pouvez remplacer @flat par votre modèle -->
+      <% @flat.images.each_with_index do |image, index| %>
+        <div class="carousel-item <%= "active" if index == 0%>">
+          <%= image_tag image, height: 500, width: 700 %>
+        </div>
+      <% end %>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+       <span class="carousel-control-next-icon" aria-hidden="true"></span>
+       <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
+```
+
+### Quatrième Étape: Configurer AWS sur la prod
+
+Le setup étant terminé pour l'environnement local, nous allons installer AWS sur la prod. Tout d'abord il faut ajouter la gem AWS dans le `Gemfile` et l'installer avec `bundle install`
 
 ```ruby
 # Gemfile
 gem "aws-sdk-s3", require: false
 ```
 
-Pour créer un compte suivez [ce lien](https://aws.amazon.com/).
+Pour créer un compte, allez [sur le site d'Amazon Web Services](https://aws.amazon.com/).Ensuite connectez vous à la console AWS. La configuration du compte se fera en 3 temps.
 
-Ensuite connectez vous à la console AWS. La configuration va se faire en 3 temps.
+1. Créer son bucket (un espace de stockage).
+2. Créer une stratégie d'accès pour les futurs utilisateurs.
+3. Créer un utilisateur et lui associer une stratégie.
 
-* Créer son bucket (un espace de stockage).
-* Créer un stratégie d'accès pour les futurs utilisateurs.
-* Créer un utilisateur et lui associer une stratégie.
-
-
-#### Créer son bucket
+1 - Créer son bucket
 
 Vous devez cliquer sur `Services` puis recherchez `S3`. Ensuite vous cliquez sur `Créer un compartiment`. Dans le nom du compartiment vous mettez le nom de votre app. Et pour la région, il faut choisir l'Irlande si vous êtes chez Heroku (afin que les 2 serveurs soit le plus proche possible).
 
 ![](/images/posts/active-storage/02.png)
 
-#### Créer une stratégie
+2 - Créer une stratégie
 
 Vous faites une nouvelle recherche dans `Services` et vous recherchez `IAM`. Nous allons maintenant créer une stratégie.
 
@@ -86,14 +116,16 @@ Pour les actions manuelles, il faut cocher `Toutes les actions S3` et sélection
 ![](/images/posts/active-storage/12.png)
 ![](/images/posts/active-storage/13.png)
 
-#### Créer un utilisateur
+3 - Créer un utilisateur
 
 Pour les utilisateurs il faut choisir un nom d'utilisateur et ensuite un service. Ici ca sera encore une fois S3. Ensuite on va sur l'onglet `Attacher les stratégies` pour ajouter celle qu'on a crée juste avant. Pour les étapes 3 et 4 on peut mettre OK. AWS va ensuite nous donner les clés API que l'on doit mettre sur Heroku sous le nom de `S3_ACCESS_KEY_ID` et `S3_SECRET_ACCESS_KEY`.
 
 ![](/images/posts/active-storage/14.png)
 ![](/images/posts/active-storage/15.png)
 
-### Quatrième Étape: Configuration sur l'app.
+### Cinquième Étape: Configuration les variables d'environnement.
+
+Il faut spécifier à Heroku (c'est à dire sur l'environnement de production) que Active Storage doit utiliser Amazon pour le stockage d'image.
 
 ```yaml
 # config/storage.yml
@@ -115,41 +147,12 @@ amazon:
   # region: "eu-west-3"
 ```
 
-Il faut spécifier à Heroku (c'est à dire sur l'environnement de production) que Active Storage doit utiliser Amazon. Pour cela nous allons modifier le fichier de config de la production.
-
 ```ruby
 # config/environments/production.rb
 config.active_storage.service = :amazon
 ```
 
-### Cinquième étape: Afficher les images
-
-Comme on ne sait pas combien d'images l'utilisateur va attacher à son appartement, je vais itérer sur les images et les inclure dans un caroussel Bootstrap.
-
-```erb
-<!-- app/views/flats/show.html.erb -->
-<div class="flat-content">
-   <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-     <div class="carousel-inner">
-       <% @flat.images.each_with_index do |image, index| %>
-         <div class="carousel-item <%= "active" if index == 0%>">
-           <%= image_tag image, height: 500, width: 700 %>
-         </div>
-       <% end %>
-     </div>
-     <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-       <span class="sr-only">Previous</span>
-     </a>
-     <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-       <span class="carousel-control-next-icon" aria-hidden="true"></span>
-       <span class="sr-only">Next</span>
-     </a>
-   </div>
- </div>
-```
-
-### Sixième étape: Seeder des images
+### [BONUS] Seeder des images
 
 ```ruby
 # db/seeds.rb
