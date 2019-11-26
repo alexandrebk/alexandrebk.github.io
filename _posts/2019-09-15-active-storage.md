@@ -155,7 +155,17 @@ config.active_storage.service = :amazon
 
 ```ruby
 # db/seeds.rb
-flat = Flat.new
+flat = Flat.create!(
+  user:        User.last,
+  address:     "55 rue du Faubourg Saint Honoré, 75008 Paris",
+  surface:     120,
+  price:       250,
+  room:        4,
+  description: "Amazing Office",
+  max_guests:  8,
+)
+my_first_image_path = Rails.root.join('app', 'assets', 'images', 'my_first_image.png')
+my_second_image_path = Rails.root.join('app', 'assets', 'images', 'my_second_image.png')
 flat.images.attach(io: File.open(my_first_image_path), filename: 'image_name.png', content_type: 'image/png')
 flat.images.attach(io: File.open(my_second_image_path), filename: 'image_name.png', content_type: 'image/png')
 ```
