@@ -3,7 +3,6 @@ layout:     post
 title:      "Utilisation avancée de Simple Form"
 author:     alexandre
 difficulty: 1
-status:     draft
 ---
 
 Dans ce tuto nous allons apprendre à ajouter des reviews sur notre application de réservations d’appartement avec une liste déroulante grâce à simple form.
@@ -213,26 +212,7 @@ class BookingsController < ApplicationController
 end
 ```
 
-Et enfin la vue.
-
-```erb
-<!-- app/views/reviews/new.html.erb -->
-<div class="container">
-  <%= simple_form_for [@review] do |f| %>
-    <%= f.input :booking_id, collection: @bookings %>
-    <%= f.input :content %>
-    <%= f.input :rating %>
-    <div>
-      <% 5.times do %>
-        <i class="far fa-star"></i>
-      <% end %>
-    </div>
-    <%= f.submit class: "btn btn-primary" %>
-  <% end %>
-</div>
-```
-
-Un petit tricks dans Rails. Si vous créez une méthode `name` dans le modèle, `simple_form` va automatiquement aller la chercher pour afficher les données. Et lorsque de la soumission du formulaire, il va récupérer l'id du `booking` pour le transmettre au back-end.
+Un petit tricks dans Rails. Si vous créez une méthode `name` dans un modèle, `simple_form` va automatiquement aller la chercher pour afficher les données. Et lors de la soumission du formulaire, il va récupérer l'id du modèle.
 
 ```ruby
 # app/models/booking.rb
@@ -244,4 +224,65 @@ class Booking < ApplicationRecord
 end
 ```
 
-Pour une interface plus friendly on va remplacer le rating par une sélection d'étoile. Pour cela il faut cacher l'input et ajouter 5 étoiles que l'on va sélectionner en cliquant dessus.
+Et enfin la vue. Pour une interface plus friendly on va remplacer le rating par une sélection d'étoile. Pour cela il faut cacher l'input et ajouter des étoiles vides.
+
+```erb
+<!-- app/views/reviews/new.html.erb -->
+<div class="container">
+  <%= simple_form_for [@review] do |f| %>
+    <%= f.input :booking_id, collection: @bookings %>
+    <%= f.input :content %>
+    <%= f.input :rating, as: :hidden  %>
+    <div>
+      <% 5.times do %>
+        <i class="far fa-star"></i>
+      <% end %>
+    </div>
+    <%= f.submit class: "btn btn-primary" %>
+  <% end %>
+</div>
+```
+
+```js
+// app/javascript/plugins/starsInReviewForm.js
+const toggleStarsInBlack = (rating) => {
+  for (let i = 1; i <= 5; i++) {
+    const star = document.getElementById(i);
+    if (i <= rating) {
+      star.classList.remove("far");
+      star.classList.add("fas");
+    } else {
+      star.classList.remove("fas");
+      star.classList.add("far");
+    }
+  }
+};
+
+const updateRatingInput = (rating) => {
+  const formInput = document.getElementById('review_rating')
+  formInput.value = rating
+}
+
+const dynamicRating = () => {
+  const stars = document.querySelectorAll('.review-rating');
+  if ( stars.length > 0) {
+    stars.forEach((star) => {
+      star.addEventListener("click", (event) => {
+        const rating = event.currentTarget.id
+        toggleStarsInBlack(rating);
+        updateRatingInput(rating);
+      });
+    });
+  };
+};
+
+export { dynamicRating };
+```
+
+```js
+// app/javascript/packs/application.js
+[..]
+import { dynamicRating } from "../plugins/starsInReviewForm";
+
+dynamicRating();
+```
