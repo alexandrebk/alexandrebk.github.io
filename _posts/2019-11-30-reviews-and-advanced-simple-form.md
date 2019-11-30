@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Utilisation avancée de Simple Form"
+title:      "Ajouter des reviews et tricks pour Simple Form"
 author:     alexandre
 difficulty: 1
 ---

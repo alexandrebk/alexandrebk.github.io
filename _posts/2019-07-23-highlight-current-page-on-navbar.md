@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Appliquer un mode ‘active’ à sa barre de navigation"
+title:  "Customiser sa barre de navigation"
 author: alexandre
 difficulty: 1
 ---
