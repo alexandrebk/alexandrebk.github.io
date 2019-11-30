@@ -4,7 +4,6 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
 >
-
   <url>
     <loc>http://www.alexandrebouvier.fr/</loc>
     <lastmod>2019-07-23T12:37:53+00:00</lastmod>
@@ -55,5 +54,9 @@
     <lastmod>2019-07-23T12:37:53+00:00</lastmod>
     <priority>0.64</priority>
   </url>
-
+  <url>
+    <loc>http://www.alexandrebouvier.fr/2019/11/30/reviews-and-advanced-simple-form.html</loc>
+    <lastmod>2019-11-30T12:37:53+00:00</lastmod>
+    <priority>0.64</priority>
+  </url>
 </urlset>
