@@ -3,7 +3,7 @@ layout:     post
 title:      "Utilisation avancée de Simple Form"
 author:     alexandre
 difficulty: 1
-<!-- status:     draft -->
+status:     draft
 ---
 
 Dans ce tuto nous allons apprendre à ajouter des reviews sur notre application de réservations d’appartement avec une liste déroulante grâce à simple form.
@@ -184,6 +184,7 @@ class BookingsController < ApplicationController
   end
 
   def create
+    # Attention l'ancien formulaire n'est plus disponible
     @review         = Review.new(review_params)
     @review.user    = current_user
     if @review.save
