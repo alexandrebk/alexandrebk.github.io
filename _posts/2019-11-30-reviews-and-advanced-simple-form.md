@@ -185,7 +185,7 @@ import { dynamicRating } from "../plugins/starsInReviewForm";
 dynamicRating();
 ```
 
-Puis nous voulons afficher toutes les `reviews` dans la `show` du `flat`.
+Puis nous voulons afficher toutes les `reviews` dans la `show` d'un `flat`.
 
 ```ruby
 # app/controllers/flats_controller.rb
