@@ -6,6 +6,7 @@ difficulty: 1
 ---
 
 Dans ce tuto nous allons apprendre à ajouter des reviews sur notre application de réservations d’appartement avec une liste déroulante grâce à simple form.
+
 Nous supposons qu’il y a un model `Booking` et `User`, et qu’il y’a déjà une application Rails avec plusieurs modèles.
 Les utilisateurs vont avoir la possibilité de laisser une commentaire sur une location.
 
@@ -122,20 +123,69 @@ class BookingsController < ApplicationController
 end
 ```
 
-Ensuite nous allons coder la vue éponyme
+Ensuite nous allons coder la vue éponyme. Pour une interface plus friendly on ajouter une liste d'étoile pour noter. On va cacher l'input et ajouter des étoiles vides.
 
 ```erb
 <!-- app/views/bookings/show.html.erb -->
 [..]
 <%= simple_form_for [@booking, @review] do |f| %>
   <%= f.input :content %>
-  <%= f.input :rating %>
+  <%= f.input :rating, as: :hidden  %>
+  <div>
+    <% 5.times do %>
+      <i class="far fa-star"></i>
+    <% end %>
+  </div>
   <%= f.submit class: "btn btn-primary" %>
 <% end %>
 [..]
 ```
 
-Puis nous voulons afficher toutes les `reviews` dans la show du `flat`.
+```js
+// app/javascript/plugins/starsInReviewForm.js
+const toggleStarsInBlack = (rating) => {
+  for (let i = 1; i <= 5; i++) {
+    const star = document.getElementById(i);
+    if (i <= rating) {
+      star.classList.remove("far");
+      star.classList.add("fas");
+    } else {
+      star.classList.remove("fas");
+      star.classList.add("far");
+    }
+  }
+};
+
+const updateRatingInput = (rating) => {
+  const formInput = document.getElementById('review_rating')
+  formInput.value = rating
+}
+
+const dynamicRating = () => {
+  const stars = document.querySelectorAll('.review-rating');
+  if ( stars.length > 0) {
+    stars.forEach((star) => {
+      star.addEventListener("click", (event) => {
+        const rating = event.currentTarget.id
+        toggleStarsInBlack(rating);
+        updateRatingInput(rating);
+      });
+    });
+  };
+};
+
+export { dynamicRating };
+```
+
+```js
+// app/javascript/packs/application.js
+[..]
+import { dynamicRating } from "../plugins/starsInReviewForm";
+
+dynamicRating();
+```
+
+Puis nous voulons afficher toutes les `reviews` dans la `show` du `flat`.
 
 ```ruby
 # app/controllers/flats_controller.rb
@@ -149,7 +199,7 @@ class FlatsController < ApplicationController
 end
 ```
 
-Ensuite nous allons coder la vue éponyme
+Nous allons coder la vue éponyme.
 
 ```erb
 <!-- app/views/flats/show.html.erb -->
@@ -169,9 +219,9 @@ Ensuite nous allons coder la vue éponyme
 [..]
 ```
 
-### [BONUS] Customisation du formulaire
+### [BONUS] Les collections dans Simple Form
 
-On va ajouter un page `new` pour les reviews et la customiser.
+On va ajouter un page `new` pour les reviews.
 
 Tout d'abord il faut ajouter la route.
 
@@ -224,12 +274,13 @@ class Booking < ApplicationRecord
 end
 ```
 
-Et enfin la vue. Pour une interface plus friendly on va remplacer le rating par une sélection d'étoile. Pour cela il faut cacher l'input et ajouter des étoiles vides.
+Et enfin la vue.
 
 ```erb
 <!-- app/views/reviews/new.html.erb -->
 <div class="container">
   <%= simple_form_for [@review] do |f| %>
+    <!-- On donne la liste des bookings via une collection -->
     <%= f.input :booking_id, collection: @bookings %>
     <%= f.input :content %>
     <%= f.input :rating, as: :hidden  %>
@@ -241,48 +292,4 @@ Et enfin la vue. Pour une interface plus friendly on va remplacer le rating par 
     <%= f.submit class: "btn btn-primary" %>
   <% end %>
 </div>
-```
-
-```js
-// app/javascript/plugins/starsInReviewForm.js
-const toggleStarsInBlack = (rating) => {
-  for (let i = 1; i <= 5; i++) {
-    const star = document.getElementById(i);
-    if (i <= rating) {
-      star.classList.remove("far");
-      star.classList.add("fas");
-    } else {
-      star.classList.remove("fas");
-      star.classList.add("far");
-    }
-  }
-};
-
-const updateRatingInput = (rating) => {
-  const formInput = document.getElementById('review_rating')
-  formInput.value = rating
-}
-
-const dynamicRating = () => {
-  const stars = document.querySelectorAll('.review-rating');
-  if ( stars.length > 0) {
-    stars.forEach((star) => {
-      star.addEventListener("click", (event) => {
-        const rating = event.currentTarget.id
-        toggleStarsInBlack(rating);
-        updateRatingInput(rating);
-      });
-    });
-  };
-};
-
-export { dynamicRating };
-```
-
-```js
-// app/javascript/packs/application.js
-[..]
-import { dynamicRating } from "../plugins/starsInReviewForm";
-
-dynamicRating();
 ```
