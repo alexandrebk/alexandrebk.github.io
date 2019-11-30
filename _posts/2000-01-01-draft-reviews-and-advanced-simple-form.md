@@ -123,6 +123,8 @@ class BookingsController < ApplicationController
 end
 ```
 
+Ensuite nous allons coder la vue éponyme
+
 ```erb
 <!-- app/views/bookings/show.html.erb -->
 [..]
@@ -148,13 +150,22 @@ class FlatsController < ApplicationController
 end
 ```
 
+Ensuite nous allons coder la vue éponyme
+
 ```erb
 <!-- app/views/flats/show.html.erb -->
 [..]
 <% @reviews.each do |review| %>
   <p><%= review.user.name %></p>
   <p><%= review.content %></p>
-  <p><%= review.rating %></p>
+  <p>
+    <% review.rating.times do %>
+      <i class="fas fa-star"></i>
+    <% end %>
+    <% (5 - review.rating).times do %>
+      <i class="far fa-star"></i>
+    <% end %>
+  </p>
 <% end %>
 [..]
 ```
