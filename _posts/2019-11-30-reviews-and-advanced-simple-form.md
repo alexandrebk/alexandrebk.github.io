@@ -147,7 +147,7 @@ Ensuite nous allons coder la vue éponyme. Le formulaire ne va apparaître que s
 ```
 
 ```css
-<!-- app/assets/stylesheets/components/_form.scss -->
+/* app/assets/stylesheets/components/_form.scss */
 .fa-star {
   color: yellow;
 }
@@ -157,7 +157,7 @@ Ensuite nous allons coder la vue éponyme. Le formulaire ne va apparaître que s
 ```
 
 ```css
-<!-- app/assets/stylesheets/components/_index.scss -->
+/* app/assets/stylesheets/components/_index.scss */
 [..]
 @import "form";
 [..]
@@ -205,7 +205,7 @@ import { dynamicRating } from "../plugins/starsInReviewForm";
 dynamicRating();
 ```
 
-Puis nous voulons afficher toutes les `reviews` dans la `show` d'un `flat`.
+Puis nous voulons afficher toutes les `reviews` dans la `show` d'un `flat`. Et aussi la moyenne des notes.
 
 ```ruby
 # app/controllers/flats_controller.rb
@@ -223,6 +223,8 @@ Nous allons coder la vue éponyme.
 
 ```erb
 <!-- app/views/flats/show.html.erb -->
+[..]
+<p>Moyenne : <%= @reviews.average(:rating) %></p>
 [..]
 <div class="reviews">
   <% @reviews.each do |review| %>
