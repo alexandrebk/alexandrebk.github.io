@@ -147,7 +147,7 @@ Ensuite nous allons coder la vue éponyme. Le formulaire ne va apparaître que s
 ```
 
 ```css
-// app/assets/stylesheets/components/_form.scss
+<!-- app/assets/stylesheets/components/_form.scss -->
 .fa-star {
   color: yellow;
 }
@@ -157,7 +157,7 @@ Ensuite nous allons coder la vue éponyme. Le formulaire ne va apparaître que s
 ```
 
 ```css
-// app/assets/stylesheets/components/_index.scss
+<!-- app/assets/stylesheets/components/_index.scss -->
 [..]
 @import "form";
 [..]
