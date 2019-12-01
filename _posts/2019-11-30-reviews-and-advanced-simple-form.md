@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Ajouter des reviews et tricks pour Simple Form"
+title:      "Reviews et tricks pour Simple Form"
 author:     alexandre
 difficulty: 1
 ---
@@ -12,19 +12,19 @@ Les utilisateurs vont avoir la possibilité de laisser une commentaire sur une l
 
 ### Première étape : Les migrations et le modèle
 
-Tout d’abord nous allons générer une migration pour créer la table `reviews`
+Tout d’abord nous allons générer une migration pour créer la table `reviews`.
 
 ```sh
-rails generate model Review content:text rating:integer user:references booking:reference
+rails generate model Review content:text rating:integer user:references booking:references
 ```
 
-Puis on lance la migration
+Puis on lance la migration.
 
 ```sh
 rails db:migrate
 ```
 
-On va ajouter des validations sur les champs `content` et `rating`
+On va ajouter des validations sur les champs `content` et `rating`.
 
 ```ruby
 class Review < ApplicationRecord
@@ -35,7 +35,7 @@ class Review < ApplicationRecord
 end
 ```
 
-Il faut modifier les modèles `User`, `Booking` et `Flat` et leur indiquer qu’ils ont plusieurs `reviews`.
+Mettons à jour les modèles `User`, `Booking` et `Flat`.
 
 ```ruby
 # app/models/user.rb
@@ -64,25 +64,25 @@ end
 
 ### Seconde étape: Les routes et le Controlleur
 
-Nous allons ajouter des routes pour la création de `reviews`.
+Nous allons ajouter une route pour la création d'une `review`.
 
 ```ruby
 # config/routes.rb
 Rails.application.routes.draw do
   [...]
   resources :bookings do
-    resources :reviews, only [:create]
+    resources :reviews, only: [:create]
   end
 end
 ```
 
-Ensuite on va créer le controller
+Ensuite on va générer le controlleur `reviews`.
 
 ```sh
 rails g controller reviews
 ```
 
-Ensuite nous allons dans le controlleur pour coder la méthode create
+Ensuite nous allons dans le controlleur pour coder la méthode create.
 
 ```ruby
 # app/controllers/reviews_controllers.rb
@@ -109,7 +109,7 @@ end
 
 ### Troisième étape : Les vues
 
-On ajoute une review dans la `show` d’un `booking`. Il faut d'abord créer une nouvelle instance de `review` dans le controlleur de `booking`
+On ajoute une review dans la `show` d’un `booking`. Pour cela, il faut d'abord créer une nouvelle instance de `review` dans le controlleur des `bookings`.
 
 ```ruby
 # app/controllers/bookings_controller.rb
@@ -123,21 +123,43 @@ class BookingsController < ApplicationController
 end
 ```
 
-Ensuite nous allons coder la vue éponyme. Pour une interface plus friendly on ajouter une liste d'étoile pour noter. On va cacher l'input et ajouter des étoiles vides.
+Ensuite nous allons coder la vue éponyme. Le formulaire ne va apparaître que si la réservation est terminée. Pour une interface plus friendly on va cacher l'input des notes et ajouter une liste d'étoiles.
 
 ```erb
 <!-- app/views/bookings/show.html.erb -->
 [..]
-<%= simple_form_for [@booking, @review] do |f| %>
-  <%= f.input :content %>
-  <%= f.input :rating, as: :hidden  %>
-  <div>
-    <% 5.times do %>
-      <i class="far fa-star"></i>
+<% if @booking.end_date < Date.today %>
+  <div class="review">
+    <h2>Laissez une commentaire</h2>
+    <%= simple_form_for [@booking, @review] do |f| %>
+      <%= f.input :content %>
+      <%= f.input :rating, as: :hidden  %>
+      <div class="my-3">
+        <% 5.times do |index| %>
+          <i id="<%= index + 1 %>"  class="review-rating far fa-star"></i>
+        <% end %>
+      </div>
+      <%= f.submit class: "btn btn-primary" %>
     <% end %>
   </div>
-  <%= f.submit class: "btn btn-primary" %>
 <% end %>
+[..]
+```
+
+```css
+// app/assets/stylesheets/components/_form.scss
+.fa-star {
+  color: yellow;
+}
+.review i {
+  font-size: 32px;
+}
+```
+
+```css
+// app/assets/stylesheets/components/_index.scss
+[..]
+@import "form";
 [..]
 ```
 
@@ -147,11 +169,9 @@ const toggleStarsInBlack = (rating) => {
   for (let i = 1; i <= 5; i++) {
     const star = document.getElementById(i);
     if (i <= rating) {
-      star.classList.remove("far");
-      star.classList.add("fas");
+      star.className = "review-rating fas fa-star"
     } else {
-      star.classList.remove("fas");
-      star.classList.add("far");
+      star.className = "review-rating far fa-star"
     }
   }
 };
@@ -204,18 +224,20 @@ Nous allons coder la vue éponyme.
 ```erb
 <!-- app/views/flats/show.html.erb -->
 [..]
-<% @reviews.each do |review| %>
-  <p><%= review.user.name %></p>
-  <p><%= review.content %></p>
-  <p>
-    <% review.rating.times do %>
-      <i class="fas fa-star"></i>
-    <% end %>
-    <% (5 - review.rating).times do %>
-      <i class="far fa-star"></i>
-    <% end %>
-  </p>
-<% end %>
+<div class="reviews">
+  <% @reviews.each do |review| %>
+    <p>
+      <%= review.user.first_name %>
+      <% review.rating.times do %>
+        <i class="fas fa-star"></i>
+      <% end %>
+      <% (5 - review.rating).times do %>
+        <i class="far fa-star"></i>
+      <% end %>
+    </p>
+    <p><%= review.content %></p>
+  <% end %>
+</div>
 [..]
 ```
 
