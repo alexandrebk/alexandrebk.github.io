@@ -1,5 +1,5 @@
 - title:   "Monsieur Peinture"
-  link:    "https://devis.monsieurpeinture.com/"
+  link:    "https://devis.monsieurpeinture.com/projects/new"
   content: "Création d'un espace client avec outil d'orientation, devis, facturation, chat et d'un espace partenaire avec allocation des projets, agenda et suivi des projets"
   techno:  "Ruby on Rails"
   img:     "/images/mr-peinture.png"
