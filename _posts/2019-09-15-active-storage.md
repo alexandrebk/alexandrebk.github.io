@@ -107,13 +107,14 @@ Vous devez cliquer sur `Services` puis recherchez `S3`. Ensuite vous cliquez sur
 
 2 - Créer une stratégie
 
-Vous faites une nouvelle recherche dans `Services` et vous recherchez `IAM`. Nous allons maintenant créer une stratégie.
+Vous faites une nouvelle recherche dans `Services` et vous recherchez `IAM`. Nous allons maintenant créer une `stratégie`.
 
-Pour les actions manuelles, il faut cocher `Toutes les actions S3` et sélectionnez toutes les ressources. Pour le nom il faut être le plus clair possible en explicitant le nom du bucket et quels sont les droit (ici full access, l'utilisateur peut lire et écrire). Et pour le type d'accès ca sera `programatique` c'est à dire que c'est un programme qui va y accéder et non un humain. Il n'y aura pas de mot de passe mais un token.
+On va choisir un service, c'est à dire `S3`. Pour les actions manuelles, il faut cocher `Toutes les actions S3` et sélectionnez toutes les ressources. On clique sur examier une stratégie.
+
+Pour le nom il faut être le plus clair possible en explicitant le nom du bucket et quels sont les droits (ici full access, l'utilisateur peut lire et écrire).
 
 ![](/images/posts/active-storage/10.png)
 ![](/images/posts/active-storage/12.png)
-![](/images/posts/active-storage/13.png)
 
 3 - Créer un utilisateur
 
@@ -121,6 +122,10 @@ Pour les utilisateurs il faut choisir un nom d'utilisateur et ensuite un service
 
 ![](/images/posts/active-storage/14.png)
 ![](/images/posts/active-storage/15.png)
+
+Et pour le type d'accès ca sera `programatique` c'est à dire que c'est un programme qui va y accéder et non un humain. Il n'y aura pas de mot de passe mais un token.
+
+![](/images/posts/active-storage/13.png)
 
 ### Cinquième Étape: Configuration les variables d'environnement.
 
@@ -148,7 +153,11 @@ amazon:
 
 ```ruby
 # config/environments/production.rb
-config.active_storage.service = :amazon
+Rails.application.configure do
+  [..]
+  config.active_storage.service = :amazon
+  [..]
+end
 ```
 
 ### [BONUS] Seeder des images
