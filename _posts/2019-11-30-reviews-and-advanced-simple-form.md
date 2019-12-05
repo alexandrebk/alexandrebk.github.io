@@ -149,7 +149,8 @@ Ensuite nous allons coder la vue éponyme. Le formulaire ne va apparaître que s
 ```css
 /* app/assets/stylesheets/components/_form.scss */
 .fa-star {
-  color: yellow;
+  color:  yellow;
+  cursor: pointer;
 }
 .review i {
   font-size: 32px;
