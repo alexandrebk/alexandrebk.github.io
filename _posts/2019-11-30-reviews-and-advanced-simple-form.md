@@ -168,7 +168,7 @@ Ensuite nous allons coder la vue éponyme. Le formulaire ne va apparaître que s
 // app/javascript/plugins/starsInReviewForm.js
 const toggleStarsInBlack = (rating) => {
   for (let index = 1; index <= 5; index++) {
-    const star = document.getElementById(i);
+    const star = document.getElementById(index);
     if (index <= rating) {
       star.className = "review-rating fas fa-star"
     } else {
