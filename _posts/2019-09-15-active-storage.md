@@ -50,6 +50,8 @@ Et dans la vue du formulaire, on ajoute un champ pour les images.
 <%= simple_form_for flat do |f| %>
   [...]
   <%= f.file_field :images, multiple: true, class: "form-control" %>
+  <!-- Si vous avez qu'une seule image -->
+  <%#= f.file_field :image, class: "form-control" %>
   [...]
 <% end %>
 ```
@@ -146,6 +148,7 @@ amazon:
   access_key_id: <%= ENV['S3_ACCESS_KEY_ID'] %>
   secret_access_key: <%= ENV['S3_SECRET_ACCESS_KEY'] %>
   bucket: "airbnb-copycat"
+  # Rempacer airbnb-copycat par le bucket que vous avez crée
   region: "eu-west-1"
   # Si vous avez choisi un bucket à Paris
   # region: "eu-west-3"
