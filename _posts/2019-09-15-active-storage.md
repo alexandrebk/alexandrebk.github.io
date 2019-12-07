@@ -202,9 +202,9 @@ Tout d'abord, nous allons modifier notre formulaire. Attention il faut que le la
 ```
 
 ```css
-// app/assets/components/_button.scss
+/* app/assets/components/_button.scss */
 .btn-upload {
-  // Enrichissez le style de votre button
+  /* Enrichissez ici le style de votre button */
   cursor: pointer
 }
 ```
