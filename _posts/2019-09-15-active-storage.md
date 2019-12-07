@@ -181,3 +181,39 @@ my_second_image_path = Rails.root.join('app', 'assets', 'images', 'my_second_ima
 flat.images.attach(io: File.open(my_first_image_path), filename: 'image_name.png', content_type: 'image/png')
 flat.images.attach(io: File.open(my_second_image_path), filename: 'image_name.png', content_type: 'image/png')
 ```
+
+### [BONUS] Customiser sa zone de téléchargement
+
+Tout d'abord, nous allons modifier notre formulaire. Attention il faut que le label ait le même nom que votre l'id de votre input Simple Form. Dans notre cas c'est `flat_images`. Pour une image cela aurait été `flat_image`. Je rajoute un div qui va accueillir le nom des fichiers. Et j'ajoute la classe `d-none` à l'ancien input de téléchargement des images.
+
+```erb
+<!-- app/views/flats/_form.html.erb -->
+[..]
+<%= simple_form_for flat do |f| %>
+  [..]
+  <label for="flat_images" class="btn-upload">
+    Upload tes photos <i class="fas fa-cloud-upload-alt"></i>
+  </label>
+  <div id="flat-images-filename"></div>
+  <%= f.file_field :images, as: :file, multiple: true, class: "form-control d-none" %>
+  [..]
+<% end %>
+[..]
+```
+
+```css
+// app/assets/components/_button.scss
+.btn-upload {
+  // Enrichissez le style de votre button
+  cursor: pointer
+}
+```
+
+```js
+// app/javascript/packs/application.js
+$("#flat_images").change(function() {
+  Array.from(this.files).forEach((element) => {
+    document.getElementById("flat-images-filename").innerHTML += `${element.name}<br>`
+  });
+});
+```
