@@ -38,5 +38,3 @@ Nous avons donc:
 ```
 
 ![Barre de navigation](/images/posts/navbar-active.png)
-
-Vous pouvez retrouver un exemple de code [ici](https://github.com/alexandrebk/airbnb-copycat/commit/9eb0f044feee4acdee35640fd7dff27171fe205a)
