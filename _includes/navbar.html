@@ -1,10 +1,18 @@
 <div class="container">
   <header class="inner  border-bottom border-dark d-flex align-items-center justify-content-center">
     <nav class="mr-auto p-2">
-      <a class="{% if page.url == '/' %} selected {% endif %}" href="/">Home</a>
-      <a class="{% if page.url == '/blog' %} selected {% endif %}" href="/blog">Blog</a>
-      <a class="{% if page.url == '/portfolio' %} selected {% endif %}" href="/portfolio">Portfolio</a>
-      <a class="{% if page.url == '/contact' %} selected {% endif %}" href="/contact">Contact</a>
+      <a class="{% if page.url == '/' %} selected {% endif %}" href="/">
+        Home
+      </a>
+      <a class="{% if page.url == '/blog' %} selected {% endif %}" href="/blog">
+        Blog
+      </a>
+      <a class="{% if page.url == '/portfolio' %} selected {% endif %}" href="/portfolio">
+        Portfolio
+      </a>
+      <a class="{% if page.url == '/contact' %} selected {% endif %}" href="http://www.alexandrebouvier.fr/curriculum-vitae/curriculum-vitae.pdf" target="_blank">
+        CV
+      </a>
     </nav>
 
     <div class="pull-right d-flex align-items-center">
