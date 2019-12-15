@@ -158,10 +158,10 @@ Ce qui donne pour les cards scrims ceci: Pour le `.card-scrims-infos`, nous allo
     font-size: 20px;
     margin: 0;
     color: black;
-    &:hover {
-      color: #348498;
-      transition: .5s;
-    }
+  }
+  h2:hover {
+    color: #348498;
+    transition: .5s;
   }
   p {
     color: black;
