@@ -39,7 +39,7 @@ staging:
 
 ## Trosième Étape: Webpacker
 
-Si vous utilisez Webpacker il faudra ajouter ceci au fichier `config/webpacker.yml`
+Si vous utilisez Webpacker il faudra ajouter ceci au fichier `config/webpacker.yml`. De préférence entre la ligne de test et la ligne de production.
 
 ```
 staging:
