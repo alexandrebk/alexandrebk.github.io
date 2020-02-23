@@ -3,6 +3,7 @@ layout: post
 title:  "Configurer une messagerie privée"
 author: alexandre
 difficulty: 3
+status: tech
 ---
 
 Dans ce tuto nous allons apprendre comment permettre aux utilisateurs de s'envoyer des messages privés.

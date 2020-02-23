@@ -3,6 +3,7 @@ layout: post
 title:  "Comment gérer des dates avec FlatPickr dans des formulaires"
 author: alexandre
 difficulty: 4
+status: tech
 ---
 
 Dans ce tuto nous allons apprendre à installer Flatpickr dans une application Rails et comment griser des dates.

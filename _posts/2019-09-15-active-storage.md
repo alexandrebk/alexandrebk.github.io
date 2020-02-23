@@ -2,6 +2,7 @@
 layout: post
 title:  "Ajouter des images avec Active Storage"
 author: alexandre
+status: tech
 ---
 
 Dans ce tuto nous allons apprendre comment ajouter plusieurs images à un modèle avec Active Storage.

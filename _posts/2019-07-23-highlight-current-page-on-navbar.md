@@ -3,6 +3,7 @@ layout: post
 title:  "Customiser sa barre de navigation"
 author: alexandre
 difficulty: 1
+status: tech
 ---
 
 Dans ce tuto nous allons apprendre comment mettre en surbrillance la page sur laquelle se trouve l'utilisateur dans une barre de navigation. Pour cela nous allons utiliser la classe `active` de Boostrap.

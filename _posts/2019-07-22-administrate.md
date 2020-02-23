@@ -3,6 +3,7 @@ layout: post
 title:  "Installer un back-office avec Administrate"
 author: alexandre
 difficulty: 3
+status: tech
 ---
 
 Dans ce tuto nous allons installer un back office avec la gem `administrate`

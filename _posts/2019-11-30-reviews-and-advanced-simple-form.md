@@ -3,6 +3,7 @@ layout:     post
 title:      "Reviews et tricks pour Simple Form"
 author:     alexandre
 difficulty: 1
+status: tech
 ---
 
 Dans ce tuto nous allons apprendre à ajouter des reviews sur notre application de réservations d’appartement avec une liste déroulante grâce à simple form.
