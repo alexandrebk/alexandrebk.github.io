@@ -93,7 +93,7 @@ Ensuite une route pour afficher les conversations avec un autre utilisateur et u
 Rails.application.routes.draw do
   [...]
   get 'conversations', to: 'messages#conversations'
-  resources :users, only [] do
+  resources :users, only: [] do
     resources :messages, only: [:index, :create]
   end
 end
