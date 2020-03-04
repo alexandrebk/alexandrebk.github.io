@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Les bonnes pratiques en css"
-author: alexandre
+author: "Alexandre Bouvier"
 difficulty: 1
 status: draft
 ---

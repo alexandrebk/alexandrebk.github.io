@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "Reviews et tricks pour Simple Form"
-author:     alexandre
+author:     "Alexandre Bouvier"
 difficulty: 1
 status: tech
 ---

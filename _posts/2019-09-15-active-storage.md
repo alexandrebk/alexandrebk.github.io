@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Ajouter des images avec Active Storage"
-author: alexandre
+author: "Alexandre Bouvier"
 status: tech
 ---
 

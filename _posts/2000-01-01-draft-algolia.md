@@ -1,9 +1,11 @@
 ---
 layout: post
 title:  "Barre de recherche avec Algolia"
-author: alexandre
+author: "Alexandre Bouvier"
 status: draft
 ---
+
+https://gist.github.com/Martin-Alexander/95cf3272a4ac7e6905eaecf53f66687d
 
 Dans ce tuto nous allons apprendre à construire une barre de recherche avec Algolia.
 
@@ -20,7 +22,7 @@ yarn add places.js
 touch app/javascript/plugins/autocomplete.js
 ```
 
-### Seconde Étape: 
+### Seconde Étape:
 
 ```erb
 # app/index/views/pages/home.html.erb
@@ -35,7 +37,7 @@ touch app/javascript/plugins/autocomplete.js
 </div>
 ```
 
-### Trosième Étape: 
+### Trosième Étape:
 
 On va ajouter du code javascript dans les fichiers gérés par Webpack.
 

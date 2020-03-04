@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Méthodes Ruby Utiles"
-author: alexandre
+author: "Alexandre Bouvier"
 status: draft
 ---
 

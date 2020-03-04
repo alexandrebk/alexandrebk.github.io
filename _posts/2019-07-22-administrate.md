@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Installer un back-office avec Administrate"
-author: alexandre
+author: "Alexandre Bouvier"
 difficulty: 3
 status: tech
 ---

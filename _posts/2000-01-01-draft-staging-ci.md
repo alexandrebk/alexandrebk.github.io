@@ -1,11 +1,11 @@
 ---
 layout: post
 title:  "Créer un pipeline sur Heroku"
-author: alexandre
+author: "Alexandre Bouvier"
 status: draft
 ---
 
-Lorsque vous développez de nouvelles features vous souhaitez souvent partager un url avec votre équipe de non-dév pour leurs montrer. Il est possible avec Heroku d'installer une app sur un autre serveur. On appelle cela un serveur de staging. 
+Lorsque vous développez de nouvelles features vous souhaitez souvent partager un url avec votre équipe de non-dév pour leurs montrer. Il est possible avec Heroku d'installer une app sur un autre serveur. On appelle cela un serveur de staging.
 
 ### Première étape
 
@@ -35,7 +35,7 @@ staging:
   database: app_name_staging
   username: app_name
   password: <%= ENV['APP_NAME_DATABASE_PASSWORD'] %>
-``` 
+```
 
 ## Trosième Étape: Webpacker
 

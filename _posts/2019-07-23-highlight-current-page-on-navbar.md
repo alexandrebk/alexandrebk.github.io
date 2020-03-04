@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Customiser sa barre de navigation"
-author: alexandre
+author: "Alexandre Bouvier"
 difficulty: 1
 status: tech
 ---

@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Comment gérer des dates avec FlatPickr dans des formulaires"
-author: alexandre
+author: "Alexandre Bouvier"
 difficulty: 4
 status: tech
 ---
