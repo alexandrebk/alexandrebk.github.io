@@ -1,10 +1,15 @@
 ---
 layout: post
-title:  "Configurer une messagerie privée"
+title:  "Messagerie privée"
 author: "Alexandre Bouvier"
 difficulty: 3
 status: tech
 ---
+
+
+<!--
+TODO : Ajouter un channel number pour chaque utiliser
+ -->
 
 Dans ce tuto nous allons apprendre comment permettre aux utilisateurs de s'envoyer des messages privés.
 

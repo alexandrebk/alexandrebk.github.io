@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Reviews et tricks pour Simple Form"
+title:      "Liste déroulante et étoiles pour Simple Form"
 author:     "Alexandre Bouvier"
 difficulty: 1
 status: tech

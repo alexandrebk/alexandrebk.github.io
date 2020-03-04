@@ -20,8 +20,10 @@ Ajoutez son email
 
 ### Seconde étape
 
-Ensuite vos collaborateurs doivent ajouter dans leur repo la commande suivante en remplacant `airbnb-copycat` par le nom de l'application Heroku:
+Ensuite vos collaborateurs doivent ajouter dans leur repo la commande suivante :
 
 ```sh
 heroku git:remote -a airbnb-copycat
 ```
+
+En remplacant `airbnb-copycat` par le nom Heroku de votre application.

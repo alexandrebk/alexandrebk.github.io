@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Ajouter des images avec Active Storage"
+title:  "Images avec Active Storage et AWS"
 author: "Alexandre Bouvier"
 status: tech
 ---
