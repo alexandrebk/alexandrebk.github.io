@@ -6,19 +6,19 @@ difficulty: 1
 status: tech
 ---
 
-Aller sur votre [dashboard](https://dashboard.heroku.com/apps) et cliquer sur votre application.
-
-![Application List on Heroku](/images/posts/app-list-heroku.png)
+<a href="https://dashboard.heroku.com/apps" target="_blank">Allez sur votre dashboard</a> puis dans votre application.
 
 ### Première étape
 
-##### Dans l'onglet Access, cliquer sur Add Collaborator
+##### Dans l'onglet *Access*, cliquez sur *Add Collaborator*
 
-<img src="/images/posts/heroku-button.png" style="width: 100%; border: solid;" alt="Cliquer sur Add Collaborator">
+<img src="/images/posts/heroku-button.png" style="width: 100%;" alt="Cliquer sur Add Collaborator">
 
 ##### Ajoutez son email
 
-![Ajoutez son email rattaché à son compte Heroku](/images/posts/heroku-email.png)
+<div style="margin: 0 auto;">
+  ![Ajoutez son email rattaché à son compte Heroku](/images/posts/heroku-email.png)
+</div>
 
 ### Seconde étape
 
