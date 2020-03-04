@@ -10,11 +10,11 @@ status: tech
 
 ### Première étape
 
-##### Dans l'onglet *Access*, cliquez sur *Add Collaborator*
+Dans l'onglet *Access*, cliquez sur *Add Collaborator*
 
 <img src="/images/posts/heroku-button.png" class="image" alt="Cliquer sur Add Collaborator">
 
-##### Ajoutez son email
+Ajoutez son email
 
 <img src="/images/posts/heroku-email.png" class="image" alt="Ajoutez son email rattaché à son compte Heroku">
 
