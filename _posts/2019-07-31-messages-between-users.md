@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Configurer une messagerie privée"
-author: alexandre
+author: "Alexandre Bouvier"
 difficulty: 3
 status: tech
 ---

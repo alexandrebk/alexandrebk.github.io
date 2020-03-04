@@ -1,4 +1,4 @@
-border: 1rem solid;---
+---
 layout: post
 title:  "Ajouter des collaborateurs sur Heroku"
 author: "Alexandre Bouvier"
@@ -12,7 +12,7 @@ status: tech
 
 ##### Dans l'onglet *Access*, cliquez sur *Add Collaborator*
 
-<img src="/images/posts/heroku-button.png" style="width: 100%;border: 2px solid;border-radius: 16px;" alt="Cliquer sur Add Collaborator">
+<img src="/images/posts/heroku-button.png" class="image" alt="Cliquer sur Add Collaborator">
 
 ##### Ajoutez son email
 
