@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Ajouter des collaborateurs sur Heroku"
-author: "Alexandre Bouvier"
+description: "Dans ce tuto nous allons apprendre comment authoriser les membres de votre équipe à pusher sur Heroku."
 difficulty: 1
 status: tech
 ---

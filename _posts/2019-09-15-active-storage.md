@@ -1,11 +1,9 @@
 ---
 layout: post
 title:  "Images avec Active Storage et AWS"
-author: "Alexandre Bouvier"
+description: "Dans ce tuto nous allons apprendre comment ajouter plusieurs images à un modèle avec Active Storage et Amazon Web Services."
 status: tech
 ---
-
-Dans ce tuto nous allons apprendre comment ajouter plusieurs images à un modèle avec Active Storage.
 
 ### Première étape: Installer Active Storage
 
@@ -106,7 +104,7 @@ Pour créer un compte, allez [sur le site d'Amazon Web Services](https://aws.ama
 
 Vous devez cliquer sur `Services` puis recherchez `S3`. Ensuite vous cliquez sur `Créer un compartiment`. Dans le nom du compartiment vous mettez le nom de votre app. Et pour la région, il faut choisir l'Irlande si vous êtes chez Heroku (afin que les 2 serveurs soit le plus proche possible).
 
-![](/images/posts/active-storage/02.png)
+<img src="/images/posts/active-storage/02.png" class="image">
 
 2 - Créer une stratégie
 
@@ -116,19 +114,21 @@ On va choisir un service, c'est à dire `S3`. Pour les actions manuelles, il fau
 
 Pour le nom il faut être le plus clair possible en explicitant le nom du bucket et quels sont les droits (ici full access, l'utilisateur peut lire et écrire).
 
-![](/images/posts/active-storage/10.png)
-![](/images/posts/active-storage/12.png)
+<img src="/images/posts/active-storage/10.png" class="image">
+
+<img src="/images/posts/active-storage/12.png" class="image">
 
 3 - Créer un utilisateur
 
 Pour les utilisateurs il faut choisir un nom d'utilisateur et ensuite un service. Ici ca sera encore une fois S3. Ensuite on va sur l'onglet `Attacher les stratégies` pour ajouter celle qu'on a crée juste avant. Pour les étapes 3 et 4 on peut mettre OK. AWS va ensuite nous donner les clés API que l'on doit mettre sur Heroku sous le nom de `S3_ACCESS_KEY_ID` et `S3_SECRET_ACCESS_KEY`.
 
-![](/images/posts/active-storage/14.png)
-![](/images/posts/active-storage/15.png)
+<img src="/images/posts/active-storage/14.png" class="image">
+
+<img src="/images/posts/active-storage/15.png" class="image">
 
 Et pour le type d'accès ca sera `programatique` c'est à dire que c'est un programme qui va y accéder et non un humain. Il n'y aura pas de mot de passe mais un token.
 
-![](/images/posts/active-storage/13.png)
+<img src="/images/posts/active-storage/13.png" class="image">
 
 ### Cinquième Étape: Configuration les variables d'environnement.
 

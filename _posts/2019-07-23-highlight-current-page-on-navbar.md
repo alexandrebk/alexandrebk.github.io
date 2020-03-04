@@ -1,12 +1,10 @@
 ---
 layout: post
 title:  "Customiser sa barre de navigation"
-author: "Alexandre Bouvier"
+description: "Dans ce tuto nous allons apprendre comment mettre en surbrillance un onglet dans une barre de navigation."
 difficulty: 1
 status: tech
 ---
-
-Dans ce tuto nous allons apprendre comment mettre en surbrillance la page sur laquelle se trouve l'utilisateur dans une barre de navigation.
 
 Nous supposons que nous sommes dans une application Ruby on Rails avec Bootstrap installé.
 

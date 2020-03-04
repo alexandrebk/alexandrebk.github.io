@@ -1,16 +1,14 @@
 ---
 layout: post
 title:  "Les bonnes pratiques en css"
-author: "Alexandre Bouvier"
+description: "Dans ce tuto nous allons apprendre à bien organiser organiser ses fichiers et classes css dans une application Ruby on Rails."
 difficulty: 1
-status: draft
+status: tech
 ---
-
-Dans ce tuto nous allons apprendre à bien organiser son code css dans une application Ruby on Rails
 
 ### Première étape : Les noms des fichiers
 
-Voici ce qui ne faut pas faire
+Voici ce qu'il ne faut pas faire
 
 ```
 ├── application.scss
@@ -51,13 +49,13 @@ Voici ce qu'il faut faire.
 ```
 ├── application.scss
 ├── components
-│   ├── _card.scss
-│   ├── _filter_bar_search.scss
+│   ├── _cards.scss
+│   ├── _search_bar.scss
 │   ├── _index.scss
 │   ├── _most_played_champs.scss
 │   ├── _navbar.scss
 │   ├── _stats.scss
-│   ├── _form.scss
+│   ├── _forms.scss
 ├── config
 │   ├── _bootstrap_variables.scss
 │   ├── _colors.scss
@@ -68,7 +66,7 @@ Voici ce qu'il faut faire.
     └── _flats.scss
 ```
 
-### Seconde Étape: Les cards
+### Seconde Étape: Le nom des classes
 
 Voici ce qu'il ne faut pas faire.
 
@@ -86,7 +84,7 @@ Voici ce qu'il ne faut pas faire.
 
 .card-scrims img {
   height: 120px;
-  width: 121px;
+  width: 120px;
   padding: 10px;
 }
 
@@ -113,67 +111,65 @@ Voici ce qu'il ne faut pas faire.
 }
 ```
 
-Une fois que vous avez réunis toutes les cards dans un même fichier. Il faudra organiser vos classes comme cela
+Voici ce qu'il faut faire.
 
-```scss
-.card-message {
-  /* vos classes css */
-  .title {
-    /* vos classes css */
-  }
-  .description {
-    /* vos classes css */
-  }
-}
+Tout d'abord réunir toutes les *cards* dans un même fichier.
 
-.card-review {
-  /* vos classes css */
-  .title {
-    /* vos classes css */
-  }
-  .description {
-    /* vos classes css */
-  }
-}
-```
-
-Ce qui donne pour les cards scrims ceci: Pour le `.card-scrims-infos`, nous allons la remplacer par `.infos` dans le html et le scss.
+Ensuite renommer certaines classes. Par exemple pour `.card-scrims-infos`, nous allons la remplacer par `.infos`. Et nous allons facilement la cibler grâce au *nesting*.
 
 ```scss
 .card-scrims {
   border-radius: 4px;
-  overflow: hidden;
-  height: 180px;
-  background: white;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
+  overflow:      hidden;
+  height:        180px;
+  background:    white;
+  display:       flex;
+  align-items:   center;
+  cursor:        pointer;
   margin-bottom: 3%;
   img {
-    height: 120px;
-    width: 121px;
+    height:  120px;
+    width:   120px;
     padding: 10px;
   }
   h2 {
     font-size: 20px;
-    margin: 0;
-    color: black;
+    margin:    0;
+    color:     black;
   }
   h2:hover {
-    color: #348498;
+    color:      #348498;
     transition: .5s;
   }
   p {
-    color: black;
-    line-height: 1.4;
-    opacity: .9;
+    color:         black;
+    line-height:   1.4;
+    opacity:       .9;
     margin-bottom: 0;
-    margin-top: 8px;
+    margin-top:    8px;
   }
   .infos {
     padding: 16px;
   }
 }
-```
 
-Pour plus de lisibilité n'hésitez pas à aligner vos propriétés css.
+.card-message {
+  /* ... */
+  .title {
+    /* ... */
+  }
+  .description {
+    /* ... */
+  }
+}
+
+.card-review {
+  /* ... */
+  .title {
+    /* ... */
+  }
+  .description {
+    /* ... */
+  }
+}
+```

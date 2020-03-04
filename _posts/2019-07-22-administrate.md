@@ -1,12 +1,10 @@
 ---
 layout: post
 title:  "Installer un back-office avec Administrate"
-author: "Alexandre Bouvier"
+description: "Dans ce tuto nous allons installer un back office avec la gem administrate."
 difficulty: 3
 status: tech
 ---
-
-Dans ce tuto nous allons installer un back office avec la gem `administrate`
 
 Nous supposons qu'il y a un modèle `Flat` et un model `Booking` qu'il y'a déjà une application Rails avec plusieurs modèles. Nous allons laisser la possibilité aux administrateurs du site de créer ou de modifier des réservations.
 

@@ -1,19 +1,16 @@
 ---
-layout:     post
-title:      "Liste déroulante et étoiles pour Simple Form"
-author:     "Alexandre Bouvier"
-difficulty: 1
-status: tech
+layout:      post
+title:       "Liste déroulante et étoiles pour Simple Form"
+description: "Dans ce tuto nous allons apprendre à ajouter des reviews sur notre application de réservations d’appartement avec une liste déroulante grâce à simple form."
+difficulty:  1
+status:      tech
 ---
 
-Dans ce tuto nous allons apprendre à ajouter des reviews sur notre application de réservations d’appartement avec une liste déroulante grâce à simple form.
+Nous supposons qu’il y a une application Ruby on Rails de location d'appartement type Airbnb avec des modèles `Booking` et `User`. Nous allons créer des commentaires (*reviews*) sur les locations d'appartements.
 
-Nous supposons qu’il y a un model `Booking` et `User`, et qu’il y’a déjà une application Rails avec plusieurs modèles.
-Les utilisateurs vont avoir la possibilité de laisser une commentaire sur une location.
+### Première étape : Les migrations
 
-### Première étape : Les migrations et le modèle
-
-Tout d’abord nous allons générer une migration pour créer la table `reviews`.
+Tout d’abord nous allons générer une migration pour créer la table *reviews*.
 
 ```sh
 rails generate model Review content:text rating:integer user:references booking:references
@@ -25,7 +22,9 @@ Puis on lance la migration.
 rails db:migrate
 ```
 
-On va ajouter des validations sur les champs `content` et `rating`.
+### Seconde étape : Le modèle
+
+On va ajouter des validations sur les champs *content* et *rating*.
 
 ```ruby
 class Review < ApplicationRecord
@@ -63,9 +62,9 @@ class Flat < ApplicationRecord
 end
 ```
 
-### Seconde étape: Les routes et le Controlleur
+### Troisième étape : Les routes et le *Controlleur*
 
-Nous allons ajouter une route pour la création d'une `review`.
+Nous allons ajouter une route pour la création d'une *review*.
 
 ```ruby
 # config/routes.rb
@@ -77,13 +76,13 @@ Rails.application.routes.draw do
 end
 ```
 
-Ensuite on va générer le controlleur `reviews`.
+Ensuite on va générer le *controller* *reviews*.
 
 ```sh
 rails g controller reviews
 ```
 
-Ensuite nous allons dans le controlleur pour coder la méthode create.
+Ensuite nous allons dans le *controller* pour coder la méthode *create*.
 
 ```ruby
 # app/controllers/reviews_controllers.rb
@@ -108,9 +107,9 @@ class ReviewsController < ApplicationController
 end
 ```
 
-### Troisième étape : Les vues
+### Quatrième étape : Liste d'étoiles dans le formulaire
 
-On ajoute une review dans la `show` d’un `booking`. Pour cela, il faut d'abord créer une nouvelle instance de `review` dans le controlleur des `bookings`.
+On ajoute une review dans la *show* d’un *booking*. Pour cela, il faut d'abord créer une nouvelle instance de *review* dans le controlleur des *bookings*.
 
 ```ruby
 # app/controllers/bookings_controller.rb
@@ -124,7 +123,7 @@ class BookingsController < ApplicationController
 end
 ```
 
-Ensuite nous allons coder la vue éponyme. Le formulaire ne va apparaître que si la réservation est terminée. Pour une interface plus friendly on va cacher l'input des notes et ajouter une liste d'étoiles.
+Ensuite nous allons coder la vue éponyme. Le formulaire ne va apparaître que si la réservation est terminée. Pour une interface plus *friendly*, on va cacher l'input des notes et ajouter une liste d'étoiles.
 
 ```erb
 <!-- app/views/bookings/show.html.erb -->
@@ -207,7 +206,9 @@ import { dynamicRating } from "../plugins/starsInReviewForm";
 dynamicRating();
 ```
 
-Puis nous voulons afficher toutes les `reviews` dans la `show` d'un `flat`. Et aussi la moyenne des notes.
+### Quatrième étape : Afficher les *reviews* et la moyenne
+
+Nous allons afficher toutes les *reviews* dans la *show* d'un *flat*. Et aussi la moyenne des notes.
 
 ```ruby
 # app/controllers/flats_controller.rb
@@ -216,7 +217,8 @@ class FlatsController < ApplicationController
 
   def show
     [...]
-    @reviews = @flat.reviews
+    @reviews        = @flat.reviews
+    @average_rating = @reviews.average(:rating)
   end
 end
 ```
@@ -226,7 +228,7 @@ Nous allons coder la vue éponyme.
 ```erb
 <!-- app/views/flats/show.html.erb -->
 [..]
-<p>Moyenne : <%= @reviews.average(:rating) %></p>
+<p>Moyenne : <%= @average_rating %></p>
 [..]
 <div class="reviews">
   <% @reviews.each do |review| %>
@@ -245,9 +247,9 @@ Nous allons coder la vue éponyme.
 [..]
 ```
 
-### [BONUS] Les collections dans Simple Form
+### Bonus pour des listes déroulantes dans *Simple Form*
 
-On va ajouter un page `new` pour les reviews.
+On va ajouter un page *new* pour les reviews.
 
 Tout d'abord il faut ajouter la route.
 
@@ -259,7 +261,7 @@ Rails.application.routes.draw do
 end
 ```
 
-Puis la méthode du controlleur.
+Puis la méthode du *controller*.
 
 ```ruby
 # app/controllers/bookings_controller.rb
@@ -288,7 +290,7 @@ class BookingsController < ApplicationController
 end
 ```
 
-Un petit tricks dans Rails. Si vous créez une méthode `name` dans un modèle, `simple_form` va automatiquement aller la chercher pour afficher les données. Et lors de la soumission du formulaire, il va récupérer l'id du modèle.
+Un petit tricks dans Rails. Si vous créez une méthode *name* dans un modèle, *simple_form* va automatiquement aller la chercher pour afficher les données. Et lors de la soumission du formulaire, il va récupérer l'*id* du modèle.
 
 ```ruby
 # app/models/booking.rb

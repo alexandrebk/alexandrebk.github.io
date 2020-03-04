@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Barre de recherche avec Algolia"
-author: "Alexandre Bouvier"
+description: "Alexandre Bouvier"
 status: draft
 ---
 

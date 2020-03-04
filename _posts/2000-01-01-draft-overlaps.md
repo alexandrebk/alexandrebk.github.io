@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "aaaaaaa"
-author: "Alexandre Bouvier"
+description: "Alexandre Bouvier"
 difficulty: 1
 status: draft
 ---

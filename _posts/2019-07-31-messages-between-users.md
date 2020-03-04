@@ -1,29 +1,22 @@
 ---
 layout: post
 title:  "Messagerie privée"
-author: "Alexandre Bouvier"
+description: "Dans ce tuto nous allons apprendre comment permettre aux utilisateurs de s'envoyer des messages privés."
 difficulty: 3
 status: tech
 ---
 
+Nous supposons qu'il y a une application Ruby on Rails avec un modèle `User` généré par *Devise*.
 
-<!--
-TODO : Ajouter un channel number pour chaque utiliser
- -->
+### Première étape : La migration
 
-Dans ce tuto nous allons apprendre comment permettre aux utilisateurs de s'envoyer des messages privés.
-
-Nous supposons qu'il y a une application Rails avec un modèle `User` (généré par Devise).
-
-### Première étape
-
-On crée d'abord une migration pour la table `messages` avec un champ `content` et deux champs faisant références au modèle `User`.
+On crée d'abord une migration pour la table *messages* avec un champ *content* et deux champs *sender* et *receiver* pour les utilisateurs.
 
 ```sh
 rails generate model Message content:text sender:references receiver:references
 ```
 
-Par défaut Rails créé une migration où les colonnes `sender` et `receiver` font références aux modèles `Sender` et `Receiver` qui n'existent pas. Nous voulons que ces deux colonnes fassent références à notre modèle `User`. On va donc modifier le fichier créé. Il suffit de rajouter `foreign_key: { to_table: :users }` à notre fichier de migration.
+Par défaut Rails créé une migration où les colonnes *sender* et *receiver* font références aux modèles `Sender` et `Receiver` qui n'existent pas. Modifions-les pour qu'ils fassent référence à notre modèle `User`.
 
 ```ruby
 class CreateMessages < ActiveRecord::Migration[5.2]
@@ -39,15 +32,15 @@ class CreateMessages < ActiveRecord::Migration[5.2]
 end
 ```
 
-Ensuite nous pouvons faire tourner la migration.
+Ensuite nous pouvons faire tourner la migration dans le terminal.
 
 ```sh
 rails db:migrate
 ```
 
-### Seconde étape
+### Seconde étape : Les méthodes d'instance
 
-Une fois que la migration a été jouée, nous allons modifier le modèle `Message` pour indiquer à Ruby que `sender` et `receiver` font bien référence à notre modèle `User`. Et que le contenu des messages ne doivent pas être vide ni supérieur à 100 caractères.
+Une fois que la migration a été jouée, nous allons modifier le modèle `Message` pour indiquer à l'applicatioon que *sender* et *receiver* font référence au modèle `User`. Et ajoutons une validation, par exemple que le contenu des messages ne soit ni vide ni supérieur à 100 caractères.
 
 ```ruby
 # app/model/message.rb
@@ -56,17 +49,18 @@ class Message < ApplicationRecord
   belongs_to :sender,   class_name: "User"
   belongs_to :receiver, class_name: "User"
 
-  validates :content, length: { maximum: 100  }
+  validates :content, length: { maximum: 100 }
 end
 ```
 
-Et inversement nous allons dire à `User` comment retrouver une liste de toutes les conversations (méthode `friends`) et le contenu d'une conversation (méthode `conversation_with`).
+Et inversement nous allons créer deux méthodes dans `User`. Une pour retrouver une liste de toutes les conversations (*friends*). Et une autre pour le contenu d'une conversation (*conversation_with*).
 
 ```ruby
 # app/model/user.rb
 
 class User < ApplicationRecord
   [...]
+
   def friends
     friends = Message.where(sender: self).map { |message| message.receiver} + Message.where(receiver: self).map { |message| message.sender}
     friends.uniq
@@ -80,17 +74,22 @@ class User < ApplicationRecord
 end
 ```
 
-### Troisième étape
+### Troisième étape : Les routes
 
 Enfin nous allons récupérer les messages dans la vue. Tout d'abord il faut créer un message dans la console que vous lancez avec `rails c`
 
-```sh
+```ruby
 Message.create(sender: User.first, receiver: User.last, content: "Hello, how are you?")
 Message.create(sender: User.last, receiver: User.first, content: "Hello, good and you?")
 ```
 
-Ensuite nous allons créer les routes. Tout d'abord une route qui recense toutes les conversations `get 'conversations', to: 'messages#conversations'`.
-Ensuite une route pour afficher les conversations avec un autre utilisateur et une route pour créer un message. Comme nous avons besoin de l'`id` d'un autre utilisateur il faudra nester la ressource.
+Ensuite nous allons créer 3 routes :
+
+1. une route qui recense toutes les conversations
+2. une route pour afficher la conversation avec un utilisateur
+3. une route pour créer un message
+
+Comme nous avons besoin de l'*id* d'un autre utilisateur il faudra nester la ressource pour les deux dernières.
 
 ```ruby
 # config/routes.rb
@@ -104,15 +103,22 @@ Rails.application.routes.draw do
 end
 ```
 
-Maintenant que nous avons créé les routes, il faut créer le `controller` associé.
+<!--
+TODO : Ajouter un channel number pour chaque utiliser
+resources :conversations, only: [:index, :show] do
+  resources :messages, only: [:create]
+end
+ -->
+
+### Quatrième étape : Le contrôleur et les vues
+
+Maintenant que nous avons créé les routes, il faut créer le *controller* associé.
 
 ```sh
 rails generate controller messages conversations index create
 ```
 
-Dans notre `controller` nous allons remplir les méthodes.
-
-Commençons par la liste des conversations.
+Commençons par la liste des conversations dans le *controller*. On les récupère grâce à la méthode d'instance `.friends`.
 
 ```ruby
 # app/controllers/messages_controller.rb
@@ -124,7 +130,7 @@ class MessagesController < ApplicationController
 end
 ```
 
-Pour afficher la liste des utilisateurs avec qui on discute on s'occupe de la vue.
+Et la vue éponyme.
 
 ```erb
 <!-- app/views/messages/conversations.html.erb -->
@@ -168,6 +174,8 @@ end
 <%= link_to 'Retour aux conversations', conversations_path %>
 ```
 
+### Cinquième étape : Créer un message
+
 Puis nous voulons envoyer un message depuis une conversation.
 
 ```ruby
@@ -206,7 +214,10 @@ end
 <% end %>
 ```
 
-Pour finir ajoutons un lien depuis la show d'un booking pour pouvoir contacter le propriétaire.
+
+### Bonus pour les *marketplaces*
+
+Pour finir ajoutons un lien depuis la *show* d'un *booking* pour pouvoir contacter le propriétaire.
 
 ```erb
 <!-- app/views/bookings/show.html.erb -->
@@ -215,5 +226,3 @@ Pour finir ajoutons un lien depuis la show d'un booking pour pouvoir contacter l
   <button class="btn btn-principal btn-margin-top">Contacter le propriétaire</button>
 <% end %>
 ```
-
-Vous pouvez retrouver un exemple de code [ici](https://github.com/alexandrebk/airbnb-copycat/commit/9d882d532ea3c53ca52673a0d407bc600dbb3a68)

@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Afficher le prix du renting avec FlatPickr"
-author: "Alexandre Bouvier"
+description: "Alexandre Bouvier"
 status: draft
 ---
 
