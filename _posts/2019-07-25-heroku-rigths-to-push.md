@@ -17,7 +17,9 @@ status: tech
 ##### Ajoutez son email
 
 <div style="margin: 0 auto;">
-  ![Ajoutez son email rattaché à son compte Heroku](/images/posts/heroku-email.png)
+
+![Ajoutez son email rattaché à son compte Heroku](/images/posts/heroku-email.png)
+
 </div>
 
 ### Seconde étape
