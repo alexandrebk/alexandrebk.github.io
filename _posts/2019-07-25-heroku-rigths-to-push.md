@@ -1,35 +1,29 @@
 ---
 layout: post
 title:  "Ajouter des collaborateurs sur Heroku"
-author: alexandre
+author: "Alexandre Bouvier"
 difficulty: 1
 status: tech
 ---
 
-Dans ce tuto nous allons apprendre comment ajouter des utilisateurs sur Heroku.
+Aller sur votre [dashboard](https://dashboard.heroku.com/apps) et cliquer sur votre application.
+
+![Application List on Heroku](/images/posts/app-list-heroku.png)
 
 ### Première étape
 
-Tout d'abord il faut ajouter vos utilisateurs sur Heroku.
+##### Dans l'onglet Access, cliquer sur Add Collaborator
 
-##### Allez dans l'onglet Access
+<img src="/images/posts/heroku-button.png" style="width: 100%; border: solid;" alt="Cliquer sur Add Collaborator">
 
-![Allez dans l'onglet Access](/images/posts/heroku-tabs.png)
-
-##### Cliquer sur Add Collaborator
-
-![Cliquer sur Add Collaborator](/images/posts/heroku-button.png)
-
-##### Ajoutez son email rattaché à son compte Heroku
+##### Ajoutez son email
 
 ![Ajoutez son email rattaché à son compte Heroku](/images/posts/heroku-email.png)
 
 ### Seconde étape
 
-Ensuite vos collaborateurs doivent ajouter dans leur terminal la commande suivante en remplacant `app-name` par le nom de votre application Heroku:
+Ensuite vos collaborateurs doivent ajouter dans leur repo la commande suivante en remplacant `airbnb-copycat` par le nom de l'application Heroku:
 
 ```sh
-heroku git:remote -a app-name
+heroku git:remote -a airbnb-copycat
 ```
-
-Dans notre cas `airbnb-copycat` est le nom de notre application Heroku pour `https://airbnb-copycat.herokuapp.com/`
