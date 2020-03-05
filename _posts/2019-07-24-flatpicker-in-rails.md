@@ -150,4 +150,6 @@ Maintenant je vais cacher les champs du dates pour ne laisser apparaître que le
 </div>
 ```
 
+### Bonus pour vérifier les dates en back-end
 
+Si vous souhaitez effectuer une vérification sur les dates avant d'enregistrer la réservation, vous pouvez utiliser la méthode [overlaps?](https://apidock.com/rails/Range/overlaps%3F)
