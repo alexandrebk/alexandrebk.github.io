@@ -5,16 +5,22 @@ description: "Dans ce tuto nous allons apprendre comment configurer un environne
 status: tech
 ---
 
-Lorsque vous développez de nouvelles features, vous souhaitez souvent partager un lien avec votre client pour les lui présenter. Malheureusement il n'a pas accès au *localhost*. Il est possible avec Heroku de simuler l'application sur un autre serveur. On appelle cela un environnement de *staging*.
+Lorsque vous développez de nouvelles features, vous souhaitez souvent partager un lien avec votre client pour les lui présenter. Malheureusement il n'a pas accès à votre *localhost*. Il est possible avec Heroku de créer deux applications reliées entre elles, une de **staging** et une de **production**.
 
-### Première étape: Remote
+### Première étape: Ajouter un remote
 
-Supposons que vous ayez déjà une application Rails sur Heroku. Il faudra créer un pipeline et y mettre vos applications de staging et production.
+Supposons que vous ayez déjà une application Ruby on Rails sur Heroku. Nous allons tout d'abord créer un pipeline et y mettre l'application en **production** et en créer une qui sera le **staging**.
 
-Tout d'abord on va faire pointer notre remote **heroku** vers la nouvelle application de staging
+<img src="/images/posts/staging-env/new-pipeline.png" class="image" alt="New Pipeline">
+
+Pour l'environnement de **production**, nous allons rechercher l'application déjà existante. Et pour l'environnement de **staging** créer une nouvelle application par exemple `airbnb_copycat_staging`.
+
+<img src="/images/posts/staging-env/applications.png" class="image" alt="application">
+
+Ensuite, nous allons faire pointer **heroku** dans notre terminal vers l'application de **staging**.
 
 ```
-heroku git:remote -a APP_NAME
+heroku git:remote -a airbnb-copycat-staging
 ```
 
 ### Seconde Étape: Setup de la nouvelle database
@@ -25,14 +31,14 @@ Ensuite, vous devez créer une base de donnée avec la commande :
 heroku addons:create heroku-postgresql:hobby-dev
 ```
 
-Dans le fichier `config/database.yml` ajouter le code suivant à la fin du fichier en remplacant `APP_NAME` par le nom de votre app (le même que celui au début du fichier).
+Dans le fichier `config/database.yml` ajouter le code suivant à la fin du fichier en remplaçant `airbnb-copycat-staging` par le nom de votre application. Pour le *username* et le *password*, vous pouvez gardez les mêmes valeurs que la **production**.
 
 ```
 staging:
   <<: *default
-  database: APP_NAME_staging
-  username: APP_NAME
-  password: <%= ENV['APP_NAME_DATABASE_PASSWORD'] %>
+  database: airbnb_copycat_staging
+  username: airbnb_copycat
+  password: <%= ENV['AIRBNB_COPYCAT_DATABASE_PASSWORD'] %>
 ```
 
 ### Trosième Étape: Webpacker

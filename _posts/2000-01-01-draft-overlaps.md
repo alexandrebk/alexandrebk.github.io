@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "aaaaaaa"
-description: "Alexandre Bouvier"
+title:  "Jouez avec les dates"
+description: "Dans ce tuto nous allons apprendre à vérifier que 2 dates ne se chevauchent pas."
 difficulty: 1
 status: draft
 ---
