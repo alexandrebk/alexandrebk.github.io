@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Afficher le prix du renting avec FlatPickr"
-description: "Alexandre Bouvier"
+description: "Dans ce tuto nous allons apprendre de manière dynamique à afficher"
 status: draft
 ---
 

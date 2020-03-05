@@ -1,40 +1,33 @@
 ---
 layout: post
-title:  "Méthodes Ruby Utiles"
-description: "Alexandre Bouvier"
-status: draft
+title:  "Quelques méthodes utiles en Ruby"
+description: "Dans ce tuto je vais vous présenter des méthodes très utiles que j'utilise tous les jours en Ruby"
+status: tech
 ---
 
-# Méthodes Ruby pour niveaux intermédiaires
+### `||=` Assigner une valeur si et seulement elle n'est pas déjà définie
 
-## `||=` Assigner une valeur si et seulement elle n'est pas déjà définie
+On souhaite assigner une valeur à une variable si et seulement si elle n'est pas précédemment définie. Attention car on réassigne si la valeur est *falsy* c'est à dire `nil` ou même `false`. Il n'est donc pas conseillé d'utiliser cette méthode pour un booléan.
 
-On assigne une valeur à une variable si et seulement si elle n'est pas précédemment définie dans le code ou si sa valeur est falsey (càd `nil` ou `false`).
+```ruby
+toto = nil
+toto ||= "Je ne suis pas nil"
+puts toto
+# "Je ne suis pas nil"
 
-```
-foo = "bar"
-
-nil_variable = nil
-nil_variable ||= foo
-# nil_variable est égale à la string bar
-
-false_variable = false
-false_variable ||= foo
-# false_variable est égale à la string bar
-
-not_defined_variable ||= foo
-# not_defined_variable est égale à la string bar
-
-content = "I already have some content"
-content ||= foo
-# => "I already have some content" --> The content variable is not reassigned and keeps its initial value
+toto = "J'ai déjà du contenu"
+toto ||= "Je ne suis pas nil"
+puts toto
+# "J'ai déjà du contenu"
 ```
 
-## Safe navigation operator: &
+### `&` Opérateur de navigation sans risque
 
-This one allows to navigate safely through the layers of objects relations. Basically, let’s say that we have a company with only one employee and that this employee has a name and an email address:
+Cela vous permet de naviguer à travers des objets sans risque de voir lever une erreur.
 
-```
+Imaginons deux classes `` `` This one allows to navigate safely through the layers of objects relations. Basically, let’s say that we have a company with only one employee and that this employee has a name and an email address:
+
+```ruby
 class Company
   attr_reader :employee
 
@@ -58,14 +51,14 @@ korium = Company.new(bobby)
 
 In this context if I wanted to access Drivy’s employee name I woud probably do the following:
 
-```
+```ruby
 puts korium.employee.name
 # => Bobby
 ```
 
 However, this only works in an environment where none of the elements in the chain (except possibly for the last one) can be nil. Now, let’s imagine a case where the company does not really have any employee. The korium object would be instantiated as follows and the above code would raise an error:
 
-```
+```ruby
 korium = Company.new(nil)
 
 puts korium.employee.name
@@ -74,7 +67,7 @@ puts korium.employee.name
 
 In order to prevent this behaviour, ruby has the & operator (since version 2.3) which behaves a bit like the try method in rails. It tries to fetch the object attribute and returns nil if any element in the chain is nil. For instance:
 
-```
+```ruby
 korium = Company.new(nil)
 
 puts korium&.employee&.name
@@ -85,13 +78,13 @@ puts google&.employee&.name
 # => Bobby
 ```
 
-## Symbol#to_proc
+### Les procs
 
 Finally I’d like to share a ruby idiom which allows to nicely shorten some statements and improve readability :)
 
 You may have already seen things such as:
 
-```
+```ruby
 [1,2,3].reduce(&:+)
 # => 6
 
@@ -103,7 +96,7 @@ When ruby sees the & followed by a symbol, it calls the to_proc method on the sy
 
 The above examples are equivalent to writing:
 
-```
+```ruby
 [1,2,3].reduce(0) do |sum, num|
   sum + num
 end
@@ -114,42 +107,37 @@ end
 end
 # => ["1", "2", "3"]
 ```
- ## send
 
-# Send
+### La méthode *send*
 
-Exemple avec un nom de méthode dynamique sur un objet
+La méthode *send* permet d'appeler une méthode sur un objet en lui passant une *string* et possiblement une *string* avec une interpollation.
 
-Ici la méthode c'est `field_name` et on lui passe.
-
-BEFORE
+Imaginons que j'ai `Room` et que je récupères plusieurs instance de ce modèle. Je veux changer plusieurs variables d'instance en même temps.
 
 ```ruby
-def update_surfaces_to_paint
-  @project = Project.find(params[:project_id])
-  rooms    = @project.rooms
+def should_paint_all
+  rooms = Room.all
   rooms.each do |room|
-    room.should_paint_walls     = params[field_name] == "on"
-    room.should_paint_ceiling   = params[field_name] == "on"
-    room.should_paint_furniture = params[field_name] == "on"
+    room.should_paint_walls     = true
+    room.should_paint_ceiling   = true
+    room.should_paint_furniture = true
     room.save
   end
-  redirect_to project_edit_contact_infos_path(@project)
 end
 ```
 
-AFTER
+Nous allons itérer sur un tableau qui contient les noms des méthodes d'instance.
 
 ```ruby
-def update_surfaces_to_paint
-  @project = Project.find(params[:project_id])
-  rooms    = @project.rooms
+def should_paint_all
+  rooms = Room.all
   rooms.each do |room|
     [:should_paint_walls, :should_paint_ceiling, :should_paint_furniture].each do |field_name|
-      room.send("#{field_name}=", params[field_name] == "on")
-      room.save
+      room.send("#{field_name}=", true)
     end
+    room.save
   end
-  redirect_to project_edit_contact_infos_path(@project)
 end
 ```
+
+La documentation se trouve [ici](https://apidock.com/ruby/Object/send)
