@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Quelques méthodes utiles en Ruby"
+title:  "Méthodes utiles en Ruby pour débutant"
 description: "Dans ce tuto je vais vous présenter des méthodes très utiles que j'utilise tous les jours en Ruby"
 status: tech
 ---
@@ -25,87 +25,61 @@ puts toto
 
 Cela vous permet de naviguer à travers des objets sans risque de voir lever une erreur.
 
-Imaginons deux classes `` `` This one allows to navigate safely through the layers of objects relations. Basically, let’s say that we have a company with only one employee and that this employee has a name and an email address:
+Imaginons deux classes `Room` et `Project` avec `Room` qui appartient à un projet. Le projet à une variable d'instance *name*.
 
 ```ruby
-class Company
-  attr_reader :employee
-
-  def initialize(employee)
-    @employee = employee
-  end
-end
-
-class Person
-  attr_reader :name, :email
-
-  def initialize(name, email)
-    @name = name
-    @email = email
-  end
-end
-
-bobby = Person.new('Bobby', 'bobby@korium.com')
-korium = Company.new(bobby)
+project = Project.new(name: "Mes supers travaux")
+room    = Room.new(project: project)
+puts room.project.name
+# => "Mes supers travaux"
 ```
 
-In this context if I wanted to access Drivy’s employee name I woud probably do the following:
+Mainteant imaginons qu'aucun projet ne soit rattaché à la *room*
 
 ```ruby
-puts korium.employee.name
-# => Bobby
-```
-
-However, this only works in an environment where none of the elements in the chain (except possibly for the last one) can be nil. Now, let’s imagine a case where the company does not really have any employee. The korium object would be instantiated as follows and the above code would raise an error:
-
-```ruby
-korium = Company.new(nil)
-
-puts korium.employee.name
+room    = Room.new(project: project)
+puts room.project.name
 # => NoMethodError: undefined method `name' for nil:NilClass
 ```
 
-In order to prevent this behaviour, ruby has the & operator (since version 2.3) which behaves a bit like the try method in rails. It tries to fetch the object attribute and returns nil if any element in the chain is nil. For instance:
+Pour prévenir ce type d'erreur nous allons ajouter l'opérateur `&`. Il va essayer la méthode et si elle ne fonctionne pas cela renvoie `nil`.
 
 ```ruby
-korium = Company.new(nil)
-
-puts korium&.employee&.name
+room    = Room.new(project: project)
+puts room&.project&.name
 # => nil
-
-google = Company.new(bobby)
-puts google&.employee&.name
-# => Bobby
 ```
 
 ### Les procs
 
-Finally I’d like to share a ruby idiom which allows to nicely shorten some statements and improve readability :)
+Les procs sont très utiles quand vous souhaitez itérer sur des objets et retirer une valeur unique.
 
-You may have already seen things such as:
+Commencons par un exemple sur un tableau de chiffres que nous voulons transformer en string.
 
 ```ruby
-[1,2,3].reduce(&:+)
-# => 6
-
+[1,2,3].map { |number| number.to_s }
+# => ["1", "2", "3"]
 [1,2,3].map(&:to_s)
 # => ["1", "2", "3"]
 ```
 
-When ruby sees the & followed by a symbol, it calls the to_proc method on the symbol and passes the proc as a block to the method.
-
-The above examples are equivalent to writing:
+Mainteant imaginons une classe `Room` avec une variable d'instance `.wall_surface`. Je veux récuperer toutes les valeurs et les sommer.
 
 ```ruby
-[1,2,3].reduce(0) do |sum, num|
-  sum + num
-end
-# => 6
+@rooms = Room.all
 
-[1,2,3].map do |n|
-  n.to_s
-end
-# => ["1", "2", "3"]
+@rooms.sum { |room| room.wall_surface }
+# équivalent à
+@rooms.sum(&:wall_surface)
+```
+
+On peut écrire ses propres *proc*. Dans notre cas on va sommer toutes les surfaces plus 10.
+
+```ruby
+wall_surface_plus_ten = Proc.new {|x| x.wall_surface + 10 }
+
+@rooms = Room.all
+@rooms.sum(&wall_surface_plus_ten)
 ```
 
 ### La méthode *send*
@@ -141,3 +115,14 @@ end
 ```
 
 La documentation se trouve [ici](https://apidock.com/ruby/Object/send)
+
+### L'itérateur *reduce*
+
+```ruby
+[1,2,3].reduce(0) do |sum, num|
+  sum + num
+end
+# => 6
+```
+
+La documentation se trouve [ici](https://apidock.com/ruby/Enumerable/reduce)
