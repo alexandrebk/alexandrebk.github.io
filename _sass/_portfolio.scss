@@ -21,3 +21,11 @@
 .pull-right{
   float: right;
 }
+
+@media (max-width: 720px) {
+  .portfolio img {
+    width:         100%;
+    margin-right:  0;
+    margin-bottom: 1rem;
+  }
+}

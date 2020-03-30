@@ -1,30 +1,30 @@
 header {
   font-family: 'Source Sans Pro', sans-serif;
   font-weight: bold;
-  padding: 10px;
+  padding:     10px;
 }
 
 header nav {
-  float: left;
+  float:       left;
   padding-top: 14px;
 }
 
-nav a {
-  display: inline-block;
-  margin-right: 1.2em;
+nav li, nav a {
+  display:        inline-block;
+  margin-right:   1.2em;
   padding-bottom: 0.2em;
-  font-weight: normal;
-  border-bottom: 3px solid transparent;
+  font-weight:    normal;
+  border-bottom:  3px solid transparent;
   text-transform: uppercase;
 }
 
-nav a:last-child {
+nav li:last-child {
   margin-right: 0;
 }
 
 nav a:hover {
   text-decoration: none;
-  border-bottom: 3px solid #3073b3;
+  border-bottom:   3px solid #3073b3;
 }
 
 nav a.selected {
@@ -39,11 +39,23 @@ nav a.selected:hover {
   margin-bottom: 10px;
 }
 
+.navbar {
+  padding: 0px !important;
+}
+
 .avatar {
-  border-radius: 50%;
-  max-width: 50px;
+  border-radius:  50%;
+  max-width:      50px;
   vertical-align: -9px;
-  margin-left: 12px;
+  margin:         0 12px;
+}
+
+.d-avatar {
+  display:     flex;
+  align-items: center;
+  @media (max-width: 720px) {
+    flex-direction: row-reverse;
+  }
 }
 
 .name {
@@ -53,3 +65,33 @@ nav a.selected:hover {
 .name p{
   margin-bottom: 0;
 }
+
+nav button {
+  display: none;
+}
+
+ul#list {
+  display: -webkit-inline-box;
+}
+
+.navbar-collapse {
+  flex-basis: unset !important;
+  flex-grow:  unset !important;
+}
+
+.collapse:not(.show) {
+  display: block !important;
+}
+
+@media (max-width: 720px) {
+  nav button {
+    display: block;
+  }
+  ul#list {
+    display: flex;
+  }
+  .collapse:not(.show) {
+    display: none !important;
+  }
+}
+

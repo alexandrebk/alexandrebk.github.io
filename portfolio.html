@@ -3,21 +3,23 @@ layout: default
 title: Portfolio
 ---
 
-<div class="inner">
-  <h1>Mon Portfolio</h1>
+<div class="container">
+  <div class="inner">
+    <h1>Mon Portfolio</h1>
 
-  <ul>
-    {% for project in site.data.portfolio %}
-      <li>
-        <div class="portfolio">
-          <a href="{{ project.link }}" target="_blank">
-          <img class="inline pull-right" src="{{ project.img }}" alt="">
-          <h2>{{ project.title }}</h2>
-          </a>
-          <p>{{ project.content }}</p>
-          <p><strong>Technologies : </strong>{{ project.techno }}</p>
-        </div>
-      </li>
-    {% endfor %}
-  </ul>
+    <ul>
+      {% for project in site.data.portfolio %}
+        <li>
+          <div class="portfolio">
+            <a href="{{ project.link }}" target="_blank">
+              <img class="inline pull-right" src="{{ project.img }}" alt="">
+              <h2>{{ project.title }}</h2>
+            </a>
+            <p>{{ project.content }}</p>
+            <p><strong>Technologies : </strong>{{ project.techno }}</p>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
 </div>

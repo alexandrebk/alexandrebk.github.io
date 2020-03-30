@@ -3,21 +3,23 @@ layout: default
 title: Blog
 ---
 
-<div class="inner">
-  <h1>Blog tech sur Ruby on Rails</h1>
-  <ul>
-    {% for post in site.posts %}
-      {% if post.status == 'tech' %}
-        <li>
-          <div class="post">
-            <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
-            <p>
-              <b>{{ post.date | date: "%d/%m/%Y" }} </b>
-              - {{ post.description }}
-            </p>
-          </div>
-        </li>
-      {% endif %}
-    {% endfor %}
-  </ul>
+<div class="container">
+  <div class="inner">
+    <h1>Blog tech sur Ruby on Rails</h1>
+    <ul>
+      {% for post in site.posts %}
+        {% if post.status == 'tech' %}
+          <li>
+            <div class="post">
+              <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+              <p>
+                <b>{{ post.date | date: "%d/%m/%Y" }} </b>
+                - {{ post.description }}
+              </p>
+            </div>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
 </div>
