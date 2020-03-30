@@ -1,28 +1,37 @@
 <div class="container">
-  <header class="inner  border-bottom border-dark d-flex align-items-center justify-content-center">
-    <nav class="mr-auto p-2">
-      <a class="{% if page.url == '/' %} selected {% endif %}" href="/">
-        Home
-      </a>
-      <a class="{% if page.url == '/blog' %} selected {% endif %}" href="/blog">
-        Blog
-      </a>
-      <a class="{% if page.url == '/portfolio' %} selected {% endif %}" href="/portfolio">
-        Portfolio
-      </a>
-      <a class="{% if page.url == '/contact' %} selected {% endif %}" href="http://www.alexandrebouvier.fr/curriculum-vitae/curriculum-vitae.pdf" target="_blank">
-        CV
-      </a>
-    </nav>
+  <header class="inner border-bottom border-dark d-flex align-items-center justify-content-center">
 
-    <div class="pull-right d-flex align-items-center">
-      <div class="name">
-        <p>Alexandre Bouvier</p>
-        <small>
-          <em>Développeur et Formateur</em>
-        </small>
+    <nav class="navbar navbar-light light-blue lighten-4 w-100">
+      <button class="navbar-toggler toggler-example" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1"
+        aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation"><span class="dark-blue-text"><i class="fas fa-bars fa-1x"></i></span></button>
+
+      <div class="d-avatar pull-right">
+        <img class="avatar" src="/images/alexandrebk.jpeg" alt="My profile picture" />
+        <div class="name">
+          <p>Alexandre Bouvier</p>
+          <small>
+            <em>Développeur et Formateur</em>
+          </small>
+        </div>
       </div>
-      <img class="avatar" src="/images/alexandrebk.jpeg" alt="My profile picture" />
-    </div>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent1">
+        <ul id="list" class="navbar-nav mr-auto p-2">
+          <li class="nav-item active">
+            <a class="nav-link {% if page.url == '/' %} selected {% endif %}" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if page.url == '/blog' %} selected {% endif %}" href="/blog">Blog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if page.url == '/portfolio' %} selected {% endif %}" href="/portfolio">Portfolio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link {% if page.url == '/contact' %} selected {% endif %}" href="http://www.alexandrebouvier.fr/curriculum-vitae/curriculum-vitae.pdf" target="_blank">CV</a>
+          </li>
+        </ul>
+      </div>
+
+    </nav>
   </header>
 </div>
