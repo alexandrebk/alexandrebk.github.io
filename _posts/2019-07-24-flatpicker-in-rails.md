@@ -153,3 +153,8 @@ Maintenant je vais cacher les champs du dates pour ne laisser apparaître que le
 ### Bonus pour vérifier les dates en back-end
 
 Si vous souhaitez effectuer une vérification sur les dates avant d'enregistrer la réservation, vous pouvez utiliser la méthode [overlaps?](https://apidock.com/rails/Range/overlaps%3F)
+
+
+### Bonus bis pour afficher le prix total de façon dynamique
+
+Souvent sur ce type d'application, le prix total s'affiche et se modifie en fonction des dates sélectionnées. Le tuto pour l'affichage dynamique, c'est [ici](/2020/03/31/dynamic-element.html)
