@@ -26,8 +26,7 @@ Vous trouverez la doc de la `gem` [ici](https://github.com/Casecommons/pg_search
 
 gem 'pg_search'
 ```
-puis on lance l'installation grâce à `bundle install`
-
+Puis on lance l'installation grâce à `bundle install`
 ```shell
 # Gemfile
 
@@ -36,7 +35,7 @@ bundle install
 <br>
 #### 1.2 On crée un scope dans le modèle
 
-Nous allons commencer par une recherche globale par mots-clés dans les colonnes `description` et `address` du modèle Flat.
+Nous allons commencer par une recherche par mots-clés sur les colonnes `description` et `address` des Flat.
 
 ```ruby
 # app/models/flat.rb
@@ -56,7 +55,7 @@ end
 
 Pour vérifier que le scope fonctionne, je teste en console.
 
-```shell
+```ruby
 # rails c
 
 Flat.search_by_description_and_address('Gaudelet')
@@ -95,7 +94,7 @@ flats_filter = params[:flats_filter]
 
 if flats_filter.present?
   if flats_filter[:search].present?
-    @flats = Flat.search_by_description_and_address("%#{flats_filter[:search]}%")
+    @flats = Flat.search_by_description_and_address(flats_filter[:search])
   end
 end
 ```
@@ -165,7 +164,8 @@ end
 <br>
 #### 3.2 On vérifie la disponibilité des appartements
 
-On définie une méthode de classe `is_available?` dans le modèle `Flat.rb` qui prend comme argument la date d'entrée `start_date` et la date de départ `end_date` choisies par l'utilisateur. Dans cette méthode, on compare les dates sélectionnées par l'utilisateur avec les dates des bookings associées à l'appartement. Pour cela on utilise `overlaps?`. La doc est [ici](https://apidock.com/rails/Range/overlaps%3F).
+On définie une méthode d'instance `is_available?` avec deux arguments (la date d'entrée et la date de sortie) dans le modèle `Flat.rb`.
+Dans cette méthode on compare les dates recherchées avec les dates de réservation. Pour cela on utilise `overlaps?` (cf. [documentation](https://apidock.com/rails/Range/overlaps%3F)).
 
 ```ruby
 #app/models/flat.rb
@@ -185,7 +185,7 @@ end
 
 #### 3.3 On affiche les appartements disponibles.
 
-Grâce à la méthode `select` je sélectionne les appartements qui retourne `true` avec `is_available?` en fonction des dates choisies par l'utilisateur.
+Grâce à la méthode `select` je sélectionne les appartements disponibles (c'est-à-dire qui retourne `true` à `is_available?`).
 
 ```ruby
 #app/controllers/flat_controller.rb
