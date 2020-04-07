@@ -6,7 +6,7 @@ difficulty: 1
 status: tech
 ---
 
-<a href="https://dashboard.heroku.com/apps" target="_blank">Allez sur votre dashboard</a> puis dans votre application.
+<a href="https://dashboard.heroku.com/apps" target="_blank">Allez sur votre dashboard Heroku</a> puis cliquez sur le nom de votre application.
 
 ### Première étape
 
@@ -20,10 +20,12 @@ Ajoutez son email
 
 ### Seconde étape
 
-Ensuite vos collaborateurs doivent ajouter dans leur repo la commande suivante :
+Ici l'application s'appelle `airbnb-copycat`
+
+Vos collaborateurs devraient lancer la commande suivante dans leur terminal :
 
 ```sh
 heroku git:remote -a airbnb-copycat
 ```
 
-En remplacant `airbnb-copycat` par le nom Heroku de votre application.
+Dans votre cas, remplacez `airbnb-copycat` par le nom Heroku de votre application.
