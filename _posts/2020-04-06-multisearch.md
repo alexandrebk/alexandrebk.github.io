@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Ajouter un formulaire de recherche multi critères"
+title:  "Ajouter un formulaire de recherche multi-critères"
 description: "Dans ce tuto nous allons ajouter un formulaire de recherche selon plusieurs critères."
 status: tech
 ---
@@ -28,9 +28,7 @@ gem 'pg_search'
 ```
 Puis on lance l'installation grâce à `bundle install`
 ```shell
-# Gemfile
-
-bundle install
+$ bundle install
 ```
 <br>
 #### 1.2 On crée un scope dans le modèle
