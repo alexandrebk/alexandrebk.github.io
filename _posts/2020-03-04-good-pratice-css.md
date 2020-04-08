@@ -8,7 +8,7 @@ status: tech
 
 ### Première étape : Les noms des fichiers
 
-Voici ce qu'il ne faut pas faire
+Prenons un exemple d'organisation de dossier *css*.
 
 ```
 ├── application.scss
@@ -44,7 +44,10 @@ Voici ce qu'il ne faut pas faire
     └── _show.scss
 ```
 
-Voici ce qu'il faut faire.
+Dans cet exemple on peut noter que le dossier css est divisé en sous-dossiers *components*, *config* et *pages*. C'est un bon point. Cependant il est difficile de s'y retrouver dans ces sous-dossiers.
+On remarque par exemple que dans le dossier *components*, les trois premiers fichiers commencent par `card`. `card` étant un composant, ces fichiers devraient être regroupés en un seul nommé `_card.scss`.
+
+En suivant cette règle, voici l'organisation que nous devrions avoir :
 
 ```
 ├── application.scss
@@ -68,7 +71,9 @@ Voici ce qu'il faut faire.
 
 ### Seconde Étape: Le nom des classes
 
-Voici ce qu'il ne faut pas faire.
+Après avoir vu l'organisation des dossiers et fichiers css. Regardons l'organisation des classes dans un fichier css.
+
+Prenons comme exemple ce fichier :
 
 ```scss
 .card-scrims {
@@ -111,9 +116,9 @@ Voici ce qu'il ne faut pas faire.
 }
 ```
 
-Voici ce qu'il faut faire.
-
 Tout d'abord réunir toutes les *cards* dans un même fichier.
+
+Nous remarquons la répétition de `.card-scrims`. Pour éviter cette répétition, nous allons nester les éléments.
 
 Ensuite renommer certaines classes. Par exemple pour `.card-scrims-infos`, nous allons la remplacer par `.infos`. Et nous allons facilement la cibler grâce au *nesting*.
 
