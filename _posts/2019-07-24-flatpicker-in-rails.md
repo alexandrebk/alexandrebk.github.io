@@ -1,18 +1,20 @@
 ---
 layout: post
-title:  "Comment gérer des dates avec FlatPickr dans des formulaires"
-description: "Dans ce tuto nous allons apprendre à installer Flatpickr dans une application Rails et comment griser des dates."
+title:  "Ajouter un calendrier Flatpickr pour gérer les dates disponibles"
+description: "Dans ce tuto nous allons apprendre à installer Flatpickr dans une application Rails et à gérer les dates disponibles."
 status: tech
 ---
 
-La doc officielle de flatpicker est disponible [ici](https://flatpickr.js.org/examples/#basic)
+Les éléments UX comme les formulaires, les calendriers, les sélecteurs de date sont difficiles à mettre en oeuvre. Pourtant ce sont les éléments que tous vos utilisateurs attendent avec évidence sur votre application. Heureusement il existe souvent des plugins qui nous évite des heures de code.
+
+Pour afficher un calendrier sélecteur de dates, nous allons utiliser `Flatpickr`.
 
 ### Première étape : installation
 
-Tout d'abord il faut ajouter le module flatpickr dans votre application.
+Tout d'abord il faut ajouter le package flatpickr dans votre application.
 
 ```sh
-yarn add flatpickr
+$ yarn add flatpickr
 ```
 
 Ensuite on va ajouter Webpack à votre `layout/application.html` si ce n'est pas déjà fait :
@@ -68,9 +70,12 @@ Nous allons maintenant créer notre formulaire dans la page `show` des `Flat`.
 </div>
 ```
 
-### Seconde étape : le controlleur
+<img src="/images/posts/flatpickr/flatpickr-avec-input.png" class="image" alt="calendrier flatpickr">
 
-Maintenant que le formulaire est créé nous allons créer un tableau de hash avec toutes les locations déjà existantes. Comme dans toutes les méthodes `show` on récupère d'abord l'id de l'appartement. Puis on regarde quand il est loué. Enfin, avec une méthode `.map` on transforme les réservations en hash avec la date de début et de fin.
+
+### Seconde étape : le contrôleur
+
+Maintenant que le formulaire est créé nous allons créer un tableau de hash avec les locations déjà existantes. On récupère d'abord l'id de l'appartement. Enfin, avec une méthode `.map` on transforme les réservations en hash avec la date de début et de fin.
 
 
 ```ruby
@@ -94,7 +99,7 @@ end
 
 ### Troisième étape : on passe les données à la vue
 
-Une fois le tableau de hash créé, on le place dans la vue sous forme de data-set.
+Une fois créé, on place le tableau de hash dans la vue sous forme de data-set.
 
 ```erb
 <!-- app/views/flats/show.html.erb -->
@@ -108,7 +113,7 @@ Une fois le tableau de hash créé, on le place dans la vue sous forme de data-s
 ### Quatrième étape : on récupère les données pour les injecter dans le calendrier
 
 
-Dans le fichier `app/javascript/plugins/flatpickr.js` on récupère les données dans la div `getElementbyID`. On les parse en Json puis on grise les bookings avec le `disable`.
+Dans le fichier `app/javascript/plugins/flatpickr.js` on récupère les données dans la div `getElementbyID`. On les parse en JSON puis on grise les réservations avec le `disable`.
 
 ```js
 // app/javascript/plugins/flatpickr.js
@@ -131,9 +136,14 @@ import rangePlugin from "flatpickr/dist/plugins/rangePlugin"
 }
 ```
 
+<img src="/images/posts/flatpickr/gif-flatpickr-disable.gif" class="image" alt="flatpickr dates grisées">
+
+
 ### Cinquième étape : afficher uniquement le calendrier
 
-Maintenant je vais cacher les champs du dates pour ne laisser apparaître que le calendrier. Tout d'abord il faut ajouter un label pour que l'utilisateur comprenne à quoi sert ce calendrier. Ensuite on va cacher les deux champs avec la classe Bootstrap `d-none`.
+Maintenant on va cacher les champs du dates pour ne laisser apparaître que le calendrier.
+
+Tout d'abord, il faut ajouter un label au calendrier. Ensuite on va cacher les deux champs avec la classe Bootstrap `d-none`.
 
 ```erb
 <!-- app/views/flats/show.html.erb -->
@@ -150,6 +160,8 @@ Maintenant je vais cacher les champs du dates pour ne laisser apparaître que le
 </div>
 ```
 
+<img src="/images/posts/flatpickr/flatpickr-sans-input.png" class="image" alt="calendrier flatpickr">
+
 ### Bonus pour vérifier les dates en back-end
 
 Si vous souhaitez effectuer une vérification sur les dates avant d'enregistrer la réservation, vous pouvez utiliser la méthode [overlaps?](https://apidock.com/rails/Range/overlaps%3F)
@@ -158,3 +170,5 @@ Si vous souhaitez effectuer une vérification sur les dates avant d'enregistrer 
 ### Bonus bis pour afficher le prix total de façon dynamique
 
 Souvent sur ce type d'application, le prix total s'affiche et se modifie en fonction des dates sélectionnées. Le tuto pour l'affichage dynamique, c'est [ici](/2020/03/31/dynamic-element.html)
+
+La doc officielle de flatpicker est disponible [ici](https://flatpickr.js.org/examples/#basic)
