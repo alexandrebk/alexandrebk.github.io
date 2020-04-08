@@ -142,6 +142,7 @@ import rangePlugin from "flatpickr/dist/plugins/rangePlugin"
 ### Cinquième étape : afficher uniquement le calendrier
 
 Maintenant on va cacher les champs du dates pour ne laisser apparaître que le calendrier.
+
 Tout d'abord, il faut ajouter un label au calendrier. Ensuite on va cacher les deux champs avec la classe Bootstrap `d-none`.
 
 ```erb
