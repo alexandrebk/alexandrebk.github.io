@@ -28,4 +28,4 @@ Vos collaborateurs devraient lancer la commande suivante dans leur terminal :
 heroku git:remote -a airbnb-copycat
 ```
 
-Dans votre cas, remplacez `airbnb-copycat` par le nom Heroku de votre application.
+Dans votre cas, remplacez `airbnb-copycat` par le nom de votre application.
