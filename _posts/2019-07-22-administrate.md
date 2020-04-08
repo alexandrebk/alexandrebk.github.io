@@ -6,7 +6,9 @@ difficulty: 3
 status: tech
 ---
 
-Nous supposons qu'il y a un modèle `Flat` et un model `Booking` qu'il y'a déjà une application Rails avec plusieurs modèles. Nous allons laisser la possibilité aux administrateurs du site de créer ou de modifier des réservations.
+Tous les administrateurs de votre web-app ne sont pas forcément des développeurs. Administrate permet de créer rapidement une interface d'administration accessible par certains utilisateurs.
+
+Nous supposons qu’il y a déjà une application Rails avec un modèle `Flat` et un modèle `Booking`. Grâce à Administrate, vos administrateurs pourront créer ou modifier des réservations, des appartements...
 
 ### Première étape : ajouter la gem
 
@@ -19,19 +21,21 @@ Il faut ajouter `administrate` dans le gemfile.
 gem 'administrate'
 ```
 
-Ensuite on lance
+Ensuite on lance l'installation
 
 ```sh
 $ bundle install
 ```
 
-### Seconde étape : créer les routes et les controllers
+### Seconde étape : créer les routes et les contrôleurs
 
 ```sh
 $ rails generate administrate:install
 ```
 
 Le dashboard est maintenant disponible sur [localhost:3000/admin](localhost:3000/admin)
+
+<img src="/images/posts/administrate/administrate-bookings-before.png" class="image" alt="administrate">
 
 Dans le fichier `routes.rb` on peut voir que les routes ont été générées automatiquement.
 
@@ -52,19 +56,22 @@ end
 
 Des contrôleurs ont été créé dans `app/controllers/admin` ainsi que des modèles dans `app/dashboards`.
 
-Pour modifier les options d'edit et de new il faut aller dans les controllers (voir la [doc](https://administrate-prototype.herokuapp.com/customizing_controller_actions)). Par exemple si vous souhaitez envoyer un email après avoir modifié un `booking`.
-
-Pour modifier ce qui est affiché dans les dashboard il faut aller dans les modèles.
-
-Dans l'array `COLLECTION_ATTRIBUTES` vous avez ce qui est affiché dans l'index. Dans l'array `SHOW_PAGE_ATTRIBUTES`, vous avez ce qui est affiché sur la page show de la partie admin.
-
-Et dans `FORM_ATTRIBUTES`, vous avez les variables qui s'affichent lorsque vous créez un nouvel object dans administrate.
-
 Vous pouvez enlevez ou ajouter des variables venant de l'array `ATTRIBUTE_TYPES`.
+
+Pour modifier les options d'*edit* et de *new* il faut aller dans les contrôleurs (plus de détails dans la [doc](https://administrate-prototype.herokuapp.com/customizing_controller_actions)). Par exemple si vous souhaitez envoyer un email après avoir modifié un `booking`.
+
+Pour modifier ce qui est affiché dans les vues il faut aller dans le dossier app/dashboards.
+
+Dans l'array `COLLECTION_ATTRIBUTES` vous avez les variables affichées dans l'*index*. Dans l'array `SHOW_PAGE_ATTRIBUTES`, vous avez ce qui est affiché dans la *show*.
+
+Et dans `FORM_ATTRIBUTES`, vous avez les variables qui s'affichent dans les formulaires d'*edit* ou de *new*.
+
 
 ### Troisième étape : modifier les vues
 
 Si on va sur l'adresse [localhost:3000/admin](localhost:3000/admin) on se rend compte que les `Flat` et les `User` sont écrits avec leur `id` ce qui n'est pas très lisible.
+
+<img src="/images/posts/administrate/administrate-bookings-before.png" class="image" alt="administrate">
 
 On va donc ajouter une méthode dans le `user_dashboard` pour afficher le nom des utilisateurs correctement.
 
@@ -92,11 +99,9 @@ class FlatDashboard < Administrate::BaseDashboard
 end
 ```
 
-### Quatrième étape : ajoutez une variable d'instance
+<img src="/images/posts/administrate/administrate-bookings-after.png" class="image" alt="administrate">
 
-Pour ajouter des données modifiables il faut aller dans `app/dashboards` et modifier le `dashboard` correspondant. Par exemple `booking_dashboard.rb` si on veut ajouter un attribut dans le modèle `Booking`.
-
-### Cinquième étape : créer un dashboard additionel
+### Quatrième étape : créer un dashboard additionel
 
 Si on ajoute un nouveau modèle dans notre app, par exemple `Foo`, il faut générer les outils `administrate` avec la commande suivante.
 
@@ -104,7 +109,7 @@ Si on ajoute un nouveau modèle dans notre app, par exemple `Foo`, il faut gén�
 $ rails generate administrate:dashboard Foo
 ```
 
-### Sixième étape : protéger l'accès par un mot de passe.
+### Cinquième étape : protéger l'accès par un mot de passe.
 
 Tout le monde ne doit pas avoir accès à la partie administration sous peine de pouvoir modifier toutes les données de votre site. Afin de protéger la partie Admin de votre site, vous pouvez rajouter une authentification:
 
