@@ -60,7 +60,7 @@ Vous pouvez enlevez ou ajouter des variables venant de l'array `ATTRIBUTE_TYPES`
 
 Pour modifier les options d'*edit* et de *new* il faut aller dans les contrôleurs (plus de détails dans la [doc](https://administrate-prototype.herokuapp.com/customizing_controller_actions)). Par exemple si vous souhaitez envoyer un email après avoir modifié un `booking`.
 
-Pour modifier ce qui est affiché dans les vues des dashboards il faut aller dans les modèles.
+Pour modifier ce qui est affiché dans les vues il faut aller dans le dossier app/dashboards.
 
 Dans l'array `COLLECTION_ATTRIBUTES` vous avez les variables affichées dans l'*index*. Dans l'array `SHOW_PAGE_ATTRIBUTES`, vous avez ce qui est affiché dans la *show*.
 
