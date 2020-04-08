@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Images avec Active Storage et AWS"
+title:  "Ajouter plusieurs images à un modèle avec Active Storage"
 description: "Dans ce tuto nous allons apprendre comment ajouter plusieurs images à un modèle avec Active Storage et Amazon Web Services."
 status: tech
 ---
@@ -17,13 +17,13 @@ gem 'activestorage'
 On va l'installer avec la commande `rails active_storage:install` et créer les tables liant les photos aux modèles avec `rails db:migrate`.
 
 ```sh
-rails active_storage:install
-rails db:migrate
+$ rails active_storage:install
+$ rails db:migrate
 ```
 
 ### Seconde Étape: Ajouter les images au model
 
-Ensuite nous allons attacher des images à notre modèle `Flat`. Attention, contrairement à d'autres gems, il n'y a pas besoin de créer une nouvelle colonne dans la table du modèle.
+Ensuite nous allons attacher des images à notre modèle `Flat`. Attention, contrairement à d'autres gems, il n'y a pas besoin de créer un nouveau champ.
 
 ```ruby
 class Flat < ApplicationRecord
@@ -85,6 +85,8 @@ Comme je récupère un tableau d'images, je vais pouvoir itérer dessus et les i
 </div>
 ```
 
+<img src="/images/posts/active-storage/new_flat.gif" class="image">
+
 ### Quatrième Étape: Configurer AWS sur la prod
 
 Le setup étant terminé pour l'environnement local, nous allons installer AWS sur la prod. Tout d'abord il faut ajouter la gem AWS dans le `Gemfile` et l'installer avec `bundle install`
@@ -120,17 +122,17 @@ Pour le nom il faut être le plus clair possible en explicitant le nom du bucket
 
 3 - Créer un utilisateur
 
-Pour les utilisateurs il faut choisir un nom d'utilisateur et ensuite un service. Ici ca sera encore une fois S3. Ensuite on va sur l'onglet `Attacher les stratégies` pour ajouter celle qu'on a crée juste avant. Pour les étapes 3 et 4 on peut mettre OK. AWS va ensuite nous donner les clés API que l'on doit mettre sur Heroku sous le nom de `S3_ACCESS_KEY_ID` et `S3_SECRET_ACCESS_KEY`.
+Pour les utilisateurs il faut choisir un nom d'utilisateur et ensuite un service. Ici ça sera encore une fois S3. Ensuite on va sur l'onglet `Attacher les stratégies` pour ajouter celle qu'on a crée juste avant. Pour les étapes 3 et 4 on peut mettre OK. AWS va ensuite nous donner les clés API que l'on doit mettre sur Heroku sous le nom de `S3_ACCESS_KEY_ID` et `S3_SECRET_ACCESS_KEY`.
 
 <img src="/images/posts/active-storage/14.png" class="image">
 
 <img src="/images/posts/active-storage/15.png" class="image">
 
-Et pour le type d'accès ca sera `programatique` c'est à dire que c'est un programme qui va y accéder et non un humain. Il n'y aura pas de mot de passe mais un token.
+Et pour le type d'accès ça sera `programatique` c'est à dire que c'est un programme qui va y accéder et non un humain. Il n'y aura pas de mot de passe mais un token.
 
 <img src="/images/posts/active-storage/13.png" class="image">
 
-### Cinquième Étape: Configuration les variables d'environnement.
+### Cinquième Étape: Configuration des variables d'environnement.
 
 Il faut spécifier à Heroku (c'est à dire sur l'environnement de production) que Active Storage doit utiliser Amazon pour le stockage d'image.
 
@@ -185,6 +187,10 @@ flat.images.attach(io: File.open(my_second_image_path), filename: 'image_name.pn
 
 ### [BONUS] Customiser sa zone de téléchargement
 
+Le champ d'upload a nativement très peu de style.
+
+<img src="/images/posts/active-storage/upload-before.png" class="image">
+
 Tout d'abord, nous allons modifier notre formulaire. Attention il faut que le label ait le même nom que votre l'id de votre input Simple Form. Dans notre cas c'est `flat_images`. Pour une image cela aurait été `flat_image`. Je rajoute un div qui va accueillir le nom des fichiers. Et j'ajoute la classe `d-none` à l'ancien input de téléchargement des images.
 
 ```erb
@@ -218,3 +224,5 @@ $("#flat_images").change(function() {
   });
 });
 ```
+
+<img src="/images/posts/active-storage/custom-upload.gif" class="image">
