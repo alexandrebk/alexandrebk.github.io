@@ -34,7 +34,7 @@ puts room.project.name
 # => "Mes supers travaux"
 ```
 
-Mainteant imaginons qu'aucun projet ne soit rattaché à la *room*
+Maintenant imaginons qu'aucun projet ne soit rattaché à la *room*
 
 ```ruby
 room    = Room.new(project: project)
@@ -86,7 +86,7 @@ wall_surface_plus_ten = Proc.new {|x| x.wall_surface + 10 }
 
 La méthode *send* permet d'appeler une méthode sur un objet en lui passant une *string* et possiblement une *string* avec une interpollation.
 
-Imaginons que j'ai `Room` et que je récupères plusieurs instance de ce modèle. Je veux changer plusieurs variables d'instance en même temps.
+Imaginons que j'ai `Room` et que je récupère plusieurs instances de ce modèle. Je veux changer plusieurs variables d'instance en même temps.
 
 ```ruby
 def should_paint_all
