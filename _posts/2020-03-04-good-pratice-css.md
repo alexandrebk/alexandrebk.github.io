@@ -45,7 +45,7 @@ Prenons un exemple d'organisation de dossier *css*.
 ```
 
 Dans cet exemple on peut noter que le dossier css est divisé en sous-dossiers *components*, *config* et *pages*. C'est un bon point. Cependant il est difficile de s'y retrouver dans ces sous-dossiers.
-On remarque par exemple que dans le dossier *components*, les trois premiers fichiers commencent par `card`. `card` étant un composant, ces fichiers devraient être regroupés en un seul nommé `_card.scss`.
+On remarque par exemple que dans le dossier *components*, les trois premiers fichiers commencent par `card`. `card` étant un composant, ces fichiers devraient être regroupés en un seul nommé `_cards.scss`.
 
 En suivant cette règle, voici l'organisation que nous devrions avoir :
 
