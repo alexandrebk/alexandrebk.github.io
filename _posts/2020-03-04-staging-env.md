@@ -20,7 +20,7 @@ Pour l'environnement de **production**, nous allons rechercher l'application dé
 Ensuite, nous allons faire pointer **heroku** dans notre terminal vers l'application de **staging**.
 
 ```
-heroku git:remote -a airbnb-copycat-staging
+$ heroku git:remote -a airbnb-copycat-staging
 ```
 
 ### Seconde Étape: Setup de la nouvelle database
@@ -28,7 +28,7 @@ heroku git:remote -a airbnb-copycat-staging
 Ensuite, vous devez créer une base de donnée avec la commande :
 
 ```
-heroku addons:create heroku-postgresql:hobby-dev
+$ heroku addons:create heroku-postgresql:hobby-dev
 ```
 
 Dans le fichier `config/database.yml` ajouter le code suivant à la fin du fichier en remplaçant `airbnb-copycat-staging` par le nom de votre application. Pour le *username* et le *password*, vous pouvez gardez les mêmes valeurs que la **production**.
