@@ -1,6 +1,6 @@
 ---
 layout:      post
-title:       "Liste déroulante et étoiles pour Simple Form"
+title:       "Ajouter une évaluation en étoiles  avec Javascript et afficher la note moyenne"
 description: "Dans ce tuto nous allons apprendre à ajouter des reviews sur notre application de réservations d’appartement avec une liste déroulante grâce à simple form."
 difficulty:  1
 status:      tech
@@ -13,13 +13,13 @@ Nous supposons qu’il y a une application Ruby on Rails de location d'apparteme
 Tout d’abord nous allons générer une migration pour créer la table *reviews*.
 
 ```sh
-rails generate model Review content:text rating:integer user:references booking:references
+$ rails generate model Review content:text rating:integer user:references booking:references
 ```
 
 Puis on lance la migration.
 
 ```sh
-rails db:migrate
+$ rails db:migrate
 ```
 
 ### Seconde étape : Le modèle
@@ -62,9 +62,10 @@ class Flat < ApplicationRecord
 end
 ```
 
-### Troisième étape : Les routes et le *Controlleur*
+### Troisième étape : Les routes et le contrôleur
 
 Nous allons ajouter une route pour la création d'une *review*.
+Une évaluation appartient à une réservation. Donc nous allons nester les `reviews` dans les `bookings`.
 
 ```ruby
 # config/routes.rb
@@ -79,13 +80,14 @@ end
 Ensuite on va générer le *controller* *reviews*.
 
 ```sh
-rails g controller reviews
+$ rails g controller reviews
 ```
 
 Ensuite nous allons dans le *controller* pour coder la méthode *create*.
 
 ```ruby
 # app/controllers/reviews_controllers.rb
+
 class ReviewsController < ApplicationController
   def create
     @booking        = Booking.find(params[:booking_id])
@@ -113,6 +115,7 @@ On ajoute une review dans la *show* d’un *booking*. Pour cela, il faut d'abord
 
 ```ruby
 # app/controllers/bookings_controller.rb
+
 class BookingsController < ApplicationController
   [..]
 
@@ -122,15 +125,26 @@ class BookingsController < ApplicationController
   end
 end
 ```
+Nous souhaitons que le formulaire d'évaluation ne s'affiche que si la réservation est terminée et que l'utilisateur n'a pas encore évalué son séjour. Pour vérifier cela, ça nous allons créer une méthode d'instance dans le modèle `Booking.rb`.
 
-Ensuite nous allons coder la vue éponyme. Le formulaire ne va apparaître que si la réservation est terminée. Pour une interface plus *friendly*, on va cacher l'input des notes et ajouter une liste d'étoiles.
+```ruby
+# app/models/booking.rb
+
+[...]
+def display_review_form(user)
+  (self.end_date < Date.today) && (self.reviews.find_by(user: user).nil?)
+end
+```
+
+Ensuite nous allons coder la vue. Pour une interface plus *friendly*, on va cacher l'input des notes et ajouter une liste d'étoiles.
 
 ```erb
 <!-- app/views/bookings/show.html.erb -->
+
 [..]
 <% if @booking.end_date < Date.today %>
   <div class="review">
-    <h2>Laissez une commentaire</h2>
+    <h2>Laissez une évaluation</h2>
     <%= simple_form_for [@booking, @review] do |f| %>
       <%= f.input :content %>
       <%= f.input :rating, as: :hidden  %>
@@ -139,7 +153,7 @@ Ensuite nous allons coder la vue éponyme. Le formulaire ne va apparaître que s
           <i id="<%= index + 1 %>"  class="review-rating far fa-star"></i>
         <% end %>
       </div>
-      <%= f.submit class: "btn btn-primary" %>
+      <%= f.submit class: "btn btn-primary", value: "Valider" %>
     <% end %>
   </div>
 <% end %>
@@ -148,8 +162,9 @@ Ensuite nous allons coder la vue éponyme. Le formulaire ne va apparaître que s
 
 ```css
 /* app/assets/stylesheets/components/_form.scss */
+
 .fa-star {
-  color:  yellow;
+  color:  #FFD700;
   cursor: pointer;
 }
 .review i {
@@ -159,13 +174,20 @@ Ensuite nous allons coder la vue éponyme. Le formulaire ne va apparaître que s
 
 ```css
 /* app/assets/stylesheets/components/_index.scss */
+
 [..]
 @import "form";
 [..]
 ```
 
+A ce stade, nous avons un formulaire qui s'affiche sur la *show* d'un `booking`.
+
+<img src="/images/posts/rating/formulaire.png" class="image" alt="formulaire">
+
+Ajoutons l'effet de *hover* au passage de la souris et la sélection du nombre d'étoiles.
 ```js
 // app/javascript/plugins/starsInReviewForm.js
+
 const toggleStarsInBlack = (rating) => {
   for (let index = 1; index <= 5; index++) {
     const star = document.getElementById(index);
