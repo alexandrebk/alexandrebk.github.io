@@ -131,7 +131,7 @@ class BookingsController < ApplicationController
   end
 end
 ```
-Nous souhaitons que le formulaire d'évaluation ne s'affiche que si la réservation est terminée et que l'utilisateur n'a pas encore évalué son séjour. Pour vérifier cela, ça nous allons créer une méthode d'instance dans le modèle `Booking.rb`.
+Nous souhaitons que le formulaire d'évaluation ne s'affiche que si la réservation est terminée, et que l'utilisateur ne l'a pas encore évalué. Pour vérifier cela, nous allons créer une méthode d'instance dans le modèle `Booking.rb`.
 
 ```ruby
 # app/models/booking.rb
@@ -142,7 +142,7 @@ def display_review_form(user)
 end
 ```
 
-Ensuite nous allons coder la vue. Pour une interface plus *friendly*, on va cacher l'input des notes et ajouter une liste d'étoiles.
+Ensuite nous allons coder la vue éponyme. Pour une interface plus *friendly*, on va cacher l'input des notes et ajouter une liste d'étoiles.
 
 ```erb
 <!-- app/views/bookings/show.html.erb -->
@@ -186,7 +186,7 @@ Ensuite nous allons coder la vue. Pour une interface plus *friendly*, on va cach
 [...]
 ```
 
-A ce stade, nous avons un formulaire qui s'affiche sur la *show* d'un `booking`.
+À ce stade, nous avons un formulaire qui s'affiche sur la *show* d'un `booking`.
 
 <img src="/images/posts/rating/formulaire.png" class="image" alt="formulaire">
 
@@ -298,7 +298,7 @@ Nous allons coder la vue éponyme.
 ### Bonus pour des listes déroulantes dans *Simple Form*
 
 Nous allons voir une autre façon d'aborder les *reviews*. Au lieu d'ajouter une évaluation depuis la *show* d'un booking, nous allons ajouter les évaluations depuis une page unique en sélectionnant le booking dans une liste déroulante.
-Attention c'est méthode ne se cumule pas à la précédente. Il s'agit d'une autre méthode. Cependant nous pouvons conserver le fichier `starsInReviewForm.js` pour le *rating* en étoiles.
+Attention c'est méthode ne se cumule pas à la précédente. Cependant nous pouvons conserver le fichier `starsInReviewForm.js` pour le *rating* en étoiles.
 
 Tout d'abord, il faut ajouter la route.
 
