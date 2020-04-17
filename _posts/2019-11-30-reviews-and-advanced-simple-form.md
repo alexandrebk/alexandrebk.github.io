@@ -363,6 +363,8 @@ Et enfin la vue.
   <%= simple_form_for [@review] do |f| %>
     <!-- On donne la liste des bookings via une collection -->
     <%= f.input :booking_id, collection: @bookings %>
+    <!-- Ou alors -->
+    <%#= f.association :booking %>
     <%= f.input :content %>
     <%= f.input :rating, as: :hidden  %>
     <div class="my-3">
