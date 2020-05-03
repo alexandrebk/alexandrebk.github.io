@@ -3,7 +3,7 @@ layout: post
 title:  "Ajouter une messagerie privée"
 description: "Dans ce tuto nous allons apprendre comment permettre aux utilisateurs de s'envoyer des messages privés."
 difficulty: 3
-status: tech
+status: draft
 ---
 
 Après avoir réservé un appartement,  nous avons souvent des questions logistiques (comment récupérer les clefs, à quelle heure...) C'est pourquoi l'utilisateur doit pouvoir envoyer un message au propriétaire depuis l'application. Pour répondre à cette problématique nous allons mettre en place une messagerie privée.
