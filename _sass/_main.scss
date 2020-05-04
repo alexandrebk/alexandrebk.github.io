@@ -1,22 +1,40 @@
-body{
+body {
   margin: 0 0;
+  color:  $black;
+  background-color: rgb(253, 255, 253);
 }
 
-a:hover {
-  text-decoration: none;
+a {
+  color: $black;
+  &:hover {
+    text-decoration: none;
+    color: $black;
+  }
 }
 
-p{
-  font-family: 'Source Sans Pro', sans-serif;
+h1, h2 {
+  font-size:   1.6rem;
+  font-family: "Open-sans", sans-serif;
+  line-height: 10rem;
+}
+
+h1 {
+  margin: 0;
+}
+
+h2 {
+  font-weight:    200;
+  text-transform: uppercase;
+}
+
+p {
+  font-family: 'Merriweather', serif;
+  font-weight: 200;
   line-height: 170%;
 }
 
-.inner h1,h2{
-  font-family: 'Alegreya', serif;
-}
-
 .inner {
-  max-width: 680px;
+  max-width: 800px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -24,4 +42,25 @@ p{
 .inner ul{
   list-style: none;
   padding-left: 0;
+}
+
+.highlighted {
+  background-color: $light-green;
+}
+
+.underlined {
+  background: linear-gradient(180deg,rgba(255,255,255,0) 60%, $light-green 50%);
+}
+
+.text-light-upcase {
+  text-transform: uppercase;
+  font-family:    "Open-sans", sans-serif;
+  font-weight:    200;
+  font-size:      0.7rem;
+  color:          $grey;
+}
+
+.page-title {
+  height:     10rem;
+  text-align: center;
 }

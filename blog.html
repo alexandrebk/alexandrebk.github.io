@@ -5,17 +5,18 @@ title: Blog
 
 <div class="container">
   <div class="inner">
-    <h1>Blog tech sur Ruby on Rails</h1>
-    <ul>
+    <div class="page-title">
+      <h2>Tous les articles</h2>
+    </div>
+    <ul class="page-blog">
       {% for post in site.posts %}
         {% if post.status == 'tech' %}
           <li>
             <div class="post">
-              <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
-              <p>
-                <b>{{ post.date | date: "%d/%m/%Y" }} </b>
-                - {{ post.description }}
-              </p>
+              <h3><span class="underlined">{{ post.title }}</span></h3>
+              <p><span class="text-light-upcase">{{ post.date | date: "%d %B %Y" }}</span></p>
+              <p>{{ post.description }}</p>
+              <a href="{{ post.url }}" class="btn-green btn-animation">Lire l'article</a>
             </div>
           </li>
         {% endif %}
