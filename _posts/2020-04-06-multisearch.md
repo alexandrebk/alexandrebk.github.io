@@ -3,6 +3,7 @@ layout: post
 title:  "Ajouter un formulaire de recherche multi-critères"
 description: "Dans ce tuto nous allons ajouter un formulaire de recherche selon plusieurs critères."
 status: tech
+tags: "search"
 ---
 
 Sur une marketplace nous avons souvent une idée de ce que l'on cherche ou des contraintes qui nous pousse à vouloir faire une recherche selon des critères particuliers. C'est l'objet de cet article. Nous allons mettre en place une barre de recherche qui va nous permettre de sélectionner uniquement les appartements qui peuvent nous intéresser.

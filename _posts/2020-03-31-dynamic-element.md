@@ -3,6 +3,7 @@ layout: post
 title:  "Afficher un élement de façon dynamique (exemple du prix)"
 description: "Dans ce tuto nous allons apprendre à afficher de façon dynamique un élement en fonction d'un autre élement variable"
 status: tech
+tags: "flatpickr, datepickr, javascript"
 ---
 
 Cet article fait suite à l'article [sur l'ajout de flatpickr](/2019/07/24/flatpicker-in-rails.html).

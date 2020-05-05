@@ -4,7 +4,7 @@
 
 .post {
   border-top: 1px solid $light-grey;
-  padding: 40px 0;
+  padding:    40px 0;
 }
 
 .btn-green {
@@ -23,8 +23,8 @@
     $green 50%,
     $green);
   background-position: 100% 0;
-    background-size:   200% 100%;
-    transition:        all .25s ease-in;
+  background-size:     200% 100%;
+  transition:          all .25s ease-in;
 }
 
 .btn-animation:hover {

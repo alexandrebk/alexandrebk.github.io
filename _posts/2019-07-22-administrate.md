@@ -4,6 +4,7 @@ title:  "Installer un back-office avec Administrate"
 description: "Dans ce tuto nous allons installer un back office avec la gem administrate."
 difficulty: 3
 status: tech
+tags: "admin, administrate, thoughbot"
 ---
 
 Tous les administrateurs de votre web-app ne sont pas forcément des développeurs. Administrate permet de créer rapidement une interface d'administration accessible par certains utilisateurs.

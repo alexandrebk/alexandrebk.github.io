@@ -3,6 +3,7 @@ layout: post
 title:  "Ajouter un calendrier Flatpickr pour gérer les dates disponibles"
 description: "Dans ce tuto nous allons apprendre à installer Flatpickr dans une application Rails et à gérer les dates disponibles."
 status: tech
+tags: "flatpickr, datepickr"
 ---
 
 Les éléments UX comme les formulaires, les calendriers, les sélecteurs de date sont difficiles à mettre en oeuvre. Pourtant ce sont les éléments que tous vos utilisateurs attendent avec évidence sur votre application. Heureusement il existe souvent des plugins qui nous évite des heures de code.

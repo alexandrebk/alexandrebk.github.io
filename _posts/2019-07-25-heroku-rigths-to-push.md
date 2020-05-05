@@ -4,6 +4,7 @@ title:  "Ajouter des collaborateurs sur Heroku"
 description: "Dans ce tuto nous allons apprendre comment authoriser les membres de votre équipe à pusher sur Heroku."
 difficulty: 1
 status: tech
+tags: "heroku"
 ---
 
 <a href="https://dashboard.heroku.com/apps" target="_blank">Allez sur votre dashboard Heroku</a> puis cliquez sur le nom de votre application.

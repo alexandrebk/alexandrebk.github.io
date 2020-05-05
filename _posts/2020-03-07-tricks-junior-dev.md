@@ -3,6 +3,7 @@ layout: post
 title:  "Méthodes utiles en Ruby pour débutant"
 description: "Dans ce tuto je vais vous présenter des méthodes très utiles que j'utilise tous les jours en Ruby"
 status: tech
+tags: "ruby"
 ---
 
 ### `||=` Assigner une valeur si et seulement elle n'est pas déjà définie

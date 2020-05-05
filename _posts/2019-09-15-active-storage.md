@@ -3,6 +3,7 @@ layout: post
 title:  "Ajouter plusieurs images à un modèle avec Active Storage"
 description: "Dans ce tuto nous allons apprendre comment ajouter plusieurs images à un modèle avec Active Storage et Amazon Web Services."
 status: tech
+tags: "active storage, amazon web services"
 ---
 
 ### Première étape: Installer Active Storage

@@ -4,6 +4,7 @@ title:  "Les bonnes pratiques en css"
 description: "Dans ce tuto nous allons apprendre à bien organiser organiser ses fichiers et classes css dans une application Ruby on Rails."
 difficulty: 1
 status: tech
+tags: "css"
 ---
 
 ### Première étape : Les noms des fichiers

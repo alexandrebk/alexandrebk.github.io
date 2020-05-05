@@ -3,6 +3,7 @@ layout: post
 title:  "Créer un pipeline sur Heroku"
 description: "Dans ce tuto nous allons apprendre comment configurer un environnement de staging."
 status: tech
+tags: "heroku"
 ---
 
 Lorsque vous développez de nouvelles features, vous souhaitez souvent partager un lien avec votre client pour les lui présenter. Malheureusement il n'a pas accès à votre *localhost*. Il est possible avec Heroku de créer deux applications reliées entre elles, une de **staging** et une de **production**.

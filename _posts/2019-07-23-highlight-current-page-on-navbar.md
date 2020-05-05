@@ -4,6 +4,7 @@ title:  "Appliquer un style à l'onglet actif du menu de navigation"
 description: "Dans ce tuto nous allons apprendre à mettre en surbrillance un onglet dans une barre de navigation."
 difficulty: 1
 status: tech
+tags: "navbar, css, bootstrap"
 ---
 
 C'est un besoin courant en UX : marquer visuellement l'onglet d'un menu de navigation comme «actif». Lorsque l'on se trouve sur une page du site, on voudra que le lien dans le menu de navigation se mette en évidence soit par le texte plus gras soit par un effet souligné par exemple.
