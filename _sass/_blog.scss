@@ -1,7 +1,34 @@
-.inner h1{
-  margin: 30px 0;
+.page-blog li:last-child {
+  border-bottom: 1px solid $light-grey;
 }
 
-.post{
-  padding: 20px 0;
+.post {
+  border-top: 1px solid $light-grey;
+  padding: 40px 0;
+}
+
+.btn-green {
+  background-color: $white;
+  color:            $dark-green;
+  padding:          0.4rem 1rem;
+  font-size:        0.8rem;
+  font-weight:      200;
+  border:           1px solid $green;
+}
+
+.btn-animation {
+  background-image: linear-gradient(to left,
+    transparent,
+    transparent 50%,
+    $green 50%,
+    $green);
+  background-position: 100% 0;
+    background-size:   200% 100%;
+    transition:        all .25s ease-in;
+}
+
+.btn-animation:hover {
+  background-position: 0 0;
+  border:              1px solid $green;
+  color:               $white;
 }

@@ -1,28 +1,24 @@
-.inner h1{
-  margin: 30px 0;
-}
-
 .portfolio{
   padding: 40px 0;
-  border-top: 1px solid #E6E6E6;
+  border-top: 1px solid $light-grey;
+  display: flex;
+  justify-content: space-between;
 }
 
-.portfolio h2{
-  margin-bottom: 20px;
-}
-
-.portfolio img{
-  width: 280px;
-  margin-right: 10px;
+.portfolio img {
+  width: 300px;
+  margin-right: 1.4rem;
   border-radius: 2px;
-  box-shadow: 0 15px 35px rgba(126, 87, 88, 0.2);
 }
 
-.pull-right{
-  float: right;
+.page-portfolio li:last-child {
+  border-bottom: 1px solid $light-grey;
 }
 
 @media (max-width: 720px) {
+  .portfolio {
+    display: block;
+  }
   .portfolio img {
     width:         100%;
     margin-right:  0;

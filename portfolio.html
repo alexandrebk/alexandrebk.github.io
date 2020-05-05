@@ -5,18 +5,24 @@ title: Portfolio
 
 <div class="container">
   <div class="inner">
-    <h1>Mon Portfolio</h1>
+    <div class="page-title">
+      <h2>Mon Portfolio</h2>
+    </div>
 
-    <ul>
+    <ul class="page-portfolio">
       {% for project in site.data.portfolio %}
         <li>
           <div class="portfolio">
             <a href="{{ project.link }}" target="_blank">
-              <img class="inline pull-right" src="{{ project.img }}" alt="">
-              <h2>{{ project.title }}</h2>
+              <img src="{{ project.img }}" alt="">
             </a>
-            <p>{{ project.content }}</p>
-            <p><strong>Technologies : </strong>{{ project.techno }}</p>
+            <div>
+              <a href="{{ project.link }}" target="_blank">
+                <h3><span class="underlined">{{ project.title }}</span></h3>
+              </a>
+              <p>{{ project.content }}</p>
+              <p><span class="text-light-upcase">{{ project.techno }}</span></p>
+            </div>
           </div>
         </li>
       {% endfor %}

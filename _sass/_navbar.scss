@@ -1,20 +1,11 @@
-header {
-  font-family: 'Source Sans Pro', sans-serif;
-  font-weight: bold;
-  padding:     10px;
-}
-
-header nav {
-  float:       left;
-  padding-top: 14px;
+header h2 {
+  margin-bottom: 0;
+  line-height: 1.5rem;
 }
 
 nav li, nav a {
-  display:        inline-block;
-  margin-right:   1.2em;
-  padding-bottom: 0.2em;
-  font-weight:    normal;
-  border-bottom:  3px solid transparent;
+  margin-right:   0.6rem;
+  margin-left:    0.6rem;
   text-transform: uppercase;
 }
 
@@ -22,24 +13,31 @@ nav li:last-child {
   margin-right: 0;
 }
 
-nav a:hover {
-  text-decoration: none;
-  border-bottom:   3px solid #3073b3;
-}
-
-.container {
-  margin-bottom: 10px;
-}
-
 .navbar {
-  padding: 0px !important;
+  padding: 10px 0 !important;
+}
+
+.nav-item {
+  background-image: linear-gradient(to left,
+    transparent,
+    transparent 50%,
+    $light-green 50%,
+    $light-green);
+  background-position: 100% 0;
+    background-size:   200% 100%;
+    transition:        all .25s ease-in;
+}
+.nav-item:hover{
+  background-position: 0 0;
+  a {
+    color:$white;
+  }
 }
 
 .avatar {
   border-radius:  50%;
-  max-width:      50px;
-  vertical-align: -9px;
-  margin:         0 12px;
+  max-width:      84px;
+  margin-right:   12px;
 }
 
 .d-avatar {
@@ -48,14 +46,6 @@ nav a:hover {
   @media (max-width: 720px) {
     flex-direction: row-reverse;
   }
-}
-
-.name {
-  margin-right: 10px;
-}
-
-.name p{
-  margin-bottom: 0;
 }
 
 nav button {
@@ -86,4 +76,3 @@ ul#list {
     display: none !important;
   }
 }
-
