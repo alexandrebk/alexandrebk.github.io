@@ -14,7 +14,9 @@ title: Blog
           <li>
             <div class="post">
               <h3><span class="underlined">{{ post.title }}</span></h3>
-              <p><span class="text-light-upcase">{{ post.date | date: "%d %B %Y" }}</span></p>
+              <p><span class="text-light-upcase">{{ post.date | date: "%d %B %Y" }}</span>
+                 <span class="text-light-upcase tags-separator"> | </span>
+                 <span class="text-light-upcase">{{ post.tags }}</span>
               <p>{{ post.description }}</p>
               <a href="{{ post.url }}" class="btn-green btn-animation">Lire l'article</a>
             </div>
@@ -24,3 +26,4 @@ title: Blog
     </ul>
   </div>
 </div>
+
