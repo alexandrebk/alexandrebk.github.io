@@ -73,7 +73,7 @@ Il contient un `input :search`
 
 <div class="search">
   <%= simple_form_for :flats_filter, url: flats_path, method: :get do |f| %>
-    <%= f.input :search, label: false %>
+    <%= f.input :search, label: false, value: params.dig(:flats_filter, :search) %>
     <%= f.submit "Chercher", class: "btn btn-primary" %>
   <% end %>
 </div>
@@ -112,9 +112,11 @@ end
   <%= f.input :min_price, label: false,
                           input_html: { type: :number,
                                         min: "0",
+                                        value: params.dig(:flats_filter, :min_price),
                                         placeholder: "Prix mini" } %>
   <%= f.input :max_price, label: false,
                           input_html: { type: :number,
+                                        value: params.dig(:flats_filter, :max_price),
                                         placeholder: "Prix max" } %>
   <%= f.submit "Chercher", class: "btn btn-primary" %>
 <% end %>
@@ -151,9 +153,11 @@ end
 <%= simple_form_for :flats_filter, url: flats_path, method: :get do |f| %>
   [...]
   <%= f.input :start_date, label: false,
-                                  input_html: { type: :date } %>
+                                  input_html: { type: :date,
+                                                value: params.dig(:flats_filter, :start_date) } %>
   <%= f.input :end_date, label: false,
-                                input_html: { type: :date } %>
+                                input_html: { type: :date,
+                                              value: params.dig(:flats_filter, :end_date) } %>
   <%= f.submit "Chercher", class: "btn btn-primary" %>
 <% end %>
 ```

@@ -4,5 +4,15 @@
 
 ### TO DO
 
+#### Front
+
+- [ ] Ajouter un lien sur le titre
+
+#### Créer un Article sur les reviews
+
 - [ ] Article sur les Reviews (reviewer and receiver, rating and content, average etc..)
-- [ ] Article sur les filtres (ajouter les params.dig + les rails h model au début)
+
+#### Mise à jour Article sur la recherche multi-critères (filtres)
+
+- [ ] Commande pour générer l'app et les models au début
+- [x] Ajouter les params.dig
