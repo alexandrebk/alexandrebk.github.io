@@ -4,6 +4,7 @@ title:  "L'ironie, baiser mortel des civilisations"
 author: "Alexandre Bouvier"
 difficulty: 1
 status: thinking
+tags: ""
 ---
 
 La multiplication à l'antenne d'humoristes a transformé la radio et la télévision en machine à vannes.

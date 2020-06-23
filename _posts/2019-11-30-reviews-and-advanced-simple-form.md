@@ -4,6 +4,7 @@ title:       "Ajouter une évaluation en étoiles  avec Javascript et afficher l
 description: "Dans ce tuto nous allons apprendre à ajouter des reviews sur notre application de réservations d’appartement avec une liste déroulante grâce à simple form."
 difficulty:  1
 status:      tech
+tags:        ""
 ---
 
 Nous supposons qu’il y a une application Ruby on Rails de location d'appartement type Airbnb avec des modèles `Booking` et `User`. Nous allons créer des commentaires (*reviews*) sur les locations d'appartements.

@@ -7,9 +7,13 @@
   padding:    40px 0;
 }
 
+.tags-separator {
+  margin: 0 1rem;
+}
+
 .btn-green {
-  background-color: $white;
-  color:            $dark-green;
+  background-color: $green;
+  color:            $white;
   padding:          0.4rem 1rem;
   font-size:        0.8rem;
   font-weight:      200;
@@ -20,8 +24,8 @@
   background-image: linear-gradient(to left,
     transparent,
     transparent 50%,
-    $green 50%,
-    $green);
+    $white 50%,
+    $white);
   background-position: 100% 0;
   background-size:     200% 100%;
   transition:          all .25s ease-in;
@@ -30,5 +34,5 @@
 .btn-animation:hover {
   background-position: 0 0;
   border:              1px solid $green;
-  color:               $white;
+  color:               $green;
 }
