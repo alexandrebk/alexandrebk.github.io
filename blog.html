@@ -13,10 +13,25 @@ title: Blog
         {% if post.status == 'tech' %}
           <li>
             <div class="post">
-              <h3><span class="underlined">{{ post.title }}</span></h3>
-              <p><span class="text-light-upcase">{{ post.date | date: "%d %B %Y" }}</span></p>
-              <p>{{ post.description }}</p>
-              <a href="{{ post.url }}" class="btn-green btn-animation">Lire l'article</a>
+              <a href="{{ post.url }}">
+                <h3>
+                  <span class="underlined">
+                    {{ post.title }}
+                  </span>
+                </h3>
+              </a>
+              <p>
+                <span class="text-light-upcase">
+                  {{ post.date | date: "%d %B %Y" }}
+                </span>
+              </p>
+              <p>
+                {{ post.description }}
+              </p>
+              <a href="{{ post.url }}"
+                 class="btn-green btn-animation">
+                Lire l'article
+              </a>
             </div>
           </li>
         {% endif %}
