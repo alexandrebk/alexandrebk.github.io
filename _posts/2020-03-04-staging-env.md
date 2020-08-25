@@ -75,7 +75,7 @@ Sur votre interface Heroku le bouton **Promote to production** vous permettra de
 
 ### Seed
 
-Une bonne pratique de code est de protéger les données de production lorsque que vous lancez votre seed. Pour cela vous pouvez rajoutez un `return` en début de seed.
+Une bonne pratique de code est de protéger les données de production lorsque que vous lancez votre seed. Pour cela vous pouvez rajouter un `return` en début de seed.
 
 ```ruby
 # db/seeds.rb
