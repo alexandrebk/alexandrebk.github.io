@@ -16,3 +16,9 @@
 
 - [ ] Commande pour générer l'app et les models au début
 - [x] Ajouter les params.dig
+
+#### Deploy
+
+```sh
+bundle exec jekyll build -d ../blog
+```
