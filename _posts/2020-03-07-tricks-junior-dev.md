@@ -6,9 +6,9 @@ status: tech
 tags: "ruby"
 ---
 
-### `||=` Assigner une valeur si et seulement elle n'est pas déjà définie
+### Opérateur d'affectation conditionnel `||=`
 
-On souhaite assigner une valeur à une variable si et seulement si elle n'est pas précédemment définie. Attention car on réassigne si la valeur est *falsy* c'est à dire `nil` ou même `false`. Il n'est donc pas conseillé d'utiliser cette méthode pour un booléan.
+On souhaite assigner une valeur à une variable si et seulement si elle n'est pas précédemment définie. Attention car on réassigne si la valeur est `falsy` c'est à dire `nil` ou même `false`. Il n'est donc pas conseillé d'utiliser cette méthode pour un booléan.
 
 ```ruby
 toto = nil
@@ -22,11 +22,11 @@ puts toto
 # "J'ai déjà du contenu"
 ```
 
-### `&` Opérateur de navigation sans risque
+### Opérateur de navigation sans risque `&`
 
 Cela vous permet de naviguer à travers des objets sans risque de voir lever une erreur.
 
-Imaginons deux classes `Room` et `Project` avec `Room` qui appartient à un projet. Le projet à une variable d'instance *name*.
+Imaginons deux classes `Room` et `Project` avec `Room` qui appartient à `Project` et `Project` qui à une variable d'instance `name`.
 
 ```ruby
 project = Project.new(name: "Mes supers travaux")
@@ -35,27 +35,27 @@ puts room.project.name
 # => "Mes supers travaux"
 ```
 
-Maintenant imaginons qu'aucun projet ne soit rattaché à la *room*
+Maintenant imaginons qu'aucun projet ne soit rattaché à la chambre.
 
 ```ruby
-room    = Room.new(project: project)
+room = Room.new(project: project)
 puts room.project.name
 # => NoMethodError: undefined method `name' for nil:NilClass
 ```
 
-Pour prévenir ce type d'erreur nous allons ajouter l'opérateur `&`. Il va essayer la méthode et si elle ne fonctionne pas cela renvoie `nil`.
+Pour prévenir ce type d'erreur, nous allons ajouter l'opérateur `&`. Il va renvoyer si la méthode ne fonctionne pas.
 
 ```ruby
-room    = Room.new(project: project)
+room = Room.new(project: project)
 puts room&.project&.name
 # => nil
 ```
 
 ### Les procs
 
-Les procs sont très utiles quand vous souhaitez itérer sur des objets et retirer une valeur unique.
+Les procs sont très utiles quand vous souhaitez itérer sur des objets et sélectionner une valeur unique.
 
-Commencons par un exemple sur un tableau de chiffres que nous voulons transformer en string.
+Commençons par un exemple sur un tableau de chiffres que nous voulons transformer en chaîne de caractères.
 
 ```ruby
 [1,2,3].map { |number| number.to_s }
@@ -64,7 +64,7 @@ Commencons par un exemple sur un tableau de chiffres que nous voulons transforme
 # => ["1", "2", "3"]
 ```
 
-Mainteant imaginons une classe `Room` avec une variable d'instance `.wall_surface`. Je veux récuperer toutes les valeurs et les sommer.
+Maintenant, imaginons une classe `Room` avec une variable d'instance `wall_surface`. Je veux récupérer toutes les valeurs et les additionner.
 
 ```ruby
 @rooms = Room.all
@@ -74,7 +74,7 @@ Mainteant imaginons une classe `Room` avec une variable d'instance `.wall_surfac
 @rooms.sum(&:wall_surface)
 ```
 
-On peut écrire ses propres *proc*. Dans notre cas on va sommer toutes les surfaces plus 10.
+On peut même écrire ses propres procs. Par exemple, un proc qui va additionner toutes les surfaces des `Room` et y ajouter 10.
 
 ```ruby
 wall_surface_plus_ten = Proc.new {|x| x.wall_surface + 10 }
@@ -85,9 +85,9 @@ wall_surface_plus_ten = Proc.new {|x| x.wall_surface + 10 }
 
 ### La méthode *send*
 
-La méthode *send* permet d'appeler une méthode sur un objet en lui passant une *string* et possiblement une *string* avec une interpollation.
+La méthode `send` permet d'appeler une méthode sur un objet en lui passant une chaîne de caractères.
 
-Imaginons que j'ai `Room` et que je récupère plusieurs instances de ce modèle. Je veux changer plusieurs variables d'instance en même temps.
+Imaginons que j'ai plusieurs instances de `Room` et que je veuille changer plusieurs variables d'instance.
 
 ```ruby
 def should_paint_all
@@ -107,8 +107,8 @@ Nous allons itérer sur un tableau qui contient les noms des méthodes d'instanc
 def should_paint_all
   rooms = Room.all
   rooms.each do |room|
-    [:should_paint_walls, :should_paint_ceiling, :should_paint_furniture].each do |field_name|
-      room.send("#{field_name}=", true)
+    [:walls, :ceiling, :furniture].each do |field_name|
+      room.send("should_paint_#{field_name}=", true)
     end
     room.save
   end
@@ -117,7 +117,7 @@ end
 
 La documentation se trouve [ici](https://apidock.com/ruby/Object/send)
 
-### L'itérateur *reduce*
+### L'itérateur `reduce`
 
 ```ruby
 [1,2,3].reduce(0) do |sum, num|
