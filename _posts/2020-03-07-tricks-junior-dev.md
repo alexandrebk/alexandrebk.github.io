@@ -26,7 +26,7 @@ puts toto
 
 Cela vous permet de naviguer à travers des objets sans risque de voir lever une erreur.
 
-Imaginons deux classes `Room` et `Project` avec `Room` qui appartient à `Project` et `Project` qui à une variable d'instance `name`.
+Imaginons deux classes : `Room` et `Project`. `Room` appartient à `Project` et `Project` a une variable d'instance `name`.
 
 ```ruby
 project = Project.new(name: "Mes supers travaux")
@@ -35,7 +35,7 @@ puts room.project.name
 # => "Mes supers travaux"
 ```
 
-Maintenant imaginons qu'aucun projet ne soit rattaché à la chambre.
+Maintenant, imaginons qu'aucun projet ne soit rattaché à la chambre.
 
 ```ruby
 room = Room.new(project: project)
@@ -43,7 +43,7 @@ puts room.project.name
 # => NoMethodError: undefined method `name' for nil:NilClass
 ```
 
-Pour prévenir ce type d'erreur, nous allons ajouter l'opérateur `&`. Il va renvoyer si la méthode ne fonctionne pas.
+Pour prévenir ce type d'erreur, nous allons ajouter l'opérateur `&` qui va renvoyer `nil` si la méthode ne fonctionne pas.
 
 ```ruby
 room = Room.new(project: project)
@@ -69,9 +69,9 @@ Maintenant, imaginons une classe `Room` avec une variable d'instance `wall_surfa
 ```ruby
 @rooms = Room.all
 
-@rooms.sum { |room| room.wall_surface }
-# équivalent à
 @rooms.sum(&:wall_surface)
+# équivalent à
+@rooms.sum { |room| room.wall_surface }
 ```
 
 On peut même écrire ses propres procs. Par exemple, un proc qui va additionner toutes les surfaces des `Room` et y ajouter 10.
@@ -115,7 +115,7 @@ def should_paint_all
 end
 ```
 
-La documentation se trouve [ici](https://apidock.com/ruby/Object/send)
+La documentation se trouve [ici](https://apidock.com/ruby/Object/send).
 
 ### L'itérateur `reduce`
 
@@ -126,4 +126,4 @@ end
 # => 6
 ```
 
-La documentation se trouve [ici](https://apidock.com/ruby/Enumerable/reduce)
+La documentation se trouve [ici](https://apidock.com/ruby/Enumerable/reduce).
