@@ -1,6 +1,6 @@
 - title:      "The Poplace"
   link:       "https://thepoplace.com/"
-  content:    "Création d'un connecteur pour la boutique Shopify de The Poplace visant à automatiser les commandes vers son fournisseur"
+  content:    "Création d'une application privée pour la boutique Shopify The Poplace visant à automatiser les commandes vers son fournisseur et ainsi gagner du temps de traitement sur les opérations"
   techno:     "Ruby on Rails"
   image_path: "/images/the-poplace.png"
 - title:      "Monsieur Peinture"
