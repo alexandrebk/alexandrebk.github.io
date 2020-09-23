@@ -13,25 +13,29 @@ Nous allons voir plusieurs types de recherches :
 1. [Recherche globale par mots clés (pg_search)](#global)
 2. [Recherche par prix](#price)
 3. [Recherche par dates](#dates)
+
 <br>
 <br>
 
 ### <a name="global"></a>1. Recherche globale par mots clés avec pg_search
+
 #### 1.1 On ajoute la gem pg_search
-<br>
+
 Tout d'abord, on ajoute la `gem pg_search`.
-Vous trouverez la doc de la `gem` [ici](https://github.com/Casecommons/pg_search).
+Vous trouverez la doc de la `gem` <a href="https://github.com/Casecommons/pg_search" target="_blank">ici</a>.
 
 ```ruby
 # Gemfile
 
 gem 'pg_search'
 ```
+
 Puis on lance l'installation grâce à `bundle install`
+
 ```shell
 $ bundle install
 ```
-<br>
+
 #### 1.2 On crée un scope dans le modèle
 
 Nous allons commencer par une recherche par mots-clés sur les colonnes `description` et `address` des Flat.
@@ -63,11 +67,12 @@ Flat.search_by_description_and_address('Gaudelet')
 Dans mon cas, je récupère bien un `Flat` qui possède le mot `Gaudelet` dans son adresse.
 <img src="/images/posts/multisearch/pg_search_console.png" class="image" alt="pg search console">
 
-<br>
 #### 1.3 On ajoute le formulaire dans la vue
 
 Dans l'index des appartements, on ajoute un formulaire que l'on nommera ici `flats_filter`.
+
 Il contient un `input :search`
+
 ```erb
 <!-- app/views/flats/index.html.erb -->
 
@@ -79,11 +84,13 @@ Il contient un `input :search`
 </div>
 
 ```
-<br>
+
 #### 1.4 On filtre les données dans le controller
 
 Dans le controller on filtre les données en fonction de la recherche utilisateur.
+
 Si les params sont présents, on applique le scope sur le model `Flat` pour récupérer les appartements concernés par la recherche.
+
 ```ruby
 # app/controllers/flat_controller.rb
 
@@ -99,9 +106,12 @@ end
 ```
 
 <img src="/images/posts/multisearch/recherche_globale.gif" class="image" alt="gif recherche globale">
+
 <br>
 <br>
+
 ### <a name="price"></a>2. Recherche par prix
+
 #### 2.1 On ajoute les champs de prix dans le formulaire
 
 ```erb
@@ -141,8 +151,10 @@ end
 ```
 
 <img src="/images/posts/multisearch/filtre_prix.gif" class="image" alt="gif filtre prix">
+
 <br>
 <br>
+
 ### <a name="dates"></a>3. Recherche par date
 
 #### 3.1 On ajoute les champs de date d'arrivée et de date de départ dans le formulaire.
@@ -163,11 +175,14 @@ end
 ```
 
 <img src="/images/posts/multisearch/champs_dates.png" class="image" alt="affichage champs date">
+
 <br>
 <br>
+
 #### 3.2 On vérifie la disponibilité des appartements
 
 On définie une méthode d'instance `is_available?` avec deux arguments (la date d'entrée et la date de sortie) dans le modèle `Flat.rb`.
+
 Dans cette méthode on compare les dates recherchées avec les dates de réservation. Pour cela on utilise `overlaps?` (cf. [documentation](https://apidock.com/rails/Range/overlaps%3F)).
 
 ```ruby
@@ -185,7 +200,6 @@ class Flat < ApplicationRecord
 end
 ```
 
-
 #### 3.3 On affiche les appartements disponibles.
 
 Grâce à la méthode `select` je sélectionne les appartements disponibles (c'est-à-dire qui retourne `true` à `is_available?`).
@@ -202,8 +216,8 @@ end
 ```
 
 <img src="/images/posts/multisearch/filtre_dates.gif" class="image" alt="gif filtre date">
+
 <br>
 <br>
 
 Vous avez maintenant les cartes en main pour réaliser un formulaire de recherche complet.
-

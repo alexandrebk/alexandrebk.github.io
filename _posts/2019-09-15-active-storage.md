@@ -8,7 +8,7 @@ tags: "active storage, amazon web services"
 
 ### Première étape: Installer Active Storage
 
-Si vous n'êtes pas dans Rails 6, il vous faudra ajouter la [gem Active Storage](https://github.com/rails/activestorage/tree/archive) dans votre Gemfile et l'installer avec la commande `bundle install`.
+Si vous n'êtes pas dans Rails 6, il vous faudra ajouter la <a href="https://github.com/rails/activestorage/tree/archive" target="_blank">gem Active Storage</a> dans votre Gemfile et l'installer avec la commande `bundle install`.
 
 ```ruby
 # Gemfile
@@ -97,7 +97,7 @@ Le setup étant terminé pour l'environnement local, nous allons installer AWS s
 gem "aws-sdk-s3", require: false
 ```
 
-Pour créer un compte, allez [sur le site d'Amazon Web Services](https://aws.amazon.com/).Ensuite connectez vous à la console AWS. La configuration du compte se fera en 3 temps.
+Pour créer un compte, allez <a href="https://aws.amazon.com/" target="_blank">sur le site d'Amazon Web Services</a>.Ensuite connectez vous à la console AWS. La configuration du compte se fera en 3 temps.
 
 1. Créer son bucket (un espace de stockage).
 2. Créer une stratégie d'accès pour les futurs utilisateurs.

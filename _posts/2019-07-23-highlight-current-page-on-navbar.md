@@ -13,7 +13,7 @@ Nous supposons que nous sommes dans une application Ruby on Rails avec Bootstrap
 
 ### La classe `navbar` de Bootstrap
 
-Voici notre barre de navigation codée à l'aide de [Bootstrap](https://getbootstrap.com/docs/4.0/components/navbar/) avec 4 liens.
+Voici notre barre de navigation codée à l'aide de <a href="https://getbootstrap.com/docs/4.0/components/navbar/" target="_blank">Bootstrap</a> avec 4 liens.
 
 ```erb
 # app/views/shared/_navabar.html.erb

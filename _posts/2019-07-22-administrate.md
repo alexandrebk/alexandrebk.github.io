@@ -134,5 +134,3 @@ ADMIN_PASSWORD="password"
 ```
 
 Toute la documentation sur la gem est disponible [ici](https://administrate-prototype.herokuapp.com/)
-
-Vous pouvez retrouver un exemple de code [ici](https://github.com/alexandrebk/airbnb-copycat/commit/e12d5575f86e0a9101cb6075987c3bd1d04cfda5)

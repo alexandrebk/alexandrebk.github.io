@@ -115,7 +115,7 @@ def should_paint_all
 end
 ```
 
-La documentation se trouve [ici](https://apidock.com/ruby/Object/send).
+La documentation se trouve <a href="https://apidock.com/ruby/Object/send" target="_blank">ici</a>.
 
 ### L'itérateur `reduce`
 
@@ -126,4 +126,4 @@ end
 # => 6
 ```
 
-La documentation se trouve [ici](https://apidock.com/ruby/Enumerable/reduce).
+La documentation se trouve <a href="https://apidock.com/ruby/Enumerable/reduce" target="_blank">ici</a>.

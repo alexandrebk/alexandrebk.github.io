@@ -165,11 +165,11 @@ Tout d'abord, il faut ajouter un label au calendrier. Ensuite on va cacher les d
 
 ### Bonus pour vérifier les dates en back-end
 
-Si vous souhaitez effectuer une vérification sur les dates avant d'enregistrer la réservation, vous pouvez utiliser la méthode [overlaps?](https://apidock.com/rails/Range/overlaps%3F)
+Si vous souhaitez effectuer une vérification sur les dates avant d'enregistrer la réservation, vous pouvez utiliser la méthode <a href="https://apidock.com/rails/Range/overlaps%3F" target="_blank">overlaps?</a>
 
 
 ### Bonus bis pour afficher le prix total de façon dynamique
 
 Souvent sur ce type d'application, le prix total s'affiche et se modifie en fonction des dates sélectionnées. Le tuto pour l'affichage dynamique, c'est [ici](/2020/03/31/dynamic-element.html)
 
-La doc officielle de flatpicker est disponible [ici](https://flatpickr.js.org/examples/#basic)
+La doc officielle de flatpicker est disponible <a href="https://flatpickr.js.org/examples/#basic" target="_blank">ici</a>
