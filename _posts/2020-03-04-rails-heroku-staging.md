@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Créer un staging et un pipeline sur Heroku"
+title:  "Créer un environnement de staging et l'intégrer dans un pipeline Heroku"
 description: "Dans ce tuto nous allons apprendre comment configurer un environnement de staging."
 status: tech
 tags: "heroku"
@@ -41,7 +41,7 @@ Ensuite, vous devez créer une base de donnée avec la commande :
 $ heroku addons:create heroku-postgresql:hobby-dev --remote staging
 ```
 
-Dans le fichier `config/database.yml` ajouter le code suivant à la fin du fichier en remplaçant `airbnb-copycat-staging` par le nom de votre application. Pour le *username* et le *password*, vous pouvez gardez les mêmes valeurs que la **production**.
+Ajoutez le code dans `config/database.yml` en remplaçant `airbnb-copycat-staging` par le nom de votre application. Pour le *username* et le *password*, vous pouvez gardez les mêmes valeurs que la **production**.
 
 ```
 staging:
@@ -56,7 +56,6 @@ staging:
 Si vous utilisez Webpacker il faudra ajouter ceci au fichier `config/webpacker.yml`. De préférence entre la ligne de test et la ligne de production.
 
 ```
-
 staging:
   <<: *default
 ```
@@ -73,12 +72,37 @@ Sur votre interface Heroku le bouton **Promote to production** vous permettra de
 
 <img src="/images/posts/staging-env/promote-to-production.png" class="image" alt="Promote to production">
 
+### Protéger l'accès à l'environnement de staging
+
+```ruby
+# app/controllers/application_controller.rb
+
+class ApplicationController < ActionController::Base
+  http_basic_authenticate_with name: ENV["STAGING_LOGIN"], password: ENV["STAGING_PASSWORD"] if Rails.env.staging?
+end
+```
+
+Ajoutez dans votre fichier `.env` vos logins et mots de passe (n'oubliez pas de les ajouter aussi sur Heroku)
+
+```sh
+# .env
+
+STAGING_LOGIN="login"
+STAGING_PASSWORD="password"
+```
+
 ### Seed
 
-Une bonne pratique de code est de protéger les données de production lorsque que vous lancez votre seed. Pour cela vous pouvez rajouter un `return` en début de seed.
+C'est une bonne pratique de protéger la base de données de production si vous lancez vos seeds par inadvertance sur la `production` au lieu du `staging`.
 
 ```ruby
 # db/seeds.rb
 
 return if Rails.env.production?
 ```
+
+### Automatic deploy
+
+Pour gagner du temps en déploiement, vous pouvez lier l'application Heroku au repo Github et déployer de manière automatique la branche master sur le staging.
+
+<img src="/images/posts/staging-env/automatic-deploy.gif" class="image" alt="Déploiement automatique">
