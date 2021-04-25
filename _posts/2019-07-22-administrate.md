@@ -2,12 +2,14 @@
 layout: post
 title:  "Installer un back-office avec Administrate"
 description: "Dans ce tuto nous allons installer un back office avec la gem administrate."
+seo_title:  "Back-office Admin"
+description_seo: "Installer back office avec gem administrate"
 difficulty: 3
 status: tech
 tags: "admin, administrate, thoughbot"
 ---
 
-Tous les administrateurs de votre web-app ne sont pas forcément des développeurs. Administrate permet de créer rapidement une interface d'administration accessible par certains utilisateurs.
+Tous les administrateurs de votre web-app ne sont pas forcément des développeurs. Developpé par [Thoughbot](https://thoughtbot.com/), la gem [Administrate](https://github.com/thoughtbot/administrate) permet de créer rapidement une interface d'administration.
 
 Nous supposons qu’il y a déjà une application Rails avec un modèle `Flat` et un modèle `Booking`. Grâce à Administrate, vos administrateurs pourront créer ou modifier des réservations, des appartements...
 
