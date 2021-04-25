@@ -3,7 +3,7 @@ layout: post
 title:  "Installer un back-office avec Administrate"
 description: "Dans ce tuto nous allons installer un back office avec la gem administrate."
 seo_title:  "Back-office Admin"
-description_seo: "Installer back office avec gem administrate"
+seo_description: "Installer back office avec gem administrate"
 difficulty: 3
 status: tech
 tags: "admin, administrate, thoughbot"

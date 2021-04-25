@@ -3,7 +3,7 @@ layout: post
 title:  "Souligner l'onglet actif du menu de navigation"
 description: "Dans ce tuto nous allons apprendre à mettre en surbrillance un onglet dans une barre de navigation."
 title_seo:  "Souligner onglet menu de navigation"
-description_seo: "Mettre en surbrillance un onglet dans une barre de navigation."
+seo_description: "Mettre en surbrillance un onglet dans une barre de navigation."
 difficulty: 1
 status: tech
 tags: "navbar, css, bootstrap"
