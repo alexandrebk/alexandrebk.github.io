@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Utiliser Active Storage avec AWS"
+title:  "Utiliser Active Storage avec AWS S3"
 seo_title: "AWS S3 Active Storage"
 description: "Dans ce tuto nous allons apprendre comment ajouter plusieurs images à un modèle avec Active Storage et Amazon Web Services."
 status: tech
