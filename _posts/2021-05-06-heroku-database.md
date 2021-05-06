@@ -80,5 +80,5 @@ heroku pg:promote HEROKU_POSTGRESQL_WHITE_URL
 Enfin on peut réactiver l'application
 
 ```sh
-heroku maintenance:on
+heroku maintenance:off
 ```
