@@ -9,7 +9,7 @@ status: tech
 
 ---
 
-Plus votre traffic grossit, plus vos données grossissent et Heroku va rapidement vous imposer de changer la taille de votre base de donnée si vous dépassez les 10 000 lignes. Malheuresement ce n'est pas si simple. C'est même assez complexe pour un service réputé pour sa simplicité. Je vais vous aider à résumer ce que nous dit la [documentation](https://devcenter.heroku.com/articles/upgrading-heroku-postgres-databases).
+Plus votre traffic grossit, plus vos données grossissent et Heroku va rapidement vous imposer de changer la taille de votre base de données si vous dépassez les 10 000 lignes. Malheuresement ce n'est pas si simple. C'est même assez complexe pour un service réputé pour sa simplicité. Je vais vous aider à résumer ce que nous dit la [documentation](https://devcenter.heroku.com/articles/upgrading-heroku-postgres-databases).
 
 ### S'assurer d'avoir les droits
 
@@ -19,9 +19,9 @@ Tout d'abord, il faut s'assurer d'être le *owner* de l'application.
      class="image"
      alt="ownership">
 
-### Créer la nouvelle base de donnée
+### Créer la nouvelle base de données
 
-Ensuite on va créer une nouvelle base de donnée sur Heroku. Ici, je vais choisir le plan `hobby-basic`. C'est un plan à 9$/mois. Pour connaître les autres plans, il suffit de se référer à la liste [ici](https://elements.heroku.com/addons/heroku-postgresql)
+Ensuite on va créer une nouvelle base de données sur Heroku. Ici, je vais choisir le plan `hobby-basic`. C'est un plan à 9$/mois. Pour connaître les autres plans, il suffit de se référer à la liste [ici](https://elements.heroku.com/addons/heroku-postgresql)
 
 ```sh
 heroku addons:create heroku-postgresql:hobby-basic
@@ -37,7 +37,7 @@ heroku pg:info
      class="image"
      alt="pg info">
 
-Il faut récupérer le nom de la base de donnée nouvellement créé. Dans notre cas c'est `HEROKU_POSTGRESQL_WHITE_URL`.
+Il faut récupérer le nom de la base de données nouvellement créé. Dans notre cas c'est `HEROKU_POSTGRESQL_WHITE_URL`.
 
 ### Copie de la base de données
 
