@@ -6,7 +6,7 @@ status: tech
 tags: "search"
 ---
 
-Sur une marketplace nous avons souvent une idée de ce que l'on cherche ou des contraintes qui nous pousse à vouloir faire une recherche selon des critères particuliers. C'est l'objet de cet article. Nous allons mettre en place une barre de recherche qui va nous permettre de sélectionner uniquement les appartements qui peuvent nous intéresser.
+Sur n'importe quel site web, nous avons souvent besoin de faire des recherches sur les ressources du site. Dans cet article, nous allons mettre en place une barre de recherche qui va nous permettre d'afficher des appartements qui peuvent nous intéresser.
 
 Nous allons voir plusieurs types de recherches :
 
