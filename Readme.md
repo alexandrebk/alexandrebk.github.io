@@ -22,3 +22,9 @@
 ```sh
 bundle exec jekyll build -d ../blog
 ```
+
+#### Serveur
+
+```sh
+bundle exec jekyll Serveur
+```
