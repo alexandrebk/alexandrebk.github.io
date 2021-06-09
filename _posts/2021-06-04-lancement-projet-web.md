@@ -57,8 +57,13 @@ Avant de lancer une application complexe, il est facile de générer des *leads*
 ### Glossaire
 
 *MVP* : minimum viable product
+
 *Spécification* : cahier des charges + wireframe
+
 *Wireframe* : maquette fonctionnelle ou schéma des interfaces utilisateur
+
 *Prototype* : maquette représentant le design de votre site
+
 *User Story* : récit utilisateur, description simple du besoin utilisateur
+
 *Product Market Fit* : l’adéquation entre votre produit et son marché.
