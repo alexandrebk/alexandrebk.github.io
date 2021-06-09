@@ -1,8 +1,8 @@
 ---
 layout: post
 title:  "Méthode pour développer votre projet web"
-description: "Quels méthodes de développement pour votre projet web"
-seo_description: "Comment lancer un produit web"
+description: "Quelles méthodes de développement pour lancer votre projet web ?"
+seo_description: "Comment lancer un produit web ?"
 difficulty: 1
 status: tech
 ---
