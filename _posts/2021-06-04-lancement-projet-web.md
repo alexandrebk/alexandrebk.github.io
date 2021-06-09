@@ -15,7 +15,8 @@ Il est difficile pour un non-initié de se lancer, mais dans cet article nous al
 
 Dans un premier temps, le but est de lancer un MVP (*minimum viable product*). Pour lancer son **MVP**, il y a plusieurs étapes à respecter.
 
-La première étape est de rédiger des spécifications avec un cahier des charges et un **wireframe**. Vous trouverez un super article sur le [blog du web design](https://www.blogduwebdesign.com/logiciels-wireframe-prototype/) sur tous les outils de **wireframe** mais mon favori est [whimsical](https://whimsical.com/). Pour rédiger le cahier des charges, n'importe quel éditeur de texte suffira.
+La première étape est de rédiger des spécifications avec un cahier des charges et un **wireframe**. Vous trouverez un super article sur le
+<a href="https://www.blogduwebdesign.com/logiciels-wireframe-prototype/" class= "underlined" target="_blank">blog du web design</a> sur tous les outils de **wireframe** mais mon favori est [whimsical](https://whimsical.com/). Pour rédiger le cahier des charges, n'importe quel éditeur de texte suffira.
 
 Une fois les spécifications rédigées, nous avons une représentation plus précise du MVP (web ou mobile). C'est le moment de créer le prototype. Vous trouverez une liste [ici](https://www.blogduwebdesign.com/logiciels-wireframe-prototype/#Logiciels_pour_creer_des_prototypes) d'outils pour en créer. Pour cette partie, mieux vaut faire appel à un professionel : soit pour vous [accompagner](https://www.digitaljungle.camp/), soit pour les réaliser à votre place [Malt](https://www.malt.fr/s?q=web+designer&as=t).
 
@@ -54,9 +55,9 @@ Avant de lancer une application complexe, il est facile de générer des *leads*
 
 ### Glossaire
 
-* MVP: minimum viable product
-* spécification: cahier des charges + wireframe
-* [wireframe](https://fr.wikipedia.org/wiki/Wireframe_(design): maquette fonctionnelle, schéma des interfaces utilisateur
-* prototype: maquettes représentant le design de votre site
-* user story: récit utilisateur, déscritpion simple du besoin utilisateur
-* product market fit: l’adéquation entre votre produit et son marché.
+- MVP: minimum viable product
+- spécification: cahier des charges + wireframe
+- wireframe :[maquette fonctionnelle](https://fr.wikipedia.org/wiki/Wireframe_(design), schéma des interfaces utilisateur
+- prototype: maquettes représentant le design de votre site
+- user story: récit utilisateur, déscritpion simple du besoin utilisateur
+- product market fit: l’adéquation entre votre produit et son marché.
