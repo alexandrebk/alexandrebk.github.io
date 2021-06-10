@@ -31,7 +31,16 @@ $ heroku git:remote -a airbnb-copycat-staging
 $ git remote rename heroku staging
 ```
 
-Désormais pour toute vos commandes `heroku` il faudra ajouter le suffixe `--remote production` ou `--remote staging`.
+Désormais pour toute vos commandes `heroku` il faudra ajouter le suffixe `--remote production` ou `--remote staging`. Par exemple:
+
+```sh
+# Accéder à la console de la prod
+heroku run rails console --remote production
+heroku run rails console -r production
+# Accéder à la console du staging
+heroku run rails console --remote staging
+heroku run rails console -r staging
+```
 
 ### Setup de la nouvelle database
 
