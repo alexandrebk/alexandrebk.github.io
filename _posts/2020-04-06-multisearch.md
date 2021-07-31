@@ -19,16 +19,17 @@ Nous allons voir plusieurs types de recherches :
 
 ### 0. Setup
 
-Tout d'abord, nous allons créer une application
+Tout d'abord, nous allons créer une application avec deux modèles *Flat* et *Booking*.
 
 ```sh
-rails new multisearch --database postgresql
-cd multisearch
+rails new multisearch --database postgresql && cd multisearch
 rails generate model Flat description:text address:string price_per_night:integer
 rails generate model Booking flat:references starts_at:date ends_at:date
 rails db:drop db:create db:migrate
 rails generate controller Flats index
 ```
+
+Ensuite nous allons configurer les routes et ajouter des seeds.
 
 ```ruby
 # config/routes.rb
@@ -91,7 +92,7 @@ gem 'simple_form'
 Puis on installe Simple Form et on lance les seeds.
 
 ```sh
-bunlde install
+bundle install
 rails generate simple_form:install --bootstrap
 rails db:seed
 ```
@@ -100,7 +101,7 @@ rails db:seed
 
 #### 1.1 On crée un scope dans le modèle
 
-Nous allons commencer par une recherche par mots-clés sur les colonnes `description` et `address` des Flat.
+Nous allons commencer par une recherche par mots-clés sur les colonnes *description* et *address* des Flat.
 
 ```ruby
 # app/models/flat.rb
@@ -113,21 +114,17 @@ class Flat < ApplicationRecord
   pg_search_scope :search_by_description_and_address,
                   against: [ :description, :address ],
                   using: { tsearch: { prefix: true } }
-
-  [...]
 end
 ```
 
-Pour vérifier que le scope fonctionne, je teste en console.
+Pour vérifier que le scope fonctionne, nous allons tester en ouvrant la console (`rails console`)
 
 ```ruby
-# rails console
-
 flats = Flat.search_by_description_and_address('Gaudelet')
 flats.count # => 1
 ```
 
-Je récupère bien un `Flat` qui comprend `Gaudelet` dans son adresse.
+Je récupère bien un *Flat* qui comprend *Gaudelet* dans son adresse.
 <img src="/images/posts/multisearch/pg_search_console.png"
      class="image"
      alt="pg search console">
@@ -145,7 +142,7 @@ Dans l'index, on va ajouter un formulaire puis on affiche les appartements.
   <%= f.input :search, label: "Recherche par adresse ou description",
                        input_html: { name: 'search',
                                      value: params.dig(:search) } %>
-  <%= f.submit "Chercher", class: "btn btn-primary" %>
+  <%= f.submit "Chercher" %>
 <% end %>
 
 <ul>
@@ -157,7 +154,7 @@ Dans l'index, on va ajouter un formulaire puis on affiche les appartements.
 
 #### 1.3 On filtre les données dans le controller
 
-Si le params `search` est présent, on applique le scope `search_by_description_and_address` sur le model `Flat`.
+Si le params *search* est présent, on applique le scope *search_by_description_and_address* sur le model *Flat*
 
 ```ruby
 # app/controllers/flats_controller.rb
@@ -172,6 +169,8 @@ class FlatsController < ApplicationController
   end
 end
 ```
+
+Nous pouvons désormais tester le formulaire avec `rails server` en visitant `http://localhost:3000/flats`
 
 <img src="/images/posts/multisearch/recherche_globale.gif"
      class="image"
@@ -204,14 +203,12 @@ end
 <% end %>
 ```
 
-<img src="/images/posts/multisearch/champs_prix.png" class="image" alt="affichage champs prix">
-
-#### 2.2 On ajoute les filtres dans `FlatsController`
+#### 2.2 On ajoute les filtres dans *FlatsController*
 
 ```ruby
 # app/controllers/flats_controller.rb
 
-class FlatsController
+class FlatsController < ApplicationController
   def index
     if params[:search].present?
       @flats = Flat.search_by_description_and_address(params[:search])
@@ -228,7 +225,7 @@ class FlatsController
 end
 ```
 
-<img src="/images/posts/multisearch/filtre_prix.gif" class="image" alt="gif filtre prix">
+<img src="/images/posts/multisearch/champs_prix.png" class="image" alt="affichage champs prix">
 
 <br>
 <br>
@@ -264,9 +261,9 @@ end
 
 #### 3.2 On vérifie la disponibilité des appartements
 
-On définie une méthode d'instance `Flat#is_available?` avec deux paramètres, la date d'entrée et la date de sortie.
+On définie une méthode d'instance *Flat#is_available?* avec deux paramètres, la date d'entrée et la date de sortie.
 
-Dans cette méthode, on compare les dates recherchées et les dates de réservation. Pour cela on va utiliser `overlaps?` (cf. [documentation](https://apidock.com/rails/Range/overlaps%3F)).
+Dans cette méthode, on compare les dates recherchées et les dates de réservation. Pour cela on va utiliser *overlaps?* (cf. [documentation](https://apidock.com/rails/Range/overlaps%3F)).
 
 ```ruby
 #app/models/flat.rb
@@ -285,11 +282,11 @@ end
 
 #### 3.3 On affiche les appartements disponibles.
 
-Avec la méthode `select`, je sélectionne les appartements disponibles.
+Avec la méthode *select*, je sélectionne les appartements disponibles.
 
 ```ruby
 #app/controllers/flat_controller.rb
-class FlatsController
+class FlatsController < ApplicationController
   def index
    if params[:search].present?
       @flats = Flat.search_by_description_and_address(params[:search])
