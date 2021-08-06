@@ -6,9 +6,9 @@ status: tech
 tags: "flatpickr, datepickr"
 ---
 
-Les éléments UX comme les formulaires, les calendriers, les sélecteurs de date sont toujours difficiles à mettre en œuvre. Heureusement, il existe souvent des plugins qui nous permettre de mettre ça en place facilement.
+Les calendriers et les sélecteurs de date sont toujours difficiles à mettre en place dans un formulaire. Heureusement, il existe souvent des packages JS qui nous permettre de mettre ça en place facilement.
 
-Pour afficher un calendrier sélecteur de dates, nous allons utiliser `Flatpickr`.
+Pour afficher un calendrier sélecteur de dates, nous allons utiliser le package <a href="https://flatpickr.js.org" class= "underlined" target="_blank">Flatpickr</a>.
 
 ### Première étape : Installation
 
@@ -159,8 +159,14 @@ Tout d'abord, il faut ajouter un label au calendrier. Ensuite on va cacher les d
   <div class="form-wrapper">
     <h2>Book a flat</h2>
     <%= simple_form_for [@flat, @booking] do |f| %>
-      <%= f.input :start_date, label: "Sélectionnez vos dates:", as: :string, required: false, input_html: { id: "range_start", class: "d-none"} %>
-      <%= f.input :end_date, label: false, as: :string, required: false, input_html: { id: "range_end", class: "d-none" } %>
+      <%= f.input :start_date, label: "Sélectionnez vos dates:",
+                               as: :string,
+                               required: false,
+                               input_html: { id: "range_start", class: "d-none"} %>
+      <%= f.input :end_date, label: false,
+                             as: :string,
+                             required: false,
+                             input_html: { id: "range_end", class: "d-none" } %>
       <%= f.button :submit, "Book", class: "btn btn-primary" %>
     <% end %>
   </div>
@@ -176,5 +182,3 @@ Si vous souhaitez effectuer une vérification sur les dates avant d'enregistrer 
 ### Second Bonus pour afficher le prix total de façon dynamique
 
 Souvent sur ce type d'application, le prix total s'affiche et se modifie en fonction des dates sélectionnées. Le tuto pour l'affichage dynamique, c'est <a href="/2020/03/31/dynamic-element.html" class= "underlined">ici</a>
-
-La documentation officielle de Flatpicker est disponible <a href="https://flatpickr.js.org/examples/#basic" class= "underlined" target="_blank">ici</a>
