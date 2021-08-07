@@ -6,53 +6,104 @@ difficulty:  1
 status:      tech
 ---
 
-Nous supposons qu’il y a une application Ruby on Rails de location d'appartement type Airbnb avec des modèles `Booking` et `User`. Nous allons créer des commentaires (*reviews*) sur les locations d'appartements.
+### 1. Le setup
 
-### Première étape : Les migrations
-
-Tout d’abord nous allons générer une migration pour créer la table *reviews*.
+Tout d’abord on va créer notre application puis générer nos modèles *Flat*, *Booking* et *Review*.
 
 ```sh
-$ rails generate model Review content:text rating:integer user:references booking:references
+$ rails new review_with_stars --database postgresql && cd review_with_stars
+$ rails generate scaffold Flat description:text address:string price_per_night:integer
+$ rails generate scaffold Booking flat:references starts_at:date ends_at:date
+$ rails generate model Review content:text rating:integer booking:references
 ```
 
-Puis on lance la migration.
+Ensuite on va ajouter les gems *simple_form* et *font-awesome*.
+
+```ruby
+# Gemfile
+# [...]
+
+gem 'simple_form'
+gem 'font-awesome-sass', '~> 5.6.1'
+```
+
+On ajoute quelques *seed*.
+
+```ruby
+# db/seeds.rb
+
+puts "Destroying all flats and bookings"
+Booking.destroy_all
+Flat.destroy_all
+
+gaudelet = Flat.create!(
+  address: "16 villa Gaudelet, 75011 Paris",
+  description: "Près du centre de Paris en 10 mn en métro ou bus, 20 minutes à pieds pour le Marais. Commerces et Métro Parmentier L3 au pied de l'immeuble. 10 à 20 mn des Gares.",
+  price_per_night: 155,
+)
+
+universite = Flat.create!(
+  address: "176 rue de l'Université, 75007 Paris",
+  description: "Votre espace 2 pièces 40m2, tout le 2e étage d'un immeuble de 1830, chambre sur cour, cuisine équipée, table à manger, salon avec poutres apparentes et canapé lit 2 places.",
+  price_per_night: 150,
+)
+
+mouffetard = Flat.create!(
+  address: "30 rue Lhomond, 75005 Paris",
+  description: "Appartement entier de 35 m2 situé au 1er étage sur cour dans le 5ème arrondissement de Paris, à côté de la rue Mouffetard, au coeur du quartier latin.",
+  price_per_night: 200,
+)
+
+puts "#{Flat.count} flats created"
+
+Booking.create!(starts_at: Date.today, ends_at: Date.today + 4, flat: gaudelet)
+Booking.create!(starts_at: Date.today, ends_at: Date.today + 7, flat: universite)
+Booking.create!(starts_at: Date.today, ends_at: Date.today + 2, flat: mouffetard
+
+puts "#{Booking.count} bookings created"
+```
+
+Puis on lance la migration, les seeds et l'installation de *simple_form*.
 
 ```sh
-$ rails db:migrate
+$ rails db:drop db:create db:migrate db:seed
+$ bundle install
+$ rails generate simple_form:install --bootstrap
+$ rm app/assets/stylesheets/application.css
+$ touch app/assets/stylesheets/application.scss
 ```
 
-### Deuxième étape : Le modèle
+Enfin, on ajoute font-awesome dans notre *stylesheet*.
 
-On va ajouter des validations sur les champs *content* et *rating*.
+```scss
+// app/assets/stylesheets/application.scss
+
+@import "font-awesome-sprockets";
+@import "font-awesome";
+```
+
+### 2. Les modèles
+
+On va ajouter des validations sur les champs *content* et *rating* et les relations entre les modèles. Je vais créer une constante *AUTHORIZED_RATINGS* qui va contenir la logique.
 
 ```ruby
 # app/models/review.rb
 
 class Review < ApplicationRecord
-  belongs_to :user
+  AUTHORIZED_RATINGS = (1..5)
+
   belongs_to :booking
   validates :content, presence: true
-  validates :rating,  numericality: { greater_than: 0, less_than_or_equal_to: 5 }
+  validates :rating, inclusion: { in: AUTHORIZED_RATINGS }
 end
-```
 
-Mettons à jour les modèles `User`, `Booking` et `Flat`.
-
-```ruby
-# app/models/user.rb
-
-class User < ApplicationRecord
-  [...]
-  has_many :reviews, dependent: :destroy
-end
 ```
 
 ```ruby
 # app/models/booking.rb
 
 class Booking < ApplicationRecord
-  [...]
+  belongs_to :flat
   has_many :reviews, dependent: :destroy
 end
 ```
@@ -61,35 +112,35 @@ end
 # app/models/flat.rb
 
 class Flat < ApplicationRecord
-  [...]
-  has_many   :bookings, dependent: :destroy
-  has_many   :reviews,  through: :bookings
+  has_many :bookings, dependent: :destroy
+  has_many :reviews,  through: :bookings
 end
 ```
 
-### Troisième étape : Les routes et le contrôleur
+### 3. Les routes et le *ReviewsController*
 
-Nous allons ajouter une route pour la création d'une *review*.
-Une évaluation appartient à une réservation. Donc nous allons nester les `reviews` dans les `bookings`.
+Nous allons redéfinir les routes pour tenir compte des relations entre les modèles. Allez sur la documentation <a href="https://apidock.com/rails/Range/overlaps%3F" class= "underlined" target="_blank">Rails</a> pour en savoir plus sur le *shallow nesting*
 
 ```ruby
 # config/routes.rb
 
 Rails.application.routes.draw do
-  [...]
-  resources :bookings do
-    resources :reviews, only: [:create]
+  resources :flats do
+    resources :bookings, shallow: true
+  end
+  resources :bookings, only: [] do
+    resources :reviews, shallow: true
   end
 end
 ```
 
-Ensuite on va générer le *controller* *reviews*.
+Ensuite on va générer le *ReviewsController*.
 
 ```sh
-$ rails g controller reviews
+$ rails generate controller reviews
 ```
 
-Ensuite nous allons dans le *controller* pour coder la méthode *create*.
+Puis coder la méthode *create* dans le *ReviewsController*.
 
 ```ruby
 # app/controllers/reviews_controllers.rb
@@ -98,7 +149,6 @@ class ReviewsController < ApplicationController
   def create
     @booking        = Booking.find(params[:booking_id])
     @review         = Review.new(review_params)
-    @review.user    = current_user
     @review.booking = @booking
     if @review.save
       redirect_to flat_path(@booking.flat)
@@ -115,88 +165,138 @@ class ReviewsController < ApplicationController
 end
 ```
 
-### Quatrième étape : Liste d'étoiles dans le formulaire
-
-On ajoute une review dans la *show* d’un *booking*. Pour cela, il faut d'abord créer une nouvelle instance de *review* dans le controlleur des *bookings*.
+Avant d'ajouter le formulaire dans la *show* d’un *booking* il faut créer une nouvelle instance de *Review* dans *BookingsController*.
 
 ```ruby
 # app/controllers/bookings_controller.rb
 
 class BookingsController < ApplicationController
-  [...]
+  # [...]
 
   def show
-    [...]
+    # [...]
     @review = Review.new
   end
 end
 ```
-Nous souhaitons que le formulaire d'évaluation ne s'affiche que si la réservation est terminée, et que l'utilisateur ne l'a pas encore évalué. Pour vérifier cela, nous allons créer une méthode d'instance dans le modèle `Booking.rb`.
+
+Enfin, comme nous allons afficher toutes les *reviews* dans la *show* d'un *flat* il faut. ainsi la moyenne des notes.
 
 ```ruby
-# app/models/booking.rb
+# app/controllers/flats_controller.rb
+class FlatsController < ApplicationController
+  # [...]
 
-[...]
-def display_review_form(user)
-  (self.end_date < Date.today) && (self.reviews.find_by(user: user).nil?)
+  def show
+    # [...]
+    @reviews        = @flat.reviews
+    @average_rating = @reviews.average(:rating)
+  end
 end
 ```
 
-Ensuite nous allons coder la vue éponyme. Pour une interface plus *friendly*, on va cacher l'input des notes et ajouter une liste d'étoiles.
+### 4. Les vues
+
+On va ajouter le formulaire dans la *show* d’un *booking*. Pour une interface plus *friendly*, on va cacher l'input des notes et ajouter une liste d'étoiles.
 
 ```erb
 <!-- app/views/bookings/show.html.erb -->
+<!-- [...] -->
 
-[...]
-<% if @booking.display_review_form(current_user) %>
-  <div class="review">
-    <h2>Laissez une évaluation</h2>
-    <%= simple_form_for [@booking, @review] do |f| %>
-      <%= f.input :content %>
-      <%= f.input :rating, as: :hidden  %>
-      <div class="my-3">
-        <% 5.times do |index| %>
-          <i id="<%= index + 1 %>" class="review-rating far fa-star"></i>
-        <% end %>
-      </div>
-      <%= f.submit class: "btn btn-primary", value: "Valider" %>
-    <% end %>
-  </div>
-<% end %>
-[...]
+<div class="review">
+  <h2>Laissez une évaluation</h2>
+  <%= simple_form_for [@booking, @review] do |f| %>
+    <%= f.input :content %>
+    <%= f.input :rating, collection: Review::AUTHORIZED_RATINGS,
+                         include_blank: false %>
+    <%= f.submit class: "btn btn-primary", value: "Valider" %>
+  <% end %>
+</div>
 ```
 
+Une fois le formulaire remplie, il faut afficher les *reviews* dans la *show* d'un *flat*.
+
+```erb
+<!-- app/views/flats/show.html.erb -->
+<!-- [...] -->
+
+<p>
+  Moyenne : <%= @average_rating %>
+</p>
+<div class="reviews">
+  <% @reviews.each do |review| %>
+    <p>
+      <% Review::AUTHORIZED_RATINGS.each do |number| %>
+        <i class="fa<%= (number > review.rating) ? 'r' : 's' %> fa-star"></i>
+      <% end %>
+      <%= review.content %>
+    </p>
+  <% end %>
+</div>
+
+<!-- [...] -->
+```
+
+<img src="/images/posts/rating/new-rating.gif"
+     class="image"
+     alt="new rating">
+
+### 5. Afficher les étoiles
+
+Pour une interface plus *friendly*, on va cacher l'*input* des notes et ajouter une liste d'étoiles.
+
+```erb
+<!-- app/views/bookings/show.html.erb -->
+<!-- [...] -->
+
+<div class="review">
+  <h2>Laissez une évaluation</h2>
+  <%= simple_form_for [@booking, @review] do |f| %>
+    <%= f.input :content %>
+    <%= f.input :rating, as: :hidden  %>
+    <div class="my-3">
+      <% Review::AUTHORIZED_RATINGS.each do |index| %>
+        <i id="<%= index %>" class="review-rating far fa-star"></i>
+      <% end %>
+    </div>
+    <%= f.submit class: "btn btn-primary", value: "Valider" %>
+  <% end %>
+</div>
+```
+
+On va ajouter un peu de css notamment ajouter un curseur sur les étoiles du formulaires.
+
 ```css
-/* app/assets/stylesheets/components/_form.scss */
+/* app/assets/stylesheets/application.scss
 
 .fa-star {
   color:  #FFD700;
-  cursor: pointer;
 }
-.review i {
-  font-size: 32px;
+
+.review-rating {
+  cursor:    pointer;
+  font-size: 2rem;
 }
 ```
 
-```css
-/* app/assets/stylesheets/components/_index.scss */
+À ce stade, nous avons bien les étoiles qui s'affichent dans le formulaire.
 
-[...]
-@import "form";
-[...]
-```
-
-À ce stade, nous avons un formulaire qui s'affiche sur la *show* d'un `booking`.
-
-<img src="/images/posts/rating/formulaire.png" class="image" alt="formulaire">
+<img src="/images/posts/rating/formulaire.png"
+     class="image"
+     alt="formulaire">
 
 Ajoutons l'effet de *hover* au passage de la souris et la sélection du nombre d'étoiles.
+
+```sh
+$ mkdir app/javascript/plugins
+$ touch app/javascript/plugins/starsInReviewForm.js
+```
 
 ```js
 // app/javascript/plugins/starsInReviewForm.js
 
 // je créé une fonction qui va changer la classe appliquée aux étoiles
-const toggleStarsInBlack = (rating) => {
+const toggleColorStars = (rating) => {
   for (let index = 1; index <= 5; index++) {
     const star = document.getElementById(index);
     if (index <= rating) {
@@ -208,7 +308,7 @@ const toggleStarsInBlack = (rating) => {
 };
 
 // je créé une fonction qui va récupérer la valeur du rating
-const updateRatingInput = (rating) => {
+const updateRatingInputForm = (rating) => {
   const formInput = document.getElementById('review_rating')
   formInput.value = rating
 }
@@ -222,15 +322,15 @@ const dynamicRating = () => {
       // au clic je récupère la valeur du rating, j'applique le style css et j'ajoute une classe "selected" sur l'étoile
       star.addEventListener("click", (event) => {
         const rating = event.currentTarget.id
-        updateRatingInput(rating);
-        toggleStarsInBlack(rating);
+        updateRatingInputForm(rating);
+        toggleColorStars(rating);
         star.classList.add("selected")
       });
       star.addEventListener("mouseover", (event) => {
         // s'il n'y a pas de classe "selected" j'applique du style au passage de la souris
         const rating = event.currentTarget.id
         if (!(document.querySelector(".selected"))) {
-          toggleStarsInBlack(rating);
+          toggleColorStars(rating);
         }
       });
     });
@@ -243,138 +343,15 @@ export { dynamicRating };
 ```js
 // app/javascript/packs/application.js
 
-[...]
+// [...]
 import { dynamicRating } from "../plugins/starsInReviewForm";
 
-dynamicRating();
-```
-<img src="/images/posts/rating/javascript-stars.gif" class="image" alt="rating javascript">
-
-### Cinquième étape : Afficher les *reviews* et la moyenne
-
-Nous allons afficher toutes les *reviews* dans la *show* d'un *flat*. Et aussi la moyenne des notes.
-
-```ruby
-# app/controllers/flats_controller.rb
-class FlatsController < ApplicationController
-  [...]
-
-  def show
-    [...]
-    @reviews        = @flat.reviews
-    @average_rating = @reviews.average(:rating)
-  end
-end
+document.addEventListener('turbolinks:load', () => {
+  // [...]
+  dynamicRating();
+})
 ```
 
-Nous allons coder la vue éponyme.
-
-```erb
-<!-- app/views/flats/show.html.erb -->
-
-[...]
-<p>Moyenne : <%= @average_rating %></p>
-[...]
-<div class="reviews">
-  <% @reviews.each do |review| %>
-    <p>
-      <%= review.user.first_name %>
-      <% review.rating.times do %>
-        <i class="fas fa-star"></i>
-      <% end %>
-      <% (5 - review.rating).times do %>
-        <i class="far fa-star"></i>
-      <% end %>
-    </p>
-    <p><%= review.content %></p>
-  <% end %>
-</div>
-[...]
-```
-
-<img src="/images/posts/rating/new-rating.gif" class="image" alt="new rating">
-
-
-### Bonus pour des listes déroulantes dans *Simple Form*
-
-Nous allons voir une autre façon d'aborder les *reviews*. Au lieu d'ajouter une évaluation depuis la *show* d'un booking, nous allons ajouter les évaluations depuis une page unique en sélectionnant le booking dans une liste déroulante.
-Attention c'est méthode ne se cumule pas à la précédente. Cependant nous pouvons conserver le fichier `starsInReviewForm.js` pour le *rating* en étoiles.
-
-Tout d'abord, il faut ajouter la route.
-
-```ruby
-# config/routes.rb
-
-Rails.application.routes.draw do
-  [...]
-  resources :reviews, only: [:new, :create]
-end
-```
-
-Puis la méthode du *controller*.
-
-```ruby
-# app/controllers/bookings_controller.rb
-
-class BookingsController < ApplicationController
-  def new
-    @review   = Review.new
-    @bookings = current_user.bookings
-  end
-
-  def create
-    # Attention l'ancien formulaire n'est plus disponible
-    @review         = Review.new(review_params)
-    @review.user    = current_user
-    if @review.save
-      redirect_to flat_path(@review.booking.flat)
-    else
-      render "new"
-    end
-  end
-
-  private
-
-  def review_params
-    params.require(:review).permit(:content, :rating, :booking_id)
-  end
-end
-```
-
-Un petit tricks dans Rails. Si vous créez une méthode *name* dans un modèle, *simple_form* va automatiquement aller la chercher pour afficher les données. Et lors de la soumission du formulaire, il va récupérer l'*id* du modèle.
-
-```ruby
-# app/models/booking.rb
-
-class Booking < ApplicationRecord
-  [...]
-  def name
-    "#{self.flat.address}, du #{self.start_date.strftime("%m/%d/%Y")} au #{self.end_date.strftime("%m/%d/%Y")}"
-  end
-end
-```
-
-Et enfin la vue.
-
-```erb
-<!-- app/views/reviews/new.html.erb -->
-
-<div class="container">
-  <%= simple_form_for [@review] do |f| %>
-    <!-- On donne la liste des bookings via une collection -->
-    <%= f.input :booking_id, collection: @bookings %>
-    <!-- Ou alors -->
-    <%#= f.association :booking %>
-    <%= f.input :content %>
-    <%= f.input :rating, as: :hidden  %>
-    <div class="my-3">
-     <% 5.times do |index| %>
-      <i id="<%= index + 1 %>" class="review-rating far fa-star"></i>
-     <% end %>
-    </div>
-    <%= f.submit class: "btn btn-primary" %>
-  <% end %>
-</div>
-```
-
-<img src="/images/posts/rating/formulaire-new.gif" class="image" alt="form rating">
+<img src="/images/posts/rating/javascript-stars.gif"
+     class="image"
+     alt="rating javascript">
