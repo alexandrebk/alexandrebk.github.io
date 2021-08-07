@@ -35,48 +35,75 @@
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>http://www.alexandrebouvier.fr/2019/07/25/heroku-rigths-to-push.html</loc>
+    <loc>
+      http://www.alexandrebouvier.fr/2019/07/22/administrate.html
+    </loc>
     <lastmod>2019-07-23T12:37:53+00:00</lastmod>
     <priority>0.64</priority>
   </url>
   <url>
-    <loc>http://www.alexandrebouvier.fr/2019/07/24/flatpicker-in-rails.html</loc>
+    <loc>
+      http://www.alexandrebouvier.fr/2019/07/24/flatpicker-in-rails.html
+    </loc>
     <lastmod>2021-08-06T17:45:00+00:00</lastmod>
     <priority>0.64</priority>
   </url>
   <url>
-    <loc>http://www.alexandrebouvier.fr/2019/07/23/highlight-current-page-on-navbar.html</loc>
+    <loc>
+      http://www.alexandrebouvier.fr/2019/07/25/heroku-rigths-to-push.html
+    </loc>
     <lastmod>2019-07-23T12:37:53+00:00</lastmod>
     <priority>0.64</priority>
   </url>
   <url>
-    <loc>http://www.alexandrebouvier.fr/2019/07/22/administrate.html</loc>
+    <loc>
+      http://www.alexandrebouvier.fr/2019/07/23/highlight-current-page-on-navbar.html
+    </loc>
     <lastmod>2019-07-23T12:37:53+00:00</lastmod>
     <priority>0.64</priority>
   </url>
   <url>
-    <loc>http://www.alexandrebouvier.fr/2019/09/15/active-storage.html</loc>
+    <loc>
+      http://www.alexandrebouvier.fr/2019/09/15/active-storage.html
+    </loc>
     <lastmod>2019-07-23T12:37:53+00:00</lastmod>
     <priority>0.64</priority>
   </url>
   <url>
-    <loc>http://www.alexandrebouvier.fr/2019/11/30/reviews-and-advanced-simple-form.html</loc>
+    <loc>
+      http://www.alexandrebouvier.fr/2019/11/30/reviews-and-advanced-simple-form.html
+    </loc>
     <lastmod>2019-11-30T12:37:53+00:00</lastmod>
     <priority>0.64</priority>
   </url>
   <url>
-    <loc>http://www.alexandrebouvier.fr/2020/03/31/flatpicker-dynamic-price.html</loc>
+    <loc>
+      https://www.alexandrebouvier.fr/2020/03/04/rails-heroku-staging.html
+    </loc>
+    <lastmod>2021-06-10T12:37:53+00:00</lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>
+      https://www.alexandrebouvier.fr/2020/03/07/tricks-junior-dev.html
+    </loc>
+    <lastmod>
+      2021-08-08T12:37:53+00:00
+    </lastmod>
+    <priority>0.64</priority>
+  </url>
+  <url>
+    <loc>
+      http://www.alexandrebouvier.fr/2020/03/31/flatpicker-dynamic-price.html
+    </loc>
     <lastmod>2020-08-31T12:37:53+00:00</lastmod>
     <priority>0.64</priority>
   </url>
   <url>
-    <loc>http://www.alexandrebouvier.fr/2020/04/06/multisearch.html</loc>
+    <loc>
+      http://www.alexandrebouvier.fr/2020/04/06/multisearch.html
+    </loc>
     <lastmod>2021-07-31T15:49:00+00:00</lastmod>
-    <priority>0.64</priority>
-  </url>
-  <url>
-    <loc>https://www.alexandrebouvier.fr/2020/03/04/rails-heroku-staging.html</loc>
-    <lastmod>2021-06-10T12:37:53+00:00</lastmod>
     <priority>0.64</priority>
   </url>
   <url>
