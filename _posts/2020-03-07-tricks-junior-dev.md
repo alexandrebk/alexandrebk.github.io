@@ -26,7 +26,7 @@ puts toto
 
 Cela vous permet de naviguer à travers des objets sans risque de voir lever une erreur.
 
-Imaginons deux classes : `Room` et `Project`. `Room` appartient à `Project` et `Project` a une variable d'instance `name`.
+Imaginons deux classes : *Room* et *Project*. Une *room* appartient à un *Project* qui a une variable d'instance *name*.
 
 ```ruby
 project = Project.new(name: "Mes supers travaux")
@@ -43,7 +43,7 @@ puts room.project.name
 # => NoMethodError: undefined method `name' for nil:NilClass
 ```
 
-Pour prévenir ce type d'erreur, nous allons ajouter l'opérateur `&` qui va renvoyer `nil` si la méthode ne fonctionne pas.
+Pour prévenir ce type d'erreur, nous allons ajouter l'opérateur `&` qui va renvoyer *nil* si la méthode ne fonctionne pas.
 
 ```ruby
 room = Room.new(project: project)
@@ -64,7 +64,7 @@ Commençons par un exemple sur un tableau de chiffres que nous voulons transform
 # => ["1", "2", "3"]
 ```
 
-Maintenant, imaginons une classe `Room` avec une variable d'instance `wall_surface`. Je veux récupérer toutes les valeurs et les additionner.
+Maintenant, imaginons une classe *Room* avec une variable d'instance *wall_surface*. Je veux récupérer toutes les valeurs et les additionner.
 
 ```ruby
 @rooms = Room.all
@@ -74,7 +74,7 @@ Maintenant, imaginons une classe `Room` avec une variable d'instance `wall_surfa
 @rooms.sum { |room| room.wall_surface }
 ```
 
-On peut même écrire ses propres procs. Par exemple, un proc qui va additionner toutes les surfaces des `Room` et y ajouter 10.
+On peut même écrire ses propres procs. Par exemple, un *proc* qui va additionner toutes les surfaces des *Room* et y ajouter 10.
 
 ```ruby
 wall_surface_plus_ten = Proc.new {|x| x.wall_surface + 10 }
@@ -85,9 +85,9 @@ wall_surface_plus_ten = Proc.new {|x| x.wall_surface + 10 }
 
 ### La méthode *send*
 
-La méthode `send` permet d'appeler une méthode sur un objet en lui passant une chaîne de caractères.
+La méthode *send* permet d'appeler une méthode sur un objet en lui passant une chaîne de caractères.
 
-Imaginons que j'ai plusieurs instances de `Room` et que je veuille changer plusieurs variables d'instance.
+Imaginons que nous avons plusieurs instances de *Room* et que nous souhaitons changer plusieurs variables d'instance en même temps.
 
 ```ruby
 def should_paint_all
@@ -115,4 +115,4 @@ def should_paint_all
 end
 ```
 
-La documentation se trouve <a href="https://apidock.com/ruby/Object/send" target="_blank">ici</a>.
+La documentation se trouve <a href="https://apidock.com/ruby/Object/send" class="underlined" target="_blank">ici</a>.
