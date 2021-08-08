@@ -7,26 +7,22 @@ status: tech
 tags: "heroku"
 ---
 
-<a href="https://dashboard.heroku.com/apps" target="_blank">Allez sur votre dashboard Heroku</a> puis cliquez sur le nom de votre application.
+Allez sur votre <a href="https://dashboard.heroku.com/apps" class="underlined" target="_blank">dashboard Heroku</a> puis cliquez sur votre application.
 
-### Première étape
+Dans l'onglet **Access**, cliquez sur **Add Collaborator** et ajoutez son email.
 
-Dans l'onglet *Access*, cliquez sur *Add Collaborator*
+<img src="/images/posts/heroku-button.png"
+     class="image"
+     alt="Cliquer sur Add Collaborator">
 
-<img src="/images/posts/heroku-button.png" class="image" alt="Cliquer sur Add Collaborator">
+<img src="/images/posts/heroku-email.png"
+     class="image"
+     alt="Ajoutez son email rattaché à son compte Heroku">
 
-Ajoutez son email
-
-<img src="/images/posts/heroku-email.png" class="image" alt="Ajoutez son email rattaché à son compte Heroku">
-
-### Seconde étape
-
-Ici l'application s'appelle `airbnb-copycat`
-
-Vos collaborateurs devraient lancer la commande suivante dans leur terminal :
+Ensuite vos collaborateurs devront lancer la commande suivante dans leur terminal :
 
 ```sh
 heroku git:remote -a airbnb-copycat
 ```
 
-Dans votre cas, remplacez `airbnb-copycat` par le nom de votre application.
+Ici l'application s'appelle `airbnb-copycat`. Dans votre cas, remplacez `airbnb-copycat` par le nom de votre application.
