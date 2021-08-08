@@ -6,7 +6,7 @@ status: tech
 tags: "ruby"
 ---
 
-### Opérateur d'affectation conditionnel `||=`
+### Opérateur d'affectation conditionnel (`||=`)
 
 On souhaite assigner une valeur à une variable si et seulement si elle n'est pas précédemment définie. Attention car on réassigne si la valeur est `falsy` c'est à dire `nil` ou même `false`. Il n'est donc pas conseillé d'utiliser cette méthode pour un booléan.
 
@@ -22,7 +22,7 @@ puts toto
 # "J'ai déjà du contenu"
 ```
 
-### Opérateur de navigation sans risque `&`
+### Opérateur de navigation sans risque (`&`)
 
 Cela vous permet de naviguer à travers des objets sans risque de voir lever une erreur.
 
@@ -116,14 +116,3 @@ end
 ```
 
 La documentation se trouve <a href="https://apidock.com/ruby/Object/send" target="_blank">ici</a>.
-
-### L'itérateur `reduce`
-
-```ruby
-[1,2,3].reduce(0) do |sum, num|
-  sum + num
-end
-# => 6
-```
-
-La documentation se trouve <a href="https://apidock.com/ruby/Enumerable/reduce" target="_blank">ici</a>.
