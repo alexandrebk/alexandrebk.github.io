@@ -22,9 +22,9 @@
      alt="name">
 ```
 
-#### Model and Controller
+#### Model Controller and method
 
-*Model* and *Controller*
+*Model* and *Controller* and *method*
 
 #### Deploy
 
