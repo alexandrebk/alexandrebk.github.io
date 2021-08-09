@@ -66,7 +66,7 @@
     <loc>
       http://www.alexandrebouvier.fr/2019/09/15/active-storage.html
     </loc>
-    <lastmod>2019-07-23T12:37:53+00:00</lastmod>
+    <lastmod>2021-08-09T12:37:53+00:00</lastmod>
     <priority>0.64</priority>
   </url>
   <url>
@@ -116,6 +116,13 @@
   <url>
     <loc>
       https://www.alexandrebouvier.fr/2021/05/06/lancement-projet-web.html
+    </loc>
+    <lastmod>2021-06-04T12:37:53+00:00</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>
+      https://www.alexandrebouvier.fr/2021/08/09/rails-aws-s3.html
     </loc>
     <lastmod>2021-06-04T12:37:53+00:00</lastmod>
     <priority>0.8</priority>
