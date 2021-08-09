@@ -9,13 +9,13 @@ status: tech
 tags: "navbar, css, bootstrap"
 ---
 
-C'est un besoin courant en UX : marquer visuellement l'onglet d'un menu de navigation comme «actif». Lorsque l'on se trouve sur une page du site, on voudra que le lien dans le menu de navigation se mette en évidence par exemple avec un texte plus gras.
+C'est un besoin courant en UX : marquer visuellement l'onglet d'un menu de navigation lorsqu'on est sur la page. On voudrait donc que le lien dans le menu de navigation soit mis en évidence avec un texte plus gras par exemple.
 
 Nous supposons que nous sommes dans une application Ruby on Rails avec Bootstrap d'installé.
 
 ### La classe *navbar* de Bootstrap
 
-Voici notre barre de navigation codée à l'aide de <a href="https://getbootstrap.com/docs/4.0/components/navbar/" class="underlined"target="_blank">Bootstrap</a>.
+Voici notre barre de navigation codée avec <a href="https://getbootstrap.com/docs/4.0/components/navbar/" class="underlined" target="_blank">Bootstrap</a>
 
 ```erb
 # app/views/shared/_navabar.html.erb
