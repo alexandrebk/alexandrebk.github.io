@@ -1,6 +1,6 @@
 ---
 layout:      post
-title:       "Ajouter une évaluation en étoiles  avec Javascript et afficher la note moyenne"
+title:       "Créer des reviews avec des étoiles ⭐⭐⭐⭐⭐"
 description: "Dans ce tuto nous allons apprendre à ajouter des reviews sur notre application de réservations d’appartement avec une liste déroulante grâce à simple form."
 difficulty:  1
 status:      tech

@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Quelques méthodes utiles en Ruby quand on est Junior"
+title:  "Quelques méthodes utiles en Ruby pour les juniors"
 description: "Dans ce tuto je vais vous présenter des méthodes très utiles que j'utilise tous les jours en Ruby"
 status: tech
 tags: "ruby"
