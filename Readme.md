@@ -2,20 +2,29 @@
 
 [Blog](http://www.alexandrebouvier.fr/) of Alexandre Bouvier, made with [Jekyll](https://jekyllrb.com/) and hosted with Github Pages.
 
-### TO DO
+### Convention
 
-#### Front
+#### Link
 
-- [ ] Ajouter un lien sur le titre
+```html
+<a href="" class="underlined" target="_blank"></a>
+```
 
-#### Créer un Article sur les reviews
+#### Path
 
-- [ ] Article sur les Reviews (reviewer and receiver, rating and content, average etc..)
+`config/routes.rb`
 
-#### Mise à jour Article sur la recherche multi-critères (filtres)
+#### Image
 
-- [ ] Commande pour générer l'app et les models au début
-- [x] Ajouter les params.dig
+```html
+<img src="/path"
+     class="image"
+     alt="name">
+```
+
+#### Model Controller and method
+
+*Model* and *Controller* and *method*
 
 #### Deploy
 
@@ -23,7 +32,7 @@
 bundle exec jekyll build -d ../blog
 ```
 
-#### Serveur
+#### Server
 
 ```sh
 bundle exec jekyll serve
