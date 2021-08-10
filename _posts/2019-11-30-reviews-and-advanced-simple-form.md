@@ -58,7 +58,7 @@ puts "#{Flat.count} flats created"
 
 Booking.create!(starts_at: Date.today, ends_at: Date.today + 4, flat: gaudelet)
 Booking.create!(starts_at: Date.today, ends_at: Date.today + 7, flat: universite)
-Booking.create!(starts_at: Date.today, ends_at: Date.today + 2, flat: mouffetard
+Booking.create!(starts_at: Date.today, ends_at: Date.today + 2, flat: mouffetard)
 
 puts "#{Booking.count} bookings created"
 ```
@@ -84,7 +84,7 @@ Enfin, on ajoute font-awesome dans notre *stylesheet*.
 
 ### 2. Les modèles
 
-On va ajouter des validations sur les champs *content* et *rating* et les relations entre les modèles. Je vais créer une constante *AUTHORIZED_RATINGS* qui va contenir la logique.
+On va ajouter des validations sur les champs *content* et *rating*. La constante *AUTHORIZED_RATINGS* va contenir le *range* possible de notes.
 
 ```ruby
 # app/models/review.rb
@@ -119,22 +119,20 @@ end
 
 ### 3. Les routes et le *ReviewsController*
 
-Nous allons redéfinir les routes pour tenir compte des relations entre les modèles. Allez sur la documentation <a href="https://apidock.com/rails/Range/overlaps%3F" class= "underlined" target="_blank">Rails</a> pour en savoir plus sur le *shallow nesting*
+Nous allons redéfinir les routes pour tenir compte des relations entre les modèles. Sur la documentation <a href="https://apidock.com/rails/Range/overlaps%3F" class= "underlined" target="_blank">Rails</a> vous trouverez des informations sur le *shallow nesting*.
 
 ```ruby
 # config/routes.rb
 
 Rails.application.routes.draw do
-  resources :flats do
-    resources :bookings, shallow: true
-  end
+  resources :flats
   resources :bookings, only: [] do
     resources :reviews, shallow: true
   end
 end
 ```
 
-Ensuite on va générer le *ReviewsController*.
+On va générer le *ReviewsController*.
 
 ```sh
 $ rails generate controller reviews
@@ -197,7 +195,7 @@ end
 
 ### 4. Les vues
 
-On va ajouter le formulaire dans la *show* d’un *booking*. Pour une interface plus *friendly*, on va cacher l'input des notes et ajouter une liste d'étoiles.
+On va ajouter le formulaire dans la *show* d’un *booking*.
 
 ```erb
 <!-- app/views/bookings/show.html.erb -->
@@ -237,6 +235,8 @@ Une fois le formulaire remplie, il faut afficher les *reviews* dans la *show* d'
 <!-- [...] -->
 ```
 
+On peut tester <a href="http://localhost:3000/bookings/" class= "underlined" target="_blank">ici</a>
+
 <img src="/images/posts/rating/new-rating.gif"
      class="image"
      alt="new rating">
@@ -264,10 +264,10 @@ Pour une interface plus *friendly*, on va cacher l'*input* des notes et ajouter 
 </div>
 ```
 
-On va ajouter un peu de css notamment ajouter un curseur sur les étoiles du formulaires.
+On va ajouter un peu de css.
 
 ```css
-/* app/assets/stylesheets/application.scss
+// app/assets/stylesheets/application.scss
 
 .fa-star {
   color:  #FFD700;
@@ -288,23 +288,21 @@ On va ajouter un peu de css notamment ajouter un curseur sur les étoiles du for
 Ajoutons l'effet de *hover* au passage de la souris et la sélection du nombre d'étoiles.
 
 ```sh
-$ mkdir app/javascript/plugins
-$ touch app/javascript/plugins/starsInReviewForm.js
+$ mkdir app/javascript/plugins && touch app/javascript/plugins/starsInReviewForm.js
 ```
 
 ```js
 // app/javascript/plugins/starsInReviewForm.js
 
 // je créé une fonction qui va changer la classe appliquée aux étoiles
-const toggleColorStars = (rating) => {
-  for (let index = 1; index <= 5; index++) {
-    const star = document.getElementById(index);
-    if (index <= rating) {
+const toggleColorStars = (stars, rating) => {
+  stars.forEach((star) => {
+    if (star.id <= rating) {
       star.className = "review-rating fas fa-star"
     } else {
       star.className = "review-rating far fa-star"
     }
-  }
+  });
 };
 
 // je créé une fonction qui va récupérer la valeur du rating
@@ -317,22 +315,32 @@ const updateRatingInputForm = (rating) => {
 const dynamicRating = () => {
   // je récupère toutes les étoiles
   const stars = document.querySelectorAll('.review-rating');
+  const starsReview = document.querySelector('#review-star-ratings');
+
+
   if ( stars.length > 0) {
     stars.forEach((star) => {
       // au clic je récupère la valeur du rating, j'applique le style css et j'ajoute une classe "selected" sur l'étoile
       star.addEventListener("click", (event) => {
         const rating = event.currentTarget.id
         updateRatingInputForm(rating);
-        toggleColorStars(rating);
+        toggleColorStars(stars, rating);
         star.classList.add("selected")
       });
       star.addEventListener("mouseover", (event) => {
         // s'il n'y a pas de classe "selected" j'applique du style au passage de la souris
         const rating = event.currentTarget.id
         if (!(document.querySelector(".selected"))) {
-          toggleColorStars(rating);
+          toggleColorStars(stars, rating);
         }
       });
+    });
+    starsReview.addEventListener("mouseout", (event) => {
+      if (!(document.querySelector(".selected"))) {
+        stars.forEach((star) => {
+          star.className = "review-rating far fa-star"
+        });
+      }
     });
   };
 };
