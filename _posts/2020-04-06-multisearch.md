@@ -183,7 +183,7 @@ Nous pouvons désormais tester le formulaire avec `rails server` en visitant <a 
 <br>
 <br>
 
-### <a name="price"></a>2. Recherche par prix maximume
+### <a name="price"></a>2. Recherche par prix maximum
 
 On ajoute un champ de recherche avec prix maximum
 
@@ -192,13 +192,13 @@ On ajoute un champ de recherche avec prix maximum
 
 <%= simple_form_for :search, method: :get,
                              defaults: { required: false } do |f| %>
-  [...]
+  <!-- [...]  -->
   <%= f.input :max_price, label: "Prix max",
                           required: false,
                           input_html: { type: :number,
                                         name: :max_price,
                                         value: params.dig(:max_price) } %>
-  [...]
+  <!-- [...]  -->
 <% end %>
 ```
 
@@ -237,13 +237,13 @@ On ajoute un champ de recherche avec prix maximum
 
 <%= simple_form_for :search, method: :get,
                              defaults: { required: false } do |f| %>
-  [...]
+  <!-- [...]  -->
   <%= f.input :category, label: "Category",
                        collection: Flat::AUTHORIZED_CATEGORIES,
                        include_blank: true,
                        selected: params.dig(:category),
                        input_html: { name: :category } %>
-  [...]
+  <!-- [...]  -->
 <% end %>
 ```
 
