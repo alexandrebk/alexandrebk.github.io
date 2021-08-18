@@ -23,7 +23,7 @@ Tout d'abord, nous allons créer une application avec deux modèles *Flat* et *B
 
 ```sh
 rails new multisearch --database postgresql && cd multisearch
-rails generate model Flat description:text address:string price_per_night:integer
+rails generate model Flat address category description:text price_per_night:integer
 rails generate model Booking flat:references starts_at:date ends_at:date
 rails db:drop db:create db:migrate
 rails generate controller Flats index
