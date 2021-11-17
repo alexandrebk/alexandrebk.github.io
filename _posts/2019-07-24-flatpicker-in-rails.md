@@ -80,6 +80,7 @@ Une fois créé, on place le tableau de hash dans la vue sous forme de data-set 
 
 <div id="booking-form-div"
      data-bookings="<%= @bookings_dates.to_json %>">
+</div>
 ```
 
 ### 4. Récupèrer les données pour les injecter dans le calendrier
@@ -122,10 +123,10 @@ Ensuite dans le fichier `application.js` il faut importer la fonction `initFlatp
 ```js
 // app/javascript/packs/application.js
 
-import { initFlatPicker } from '../plugins/flatpickr';
+import { initFlatpickr } from '../plugins/flatpickr';
 
 document.addEventListener('turbolinks:load', () => {
-  initFlatPicker();
+  initFlatpickr();
 })
 ```
 
