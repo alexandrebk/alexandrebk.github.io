@@ -92,14 +92,21 @@ $ mkdir -p app/javascript/plugins
 $ touch app/javascript/plugins/flatpickr.js
 ```
 
+```css
+// app/assets/stylesheets/application.scss
+// [...]
+
+@import "flatpickr/dist/flatpickr";
+```
+
 Dans le fichier `app/javascript/plugins/flatpickr.js` on récupère les données dans la div avec `getElementbyID`. Puis on les parse en JSON et on grise les réservations avec le `disable`.
 
 ```js
 // app/javascript/plugins/flatpickr.js
 
 import flatpickr from "flatpickr"
-import "flatpickr/dist/flatpickr.min.css"
 import rangePlugin from "flatpickr/dist/plugins/rangePlugin"
+
 
 const initFlatpickr = () => {
   const bookingForm = document.getElementById('booking-form-div');
