@@ -10,18 +10,18 @@ title: Ressources Utiles
     </div>
 
     <ul class="page-portfolio">
-      {% for project in site.data.portfolio %}
+      {% for resource in site.data.resources %}
         <li>
           <div class="portfolio">
-            <a href="{{ project.link }}" target="_blank">
-              <img src="{{ project.image_path }}" alt="">
+            <a href="{{ resource.link }}" target="_blank">
+              <img src="{{ resource.image_path }}" alt="">
             </a>
             <div>
-              <a href="{{ project.link }}" target="_blank">
-                <h3><span class="underlined">{{ project.title }}</span></h3>
+              <a href="{{ resource.link }}" target="_blank">
+                <h3><span class="underlined">{{ resource.title }}</span></h3>
               </a>
-              <p>{{ project.content }}</p>
-              <p><span class="text-light-upcase">{{ project.techno }}</span></p>
+              <p>{{ resource.content }}</p>
+              <p><span class="text-light-upcase">{{ resource.techno }}</span></p>
             </div>
           </div>
         </li>
