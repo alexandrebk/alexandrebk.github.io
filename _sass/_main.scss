@@ -1,14 +1,14 @@
 body {
   margin: 0 0;
   color:  $black;
-  background-color: rgb(253, 255, 253);
+  background-color: #1B2733;
 }
 
 a {
-  color: $black;
+  color: $white2;
   &:hover {
     text-decoration: none;
-    color: $black;
+    color: $white2;
   }
 }
 
@@ -57,7 +57,7 @@ p {
   font-family:    "Open-sans", sans-serif;
   font-weight:    200;
   font-size:      0.7rem;
-  color:          $grey;
+  color:          $white2;
 }
 
 .page-title {
