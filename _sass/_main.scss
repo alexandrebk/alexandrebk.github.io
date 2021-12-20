@@ -44,12 +44,8 @@ p {
   padding-left: 0;
 }
 
-.highlighted {
-  background-color: $light-green;
-}
-
 .underlined {
-  background: linear-gradient(180deg,rgba(255,255,255,0) 60%, $light-green 50%);
+  background: linear-gradient(180deg,rgba(255,255,255,0) 90%, $light-green 50%);
 }
 
 .text-light-upcase {
