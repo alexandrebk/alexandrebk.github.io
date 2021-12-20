@@ -15,25 +15,10 @@ nav li:last-child {
 
 .navbar {
   padding: 10px 0 !important;
+}
+
+.nav-link {
   color: $white2 !important;
-}
-
-.nav-item {
-  background-image: linear-gradient(to left,
-    transparent,
-    transparent 50%,
-    $light-green 50%,
-    $light-green);
-  background-position: 100% 0;
-    background-size:   200% 100%;
-    transition:        all .25s ease-in;
-}
-
-.nav-item:hover{
-  background-position: 0 0;
-  a {
-    color: $white;
-  }
 }
 
 .avatar {
