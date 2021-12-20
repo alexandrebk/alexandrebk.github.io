@@ -8,7 +8,7 @@ status: tech
 
 ---
 
-Plus votre traffic grossit, plus vos données grossissent et Heroku va rapidement vous imposer de changer la taille de votre base de données si vous dépassez les 10 000 lignes. Malheuresement ce n'est pas si simple. C'est même assez complexe pour un service réputé pour sa simplicité. Je vais vous aider à résumer ce que nous dit la <a href="https://devcenter.heroku.com/articles/upgrading-heroku-postgres-databases" class= "underlined" target="_blank">documentation</a>.
+Plus votre traffic s'accroit, plus votre base de données grossit et Heroku va rapidement vous imposer d'en changer la taille (à partir de 10 000 lignes). Malheuresement ce n'est pas si simple. Je vais vous aider à résumer ce que nous dit la <a href="https://devcenter.heroku.com/articles/upgrading-heroku-postgres-databases" class= "underlined" target="_blank">documentation</a>.
 
 ### S'assurer d'avoir les droits
 

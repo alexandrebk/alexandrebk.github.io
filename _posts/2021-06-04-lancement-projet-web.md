@@ -15,7 +15,7 @@ Il est difficile pour un non-initié de se lancer, mais dans cet article nous al
 
 Dans un premier temps, le but est de lancer un *MVP* (*Minimum Viable Product*). Pour lancer son *MVP*, il y a plusieurs étapes à respecter.
 
-La première étape est de rédiger des spécifications appelé aussi cahier des charges avec n'importe quel éditeur de texte. Puis et un *wireframe* (maquettes). Vous trouverez tous les outils disponibles 
+La première étape est de rédiger des spécifications appelé aussi cahier des charges. Vous pouvez le rédiger avec n'importe quel éditeur de texte. Ensuite un *wireframe* (maquettes). Vous trouverez tous les outils disponibles 
 <a href="https://www.blogduwebdesign.com/logiciels-wireframe-prototype/" class= "underlined" target="_blank">dans cet article sur le blog du web design</a>. Mon favori est <a href="https://whimsical.com/" class= "underlined" target="_blank">whimsical</a>. 
 
 Une fois la première étape terminé, nous avons une représentation plus précise du MVP. C'est le moment de créer le prototype. Vous trouverez une liste

@@ -6,6 +6,69 @@ status: tech
 tags: "ruby"
 ---
 
+### La méthode *send*
+
+La méthode *send* permet d'appeler une méthode sur un objet en lui passant une chaîne de caractères.
+
+Imaginons que nous avons plusieurs instances de *Room* et que nous souhaitons changer plusieurs variables d'instance en même temps.
+
+```ruby
+class Room
+  attr_accessor :should_paint_walls,
+                :should_paint_ceiling,
+                :should_paint_furniture,
+                :should_paint_door
+
+  def initialize(args = {})
+    @should_paint_walls     = false
+    @should_paint_ceiling   = false
+    @should_paint_furniture = false
+    @should_paint_door      = false
+  end
+end
+
+room = Room.new
+
+p room.should_paint_walls     # false
+p room.should_paint_ceiling   # false
+p room.should_paint_furniture # false
+p room.should_paint_door      # false
+
+room.should_paint_walls     = true
+room.should_paint_ceiling   = true
+room.should_paint_furniture = true
+room.should_paint_door      = true
+
+p room.should_paint_walls     # true
+p room.should_paint_ceiling   # true
+p room.should_paint_furniture # true
+p room.should_paint_door      # true
+```
+
+Maintenant, nous allons reconstruire les méthodes d'instances à en itérant sur un tableau. La premier argument de la méthode *send* est le nom de la méthode et le second argument la valeur.
+
+```ruby
+# [...]
+room = Room.new
+
+p room.should_paint_walls     # false
+p room.should_paint_ceiling   # false
+p room.should_paint_furniture # false
+p room.should_paint_door      # false
+
+[:walls, :ceiling, :furniture, :door].each do |field_name|
+  room.send("should_paint_#{field_name}=", true)
+end
+
+p room.should_paint_walls     # true
+p room.should_paint_ceiling   # true
+p room.should_paint_furniture # true
+p room.should_paint_door      # true
+```
+
+La documentation se trouve <a href="https://apidock.com/ruby/Object/send" class="underlined" target="_blank">ici</a>.
+
+
 ### Opérateur d'affectation conditionnel (`||=`)
 
 On souhaite assigner une valeur à une variable si et seulement si elle n'est pas précédemment définie. Attention la valeur est réassigné si la variable est *falsy* (c'est à dire *nil* ou *false*). Donc il n'est pas conseillé d'utiliser cette méthode pour un booléan.
@@ -113,65 +176,3 @@ p rooms.sum(&volume)
 ```
 
 La documentation se trouve <a href="https://ruby-doc.org/core-2.7.1/Proc.html" class="underlined" target="_blank">ici</a>.
-
-### La méthode *send*
-
-La méthode *send* permet d'appeler une méthode sur un objet en lui passant une chaîne de caractères.
-
-Imaginons que nous avons plusieurs instances de *Room* et que nous souhaitons changer plusieurs variables d'instance en même temps.
-
-```ruby
-class Room
-  attr_accessor :should_paint_walls,
-                :should_paint_ceiling,
-                :should_paint_furniture,
-                :should_paint_door
-
-  def initialize(args = {})
-    @should_paint_walls     = false
-    @should_paint_ceiling   = false
-    @should_paint_furniture = false
-    @should_paint_door      = false
-  end
-end
-
-room = Room.new
-
-p room.should_paint_walls     # false
-p room.should_paint_ceiling   # false
-p room.should_paint_furniture # false
-p room.should_paint_door      # false
-
-room.should_paint_walls     = true
-room.should_paint_ceiling   = true
-room.should_paint_furniture = true
-room.should_paint_door      = true
-
-p room.should_paint_walls     # true
-p room.should_paint_ceiling   # true
-p room.should_paint_furniture # true
-p room.should_paint_door      # true
-```
-
-Maintenant, nous allons reconstruire les méthodes d'instances à en itérant sur un tableau. La premier argument de la méthode *send* est le nom de la méthode et le second argument la valeur.
-
-```ruby
-# [...]
-room = Room.new
-
-p room.should_paint_walls     # false
-p room.should_paint_ceiling   # false
-p room.should_paint_furniture # false
-p room.should_paint_door      # false
-
-[:walls, :ceiling, :furniture, :door].each do |field_name|
-  room.send("should_paint_#{field_name}=", true)
-end
-
-p room.should_paint_walls     # true
-p room.should_paint_ceiling   # true
-p room.should_paint_furniture # true
-p room.should_paint_door      # true
-```
-
-La documentation se trouve <a href="https://apidock.com/ruby/Object/send" class="underlined" target="_blank">ici</a>.
