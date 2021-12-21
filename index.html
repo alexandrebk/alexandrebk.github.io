@@ -15,19 +15,17 @@ title:  Blog Ruby on Rails
             <div class="post">
               <a href="{{ post.url }}">
                 <h3>
-                  <span class="underlined">
-                    {{ post.title }}
-                  </span>
+                  {{ post.title }}
                 </h3>
+                <p>
+                  <span class="text-light-upcase">
+                    {{ post.date | date: "%d %B %Y" }}
+                  </span>
+                </p>
+                <p>
+                  {{ post.description }}
+                </p>
               </a>
-              <p>
-                <span class="text-light-upcase">
-                  {{ post.date | date: "%d %B %Y" }}
-                </span>
-              </p>
-              <p>
-                {{ post.description }}
-              </p>
             </div>
           </li>
         {% endif %}
