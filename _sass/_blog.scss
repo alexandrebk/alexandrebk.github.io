@@ -15,20 +15,3 @@
   font-weight:      200;
   border:           1px solid $green;
 }
-
-.btn-animation {
-  background-image: linear-gradient(to left,
-    transparent,
-    transparent 50%,
-    $green 50%,
-    $green);
-  background-position: 100% 0;
-  background-size:     200% 100%;
-  transition:          all .25s ease-in;
-}
-
-.btn-animation:hover {
-  background-position: 0 0;
-  border:              1px solid $green;
-  color:               $white;
-}
