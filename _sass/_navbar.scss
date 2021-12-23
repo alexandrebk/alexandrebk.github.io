@@ -17,6 +17,10 @@ nav li:last-child {
   padding: 10px 0 !important;
 }
 
+.active {
+  text-decoration: underline;
+}
+
 .nav-link {
   color: $white2 !important;
 }
