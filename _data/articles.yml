@@ -19,3 +19,6 @@
 - title:      "Les Services dans Rails"
   link:       "https://blog.appsignal.com/2020/06/17/using-service-objects-in-ruby-on-rails.html"
   content:    "Dans cet article vous apprendrez comment utiliser des services dans Rails."
+- title:      "Chargement automatique des modules et classes en Ruby"
+  link:       "https://www.synbioz.com/blog/tech/chargement-automatique-des-modules-et-classes-en-ruby"
+  content:    "Présentation de Zeitwerk et du loading de fichiers"
