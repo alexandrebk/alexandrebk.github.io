@@ -22,3 +22,6 @@
 - title:      "Chargement automatique des modules et classes en Ruby"
   link:       "https://www.synbioz.com/blog/tech/chargement-automatique-des-modules-et-classes-en-ruby"
   content:    "Présentation de Zeitwerk et du loading de fichiers"
+- title:      "Meta Class et self dans Ruby"
+  link:       "https://www.openmymind.net/2010/6/25/Learning-Ruby-class-self/"
+  content:    "Meta Class et self dans Ruby"
