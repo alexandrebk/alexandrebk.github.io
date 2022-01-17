@@ -12,17 +12,17 @@ title: Livres
     <ul class="page-portfolio">
       {% for book in site.data.books %}
         <li>
-          <div class="portfolio">
-            <a href="{{ book.link }}" target="_blank">
-              <img src="{{ book.image_link }}" alt="couverture">
-            </a>
-            <div>
-              <a href="{{ book.link }}" target="_blank">
+          <a href="{{ book.link }}" target="_blank">
+            <div class="portfolio">
+              <div>
+                <img src="{{ book.image_link }}" alt="">
+              </div>
+              <div>
                 <h3>{{ book.title }}</h3>
-              </a>
-              <p>{{ book.content }}</p>
+                <p>{{ book.content }}</p>
+              </div>
             </div>
-          </div>
+          </a>
         </li>
       {% endfor %}
     </ul>
