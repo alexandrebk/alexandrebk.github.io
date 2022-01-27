@@ -49,3 +49,6 @@
 - title:      "Meta Class et self dans Ruby"
   link:       "https://www.openmymind.net/2010/6/25/Learning-Ruby-class-self/"
   content:    "Meta Class et self dans Ruby"
+- title:      "Article sur l'optimisation d'Active Record"
+  link:       "https://blog.appsignal.com/2022/01/26/test-and-optimize-your-ruby-on-rails-database-performance.html"
+  content:    "Optimiser sa base de données sur Ruby on Rails"
