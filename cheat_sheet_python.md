@@ -60,6 +60,12 @@ Convert to DateTime
 gas_df["Month"] = pd.to_datetime(gas_df["Month"], format="%Y-%m-%d")
 ```
 
+Boolean indexing or Filter by condition
+
+```python
+undelivereds = orders_df[orders_df["order_status"] != 'delivered']
+```
+
 ### Matplotlib
 
 ```python
