@@ -1,6 +1,6 @@
 ---
 layout: cheat_sheet
-title: Cheat Sheet
+title: Cheat Sheet Python
 permalink: /cheat_sheet_python/
 ---
 

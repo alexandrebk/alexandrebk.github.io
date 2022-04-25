@@ -1,6 +1,6 @@
 ---
 layout: cheat_sheet
-title: Cheat Sheet
+title: Cheat Sheet Ruby
 permalink: /cheat_sheet_ruby/
 ---
 

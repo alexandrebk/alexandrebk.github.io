@@ -4,6 +4,11 @@ title: Cheat Sheet
 permalink: /cheat_sheet/
 ---
 
+# Toutes les cheat-sheets
+
+- [Ruby](/cheat_sheet_ruby)
+- [Python](/cheat_sheet_python)
+
 ### Rspec and Capybara
 
 Expect a field to equal a value
