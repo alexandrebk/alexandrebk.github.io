@@ -44,6 +44,24 @@ tracks_df = pd.read_csv('data/tracks.csv')
 
 Read data with column name
 
-```
+```python
 tracks_df[['artists', 'name']].head()
+```
+
+Group By
+
+```python
+missing_reviews.groupby('order_status').count()
+```
+
+Convert to DateTime
+
+```python
+gas_df["Month"] = pd.to_datetime(gas_df["Month"], format="%Y-%m-%d")
+```
+
+### Matplotlib
+
+```python
+import matplotlib.pyplot as plt
 ```
