@@ -1,7 +1,7 @@
 ---
 layout: cheat_sheet
 title: Cheat Sheet
-permalink: /cheat_sheet/
+permalink: /cheat_sheet_python/
 ---
 
 ### Python
