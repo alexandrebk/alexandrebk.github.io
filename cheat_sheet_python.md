@@ -36,8 +36,14 @@ import numpy as np
 import pandas as pd
 ```
 
-Read csv
+Import csv file
 
 ```python
 tracks_df = pd.read_csv('data/tracks.csv')
+```
+
+Read data with column name
+
+```
+tracks_df[['artists', 'name']].head()
 ```
