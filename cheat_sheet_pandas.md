@@ -45,6 +45,55 @@ Sample
 sample_orders = orders.sample(n=10_000, random_state=1)
 ```
 
+Drop columns
+
+```python
+orders = orders.drop(['customer_id', 'order_estimated_delivery_date'], axis=1)
+```
+
+Merge dataframe
+
+```python
+df = df1.merge(df2, on='id')
+```
+
+Map
+
+```python
+orders.revies_score.map({5:1, 4:0, 3:-1, 2:-1, 1:-1})
+```
+
+Map pour une Series Pandas
+
+```python
+series.map(function)
+Series.map({mapping dict})
+```
+
+Apply pour un DataFrame
+
+```python
+df.apply(lambda col: col.max(), axis = 0)     # default axis
+df.apply(lambda row: row[‘A’] + row[‘B’], axis = 1)
+df.applymap(my_funct_for_indiv_elements)
+    df.applymap(lambda x: '%.2f' % x)
+```
+
+Groupby avec apply et agg
+
+```python
+group = df.groupby('col_A')
+group.mean()
+group.apply(np.mean)
+group.agg({
+    col_A: ['mean', np.sum],
+    col_B: my_custom_sum,
+    col_B: lambda s: my_custom_sum(s)
+    })
+
+group.apply(custom_mean_function)
+```
+
 Matplotlib
 
 ```python
