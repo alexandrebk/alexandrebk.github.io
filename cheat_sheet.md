@@ -1,13 +1,12 @@
 ---
 layout: cheat_sheet
 title: Cheat Sheet
-permalink: /cheat_sheet/
+permalink: /cheat_sheet
 ---
 
-# Toutes les cheat-sheets
-
-- [Ruby](/cheat_sheet_ruby)
-- [Python](/cheat_sheet_python)
+- [Cheat sheet Ruby](/cheat_sheet_ruby)
+- [Cheat sheet Python](/cheat_sheet_python)
+- [Cheat sheet Pandas](/cheat_sheet_pandas)
 
 ### Rspec and Capybara
 
