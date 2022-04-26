@@ -39,8 +39,23 @@ Boolean indexing or Filter by condition
 undelivereds = orders_df[orders_df["order_status"] != 'delivered']
 ```
 
-Import Matplotlib
+Sample
+
+```python
+sample_orders = orders.sample(n=10_000, random_state=1)
+```
+
+Matplotlib
 
 ```python
 import matplotlib.pyplot as plt
+
+fig, ax = plt.subplots(1,2, figsize=(20,10))
+# Regression
+g = sns.regplot(data=orders, x='review_score', y='wait_time', ax=ax[0])
+f = sns.regplot(data=orders, x='review_score', y='delay_vs_expected', ax=ax[1])
+# Limite du graphique
+g.set(ylim=(0, 50))
+f.set(ylim=(-30, 30))
 ```
+

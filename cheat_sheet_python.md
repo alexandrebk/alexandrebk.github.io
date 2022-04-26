@@ -26,3 +26,9 @@ for (x, y) in zip(['a','b','c'], [1,2,3]):
 
 # returns ('a', 1), ('b', 2), ('c', 3)
 ```
+
+Ternary operator
+
+```python
+value_if_true if condition else value_if_false
+```
