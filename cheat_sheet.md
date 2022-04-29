@@ -5,6 +5,7 @@ permalink: /cheat_sheet
 ---
 
 - [Cheat sheet Ruby](/cheat_sheets/ruby)
+- [Cheat sheet Rails](/cheat_sheets/rails)
 - [Cheat sheet Python](/cheat_sheets/python)
 - [Cheat sheet Pandas](/cheat_sheets/pandas)
 - [Cheat sheet Git](/cheat_sheets/git)
