@@ -6,6 +6,16 @@ permalink: /cheat_sheets/ruby
 
 ### Rspec and Capybara
 
+Nouveau fichier de test
+
+```ruby
+require 'rails_helper'
+
+RSpec.describe '...' do
+
+end
+```
+
 Expect a field to equal a value
 
 ```ruby
@@ -18,7 +28,7 @@ Select field in select input
 select 'Solde', from: 'invoice_invoice_type'
 ```
 
-Fill in input text with a value
+Fill in input text
 
 ```ruby
 fill_in 'invoice_amount_total', with: 1
@@ -30,7 +40,7 @@ Cliquez sur un bouton avec alerte JS
 page.accept_confirm { click_on 'Créer la facture' }
 ```
 
-Submit un formulaire qui n'a pas de bouton
+Submit un formulaire qui n'a pas de bouton submit
 
 ```ruby
 form = find '.search'
@@ -42,16 +52,6 @@ Within pour trouver du texte avec un selecteur css
 ```ruby
 within '.flash' do
   expect(page).to have_content('Merci pour votre retour')
-end
-```
-
-Nouveau fichier de test
-
-```ruby
-require 'rails_helper'
-
-RSpec.describe '...' do
-
 end
 ```
 
@@ -109,21 +109,4 @@ Récupérer des informations sur une query
 
 ```ruby
 Order.joins(:products).explain
-```
-
-
-### CSS / Bootstrap
-
-Aligner horizontalement et verticalement un contenu
-
-```html
-d-flex justify-content-center align-items-center
-```
-
-Grille avec 3 colonnes
-
-```css
-display: grid;
-grid-template-columns: 1fr 1fr 1fr;
-grid-gap: 16px;
 ```
