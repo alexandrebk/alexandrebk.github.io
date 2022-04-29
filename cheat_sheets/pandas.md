@@ -1,7 +1,7 @@
 ---
 layout: cheat_sheet
 title: Cheat Sheet Pandas
-permalink: /cheat_sheet_pandas
+permalink: /cheat_sheets/pandas
 ---
 
 ```python

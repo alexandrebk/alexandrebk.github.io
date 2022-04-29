@@ -1,12 +1,15 @@
 ---
 layout: cheat_sheet
-title: Cheat Sheet
+title: Index des Cheat Sheets
 permalink: /cheat_sheet
 ---
 
-- [Cheat sheet Ruby](/cheat_sheet_ruby)
-- [Cheat sheet Python](/cheat_sheet_python)
-- [Cheat sheet Pandas](/cheat_sheet_pandas)
+- [Cheat sheet Ruby](/cheat_sheets/ruby)
+- [Cheat sheet Python](/cheat_sheets/python)
+- [Cheat sheet Pandas](/cheat_sheets/pandas)
+- [Cheat sheet Git](/cheat_sheets/git)
+- [Cheat sheet CSS](/cheat_sheets/css)
+- [Cheat sheet Docker](/cheat_sheets/docker)
 
 ### Rspec and Capybara
 

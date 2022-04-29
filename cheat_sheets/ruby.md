@@ -1,7 +1,7 @@
 ---
 layout: cheat_sheet
 title: Cheat Sheet Ruby
-permalink: /cheat_sheet_ruby
+permalink: /cheat_sheets/ruby
 ---
 
 ### Rspec and Capybara
