@@ -4,4 +4,10 @@ title: Cheat Sheet Git
 permalink: /cheat_sheets/git
 ---
 
-Page en construction
+```bash
+git reset HEAD~ --hard
+```
+
+```bash
+git remote add origin git@github.com:username/existing_project.git
+```
