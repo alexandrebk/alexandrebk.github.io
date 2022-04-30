@@ -1,5 +1,8 @@
 ---
 ---
+// Needs to be in first place
+@import "variables";
+
 @import "cards";
 @import "footer";
 @import "main";
@@ -8,4 +11,3 @@
 @import "posts";
 // Pygments handle color for block code
 @import "pygments";
-@import "variables";
