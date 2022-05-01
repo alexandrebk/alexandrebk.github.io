@@ -5,12 +5,14 @@ title: Index des Cheat Sheets
 
 <div class="container">
   <div class="cards">
-    {% for name in site.data.cheat_sheats %}
-      <a href="/cheat_sheets/{{ name }}">
+
+    {% assign technos = "ruby, rails, python, pandas, git, sql, docker, bootstrap" | split: ", " %}
+    {% for techno in technos %}
+      <a href="/cheat_sheets/{{ techno }}">
         <div class="card-category"
              style="background-image: linear-gradient(rgba(0,0,0,0.3),
                     rgba(0,0,0,0.3)),
-                    url(/images/cheat_sheets/{{ name }}.png)">
+                    url(/images/cheat_sheets/{{ techno }}.png)">
         </div>
       </a>
     {% endfor %}
