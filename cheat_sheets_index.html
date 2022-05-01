@@ -5,44 +5,17 @@ title: Index des Cheat Sheets
 
 <div class="container">
   <div class="cards">
-
-    {% assign technos = "ruby, rails, python, pandas, git, sql, docker, bootstrap" | split: ", " %}
+    {% assign technos = "ruby, rails, python, pandas, git, sql, docker, css" | split: ", " %}
     {% for techno in technos %}
       <a href="/cheat_sheets/{{ techno }}">
         <div class="card-category"
-             style="background-image: linear-gradient(rgba(0,0,0,0.3),
-                    rgba(0,0,0,0.3)),
-                    url(/images/cheat_sheets/{{ techno }}.png)">
+             style="background-image: url(/images/cheat_sheets/{{ techno }}.png)">
         </div>
       </a>
     {% endfor %}
-    <a href="/cheat_sheets/python">
-      <div class="card-category"
-           style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(/images/cheat_sheets/ruby.png)">
-      </div>
-    </a>
-    <a href="/cheat_sheets/python">
-      <div class="card-category"
-           style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(/images/cheat_sheets/python.png)">
-      </div>
-    </a>
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/dinner.jpg)">
-      <a href="/cheat_sheets/pandas">Pandas</a>
-    </div>
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/breakfast.jpg)">
-      <a href="/cheat_sheets/git">git</a>
-    </div>
-
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/lunch.jpg)">
-      <a href="/cheat_sheets/css">css</a>
-    </div>
-
-    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/dinner.jpg)">
-      <a href="/cheat_sheets/docker">docker</a>
-    </div>
   </div>
   <center>
-    <a href="https://logodix.com/">Source des logos: Logodix</a>
+    <a href="https://logodix.com/">Source des images: Logodix</a>
   </center>
 </div>
 
