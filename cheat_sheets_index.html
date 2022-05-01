@@ -5,6 +5,15 @@ title: Index des Cheat Sheets
 
 <div class="container">
   <div class="cards">
+    {% for name in site.data.cheat_sheat %}
+      <a href="/cheat_sheets/{{ name }}">
+        <div class="card-category"
+             style="background-image: linear-gradient(rgba(0,0,0,0.3),
+                    rgba(0,0,0,0.3)),
+                    url(/images/cheat_sheets/{{ name }}.png)">
+        </div>
+      </a>
+    {% endfor %}
     <a href="/cheat_sheets/python">
       <div class="card-category"
            style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(/images/cheat_sheets/ruby.png)">
@@ -12,7 +21,7 @@ title: Index des Cheat Sheets
     </a>
     <a href="/cheat_sheets/python">
       <div class="card-category"
-           style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(/images/cheat_sheets/pyhton.png)">
+           style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(/images/cheat_sheets/python.png)">
       </div>
     </a>
     <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/dinner.jpg)">
@@ -31,3 +40,6 @@ title: Index des Cheat Sheets
     </div>
   </div>
 </div>
+
+
+<a href="https://logodix.com/">Source des logos</a>
