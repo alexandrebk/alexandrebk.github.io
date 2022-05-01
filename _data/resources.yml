@@ -61,3 +61,6 @@
 - title:   "Changing a polymorphic_type in Rails"
   link:    "https://shopify.engineering/changing-polymorphic-type-rails"
   content: "Un article de l'équipe Shopify pour sur le polymorphisme"
+- title:   "Compte Twitter WebSebDev"
+  link:    "https://twitter.com/websebdev"
+  content: "Un tricks par semaine sur Rails par un développeur de chez Podia"
