@@ -64,3 +64,6 @@
 - title:   "Compte Twitter WebSebDev"
   link:    "https://twitter.com/websebdev"
   content: "Un tricks par semaine sur Rails par un développeur de chez Podia"
+- title:   "Éviter les race conditions dans Rails"
+  link:    "https://www.honeybadger.io/blog/avoid-race-condition-in-rails/"
+  content: "Protéger votre accès à la base de données"
