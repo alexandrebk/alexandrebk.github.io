@@ -7,7 +7,7 @@
 #### Link
 
 ```html
-<a href="" target="_blank"></a>
+<a href="" class="underlined" target="_blank"></a>
 ```
 
 #### Path

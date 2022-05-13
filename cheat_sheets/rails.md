@@ -56,9 +56,10 @@ Récupérer des informations sur une query
 Order.joins(:products).explain
 ```
 
-Les gems
+Informations sur les gems
 
 ```bash
 bundle open activerecord # ouvrir le code source
 bundle info activerecord # voir le path
+bundle update rails      # mettre à jour
 ```
