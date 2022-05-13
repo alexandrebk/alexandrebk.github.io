@@ -55,3 +55,10 @@ Récupérer des informations sur une query
 ```ruby
 Order.joins(:products).explain
 ```
+
+Les gems
+
+```bash
+bundle open activerecord # ouvrir le code source
+bundle info activerecord # voir le path
+```
