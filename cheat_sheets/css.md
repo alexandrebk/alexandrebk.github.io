@@ -8,7 +8,17 @@ permalink: /cheat_sheets/css
 Aligner horizontalement et verticalement un contenu avec bootstrap
 
 ```html
-d-flex justify-content-center align-items-center
+<div class="d-flex justify-content-center align-items-center"></div>
+```
+
+La même chose en pure css
+
+```
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 ```
 
 Grille avec 3 colonnes
@@ -18,3 +28,5 @@ display: grid;
 grid-template-columns: 1fr 1fr 1fr;
 grid-gap: 16px;
 ```
+
+
