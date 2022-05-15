@@ -6,7 +6,10 @@ layout: default
     <div class="page-title">
       <h1>{{ page.title }}</h1>
     </div>
-    <p><span class="post-date">{{ page.date | date: "%d %B %Y" }}</span></p>
     {{ content }}
+    <hr>
+    <p>
+      <span class="post-date">Publié le {{ page.date | date: "%d/%m/%Y" }}</span>
+    </p>
   </div>
 </div>
