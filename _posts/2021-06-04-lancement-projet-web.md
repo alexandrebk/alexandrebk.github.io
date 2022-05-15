@@ -15,8 +15,8 @@ Il est difficile pour un non-initié de se lancer, mais dans cet article nous al
 
 Dans un premier temps, le but est de lancer un *MVP* (*Minimum Viable Product*). Pour lancer son *MVP*, il y a plusieurs étapes à respecter.
 
-La première étape est de rédiger des spécifications appelé aussi cahier des charges. Vous pouvez le rédiger avec n'importe quel éditeur de texte. Ensuite un *wireframe* (maquettes). Vous trouverez tous les outils disponibles 
-<a href="https://www.blogduwebdesign.com/logiciels-wireframe-prototype/" class= "underlined" target="_blank">dans cet article sur le blog du web design</a>. Mon favori est <a href="https://whimsical.com/" class= "underlined" target="_blank">whimsical</a>. 
+La première étape est de rédiger des spécifications appelé aussi cahier des charges. Vous pouvez le rédiger avec n'importe quel éditeur de texte. Ensuite un *wireframe* (maquettes). Vous trouverez tous les outils disponibles
+<a href="https://www.blogduwebdesign.com/logiciels-wireframe-prototype/" class= "underlined" target="_blank">dans cet article sur le blog du web design</a>. Mon favori est <a href="https://whimsical.com/" class= "underlined" target="_blank">whimsical</a>.
 
 Une fois la première étape terminé, nous avons une représentation plus précise du MVP. C'est le moment de créer le prototype. Vous trouverez une liste
 <a href="https://www.blogduwebdesign.com/logiciels-wireframe-prototype/#Logiciels_pour_creer_des_prototypes" class= "underlined" target="_blank">ici</a> d'outils pour en créer un. Pour cette partie, mieux vaut faire appel à un professionel pour vous accompagner par exemple sur <a href="https://www.malt.fr/s?q=web+designer&as=t" class= "underlined" target="_blank">Malt</a>.
@@ -48,7 +48,7 @@ Ensuite, il faut les estimer. C'est une partie technique qui doit être effectu�
 
 Une fois que le produit est lancé et qu'il y a de la traction, il faut itérer. On reprend les *US* mises de côté et on les retravaille en fonction des retours utilisateurs.
 
-### Tester l'appétance des utilisateurs
+### Tester l'appétence des utilisateurs
 
 Avant de lancer une application complexe, il est facile de générer des *leads* avec une *landing-page* simple et efficace. Pour vous lancer, vous pouvez regarder <a href="https://www.blogduwebdesign.com/logiciels-landing-pages/" class= "underlined" target="_blank">ici</a> comment en créer sans coder.
 

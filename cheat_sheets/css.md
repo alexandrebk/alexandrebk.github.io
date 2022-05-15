@@ -13,10 +13,10 @@ Aligner horizontalement et verticalement un contenu avec bootstrap
 
 La même chose en pure css
 
-```
+```css
 .flex-center {
-  display: flex;
-  align-items: center;
+  display:         flex;
+  align-items:     center;
   justify-content: center;
 }
 ```
@@ -24,9 +24,9 @@ La même chose en pure css
 Grille avec 3 colonnes
 
 ```css
-display: grid;
-grid-template-columns: 1fr 1fr 1fr;
-grid-gap: 16px;
+.grid-3x1fr {
+  display:  grid;
+  grid-gap: 16px;
+  grid-template-columns: 1fr 1fr 1fr;
+}
 ```
-
-

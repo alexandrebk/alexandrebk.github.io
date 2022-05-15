@@ -50,13 +50,13 @@ Inclure une autre table à une requête pour éliminer les query N+1
 Order.includes(:products)
 ```
 
-Récupérer des informations sur une query
+Récupérer des informations sur une query (détail de la requête plus query planner)
 
 ```ruby
 Order.joins(:products).explain
 ```
 
-Informations sur les gems
+Informations sur les gems (pour tout projet avec un Gemfile)
 
 ```bash
 bundle open activerecord # ouvrir le code source

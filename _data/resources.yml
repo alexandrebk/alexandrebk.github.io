@@ -67,3 +67,6 @@
 - title:   "Éviter les race conditions dans Rails"
   link:    "https://www.honeybadger.io/blog/avoid-race-condition-in-rails/"
   content: "Protéger votre accès à la base de données"
+- title:   "Liste de sites utiles"
+  link:    "https://medium.com/@Cesscode/list-of-useful-websites-every-web-developer-should-know-about-c8561b862e5f"
+  content: "Une liste de sites utiles pour faire du css ou du design"
