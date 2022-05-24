@@ -63,3 +63,16 @@ bundle open activerecord # ouvrir le code source
 bundle info activerecord # voir le path
 bundle update rails      # mettre à jour
 ```
+
+Ouvrir un navigateur pour débuguer Rspec
+
+```ruby
+save_and_open_page
+```
+
+Scalingo
+
+```bash
+git remote add scalingo git@ssh.osc-fr1.scalingo.com:app-name.git
+scalingo run bundle exec rails console
+```
