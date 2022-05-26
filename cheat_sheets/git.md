@@ -17,3 +17,11 @@ Ajouter un fichier dans le précédent commit
 ```bash
 git commit --amend --no-edit
 ```
+
+Rebase process
+
+```bash
+git rebase master -i
+git add .
+git rebase --continue
+```
