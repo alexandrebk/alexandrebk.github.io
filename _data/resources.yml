@@ -70,3 +70,6 @@
 - title:   "Liste de sites utiles"
   link:    "https://medium.com/@Cesscode/list-of-useful-websites-every-web-developer-should-know-about-c8561b862e5f"
   content: "Une liste de sites utiles pour faire du css ou du design"
+- title:   "Tableaux numériques"
+  link:    "https://excalidraw.com/"
+  content: "Interface de dessin en ligne"
