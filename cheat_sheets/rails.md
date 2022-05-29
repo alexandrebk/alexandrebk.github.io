@@ -56,6 +56,25 @@ Récupérer des informations sur une query (détail de la requête plus query pl
 Order.joins(:products).explain
 ```
 
+Where
+
+```ruby
+# Find all posts created in the last week
+Post.where(created_at: 1.week.ago..)
+
+# Find all posts having less than 10 likes
+Post.where(likes: 1.week.ago..)
+```
+
+Active Support
+
+```ruby
+1.hour.from_now
+# Same as
+Time.current.since(60 * 60)
+```
+
+
 Informations sur les gems (pour tout projet avec un Gemfile)
 
 ```bash
@@ -75,4 +94,14 @@ Scalingo
 ```bash
 git remote add scalingo git@ssh.osc-fr1.scalingo.com:app-name.git
 scalingo run bundle exec rails console
+```
+
+Commandes Rails
+
+```bash
+rails tmp:clear # delete tmp files
+rails log:clear # delete logs
+rails notes     # search for TODO
+rails dbconsole
+rails runner path/script.rb
 ```

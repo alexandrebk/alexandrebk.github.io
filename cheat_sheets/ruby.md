@@ -54,3 +54,7 @@ within '.flash' do
   expect(page).to have_content('Merci pour votre retour')
 end
 ```
+
+```ruby
+array = %w(toto titi)
+```
