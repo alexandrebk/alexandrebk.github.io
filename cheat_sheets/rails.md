@@ -74,6 +74,18 @@ Active Support
 Time.current.since(60 * 60)
 ```
 
+Changer les ids en uuid
+
+```ruby
+class CreateOrders < ActiveRecord::Migration[7.0]
+  def change
+    create_table :orders, id: :uuid do |t|
+      t.float :amount
+      t.timestamps
+    end
+  end
+end
+```
 
 Informations sur les gems (pour tout projet avec un Gemfile)
 

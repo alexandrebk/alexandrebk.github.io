@@ -6,7 +6,7 @@ permalink: /cheat_sheets/sql
 
 Structure d'une requête (mais pas l'ordre d'exécution). Plus de détail <a href="https://wizardzines.com/zines/sql/" class="underlined" target="_blank">ici</a>.
 
-```SQL
+```sql
 SELECT *
 FROM ...
 JOIN ... ON ...
@@ -21,7 +21,7 @@ LIMIT ...
 
 Window Functions
 
-```SQL
+```sql
 SELECT
     orders.id,
     orders.ordered_at,
@@ -37,7 +37,7 @@ FROM orders
 
 WITH Clause. Cela crée une table virtuelle.
 
-```SQL
+```sql
 WITH matches_per_month AS (
     SELECT
         STRFTIME('%Y-%m', DATE(matches.date)) AS period,
