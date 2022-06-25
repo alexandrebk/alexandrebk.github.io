@@ -4,10 +4,17 @@ title: Cheat Sheet Ruby
 permalink: /cheat_sheets/ruby
 ---
 
-Word Array
+Array
 
 ```ruby
-array = %w(toto titi) # => ["toto", "titi"]
+array = %w(hello world) # => ["hello", "world"]
+```
+
+Number
+
+```ruby
+"%.2f" % 10    # => "10.00"
+ "%.2f €" % 10 # => "10.00 €"
 ```
 
 Eval
@@ -64,69 +71,31 @@ stringify = proc { |object| object.to_s }
 (1..10).map(&stringify) # => ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
 ```
 
+Structure d'une gem
+
+```
+gem_name/
+├── bin/
+│   └── gem_name
+├── lib/
+│   └── gem_name.rb
+├── test/
+│   └── test_gem_name.rb
+├── README
+├── Rakefile
+└── gem_name.gemspec
+```
+
 ### Vocabulaire
 
-| Nom               | Définition |
-|-------------------|---------------------------------------------------------------------------------|
-| Monkey Patching   | Redéfinir une classe au runtime. C'est potentiellement dangereux |
-| self              | C'est le receveur par défaut de la méthode que vous appellez |
-| Singleton methods | Méthode pour un seul objet |
-| Eigenclass        | Classe entre l'objet et sa classe. C'est la qu'on définit les singleton methods |
-| Unary Operator    | Opérateur qui fonctionne avec 1 valeur (`!`, `*`, `&`, etc.) |
-| Binary Operator   | Opérateur qui fonctionne avec 2 valeurs (`+`, `-`, `||=`, etc.) |
-| Ternary Operator  | Opérateur qui fonctionne avec 3 valeurs `condition ? true : false` |
-| Eager Loading     | Charger tous les fichiers au démarrage de l'application |
-| Autoloading       | Seulement charger les fichier quand on fait appel à eux |
-| DSL               | Domain Specific Language |
-| SRP               | Single Responsability Principle |
-
-### Rspec and Capybara
-
-Nouveau fichier de test
-
-```ruby
-require 'rails_helper'
-
-RSpec.describe '...' do
-
-end
-```
-
-Expect a field to equal a value
-
-```ruby
-expect(page.find_field('invoice_amount_base').value).to eq '1000'
-```
-
-Select field in select input
-
-```ruby
-select 'Solde', from: 'invoice_invoice_type'
-```
-
-Fill in input text
-
-```ruby
-fill_in 'invoice_amount_total', with: 1
-```
-
-Cliquez sur un bouton avec alerte JS
-
-```ruby
-page.accept_confirm { click_on 'Créer la facture' }
-```
-
-Submit un formulaire qui n'a pas de bouton submit
-
-```ruby
-form = find '.search'
-Capybara::RackTest::Form.new(page.driver, form.native).submit({})
-```
-
-Within pour trouver du texte avec un selecteur css
-
-```ruby
-within '.flash' do
-  expect(page).to have_content('Merci pour votre retour')
-end
-```
+- Monkey Patching   : Redéfinir une classe au runtime. C'est potentiellement dangereux
+- self              : C'est le receveur par défaut de la méthode que vous appellez
+- Singleton methods : Méthode pour un seul objet
+- Eigenclass        : Classe entre l'objet et sa classe. C'est la qu'on définit les singleton methods
+- Unary Operator    : Opérateur qui fonctionne avec 1 valeur (`!`, `*`, `&`, etc.)
+- Binary Operator   : Opérateur qui fonctionne avec 2 valeurs (`+`, `-`, `||=`, etc.)
+- Ternary Operator  : Opérateur qui fonctionne avec 3 valeurs `condition ? true : false`
+- Eager Loading     : Charger tous les fichiers au démarrage de l'application
+- Autoloading       : Seulement charger les fichier quand on fait appel à eux
+- DSL               : Domain Specific Language
+- SRP               : Single Responsability Principle
