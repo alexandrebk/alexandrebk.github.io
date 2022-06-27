@@ -35,6 +35,17 @@ STRING
 # => "Hello John\nHow are you today ?\nGoodbye\n"
 ```
 
+Case
+
+```ruby
+case year
+  when 1970..1979: "disco"
+  when 1980..1989: "eighties"
+  when 1990..1999: "dance"
+  else "RnB"
+end
+```
+
 Dynamic dispatch
 
 ```ruby
@@ -69,6 +80,20 @@ Les procs pour transformer un bloc en code
 ```ruby
 stringify = proc { |object| object.to_s }
 (1..10).map(&stringify) # => ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
+```
+
+Erreurs
+
+```ruby
+begin
+  # someting that may fail
+rescue
+  # someting to execute in case of failure
+else
+  # someting to execute in case of success
+ensure
+  # something that will always execute
+end
 ```
 
 Structure d'une gem

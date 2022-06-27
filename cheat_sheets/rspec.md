@@ -14,6 +14,12 @@ RSpec.describe '...' do
 end
 ```
 
+Ouvrir un navigateur pour débuguer Rspec
+
+```ruby
+save_and_open_page
+```
+
 Expect a field to equal a value
 
 ```ruby

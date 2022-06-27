@@ -4,7 +4,7 @@ title: Cheat Sheet Rails
 permalink: /cheat_sheets/rails
 ---
 
-Migration
+Migrations ([Rails documentation](https://guides.rubyonrails.org/active_record_migrations.html))
 
 ```ruby
 add_column :products, :title, :string
@@ -19,17 +19,42 @@ change_column_default :products, :approved, from: true, to: false
 drop_table :table_name
 ```
 
-Obliger la présence d'un first name et d'un last name
+Changer les ids en uuid
+
+```ruby
+class CreateOrders < ActiveRecord::Migration[7.0]
+  def change
+    create_table :orders, id: :uuid do |t|
+      t.float :amount
+      t.timestamps
+    end
+  end
+end
+```
+
+Validations ([Rails documentation](https://guides.rubyonrails.org/active_record_validations.html))
 
 ```ruby
 validates_presence_of :first_name, :last_name
 validates :category, inclusion: { in: ["sports", "clothing", "technology"] }
+validates :first_name, uniqueness: { scope: :last_name }
+validates :password, confirmation: true, unless: -> { password.blank? }
+validates :rating, numericality: { greater_than: 0 }
 ```
 
 Ajouter un message d'erreur
 
 ```ruby
 errors.add(:amount_base, 'Le montant de la facture de solde doit être égale au solde restant du devis')
+```
+
+Has many
+
+```ruby
+class Author
+  has_many :articles
+  has_many :authorized_articles, -> { where(allowed: true) }, class_name: 'Articles'
+end
 ```
 
 Scope
@@ -69,43 +94,41 @@ Post.where(likes: 1.week.ago..)
 Active Support
 
 ```ruby
-1.hour.from_now
-# Same as
 Time.current.since(60 * 60)
+# Same as
+1.hour.from_now
 ```
 
-Changer les ids en uuid
+[Active Job](https://edgeguides.rubyonrails.org/active_job_basics.html)
 
 ```ruby
-class CreateOrders < ActiveRecord::Migration[7.0]
-  def change
-    create_table :orders, id: :uuid do |t|
-      t.float :amount
-      t.timestamps
-    end
-  end
-end
+MyJob.perform_now
 ```
 
-Informations sur les gems (pour tout projet avec un Gemfile)
-
-```bash
-bundle open activerecord # ouvrir le code source
-bundle info activerecord # voir le path
-bundle update rails      # mettre à jour
-```
-
-Ouvrir un navigateur pour débuguer Rspec
+[Active Storage](https://edgeguides.rubyonrails.org/active_storage_overview.html)
 
 ```ruby
-save_and_open_page
+url_for(post.image)
 ```
 
-Scalingo
+Params
 
-```bash
-git remote add scalingo git@ssh.osc-fr1.scalingo.com:app-name.git
-scalingo run bundle exec rails console
+```ruby
+params[:return_to].present? ? params[:return_to] : root_url
+
+# SAME AS
+
+params[:return_to].presence || root_url
+```
+
+Mail To
+
+```erb
+<% mail_to "alex@bouvier.fr",
+           "Nouvel email",
+           subject: "Hi, Alex!",
+           body: "J'adore ton blog"
+%>
 ```
 
 Commandes Rails
@@ -114,6 +137,31 @@ Commandes Rails
 rails tmp:clear # delete tmp files
 rails log:clear # delete logs
 rails notes     # search for TODO
-rails dbconsole
-rails runner path/script.rb
+rails stats     # lines of code
+rails dbconsole # database console
+rails runner path/script.rb # exécuter un fichier
+```
+
+Informations sur les gems (valable aussi pour tout projet avec un Gemfile)
+
+```bash
+bundle open activerecord # ouvrir le code source
+bundle info activerecord # voir le path
+bundle update rails      # mettre à jour
+```
+
+Scalingo CLI
+
+```bash
+git remote add scalingo git@ssh.osc-fr1.scalingo.com:app-name.git
+scalingo run bundle exec rails console
+```
+
+Heroku CLI
+
+```bash
+heroku run rails console
+heroku run rails db:migrate
+heroku logs --tail
+heroku config:set ADMIN_PASSWORD='password'
 ```
