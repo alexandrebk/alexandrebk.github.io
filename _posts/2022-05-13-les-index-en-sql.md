@@ -7,11 +7,11 @@ difficulty: 1
 status: tech
 ---
 
-En tant que développeur web, il faut savoir quand indexer ses données pour optimiser son SGBD (système de gestion de base de données) et nous allons voir pourquoi et comment.
+En tant que développeur web, il faut savoir quand indexer ses données pour optimiser son SGBD (système de gestion de base de données). Dans ce tuto, nous allons voir pourquoi et comment.
 
 ## Qu'est ce qu'un index ?
 
-Un index permet au SGBD de retrouver plus rapidement des données dans une table.
+Un index permet au SGBD de retrouver des données dans une table sans la parcourir entièrement.
 
 ## Pourquoi utiliser un index ?
 
@@ -28,9 +28,9 @@ SELECT COUNT(*) FROM "candidates";
 -- Time: 12.340 ms
 ```
 
-Il y'a 64074 données ce qui est conséquent (du moins assez pour ce que nous voulons tester) et le résultat a été trouvé en 12 millisecondes(ms).
+Elle a 64074 données. Ce qui est conséquent (du moins assez pour ce que nous voulons tester) et le résultat a été trouvé en 12 millisecondes(ms).
 
-Maintenant si je veux retrouver un candidat avec son email, cette requête va devoir passser sur tous les *candidates* pour trouver ceux qui ont un *email* égal à *me@yahoo.com*.
+Maintenant si on veut retrouver un candidat avec l'email me@yahoo.com, notre requête va devoir passser sur tous les *candidates* pour trouver le bon email.
 
 ```sql
 SELECT * FROM "candidates" WHERE "email" = 'me@yahoo.com';
@@ -44,7 +44,7 @@ SELECT * FROM "candidates" WHERE "email" = 'me@yahoo.com';
 -- Time: 17.677 ms
 ```
 
-On voit que la première requête met 17 ms pour retrouver l'info. Si nous voulons ajouter de la performance à cette requête il va falloir ajouter un index.
+On voit que la requête met 17 ms pour retrouver l'information. On peut aller encore plus vite en ajoutant un index.
 
 ## Comment ça fonctionne ?
 
@@ -76,11 +76,13 @@ L'index est découpée en plusieurs noeuds qui sont triés et qui fait qu'une fo
 
 Il suffit de lire la première valeur des noeuds (l'index 0) pour trouver le bon noeud. Ici quand elle voit "damien@yahoo.fr" le SGBD va comprendre que la donnée se trouve dans le second noeud donc lire 2 fois moins de données.
 
-| index | email          | pointeur | email           | pointeur |
-|-------|----------------|----------|-----------------|----------|
-| 0     | alex@yahoo.fr  | #3cf678a | damien@yahoo.fr | #a3678a3 |
-| 1     | bruno@yahoo.fr | #678a3cf | jean@yahoo.fr   | #96ab761 |
-| 2     | cyril@yahoo.fr | #87ea764 | me@yahoo.fr     | #24fe612 |
+```
+| index | email          | pointeur |     | index | email             | pointeur |
+|-------|----------------|----------|     |-------|-------------------|----------|
+| 0     | alex@yahoo.fr  | #3cf678a |     | 0     | damien@yahoo.fr   | #a3678a3 |
+| 1     | bruno@yahoo.fr | #678a3cf |     | 1     | éléonore@yahoo.fr | #96ab761 |
+| 2     | cyril@yahoo.fr | #87ea764 |     | 2     | me@yahoo.fr       | #24fe612 |
+```
 
 ## Index concaténé
 

@@ -5,11 +5,14 @@ title: Index des Cheat Sheets
 
 <div class="container">
   <div class="cards">
-    {% assign technos = "ruby, rails, rspec, python, pandas, git, sql, docker, css" | split: ", " %}
+    {% assign technos = "Ruby, Rails, Rspec, Css, Sql, Git, Python, Pandas, Docker" | split: ", " %}
     {% for techno in technos %}
       <a href="/cheat_sheets/{{ techno }}">
-        <div class="card-category"
-             style="background-image: url(/images/cheat_sheets/{{ techno }}.png)">
+        <div class="card-product">
+          <img src="/images/cheat_sheets/{{ techno }}.png" />
+          <div class="card-product-infos">
+            <h2> {{ techno }} </h2>
+          </div>
         </div>
       </a>
     {% endfor %}

@@ -4,7 +4,22 @@ title: Cheat Sheet Rails
 permalink: /cheat_sheets/rails
 ---
 
-Migrations ([Rails documentation](https://guides.rubyonrails.org/active_record_migrations.html))
+Commandes Rails
+
+```bash
+rails _version_ new app_name --database=postgresql
+rails generate model Post title:string likes:integer
+rails generate controller Post
+rails tmp:clear # delete tmp files
+rails log:clear # delete logs
+rails notes     # search for TODO
+rails dbconsole # database console
+rails stats     # thousands of lines of code and test ratio
+rails about     # information about your application's environment
+rails runner path/script.rb # exécuter un fichier
+```
+
+Migrations (<a href="https://guides.rubyonrails.org/active_record_migrations.html" class="underlined" target="_blank">Rails documentation</a>)
 
 ```ruby
 add_column :products, :title, :string
@@ -19,20 +34,7 @@ change_column_default :products, :approved, from: true, to: false
 drop_table :table_name
 ```
 
-Changer les ids en uuid
-
-```ruby
-class CreateOrders < ActiveRecord::Migration[7.0]
-  def change
-    create_table :orders, id: :uuid do |t|
-      t.float :amount
-      t.timestamps
-    end
-  end
-end
-```
-
-Validations ([Rails documentation](https://guides.rubyonrails.org/active_record_validations.html))
+Validations (<a href="https://guides.rubyonrails.org/active_record_validations.html" class="underlined" target="_blank">Rails documentation</a>)
 
 ```ruby
 validates_presence_of :first_name, :last_name
@@ -61,6 +63,19 @@ Scope
 
 ```ruby
 scope :published, -> { where(published: true) }
+```
+
+Changer les ids en uuid
+
+```ruby
+class CreateOrders < ActiveRecord::Migration[7.0]
+  def change
+    create_table :orders, id: :uuid do |t|
+      t.float :amount
+      t.timestamps
+    end
+  end
+end
 ```
 
 Joindre 2 tables
@@ -99,13 +114,14 @@ Time.current.since(60 * 60)
 1.hour.from_now
 ```
 
-[Active Job](https://edgeguides.rubyonrails.org/active_job_basics.html)
+Active Job (<a href="https://guides.rubyonrails.org/active_job_basics.html" class="underlined" target="_blank">Rails documentation</a>)
+
 
 ```ruby
 MyJob.perform_now
 ```
 
-[Active Storage](https://edgeguides.rubyonrails.org/active_storage_overview.html)
+Active Storage (<a href="https://edgeguides.rubyonrails.org/active_storage_overview.html" class="underlined" target="_blank">Rails documentation</a>)
 
 ```ruby
 url_for(post.image)
@@ -131,17 +147,6 @@ Mail To
 %>
 ```
 
-Commandes Rails
-
-```bash
-rails tmp:clear # delete tmp files
-rails log:clear # delete logs
-rails notes     # search for TODO
-rails stats     # lines of code
-rails dbconsole # database console
-rails runner path/script.rb # exécuter un fichier
-```
-
 Informations sur les gems (valable aussi pour tout projet avec un Gemfile)
 
 ```bash
@@ -150,14 +155,14 @@ bundle info activerecord # voir le path
 bundle update rails      # mettre à jour
 ```
 
-Scalingo CLI
+CLI Scalingo
 
 ```bash
 git remote add scalingo git@ssh.osc-fr1.scalingo.com:app-name.git
 scalingo run bundle exec rails console
 ```
 
-Heroku CLI
+CLI Heroku
 
 ```bash
 heroku run rails console
