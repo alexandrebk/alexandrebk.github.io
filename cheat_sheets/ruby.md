@@ -82,6 +82,20 @@ stringify = proc { |object| object.to_s }
 (1..10).map(&stringify) # => ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
 ```
 
+Source code
+
+```ruby
+User.new.method(:confirmed?).source.display
+User.instance_method(:confirmed?).source.display
+
+# will print
+
+def confirmed?
+  !!confirmed_at
+end
+```
+
+
 Erreurs
 
 ```ruby
