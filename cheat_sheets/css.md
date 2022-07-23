@@ -30,3 +30,10 @@ Grille avec 3 colonnes
   grid-template-columns: 1fr 1fr 1fr;
 }
 ```
+
+<h2>Des articles pour aller plus loin</h2>
+
+<a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" class="underlined" target="_blank">CSS Tricks</a>
+<br>
+<a href="https://medium.com/@Cesscode/list-of-useful-websites-every-web-developer-should-know-about-c8561b862e5f" class="underlined" target="_blank">Une liste de sites utiles pour faire du css ou du design</a>
+<br>

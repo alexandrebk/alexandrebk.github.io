@@ -138,3 +138,13 @@ gem_name/
 - Autoloading       : Seulement charger les fichier quand on fait appel à eux
 - DSL               : Domain Specific Language
 - SRP               : Single Responsability Principle
+
+<h2>Des articles pour aller plus loin</h2>
+
+<a href="https://blog.appsignal.com/2021/07/28/introduction-to-pattern-matching-in-ruby.html" class="underlined" target="_blank">Une introduction au Pattern Matching avec Ruby</a>
+<br>
+<a href="https://www.synbioz.com/blog/tech/chargement-automatique-des-modules-et-classes-en-ruby" class="underlined" target="_blank">Présentation de Zeitwerk et du loading de fichiers</a>
+<br>
+<a href="https://www.openmymind.net/2010/6/25/Learning-Ruby-class-self/" class="underlined" target="_blank">Meta Class et self dans Ruby</a>
+<br>
+<a href="https://www.codewithjason.com/ampersand-ruby-block/" class="underlined" target="_blank">Qu'est qu'un block en Ruby ?</a>

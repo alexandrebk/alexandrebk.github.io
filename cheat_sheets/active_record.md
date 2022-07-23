@@ -141,3 +141,5 @@ end
 <a href="https://shopify.engineering/changing-polymorphic-type-rails" class="underlined" target="_blank"> Le Polymorphisme dans Rails</a>
 <br>
 <a href="https://blog.appsignal.com/2022/01/26/test-and-optimize-your-ruby-on-rails-database-performance.html" class="underlined" target="_blank">Comment optimiser sa base de données sour Rails</a>
+<br>
+<a href="https://apidock.com/rails/ActiveRecord/Associations/CollectionProxy/build" class="underlined" target="_blank">CollectionProxy#build : build a collection of objects related to another </a>

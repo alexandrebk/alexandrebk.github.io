@@ -84,3 +84,13 @@ heroku run rails db:migrate
 heroku logs --tail
 heroku config:set ADMIN_PASSWORD='password'
 ```
+
+<h2>Des articles pour aller plus loin</h2>
+
+<a href="https://www.lewagon.com/blog/setup-meta-tags-rails" class="underlined" target="_blank">Setup des meta data dans Rails</a>
+<br>
+<a href="https://blog.appsignal.com/2020/06/17/using-service-objects-in-ruby-on-rails.html" class="underlined" target="_blank">Comment faire des Services dans Rails</a>
+<br>
+<a href="https://www.honeybadger.io/blog/ruby-view-components/" class="underlined" target="_blank">Une introduction à la gem ViewComponent</a>
+<br>
+<a href="https://www.hotrails.dev/" class="underlined" target="_blank">Tuto sur Turbo</a>
