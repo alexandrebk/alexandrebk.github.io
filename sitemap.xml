@@ -11,12 +11,7 @@
   </url>
   <url>
     <loc>http://www.alexandrebouvier.fr/resources.html</loc>
-    <lastmod>2021-12-10T17:10:53+00:00</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>http://www.alexandrebouvier.fr/cheat_sheet/</loc>
-    <lastmod>2021-01-27T12:00:53+00:00</lastmod>
+    <lastmod>2022-07-23T17:10:53+00:00</lastmod>
     <priority>0.80</priority>
   </url>
   <url>
@@ -116,5 +111,61 @@
     </loc>
     <lastmod>2021-06-04T12:37:53+00:00</lastmod>
     <priority>0.8</priority>
+  </url>
+  <!-- CHEAT SHEET -->
+  <url>
+    <loc>http://www.alexandrebouvier.fr/cheat_sheet/</loc>
+    <lastmod>2021-01-27T12:00:53+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>http://www.alexandrebouvier.fr/cheat_sheet/ruby</loc>
+    <lastmod>2022-07-23T12:00:53+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>http://www.alexandrebouvier.fr/cheat_sheet/rails</loc>
+    <lastmod>2022-07-23T12:00:53+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>http://www.alexandrebouvier.fr/cheat_sheet/active_record</loc>
+    <lastmod>2022-07-23T12:00:53+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>http://www.alexandrebouvier.fr/cheat_sheet/rspec</loc>
+    <lastmod>2022-07-23T12:00:53+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>http://www.alexandrebouvier.fr/cheat_sheet/css</loc>
+    <lastmod>2022-07-23T12:00:53+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>http://www.alexandrebouvier.fr/cheat_sheet/sql</loc>
+    <lastmod>2022-07-23T12:00:53+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>http://www.alexandrebouvier.fr/cheat_sheet/git</loc>
+    <lastmod>2022-07-23T12:00:53+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>http://www.alexandrebouvier.fr/cheat_sheet/python</loc>
+    <lastmod>2022-07-23T12:00:53+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>http://www.alexandrebouvier.fr/cheat_sheet/pandas</loc>
+    <lastmod>2022-07-23T12:00:53+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>http://www.alexandrebouvier.fr/cheat_sheet/docker</loc>
+    <lastmod>2022-07-23T12:00:53+00:00</lastmod>
+    <priority>0.80</priority>
   </url>
 </urlset>
