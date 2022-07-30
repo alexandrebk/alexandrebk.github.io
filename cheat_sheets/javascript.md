@@ -19,3 +19,7 @@ const square = (x) => {
 <a href="https://developer.mozilla.org/" class="underlined" target="_blank">Documentation complète avec MDN</a>
 <br>
 <a href="https://dev.to/shshank/killer-javascript-one-liners-3ii4" class="underlined" target="_blank">JS features en une ligne</a>
+<br>
+<a href="https://dev.to/saverio683/mastering-javascript-how-the-js-engine-works-5a2p" class="underlined" target="_blank">Comment l'engine JS fonctionne</a>
+<br>
+<a href="https://books.ninja-squad.com/" class="underlined" target="_blank">Livres sur Vue.js et Angular</a>

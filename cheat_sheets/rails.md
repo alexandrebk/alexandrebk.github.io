@@ -76,15 +76,6 @@ git remote add scalingo git@ssh.osc-fr1.scalingo.com:app-name.git
 scalingo run bundle exec rails console
 ```
 
-CLI Heroku
-
-```bash
-heroku run rails console
-heroku run rails db:migrate
-heroku logs --tail
-heroku config:set ADMIN_PASSWORD='password'
-```
-
 <h2>Des articles pour aller plus loin</h2>
 
 <a href="https://www.lewagon.com/blog/setup-meta-tags-rails" class="underlined" target="_blank">Setup des meta data dans Rails</a>
