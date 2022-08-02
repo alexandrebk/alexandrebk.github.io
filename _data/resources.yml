@@ -32,6 +32,6 @@
   link:    "https://francetransfert.numerique.gouv.fr/upload"
   content: "Transfert de fichier volumineux"
 - title:   "Page Speed"
-  link:    "https://pagespeed.web.dev/report?url=https%3A%2F%2Fwww.mon-cdi.fr%2F"
+  link:    "https://pagespeed.web.dev"
   content: "Un outil pour mesurer les performances de son site"
 
