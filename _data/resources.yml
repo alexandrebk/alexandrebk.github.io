@@ -34,4 +34,6 @@
 - title:   "Page Speed"
   link:    "https://pagespeed.web.dev"
   content: "Un outil pour mesurer les performances de son site"
-
+- title:   "Metabase"
+  link:    "https://www.metabase.com/"
+  content: "Une app pour faire des dashboard"
