@@ -83,10 +83,16 @@ Inclure une autre table à une requête pour éliminer les query N+1
 Order.includes(:products)
 ```
 
+Joindre une autre table mais ne renvoie que les orders
+
+```ruby
+Order.joins(:products).where(products: { name: 'Play Station'})
+```
+
 Récupérer des informations sur une query (détail de la requête plus query planner)
 
 ```ruby
-Order.joins(:products).explain
+Order.all.explain
 ```
 
 Where avec une date

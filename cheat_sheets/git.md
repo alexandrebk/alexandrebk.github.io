@@ -25,3 +25,32 @@ git rebase master -i
 git add .
 git rebase --continue
 ```
+
+Auto Setup Remote for push
+
+```bash
+git config --global push.autoSetupRemote true
+```
+
+https://dev.to/ambroseotundo/creating-git-aliases-3nng
+
+<h2>Des articles pour aller plus loin</h2>
+
+<a href="https://dev.to/ambroseotundo/creating-git-aliases-3nng"
+   class="underlined"
+   target="_blank">
+  Créer des alias sur Git
+</a>
+<br>
+<a href="https://dev.to/this-is-learning/this-new-git-push-config-will-save-you-lot-of-frustration-27a9"
+   class="underlined"
+   target="_blank">
+  Push configuration
+</a>
+<br>
+<a href="https://dev.to/codenameone/understand-the-root-cause-of-regressions-with-git-bisect-1dgi"
+   class="underlined"
+   target="_blank">
+  Git bisect
+</a>
+
