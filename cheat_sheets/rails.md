@@ -41,6 +41,18 @@ Active Storage (<a href="https://edgeguides.rubyonrails.org/active_storage_overv
 url_for(post.image)
 ```
 
+
+Seed with active storage
+
+```ruby
+require "open-uri"
+
+file = URI.open("https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/NES-Console-Set.jpg/1200px-NES-Console-Set.jpg")
+product = Product.new(title: "NES", body: "A great console")
+product.picture.attach(io: file, filename: "nes.png", content_type: "image/png")
+product.save
+```
+
 Params
 
 ```ruby
@@ -65,8 +77,10 @@ Informations sur les gems (valable aussi pour tout projet avec un Gemfile)
 
 ```bash
 bundle open activerecord # ouvrir le code source
+bundle add activerecord  # ajoute au Gemfile et ca fait le bundle install
 bundle info activerecord # voir le path
-bundle update rails      # mettre à jour
+bundle show activerecord # voir le path (deprecated)
+bundle update rails      # mettre à jou
 ```
 
 CLI Scalingo

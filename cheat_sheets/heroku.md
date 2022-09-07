@@ -28,6 +28,12 @@ Set env variable
 heroku config:set ADMIN_PASSWORD='password'
 ```
 
+Ajouter une remote heroku
+
+```bash
+heroku git:remote -a project-name
+```
+
 Avoir des infos sur sa base de données:
 
 ```bash
