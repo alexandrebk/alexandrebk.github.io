@@ -37,3 +37,6 @@
 - title:   "Metabase"
   link:    "https://www.metabase.com/"
   content: "Une app pour faire des dashboard"
+- title:   "SOLID Principle"
+  link:    "https://okso.app/showcase/solid"
+  content: "Schéma pour expliquer les principes SOLID"
