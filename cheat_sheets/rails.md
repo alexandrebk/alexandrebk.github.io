@@ -98,4 +98,12 @@ scalingo run bundle exec rails console
 <br>
 <a href="https://www.honeybadger.io/blog/ruby-view-components/" class="underlined" target="_blank">Une introduction à la gem ViewComponent</a>
 <br>
-<a href="https://www.hotrails.dev/" class="underlined" target="_blank">Tuto sur Turbo</a>
+<a href="https://www.hotrails.dev/" class="underlined" target="_blank">
+  Tuto sur Turbo
+</a>
+<br>
+<a href="https://medium.com/le-wagon/how-to-use-nil-blank-present-exists-in-rails-5-fe03e78ab979"
+   class="underlined"
+   target="_blank">
+  How to use .nil? .empty? .blank? .present? in Rails 6
+</a>
