@@ -147,4 +147,12 @@ gem_name/
 <br>
 <a href="https://www.openmymind.net/2010/6/25/Learning-Ruby-class-self/" class="underlined" target="_blank">Meta Class et self dans Ruby</a>
 <br>
-<a href="https://www.codewithjason.com/ampersand-ruby-block/" class="underlined" target="_blank">Qu'est qu'un block en Ruby ?</a>
+<a href="https://www.codewithjason.com/ampersand-ruby-block/" class="underlined" target="_blank">
+  Qu'est qu'un block en Ruby ?
+</a>
+<br>
+<a href="https://dev.to/appsignal/improve-code-in-your-ruby-application-with-rubycritic-mbe"
+   class="underlined"
+   target="_blank">
+  Améliorer son code Ruby
+</a>

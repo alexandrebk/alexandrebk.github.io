@@ -53,4 +53,10 @@ https://dev.to/ambroseotundo/creating-git-aliases-3nng
    target="_blank">
   Git bisect
 </a>
+<br>
+<a href="https://dev.to/jordharr/how-to-enforce-conventional-commit-messages-using-git-hooks-with-husky-commitlint-537j"
+   class="underlined"
+   target="_blank">
+  Enforce conventionnal commit with git hooks
+</a>
 
