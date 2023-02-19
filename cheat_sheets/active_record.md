@@ -138,6 +138,17 @@ class User < ApplicationRecord
 end
 ```
 
+Friendly Url in routes with #to_param
+
+```ruby
+class User < ApplicationRecord
+
+  def to_params
+    "#{id}-#{title.parameterize}"
+  end
+end
+```
+
 <h2>Des articles pour aller plus loin sur les bases de données dans Rails :</h2>
 
 <a href="https://blog.appsignal.com/2020/01/22/rails-is-fast-optimize-your-view-performance.html" class="underlined" target="_blank">Résoudre et les problèmes de query N+1</a>
