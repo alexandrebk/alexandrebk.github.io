@@ -71,15 +71,22 @@ heroku pg:backups:download
 pg_restore --verbose --clean --no-acl --no-owner -h localhost -U alexandrebouvier -d airbnb_copycat_development latest.dump
 ```
 
-Ou alors
+Si le BDD est petite on peut utiliser le `pg:pull` mais ça risque de prendre plus de temps
 
 ```bash
 rails db:drop
 heroku pg:pull DATABASE_URL airbnb_copycat_development
 ```
 
-Pour faire le contraire
+Pour copier la base de donnée local sur une app Heroku
 
 ```bash
 heroku pg:push airbnb_copycat_development DATABASE_URL
 ```
+
+Pour copier la BDD d'une app Heroku à une autre. Ici on copie de `example-app` vers `example-staging-app`, pour plus d'information voir la [documentation](https://devcenter.heroku.com/articles/heroku-postgres-backups)
+
+```bash
+heroku pg:copy example-app::HEROKU_POSTGRESQL_ORANGE_URL GREEN --app example-staging-app
+```
+
