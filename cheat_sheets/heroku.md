@@ -84,9 +84,28 @@ Pour copier la base de donnée local sur une app Heroku
 heroku pg:push airbnb_copycat_development DATABASE_URL
 ```
 
-Pour copier la BDD d'une app Heroku à une autre. Ici on copie de `example-app` vers `example-staging-app`, pour plus d'information voir la [documentation](https://devcenter.heroku.com/articles/heroku-postgres-backups)
+Pour copier la BDD d'une app Heroku à une autre. Ici on copie de `example-app` vers `example-staging-app`, pour plus d'information voir la <a href="https://devcenter.heroku.com/articles/heroku-postgres-backups" class="underlined" target="_blank">documentation</a>
 
 ```bash
 heroku pg:copy example-app::HEROKU_POSTGRESQL_ORANGE_URL GREEN --app example-staging-app
 ```
 
+<h2>Des articles pour aller plus loin </h2>
+
+<a href="https://help.heroku.com/7NIXUF1V/how-do-i-change-the-billing-app-for-my-heroku-postgres-database"
+   class="underlined"
+   target="_blank">
+  Copy app accross applications
+</a>
+<br>
+<a href="https://devcenter.heroku.com/articles/heroku-postgres-backups"
+   class="underlined"
+   target="_blank">
+  Heroku PGBackups
+</a>
+<br>
+<a href="https://devcenter.heroku.com/articles/heroku-postgres-import-export"
+   class="underlined"
+   target="_blank">
+  Importing and Exporting Heroku Postgres Databases
+</a>
