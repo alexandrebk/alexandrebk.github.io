@@ -43,3 +43,6 @@
 - title:   "La Forge"
   link:    "https://lafor.ge/"
   content: "Blog sur Rust, le hardwarde le réseau et pleins d'autres sujets"
+- title:   "Vidéo sur Reveal.js"
+  link:    "https://www.youtube.com/watch?v=Xt-BH1E13HU&t=290s&ab_channel=Grafikart.fr"
+  content: "Présentation de Reveal.js par Grafikart"
