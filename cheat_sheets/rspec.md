@@ -38,6 +38,13 @@ Fill in input text
 fill_in 'invoice_amount_total', with: 1
 ```
 
+Cliquez sur un bouton avec un id
+
+```ruby
+click_on(id: 'update-quotation-title')
+find("#update-quotation-title").click
+```
+
 Cliquez sur un bouton avec alerte JS
 
 ```ruby
