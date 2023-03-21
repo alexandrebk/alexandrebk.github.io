@@ -55,3 +55,12 @@ FROM matches_per_month
 ```
 
 `GROUP BY` c'est que pour les aggrégateurs de type `SUM`, `COUNT`, `AVG` etc.
+
+Order table by size :
+
+```sql
+SELECT table_name, pg_size_pretty(pg_table_size(quote_ident(table_name))), pg_table_size(quote_ident(table_name))
+FROM information_schema.tables
+WHERE table_schema = 'public'
+ORDER BY 3 DESC;
+```
