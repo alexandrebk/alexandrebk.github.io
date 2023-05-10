@@ -50,3 +50,8 @@ Grille avec 3 colonnes
    target="_blank">
   Panorama des input en html
 </a>
+<a href="https://www.youtube.com/watch?v=qm0IfG1GyZU&t=126s&ab_channel=GoogleChromeDevelopers"
+   class="underlined"
+   target="_blank">
+  10 modern layouts in 1 line of CSS
+</a>

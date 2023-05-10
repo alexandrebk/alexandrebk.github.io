@@ -90,6 +90,12 @@ Pour copier la BDD d'une app Heroku à une autre. Ici on copie de `example-app` 
 heroku pg:copy example-app::HEROKU_POSTGRESQL_ORANGE_URL GREEN --app example-staging-app
 ```
 
+Se connecter à la base de données
+
+```bash
+heroku pg:psql
+```
+
 <h2>Des articles pour aller plus loin </h2>
 
 <a href="https://help.heroku.com/7NIXUF1V/how-do-i-change-the-billing-app-for-my-heroku-postgres-database"
