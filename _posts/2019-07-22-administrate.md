@@ -9,9 +9,11 @@ status: tech
 tags: "admin, administrate, thoughbot"
 ---
 
-Tous les administrateurs de votre web-app ne sont pas forcément des développeurs. Developpé par <a href="https://thoughtbot.com/" class="underlined" target="_blank">Thoughbot</a> la *gem* <a href="https://github.com/thoughtbot/administrate" class="underlined" target="_blank">Administrate</a> permet de créer rapidement une interface d'administration. Grâce à Administrate, vos administrateurs pourront directement créer ou modifier ces modèles sans passer par la console.
+Tous les administrateurs de votre web-app ne sont pas forcément des développeurs. Developpé par <a href="https://thoughtbot.com/" class="underlined" target="_blank">Thoughbot</a> la *gem* <a href="https://github.com/thoughtbot/administrate" class="underlined" target="_blank">Administrate</a> permet de créer rapidement une interface d'administration. Grâce à Administrate, vos administrateurs pourront directement créer ou modifier ces modèles sans avoir à passer par la console Rails.
 
-Il existe deux *gems* équivalentes qui sont <a href="https://github.com/activeadmin/activeadmin" class="underlined" target="_blank">Active Admin</a> et <a href="https://github.com/sferik/rails_admin" class="underlined" target="_blank">Rails Admin</a>. Nous supposons donc qu’il y a une application Rails avec déjà plusieurs modèles.
+Il existe deux *gems* équivalentes qui sont <a href="https://github.com/activeadmin/activeadmin" class="underlined" target="_blank">Active Admin</a> et <a href="https://github.com/sferik/rails_admin" class="underlined" target="_blank">Rails Admin</a>.
+
+Nous supposons donc qu’il y a une application Rails avec déjà plusieurs modèles.
 
 ### 1. Ajouter la gem
 
