@@ -64,3 +64,18 @@ FROM information_schema.tables
 WHERE table_schema = 'public'
 ORDER BY 3 DESC;
 ```
+
+<h2>Des articles pour aller plus loin</h2>
+
+<a href="https://blog.mastermind.dev/indexes-in-postgresql"
+   class="underlined"
+   target="_blank">
+  Understanding database Indexes in PostgreSQL
+</a>
+<br>
+<a href="https://www.youtube.com/watch?v=bo5j9xgiF48&t=15s&ab_channel=DevoxxFR"
+   class="underlined"
+   target="_blank">
+   Ce que les développeurs doivent savoir sur les index par Nelson Dionisi (vidéo)
+</a>
+<br>

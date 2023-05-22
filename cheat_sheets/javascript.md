@@ -4,7 +4,25 @@ title: Cheat Sheet Javascript
 permalink: /cheat_sheets/javascript
 ---
 
-Fontion fléchée
+Manage multiple Node.js versions with NVM
+
+```sh
+brew install nvm
+```
+
+```sh
+nvm install 18.14.0
+```
+
+```sh
+nvm use 18.14.0
+```
+
+```sh
+nvm uninstall 18.14.0
+```
+
+Fonction fléchée
 
 ```js
 const square = (x) => {

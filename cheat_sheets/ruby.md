@@ -141,18 +141,44 @@ gem_name/
 
 <h2>Des articles pour aller plus loin</h2>
 
-<a href="https://blog.appsignal.com/2021/07/28/introduction-to-pattern-matching-in-ruby.html" class="underlined" target="_blank">Une introduction au Pattern Matching avec Ruby</a>
+<a href="https://blog.appsignal.com/2021/07/28/introduction-to-pattern-matching-in-ruby.html"
+   class="underlined"
+   target="_blank">
+  Une introduction au Pattern Matching avec Ruby (App Signal)
+</a>
 <br>
-<a href="https://www.synbioz.com/blog/tech/chargement-automatique-des-modules-et-classes-en-ruby" class="underlined" target="_blank">Présentation de Zeitwerk et du loading de fichiers</a>
+<a href="https://www.synbioz.com/blog/tech/chargement-automatique-des-modules-et-classes-en-ruby"
+   class="underlined"
+   target="_blank">
+  Présentation de Zeitwerk et du loading de fichiers (Code With Jason)
+</a>
 <br>
-<a href="https://www.openmymind.net/2010/6/25/Learning-Ruby-class-self/" class="underlined" target="_blank">Meta Class et self dans Ruby</a>
+<a href="https://www.openmymind.net/2010/6/25/Learning-Ruby-class-self/"
+   class="underlined"
+   target="_blank">
+  Meta Class et self dans Ruby
+</a>
 <br>
-<a href="https://www.codewithjason.com/ampersand-ruby-block/" class="underlined" target="_blank">
-  Qu'est qu'un block en Ruby ?
+<a href="https://www.codewithjason.com/ampersand-ruby-block/"
+   class="underlined"
+   target="_blank">
+  Qu'est qu'un block en Ruby ? (Code With Jason)
 </a>
 <br>
 <a href="https://dev.to/appsignal/improve-code-in-your-ruby-application-with-rubycritic-mbe"
    class="underlined"
    target="_blank">
-  Améliorer son code Ruby
+  Améliorer son code Ruby (App Signal)
+</a>
+<br>
+<a href="https://dev.to/pjam/ruby-symbol-to-proc-explained-the-short-version-3kp1"
+   class="underlined"
+   target="_blank">
+  Ruby Symbol to Proc explained, the short version
+</a>
+<br>
+<a href="https://medium.com/rubycademy/mastering-the-unary-ampersand-operator-with-blocks-cb5a48aca175"
+   class="underlined"
+   target="_blank">
+  Mastering the unary ampersand operator (&object) as block argument
 </a>

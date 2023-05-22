@@ -90,6 +90,22 @@ git remote add scalingo git@ssh.osc-fr1.scalingo.com:app-name.git
 scalingo run bundle exec rails console
 ```
 
+Afficher les query SQL dans les logs en production ([Source](https://stackoverflow.com/questions/2936000/how-to-show-sql-queries-run-in-the-rails-console/73826402#73826402))
+
+```ruby
+ActiveRecord::Base.logger.extend(
+  ActiveSupport::Logger.broadcast(ActiveSupport::Logger.new(STDOUT))
+)
+ActiveRecord::LogSubscriber.attach_to :active_record
+```
+
+<h2>Liste de gems</h2>
+
+- [An email validator for Rails](https://github.com/K-and-R/email_validator)
+- [Annotate Rails classes with schema and routes info](https://github.com/ctran/annotate_models)
+- [strip_attributes](https://github.com/rmm5t/strip_attributes)
+- [Nilify blanks](https://github.com/rubiety/nilify_blanks)
+
 <h2>Des articles pour aller plus loin</h2>
 
 <a href="https://www.lewagon.com/blog/setup-meta-tags-rails" class="underlined" target="_blank">Setup des meta data dans Rails</a>
@@ -106,4 +122,22 @@ scalingo run bundle exec rails console
    class="underlined"
    target="_blank">
   How to use .nil? .empty? .blank? .present? in Rails 6
+</a>
+<br>
+<a href="https://dev.to/ahmadraza/mastering-eager-loading-and-beyond-rails-7-5eie"
+   class="underlined"
+   target="_blank">
+  Mastering Eager Loading and Beyond! Rails 7 (includes, join, preload)
+</a>
+<br>
+<a href="https://www.youtube.com/watch?v=phAwVI2BcK4&t=155s&ab_channel=DriftingRuby"
+   class="underlined"
+   target="_blank">
+  Episode #387 - Demystifying the Asset Pipeline (video)
+</a>
+<br>
+<a href="https://www.youtube.com/watch?v=phAwVI2BcK4&t=155s&ab_channel=DriftingRuby"
+   class="underlined"
+   target="_blank">
+  Episode #387 - Demystifying the Asset Pipeline (video)
 </a>

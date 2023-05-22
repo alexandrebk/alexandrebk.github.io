@@ -28,12 +28,14 @@ drop_table :table_name
 Validations (<a href="https://guides.rubyonrails.org/active_record_validations.html" class="underlined" target="_blank">Rails documentation</a>)
 
 ```ruby
-validates_presence_of :first_name, :last_name
-validates :category, inclusion: { in: ["sports", "clothing", "technology"] }
-validates :first_name, uniqueness: { scope: :last_name }
-validates :password, confirmation: true, unless: -> { password.blank? }
-validates :rating, numericality: { greater_than: 0 }
-validates :email, format: { with: /\A.*@.*\.com\z/ }
+class Order
+  validates_presence_of :first_name, :last_name
+  validates :category, inclusion: { in: ["sports", "clothing", "technology"] }
+  validates :first_name, uniqueness: { scope: :last_name }
+  validates :password, confirmation: true, unless: -> { password.blank? }
+  validates :rating, numericality: { greater_than: 0 }
+  validates :email, format: { with: /\A.*@.*\.com\z/ }
+end
 ```
 
 Ajouter un message d'erreur
@@ -55,7 +57,9 @@ end
 Scope
 
 ```ruby
-scope :published, -> { where(published: true) }
+class Post
+  scope :published, -> { where(published: true) }
+end
 ```
 
 Migration avec des uuid à la place des id
