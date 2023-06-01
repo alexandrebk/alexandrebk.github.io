@@ -20,6 +20,16 @@
     <priority>0.80</priority>
   </url>
   <url>
+    <loc>http://www.alexandrebouvier.fr/portfolio.html</loc>
+    <lastmod>2023-06-01T12:37:53+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>http://www.alexandrebouvier.fr/cheat_sheet/</loc>
+    <lastmod>2021-01-27T12:00:53+00:00</lastmod>
+    <priority>0.80</priority>
+  </url>
+  <url>
     <loc>
       http://www.alexandrebouvier.fr/2019/07/22/administrate.html
     </loc>
@@ -113,11 +123,6 @@
     <priority>0.8</priority>
   </url>
   <!-- CHEAT SHEET -->
-  <url>
-    <loc>http://www.alexandrebouvier.fr/cheat_sheet/</loc>
-    <lastmod>2021-01-27T12:00:53+00:00</lastmod>
-    <priority>0.80</priority>
-  </url>
   <url>
     <loc>http://www.alexandrebouvier.fr/cheat_sheet/ruby</loc>
     <lastmod>2022-07-23T12:00:53+00:00</lastmod>

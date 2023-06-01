@@ -75,6 +75,20 @@ class CreateOrders < ActiveRecord::Migration[7.0]
 end
 ```
 
+Generating Secure Tokens on Your ActiveRecord Models
+
+```ruby
+class User < ApplicationRecord
+  has_secure_token :access_code, length: 30
+end
+
+class AddAccessCodeToUser < ActiveRecord::Migration[7.0]
+  def change
+    add_column :users, :access_code, :string
+  end
+end
+```
+
 Joindre 2 tables
 
 ```ruby
