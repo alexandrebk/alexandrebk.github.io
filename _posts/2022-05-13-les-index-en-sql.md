@@ -128,4 +128,4 @@ end
 
 ## Pour aller plus loin
 
-Si vous voulez en savoir plus sur les index, je vous recommande <a href="https://www.youtube.com/watch?v=bo5j9xgiF48&t=15s&ab_channel=DevoxxFR" class="underlined" target="_blank">cette vidéo</a> et ce <a href="https://www.amazon.de/gp/product/3950307826/" class="underlined" target="_blank">livre</a>.
+Si vous voulez en savoir plus sur les index, je vous recommande <a href="https://www.youtube.com/watch?v=bo5j9xgiF48&t=15s&ab_channel=DevoxxFR" class="underlined" target="_blank">cette vidéo</a>, cette <a href="https://blog.mastermind.dev/indexes-in-postgresql" class="underlined" target="_blank">article</a> et ce <a href="https://www.amazon.de/gp/product/3950307826/" class="underlined" target="_blank">livre</a>.
