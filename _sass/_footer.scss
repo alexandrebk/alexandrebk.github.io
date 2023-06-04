@@ -1,13 +1,20 @@
 footer {
-  margin-top: 2rem;
-  height:     40px;
-}
+  margin: 1.5rem 0;
 
-.fab{
-  font-size: 30px;
-  padding:   0 5px;
-}
+  svg {
+    width:  30px;
+    height: 30px;
+    margin: 0 6px;
+  }
 
-.fab:hover{
-  color: $green;
+  svg:hover {
+    width:  40px;
+    height: 40px;
+  }
+
+  div {
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+  }
 }
