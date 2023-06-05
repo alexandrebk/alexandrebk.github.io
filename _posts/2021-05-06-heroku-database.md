@@ -10,7 +10,7 @@ status: tech
 
 Plus votre traffic s'accroit, plus votre base de données grossit et Heroku va rapidement vous imposer d'en changer la taille (à partir de 10 000 lignes). Malheuresement ce n'est pas si simple. Je vais vous aider à résumer ce que nous dit la <a href="https://devcenter.heroku.com/articles/upgrading-heroku-postgres-databases" class= "underlined" target="_blank">documentation</a>.
 
-### S'assurer d'avoir les droits
+## S'assurer d'avoir les droits
 
 Tout d'abord, il faut s'assurer d'être le *owner* de l'application.
 
@@ -18,7 +18,7 @@ Tout d'abord, il faut s'assurer d'être le *owner* de l'application.
      class="image"
      alt="ownership">
 
-### Créer la nouvelle base de données
+## Créer la nouvelle base de données
 
 Ensuite on va créer une nouvelle base de données sur Heroku. Ici, je vais choisir le plan *hobby-basic*. C'est un plan à 9$/mois. Pour connaître les autres plans, il suffit de se référer à la liste <a href="https://elements.heroku.com/addons/heroku-postgresql" class= "underlined" target="_blank">ici</a>
 
@@ -38,7 +38,7 @@ $ heroku pg:info
 
 Il faut récupérer le nom de la base de données nouvellement créé. Dans notre cas c'est *HEROKU_POSTGRESQL_WHITE_URL*.
 
-### Copie de la base de données
+## Copie de la base de données
 
 Nous allons maintenant copier le contenu de l'ancienne base de données sur la nouvelle. Afin d'éviter toute écriture pendant la copie, nous allons mettre l'application en maintenance.
 
@@ -64,7 +64,7 @@ On voit que désormais, j'ai le droit à 10 000 000 de lignes sur la base de don
      class="image"
      alt="pg copy">
 
-### Activer la nouvelle base de données
+## Activer la nouvelle base de données
 
 Activons la nouvelle base de données sur la production.
 

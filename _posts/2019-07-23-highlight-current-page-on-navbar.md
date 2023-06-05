@@ -13,7 +13,7 @@ C'est un besoin courant en UX : marquer visuellement l'onglet d'un menu de navig
 
 Nous supposons que nous sommes dans une application Ruby on Rails avec Bootstrap d'installé.
 
-### La classe *navbar* de Bootstrap
+## La classe *navbar* de Bootstrap
 
 Voici notre barre de navigation codée avec <a href="https://getbootstrap.com/docs/4.0/components/navbar/" class="underlined" target="_blank">Bootstrap</a>
 
@@ -42,7 +42,7 @@ Voici notre barre de navigation codée avec <a href="https://getbootstrap.com/do
      class="image"
      alt="navbar">
 
-### La méthode *current_page?*
+## La méthode *current_page?*
 
 Pour mettre en surbrillance, nous allons utiliser la méthode *current_page?*. Elle prend comme argument un *path* et renvoie *true* si nous sommes bien sur ce *path*.
 

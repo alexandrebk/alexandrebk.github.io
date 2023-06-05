@@ -6,7 +6,7 @@ status: tech
 tags: "ruby"
 ---
 
-### La méthode *send*
+## La méthode *send*
 
 La méthode *send* permet d'appeler une méthode sur un objet en lui passant une chaîne de caractères.
 
@@ -69,9 +69,11 @@ p room.should_paint_door      # true
 La documentation se trouve <a href="https://apidock.com/ruby/Object/send" class="underlined" target="_blank">ici</a>.
 
 
-### Opérateur d'affectation conditionnel (`||=`)
+## Opérateur d'affectation conditionnel (`||=`)
 
-On souhaite assigner une valeur à une variable si et seulement si elle n'est pas précédemment définie. Attention la valeur est réassigné si la variable est *falsy* (c'est à dire *nil* ou *false*). Donc il n'est pas conseillé d'utiliser cette méthode pour un booléan.
+On souhaite assigner une valeur à une variable si et seulement si elle n'est pas précédemment définie.
+Attention la valeur est réassigné si la variable est *falsy* (c'est à dire *nil* ou *false*).
+Donc il n'est pas conseillé d'utiliser cette méthode pour un booléan.
 
 ```ruby
 toto = nil
@@ -85,11 +87,12 @@ puts toto
 # "J'ai déjà du contenu"
 ```
 
-### Opérateur de navigation sans risque (`&`)
+## Opérateur de navigation sans risque (`&`)
 
-Cela vous permet de naviguer à travers des objets sans risque d'avoir une erreur.
+Cela vous permet de naviguer à travers des objets sans risquer d'avoir une erreur.
 
-Imaginons deux classes : *Room* et *Flat*. Une *room* appartient à un *Flat* qui a une variable d'instance *name*.
+Imaginons deux classes : *Room* et *Flat*.
+Une *Room* appartient à un *Flat* et ce dernier a une variable d'instance *name*.
 
 ```ruby
 class Flat
@@ -131,7 +134,7 @@ puts room&.flat&.name
 # => nil
 ```
 
-### Les *procs*
+## Les *procs*
 
 Les *procs* sont très utiles quand vous souhaitez itérer sur des objets et appliquer une méthode sur chaque élément.
 
@@ -144,7 +147,8 @@ p [1,2,3].map(&:to_s)
 # => ["1", "2", "3"]
 ```
 
-Maintenant, imaginons une classe *Room* avec une variable d'instance *area*. Je veux récupérer toutes les valeurs et les additionner.
+Maintenant, imaginons une classe *Room* avec une variable d'instance *area*.
+Je veux récupérer toutes les valeurs et les additionner.
 
 ```ruby
 class Room
@@ -166,7 +170,9 @@ p rooms.sum(&:area)
 # => 25
 ```
 
-On peut même écrire ses propres procs. Par exemple, un *proc* qui va calculer le volume des chambres (sachant qu'elles font 4 mètres de hauteur).
+On peut même écrire ses propres procs.
+Par exemple, un *proc* qui va calculer le volume des chambres
+(sachant qu'elles font toutes 4 mètres de hauteur).
 
 ```ruby
 # [...]

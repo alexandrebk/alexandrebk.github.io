@@ -11,21 +11,28 @@ Comment lancer son projet web ? C'est une question qu'on me pose souvent.
 
 Il est difficile pour un non-initié de se lancer, mais dans cet article nous allons voir quelles sont les bonnes méthodes pour y arriver.
 
-### Comment passer de l'idée au produit ?
+## Comment passer de l'idée au produit ?
 
-Dans un premier temps, le but est de lancer un *MVP* (*Minimum Viable Product*). Pour lancer son *MVP*, il y a plusieurs étapes à respecter.
+Dans un premier temps, le but est de lancer un *Minimum Viable Product* (*MVP*). Et pour lancer son *MVP*, il y a plusieurs étapes à respecter.
 
-La première étape est de rédiger des spécifications appelé aussi cahier des charges. Vous pouvez le rédiger avec n'importe quel éditeur de texte. Ensuite un *wireframe* (maquettes). Vous trouverez tous les outils disponibles
-<a href="https://www.blogduwebdesign.com/logiciels-wireframe-prototype/" class= "underlined" target="_blank">dans cet article sur le blog du web design</a>. Mon favori est <a href="https://whimsical.com/" class= "underlined" target="_blank">whimsical</a>.
+La première étape est de rédiger des spécifications, appelé aussi cahier des charges ou *spec*.
+Vous pouvez le rédiger avec n'importe quel éditeur de texte.
+Ensuite il faut dessiner un *wireframe* (maquettes).
+Vous trouverez tous les outils disponibles <a href="https://www.blogduwebdesign.com/logiciels-wireframe-prototype/" class= "underlined" target="_blank">dans cet article sur le blog du web design</a>.
+Mon préféré est <a href="https://whimsical.com/" class= "underlined" target="_blank">whimsical</a>.
 
-Une fois la première étape terminé, nous avons une représentation plus précise du MVP. C'est le moment de créer le prototype. Vous trouverez une liste
-<a href="https://www.blogduwebdesign.com/logiciels-wireframe-prototype/#Logiciels_pour_creer_des_prototypes" class= "underlined" target="_blank">ici</a> d'outils pour en créer un. Pour cette partie, mieux vaut faire appel à un professionel pour vous accompagner par exemple sur <a href="https://www.malt.fr/s?q=web+designer&as=t" class= "underlined" target="_blank">Malt</a>.
+Une fois la première étape terminé, nous avons une représentation plus précise du *MVP*.
+C'est le moment de créer le prototype. Vous trouverez une liste
+<a href="https://www.blogduwebdesign.com/logiciels-wireframe-prototype/#Logiciels_pour_creer_des_prototypes" class= "underlined" target="_blank">ici</a> d'outils pour en créer un.
+Pour cette partie, mieux vaut faire appel à un professionel pour vous accompagner par exemple sur <a href="https://www.malt.fr/s?q=web+designer&as=t" class= "underlined" target="_blank">Malt</a>.
 
 Une fois ces deux étapes terminées, la partie technique peut commencer.
 
-### Cycle en V ou méthode agile ?
+## Cycle en V ou méthode agile ?
 
-La tentation est forte d'investir dans un long développement coûteux pour donner vie au produit complet que vous avez en tête ; c'est ce que l'on appelle le <a href="https://fr.wikipedia.org/wiki/Cycle_en_V" class= "underlined" target="_blank">cycle en V</a>. La majorité des équipes techniques a cessé de fonctionner de cette manière. Au contraire, il faut tester le plus vite possible son produit dans sa version minimum (le fameux **MVP**) avant d'investir davantage de temps et d'argent!
+La tentation est forte d'investir dans un développement long et coûteux pour donner vie au produit complet que vous avez en tête ; c'est ce que l'on appelle le <a href="https://fr.wikipedia.org/wiki/Cycle_en_V" class= "underlined" target="_blank">cycle en V</a>.
+La majorité des équipes techniques a cessé de fonctionner de cette manière depuis belle lurette.
+Au contraire même, il faut tester le plus vite possible son produit dans sa version minimum (le fameux *MVP*) avant d'investir davantage de temps et d'argent dedans!
 
 Le fonctionnement le plus fréquent est celui qui s'appuie sur la <a href="https://agilemanifesto.org/iso/fr/manifesto.html" class= "underlined" target="_blank">méthode agile</a>, où l'on alterne les phases de développement et d'analyse des retours utilisateurs.
 
@@ -44,15 +51,17 @@ Pour la rédaction des *US*, voici une liste non exhaustive d'outil disponible
 3. <a href="https://www.atlassian.com/fr/software/jira" class= "underlined" target="_blank">Jira</a>
 4. <a href="https://trello.com/" class= "underlined" target="_blank">Trello</a>
 
-Ensuite, il faut les estimer. C'est une partie technique qui doit être effectuée par un developpeur. Mais elle est essentielle pour pouvoir arbitrer entre les *US*, choisir les fonctionnalités nécessaires pour lancer le *MVP*. Et mettre en attente celle qui ne le sont pas. C'est la partie la plus difficile mais qui vous permettra de gagner du temps pour lancer son produit et vérifier qu'il attire des utilisateurs (*product market fit*).
+Ensuite, c'est la partie estimation. C'est une partie technique qui doit être effectuée par un developpeur.
+Mais elle est essentielle pour pouvoir arbitrer entre les *US*, choisir les fonctionnalités nécessaires pour lancer le *MVP*.
+Et mettre en attente celle qui ne le sont pas. C'est la partie la plus difficile mais qui vous permettra de gagner du temps pour lancer son produit et vérifier qu'il attire des utilisateurs (*product market fit*).
 
 Une fois que le produit est lancé et qu'il y a de la traction, il faut itérer. On reprend les *US* mises de côté et on les retravaille en fonction des retours utilisateurs.
 
-### Tester l'appétence des utilisateurs
+## Tester l'appétence des utilisateurs
 
 Avant de lancer une application complexe, il est facile de générer des *leads* avec une *landing-page* simple et efficace. Pour vous lancer, vous pouvez regarder <a href="https://www.blogduwebdesign.com/logiciels-landing-pages/" class= "underlined" target="_blank">ici</a> comment en créer sans coder.
 
-### Glossaire
+## Glossaire
 
 *MVP* : minimum viable product
 

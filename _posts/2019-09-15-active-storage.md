@@ -7,7 +7,7 @@ status: tech
 tags: "active storage, amazon web services"
 ---
 
-### Première étape: Installer Active Storage (rails < 6)
+## Première étape: Installer Active Storage (rails < 6)
 
 Si vous n'êtes pas dans Rails 6, il vous faudra ajouter la <a href="https://github.com/rails/activestorage/tree/archive" target="_blank">gem Active Storage</a> dans votre Gemfile et l'installer avec la commande `bundle install`.
 
@@ -23,7 +23,7 @@ $ rails active_storage:install
 $ rails db:migrate
 ```
 
-### Seconde Étape: Ajouter les images au model
+## Seconde Étape: Ajouter les images au model
 
 Ensuite nous allons attacher des images à notre modèle `Flat`. Attention, contrairement à d'autres gems, il n'y a pas besoin de créer un nouveau champ.
 
@@ -59,7 +59,7 @@ Et dans la vue du formulaire, on ajoute un champ pour les images.
 
 Le formulaire est désormais utilisable sur `localhost`. On va donc afficher les images sur la `show` d'un flat.
 
-### Troisième étape: Afficher les images
+## Troisième étape: Afficher les images
 
 Comme je récupère un tableau d'images, je vais pouvoir itérer dessus et les inclure dans un caroussel Bootstrap.
 
@@ -89,11 +89,11 @@ Comme je récupère un tableau d'images, je vais pouvoir itérer dessus et les i
 
 <img src="/images/posts/active-storage/new_flat.gif" class="image">
 
-### Quatrième Étape: Configurer AWS sur la prod
+## Quatrième Étape: Configurer AWS sur la prod
 
 Suivre le tuto <a href="https://www.alexandrebouvier.fr/2021/08/09/rails-aws-s3.html" class="underlined" target="_blank">ici</a>
 
-### [BONUS] Customiser sa zone de téléchargement
+## [BONUS] Customiser sa zone de téléchargement
 
 Le champ d'upload a nativement très peu de style.
 

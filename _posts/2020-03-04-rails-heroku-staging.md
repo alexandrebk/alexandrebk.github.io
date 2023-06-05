@@ -14,7 +14,7 @@ Tout d'abord nous allons renomer notre remote **heroku** en **production**.
 $ git remote rename heroku production
 ```
 
-### Ajouter un remote
+## Ajouter un remote
 
 Supposons que vous ayez déjà une application Ruby on Rails sur Heroku. Nous allons tout d'abord créer un pipeline et y mettre l'application en **production** et en créer une qui sera le **staging**.
 
@@ -42,7 +42,7 @@ heroku run rails console --remote staging
 heroku run rails console -r staging
 ```
 
-### Setup de la nouvelle database
+## Setup de la nouvelle database
 
 Ensuite, vous devez créer une base de donnée avec la commande :
 
@@ -60,7 +60,7 @@ staging:
   password: <%= ENV['AIRBNB_COPYCAT_DATABASE_PASSWORD'] %>
 ```
 
-### Webpacker
+## Webpacker
 
 Si vous utilisez Webpacker il faudra ajouter ceci au fichier `config/webpacker.yml`. De préférence entre la ligne de test et la ligne de production.
 
@@ -69,7 +69,7 @@ staging:
   <<: *default
 ```
 
-### Configuration de l'environnement
+## Configuration de l'environnement
 
 Pour finir on copie la configuration de l'environnement de production à celui de staging avec la commande:
 
@@ -81,7 +81,7 @@ Sur votre interface Heroku le bouton **Promote to production** vous permettra de
 
 <img src="/images/posts/staging-env/promote-to-production.png" class="image" alt="Promote to production">
 
-### Protéger l'accès à l'environnement de staging
+## Protéger l'accès à l'environnement de staging
 
 ```ruby
 # app/controllers/application_controller.rb
@@ -100,7 +100,7 @@ STAGING_LOGIN="login"
 STAGING_PASSWORD="password"
 ```
 
-### Seed
+## Seed
 
 C'est une bonne pratique de protéger la base de données de production si vous lancez vos seeds par inadvertance sur la `production` au lieu du `staging`.
 
@@ -110,7 +110,7 @@ C'est une bonne pratique de protéger la base de données de production si vous 
 return if Rails.env.production?
 ```
 
-### Automatic deploy
+## Automatic deploy
 
 Pour gagner du temps en déploiement, vous pouvez lier l'application Heroku au repo Github et déployer de manière automatique la branche master sur le staging.
 

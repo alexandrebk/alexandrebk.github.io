@@ -6,7 +6,7 @@ difficulty:  1
 status:      tech
 ---
 
-### 1. Le setup
+## 1. Le setup
 
 Tout d’abord on va créer notre application puis générer nos modèles *Flat*, *Booking* et *Review*.
 
@@ -82,7 +82,7 @@ Enfin, on ajoute font-awesome dans notre *stylesheet*.
 @import "font-awesome";
 ```
 
-### 2. Les modèles
+## 2. Les modèles
 
 On va ajouter des validations sur les champs *content* et *rating*. La constante *AUTHORIZED_RATINGS* va contenir le *range* possible de notes.
 
@@ -117,7 +117,7 @@ class Flat < ApplicationRecord
 end
 ```
 
-### 3. Les routes et le *ReviewsController*
+## 3. Les routes et le *ReviewsController*
 
 Nous allons redéfinir les routes pour tenir compte des relations entre les modèles. Sur la documentation <a href="https://apidock.com/rails/Range/overlaps%3F" class= "underlined" target="_blank">Rails</a> vous trouverez des informations sur le *shallow nesting*.
 
@@ -193,7 +193,7 @@ class FlatsController < ApplicationController
 end
 ```
 
-### 4. Les vues
+## 4. Les vues
 
 On va ajouter le formulaire dans la *show* d’un *booking*.
 
@@ -241,7 +241,7 @@ On peut tester <a href="http://localhost:3000/bookings/" class= "underlined" tar
      class="image"
      alt="new rating">
 
-### 5. Afficher les étoiles
+## 5. Afficher les étoiles
 
 Pour une interface plus *friendly*, on va cacher l'*input* des notes et ajouter une liste d'étoiles.
 

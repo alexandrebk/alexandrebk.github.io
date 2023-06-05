@@ -12,7 +12,7 @@ Dans ce tutoriel, nous allons apprendre à afficher un prix de façon dynamique 
 
 <img src="/images/posts/dynamic-JS/prix_dynamique.gif" class="image" alt="GIF prix dynamique">
 
-### 1. On crée des IDs que l'on place dans la vue
+## 1. On crée des IDs que l'on place dans la vue
 
 Dans la `show` d'un `flat`, nous souhaitons afficher à l'utilisateur deux choses, le nombre total de nuits et le prix total. D'abord, on va avoir besoin d'une `div` avec un `id` 'total-nights' et ensuite une autre `div` avec un `id` 'total-price'.
 
@@ -29,7 +29,7 @@ Dans la `show` d'un `flat`, nous souhaitons afficher à l'utilisateur deux chose
 </div>
 ```
 
-### 2. On récupère les dates avec Javascript
+## 2. On récupère les dates avec Javascript
 
 Ici, on se place dans le fichier `app/javascript/plugins/flatpicker.js` parce que Flatpickr est déjà installé ([voir le précédent article sur le sujet](/2019/07/24/flatpicker-in-rails.html))
 
@@ -47,7 +47,7 @@ Et on teste en console qu'on récupère les bonnes données du formulaire de ré
 
 <img src="/images/posts/dynamic-JS/console_log_dates.png" class="image" alt="affichage dates en console">
 
-### 3. On calcule le nombre de nuits à chaque changement de date
+## 3. On calcule le nombre de nuits à chaque changement de date
 
 ```js
 // app/javascript/plugins/flatpicker.js
@@ -75,7 +75,7 @@ On veut mettre à jour le nombre de nuits quand une des dates du formulaire est 
 })
 ```
 
-### 4. Enfin on injecte le nombre de nuits dans la vue.
+## 4. Enfin on injecte le nombre de nuits dans la vue.
 
 ```js
 // app/javascript/plugins/flatpicker.js
@@ -100,7 +100,7 @@ On obtient ce résultat :
 
 Maintenant, nous allons faire la même chose pour afficher le prix total.
 
-### 5. On récupère le prix de l'appartement grâce à un ID
+## 5. On récupère le prix de l'appartement grâce à un ID
 
 Toujours dans la `show` d'un `flat`, on ajoute un `span` avec l' `id`'flat-price-per-night' pour pouvoir récupérer le prix par nuit.
 
@@ -126,7 +126,7 @@ Je peux ajouter `console.log(flat-price-per-night)` dans la console de mon navig
 <img src="/images/posts/dynamic-JS/affichage_prix_sublime.png" class="image" alt="affichage prix dans sublime text">
 <img src="/images/posts/dynamic-JS/affichage_prix_console.png" class="image" alt="affichage prix dans console">
 
-### 6. On calcule le prix total et on l'injecte dans la vue.
+## 6. On calcule le prix total et on l'injecte dans la vue.
 
 ```js
 // app/javascript/plugins/flatpicker.js

@@ -10,7 +10,7 @@ Les calendriers et les sélecteurs de date sont toujours difficiles à mettre en
 
 Pour afficher un calendrier sélecteur de dates, nous allons utiliser le package <a href="https://flatpickr.js.org" class= "underlined" target="_blank">Flatpickr</a>.
 
-### 1. Installation
+## 1. Installation
 
 Tout d'abord il faut ajouter le package flatpickr dans votre application.
 
@@ -45,7 +45,7 @@ Nous allons maintenant créer notre formulaire dans la page `show` des `Flat`.
      class="image"
      alt="calendrier flatpickr">
 
-### 2. Le contrôleur
+## 2. Le contrôleur
 
 Maintenant que le formulaire est créé, nous allons créer un tableau de hash avec les locations déjà existantes. On récupère d'abord l'id de l'appartement. Enfin, avec une méthode `.map` on transforme les réservations en hash avec la date de début et de fin.
 
@@ -69,7 +69,7 @@ class FlatsController < ApplicationController
 end
 ```
 
-### 3. Passer les données à la vue
+## 3. Passer les données à la vue
 
 Une fois créé, on place le tableau de hash dans la vue sous forme de data-set à la fin de la page.
 
@@ -83,7 +83,7 @@ Une fois créé, on place le tableau de hash dans la vue sous forme de data-set 
 </div>
 ```
 
-### 4. Récupèrer les données pour les injecter dans le calendrier
+## 4. Récupèrer les données pour les injecter dans le calendrier
 
 S'il n'est pas déjà existant vous devez créer un dossier `plugins` dans `app/javascript` puis créer un fichier `flatpickr.js`.
 
@@ -142,7 +142,7 @@ document.addEventListener('turbolinks:load', () => {
      alt="flatpickr dates grisées">
 
 
-### 5. Afficher uniquement le calendrier
+## 5. Afficher uniquement le calendrier
 
 Maintenant on va cacher les champs du dates pour ne laisser apparaître que le calendrier.
 
@@ -173,10 +173,10 @@ Tout d'abord, il faut ajouter un label au calendrier. Ensuite on va cacher les d
      class="image"
      alt="calendrier flatpickr">
 
-### Bonus : Vérifier les dates en back-end
+## Bonus : Vérifier les dates en back-end
 
 Si vous souhaitez effectuer une vérification sur les dates avant d'enregistrer la réservation, vous pouvez utiliser la méthode <a href="https://apidock.com/rails/Range/overlaps%3F" class="underlined" target="_blank">overlaps?</a>
 
-### Bonus n°2 : Afficher le prix total de façon dynamique
+## Bonus n°2 : Afficher le prix total de façon dynamique
 
 Souvent sur ce type d'application, le prix total s'affiche et se modifie en fonction des dates sélectionnées. Le tuto pour l'affichage dynamique, c'est <a href="/2020/03/31/dynamic-element.html" class="underlined">ici</a>

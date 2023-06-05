@@ -18,7 +18,7 @@ Nous allons voir plusieurs types de recherches :
 <br>
 <br>
 
-### 0. Setup
+## 0. Setup
 
 Tout d'abord, nous allons créer une application avec deux modèles *Flat* et *Booking*.
 
@@ -112,7 +112,7 @@ rails generate simple_form:install --bootstrap
 rails db:seed
 ```
 
-### <a name="global"></a>1. Recherche globale par mots clés avec pg_search
+## <a name="global"></a>1. Recherche globale par mots clés avec pg_search
 
 On crée un scope dans le modèle
 
@@ -183,7 +183,7 @@ Nous pouvons désormais tester le formulaire avec `rails server` en visitant <a 
 <br>
 <br>
 
-### <a name="price"></a>2. Recherche par prix maximum
+## <a name="price"></a>2. Recherche par prix maximum
 
 On ajoute un champ de recherche avec prix maximum
 
@@ -228,7 +228,7 @@ end
 <br>
 <br>
 
-### <a name="dates"></a>3. Recherche par catégorie
+## <a name="dates"></a>3. Recherche par catégorie
 
 On ajoute un champ de recherche avec prix maximum
 
@@ -270,7 +270,7 @@ end
 Nous pouvons désormais tester en visitant  <a href="http://localhost:3000/flats?search=mouffetard&category=castle&max_price=&commit=Chercher" class="underlined" target="_blank">le filtre avec Mouffetard et la category castle</a>
 
 
-### <a name="dates"></a>4. Recherche par dates
+## <a name="dates"></a>4. Recherche par dates
 
 On ajoute les champs de date d'arrivée et de date de départ dans le formulaire.
 
