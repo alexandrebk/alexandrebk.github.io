@@ -13,6 +13,17 @@ nav li:last-child {
   margin-right: 0;
 }
 
+nav {
+  svg {
+    width:  40px;
+    height: 40px;
+  }
+
+  .fullname {
+    font-size: 1.75rem;
+  }
+}
+
 .navbar {
   padding: 10px 0 !important;
 }
