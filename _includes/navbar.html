@@ -1,8 +1,8 @@
 <header class="container">
-  <nav class="navbar navbar-light light-blue lighten-4 w-100">
-    <div class="d-flex justify-content-between">
+  <nav class="navbar">
+    <div class="avatar-and-name">
       <a href="/">
-        <div class="d-avatar pull-right">
+        <div class="d-avatar">
           <img class="avatar collapse"
                src="/images/alexandrebk.jpeg"
                width="84"
@@ -14,20 +14,9 @@
           </div>
         </div>
       </a>
-      <button class="navbar-toggler toggler-example"
-              type="button"
-              data-toggle="collapse"
-              data-target="#navbarSupportedContent1"
-              aria-controls="navbarSupportedContent1"
-              aria-expanded="false"
-              aria-label="Toggle navigation">
-        <span class="text-white">
-          {% include icons/bars-solid.svg %}
-        </span>
-      </button>
     </div>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent1">
+    <div class="navbar-collapse">
       <ul id="list" class="navbar-nav mr-auto p-2">
         <li class="nav-item">
           <a class="nav-link {% if page.url == '/' %} active {% endif %}" href="/">
@@ -36,7 +25,7 @@
         </li>
         <li class="nav-item">
           <a class="nav-link {% if page.url == '/resources.html' %} active {% endif %}" href="/resources.html">
-            Ressources Utiles
+            Ressources
           </a>
         </li>
         <li class="nav-item">

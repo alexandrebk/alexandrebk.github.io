@@ -4,9 +4,16 @@ header h2 {
 }
 
 nav li, nav a {
-  margin-right:   0.6rem;
-  margin-left:    0.6rem;
+  margin-right: 0.6rem;
+  margin-left: 0.6rem;
+  list-style-type: none;
   text-transform: uppercase;
+
+  @media (max-width: 720px) {
+    margin-right: 0.2rem;
+    margin-left: 0.2rem;
+    font-size: 0.75rem;
+  }
 }
 
 nav li:last-child {
@@ -22,10 +29,10 @@ nav {
   .fullname {
     font-size: 1.75rem;
   }
-}
 
-.navbar {
-  padding: 10px 0 !important;
+  ul {
+    padding-left: 0;
+  }
 }
 
 .active {
@@ -45,9 +52,6 @@ nav {
 .d-avatar {
   display:     flex;
   align-items: center;
-  @media (max-width: 720px) {
-    flex-direction: row-reverse;
-  }
 }
 
 nav button {
@@ -63,18 +67,17 @@ ul#list {
   flex-grow:  unset !important;
 }
 
-.collapse:not(.show) {
-  display: block !important;
+.avatar-and-name {
+  display: flex;
+  justify-content: between;
 }
 
-@media (max-width: 720px) {
-  nav button {
-    display: block;
-  }
-  ul#list {
-    display: flex;
-  }
-  .collapse:not(.show) {
-    display: none !important;
-  }
+.navbar {
+  padding: 10px 0 !important;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: .5rem 1rem;
 }
