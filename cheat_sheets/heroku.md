@@ -96,6 +96,12 @@ Se connecter à la base de données
 heroku pg:psql
 ```
 
+Voir toutes les connexions sur la BDD (attention si c'est un serveur partagé ou pas il faut filtrer sur sa connexion)
+
+```bash
+heroku pg:psql -c 'select usename, application_name, backend_start, wait_event, backend_type from pg_stat_activity;' --remote staging
+```
+
 <h2>Des articles pour aller plus loin </h2>
 
 <a href="https://help.heroku.com/7NIXUF1V/how-do-i-change-the-billing-app-for-my-heroku-postgres-database"
