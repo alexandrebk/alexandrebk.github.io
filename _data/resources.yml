@@ -43,3 +43,6 @@
 - title:   "Twitter de WebSebDev"
   link:    "https://twitter.com/websebdev"
   content: "Un tricks par semaine sur Rails par un développeur de chez Podia"
+- title:   "Draggable objects"
+  link:    "https://www.redblobgames.com/making-of/draggable/"
+  content: "Drag and drop for tag html"
