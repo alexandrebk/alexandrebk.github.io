@@ -1,6 +1,6 @@
 body {
   margin: 0 0;
-  color:  $white2;
+  color: $white2;
   background-color: $light-dark;
 }
 
@@ -8,6 +8,7 @@ a {
   text-decoration: none;
   background-color: transparent;
   color: $white2;
+
   &:hover {
     text-decoration: none;
     color: $white2;
@@ -30,13 +31,13 @@ h1 {
 }
 
 h2 {
-  font-size:   2rem;
+  font-size: 2rem;
   line-height: 125%;
   font-weight: 400;
 }
 
 h3 {
-  font-size:   1.5rem;
+  font-size: 1.5rem;
   line-height: 2rem;
   font-weight: 400;
 }
@@ -52,11 +53,6 @@ p {
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
-}
-
-.inner ul{
-  list-style: none;
-  padding-left: 0;
 }
 
 .underlined {

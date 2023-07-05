@@ -6,7 +6,7 @@ header h2 {
 nav li, nav a {
   margin-right: 0.6rem;
   margin-left: 0.6rem;
-  list-style-type: none;
+  list-style: none;
   text-transform: uppercase;
 
   @media (max-width: 720px) {
