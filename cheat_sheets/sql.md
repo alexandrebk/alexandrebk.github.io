@@ -79,3 +79,17 @@ ORDER BY 3 DESC;
    Ce que les développeurs doivent savoir sur les index par Nelson Dionisi (vidéo)
 </a>
 <br>
+<a href="https://xata.io/blog/postgres-full-text-search-engine"
+   class="underlined"
+   target="_blank">
+   Create an advanced search engine with PostgreSQL
+</a>
+<br>
+<a href="https://blog.widefix.com/select-unique-latest-grouped-records-from-db/"
+   class="underlined"
+   target="_blank">
+   Select unique latest grouped records from DB
+</a>
+
+
+

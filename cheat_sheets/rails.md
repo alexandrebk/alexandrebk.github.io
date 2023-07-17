@@ -141,3 +141,10 @@ ActiveRecord::LogSubscriber.attach_to :active_record
    target="_blank">
   Episode #387 - Demystifying the Asset Pipeline (video)
 </a>
+<br>
+<a href="https://medium.com/@ungrandjour/how-to-build-skeleton-loaders-in-rails-with-ajax-and-very-little-js-b9177956f88b"
+   class="underlined"
+   target="_blank">
+  How to build skeleton screens for Ajax responses in Ruby On Rails with minimum JS
+</a>
+

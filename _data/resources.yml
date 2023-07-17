@@ -46,3 +46,6 @@
 - title:   "Draggable objects"
   link:    "https://www.redblobgames.com/making-of/draggable/"
   content: "Drag and drop for tag html"
+- title:   "Icons"
+  link:    "https://icones.js.org/"
+  content: "All icons for all providers"
