@@ -7,7 +7,7 @@ permalink: /cheat_sheets/rails
 Commandes Rails
 
 ```bash
-rails _version_ new app_name --database=postgresql
+rails _rails.version_ new app_name --database=postgresql
 rails generate model Post title:string likes:integer
 rails generate controller Post
 rails tmp:clear # delete tmp files
@@ -29,7 +29,6 @@ Time.current.since(60 * 60)
 ```
 
 Active Job (<a href="https://guides.rubyonrails.org/active_job_basics.html" class="underlined" target="_blank">Rails documentation</a>)
-
 
 ```ruby
 MyJob.perform_now
@@ -53,7 +52,7 @@ product.picture.attach(io: file, filename: "nes.png", content_type: "image/png")
 product.save
 ```
 
-Params
+Hash#presence
 
 ```ruby
 params[:return_to].present? ? params[:return_to] : root_url
@@ -69,8 +68,7 @@ Mail To
 <% mail_to "alex@bouvier.fr",
            "Nouvel email",
            subject: "Hi, Alex!",
-           body: "J'adore ton blog"
-%>
+           body: "J'adore ton blog" %>
 ```
 
 Informations sur les gems (valable aussi pour tout projet avec un Gemfile)
@@ -80,17 +78,20 @@ bundle open activerecord # ouvrir le code source
 bundle add activerecord  # ajoute au Gemfile et ca fait le bundle install
 bundle info activerecord # voir le path
 bundle show activerecord # voir le path (deprecated)
-bundle update rails      # mettre à jou
+bundle update rails      # mettre à jour
 ```
 
-CLI Scalingo
+String Inquirer ([source](https://apidock.com/rails/ActiveSupport/StringInquirer))
 
-```bash
-git remote add scalingo git@ssh.osc-fr1.scalingo.com:app-name.git
-scalingo run bundle exec rails console
+```ruby
+class Order < ApplicationRecord
+  def category
+    super&.inquiry
+  end
+end
 ```
 
-Afficher les query SQL dans les logs en production ([Source](https://stackoverflow.com/questions/2936000/how-to-show-sql-queries-run-in-the-rails-console/73826402#73826402))
+Afficher les query SQL dans les logs en production ([source](https://stackoverflow.com/questions/2936000/how-to-show-sql-queries-run-in-the-rails-console/73826402#73826402))
 
 ```ruby
 ActiveRecord::Base.logger.extend(
@@ -99,11 +100,18 @@ ActiveRecord::Base.logger.extend(
 ActiveRecord::LogSubscriber.attach_to :active_record
 ```
 
-<h2>Liste de gems</h2>
+CLI Scalingo ([source](https://doc.scalingo.com/platform/cli/start))
+
+```bash
+git remote add scalingo git@ssh.osc-fr1.scalingo.com:app-name.git
+scalingo run bundle exec rails console
+```
+
+<h2>Liste de gems utiles pour les projets</h2>
 
 - [An email validator for Rails](https://github.com/K-and-R/email_validator)
 - [Annotate Rails classes with schema and routes info](https://github.com/ctran/annotate_models)
-- [strip_attributes](https://github.com/rmm5t/strip_attributes)
+- [strip_attributes for Active Record: If the attribute is blank, it strips the value to nil by default](https://github.com/rmm5t/strip_attributes)
 - [Nilify blanks](https://github.com/rubiety/nilify_blanks)
 
 <h2>Des articles pour aller plus loin</h2>
@@ -114,7 +122,9 @@ ActiveRecord::LogSubscriber.attach_to :active_record
 <br>
 <a href="https://www.honeybadger.io/blog/ruby-view-components/" class="underlined" target="_blank">Une introduction à la gem ViewComponent</a>
 <br>
-<a href="https://www.hotrails.dev/" class="underlined" target="_blank">
+<a href="https://www.hotrails.dev/"
+   class="underlined"
+   target="_blank">
   Tuto sur Turbo
 </a>
 <br>
@@ -133,13 +143,7 @@ ActiveRecord::LogSubscriber.attach_to :active_record
 <a href="https://www.youtube.com/watch?v=phAwVI2BcK4&t=155s&ab_channel=DriftingRuby"
    class="underlined"
    target="_blank">
-  Episode #387 - Demystifying the Asset Pipeline (video)
-</a>
-<br>
-<a href="https://www.youtube.com/watch?v=phAwVI2BcK4&t=155s&ab_channel=DriftingRuby"
-   class="underlined"
-   target="_blank">
-  Episode #387 - Demystifying the Asset Pipeline (video)
+  Drifintg Ruby Episode #387 - Demystifying the Asset Pipeline (video)
 </a>
 <br>
 <a href="https://medium.com/@ungrandjour/how-to-build-skeleton-loaders-in-rails-with-ajax-and-very-little-js-b9177956f88b"
@@ -147,4 +151,15 @@ ActiveRecord::LogSubscriber.attach_to :active_record
    target="_blank">
   How to build skeleton screens for Ajax responses in Ruby On Rails with minimum JS
 </a>
-
+<br>
+<a href="https://discuss.rubyonrails.org/t/active-storage-in-production-lessons-learned-and-in-depth-look-at-how-it-works/83289"
+   class="underlined"
+   target="_blank">
+  Active Storage: How it works
+</a>
+<br>
+<a href="https://dev.to/haseebeqx/notes-on-performance-optimization-in-rails-applications-36cg"
+   class="underlined"
+   target="_blank">
+  Notes on Performance Optimization in Rails Applications
+</a>

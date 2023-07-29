@@ -20,6 +20,8 @@ Jump to next method with `]m`
 
 [Source](https://vimtricks.com/p/vimtrick-jump-to-next-method/)
 
+Paste from system clipboard `+p`
+
 Plugins
 
 ## SplitJoin
@@ -50,3 +52,4 @@ Plugins
 
 Source: https://medium.com/efficient-rails/6-vim-plugins-that-will-give-you-ruby-editing-super-powers-32bd94570def
 
+[Tutoriel par Thoughbot](https://www.youtube.com/watch?v=wlR5gYd6um0&ab_channel=thoughtbot)

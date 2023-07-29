@@ -93,8 +93,16 @@ User.instance_method(:confirmed?).source.display
 def confirmed?
   !!confirmed_at
 end
+
+User.new.method(:active?).source_location
+# ["/Users/alexandrebouvier/my_app/app/models/user.rb", 63]
 ```
 
+Ruby lookup method of last resort
+
+```ruby
+def method_missing; end
+```
 
 Erreurs
 
@@ -181,4 +189,10 @@ gem_name/
    class="underlined"
    target="_blank">
   Mastering the unary ampersand operator (&object) as block argument
+</a>
+<br>
+<a href="https://blog.appsignal.com/2023/07/26/an-introduction-to-metaprogramming-in-ruby.html"
+   class="underlined"
+   target="_blank">
+  An Introduction to Metaprogramming in Ruby
 </a>

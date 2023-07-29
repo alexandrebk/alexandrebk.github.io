@@ -178,3 +178,6 @@ end
 <a href="https://blog.appsignal.com/2022/01/26/test-and-optimize-your-ruby-on-rails-database-performance.html" class="underlined" target="_blank">Comment optimiser sa base de données sour Rails</a>
 <br>
 <a href="https://apidock.com/rails/ActiveRecord/Associations/CollectionProxy/build" class="underlined" target="_blank">CollectionProxy#build : build a collection of objects related to another </a>
+<br>
+<a href="https://reinteractive.com/articles/activerecord-optimisation-utilising-exists-any-and-size" class="underlined" target="_blank">ActiveRecord Optimisation: Utilising .exists?, .any? and .size</a>
+

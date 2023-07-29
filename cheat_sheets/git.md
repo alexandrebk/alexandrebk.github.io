@@ -59,4 +59,10 @@ https://dev.to/ambroseotundo/creating-git-aliases-3nng
    target="_blank">
   Enforce conventionnal commit with git hooks
 </a>
+<br>
+<a href="https://thoughtbot.com/blog/git-interactive-rebase-squash-amend-rewriting-history"
+   class="underlined"
+   target="_blank">
+  Git Interactive Rebase, Squash, Amend and Other Ways of Rewriting History
+</a>
 
