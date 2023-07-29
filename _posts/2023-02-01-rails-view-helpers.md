@@ -7,11 +7,11 @@ difficulty: 1
 status: tech
 ---
 
-Avant de commencer, il me faut rappeler qu'en théorie dans le pattern *MVC* on ne doit pas mettre de logique dans les vues. Par ailleurs, our certains comportements peu complexes, il serait aussi dommage de surcharger un *controller*. Et même parfois, il est juste impossible de mettre la logique ailleurs que dans une vue. C'est à ça que servent les *helpers*. Par exemple pour afficher des boutons ou des textes différents en fonction du type d'utilisateur.
+Avant de commencer, il me faut rappeler qu'en théorie dans le pattern *MVC* on ne doit pas mettre de logique dans les vues. Mais parfois, il est juste impossible de mettre la logique ailleurs que dans une vue. C'est à ça que servent les *helpers*.
 
 ## Des exemples de code qui peuvent être importés dans n'importe quel projet
 
-Voici un module pour les dates qui est dans tous mes projets
+Voici un module simple pour afficher des dates qui est presque dans tous mes projets
 
 ```ruby
 module DatesHelper
@@ -35,7 +35,7 @@ module DatesHelper
 end
 ```
 
-Et un autre qui concerne les nombres
+Et un autre qui concerne l'affichage nombres
 
 ```ruby
 module NumberHelper
@@ -78,7 +78,7 @@ end
 
 Enfin vous pouvez utiliser un helper pour vos meta tag comme expliqué <a href="https://www.lewagon.com/blog/setup-meta-tags-rails" class="underlined" target="_blank">ici</a>.
 
-## Des gems qui retourne des partials, bonne ou mauvaise idée ?
+## Des helpers qui retourne des partials, bonne ou mauvaise idée ?
 
 Parfois, on a envie de faire un helper qui rend plus qu'une ligne de HTML. Dans ce cas la on peut render une partial. Attention toutefois à ne pas mettre de logique dans la partial.
 
@@ -97,10 +97,6 @@ module NavbarHelper
                      text_to_copy:  text_to_copy,
                      feedback_text: feedback_text,
                      classes:       classes}
-  end
-
-  def toto
-
   end
 end
 ```
@@ -123,11 +119,11 @@ Ce `embed_svg` permet ensuite de le manipuler en css, ce que ne te permet pas `i
 
 ## Comment gémifier ses helpers ?
 
-Quand on a trop, il y'a un bon exemple de repo c'est la gem <a href="https://github.com/guillaumebriday/external_link_to" class="underlined" target="_blank">external_link_to</a> de l'excellent Guillaume Briday.
+Pour des helpers très génériques, on peut regrouper ces helpers dans une gem. Il y'a un bon exemple de repo de ce type avec la gem <a href="https://github.com/guillaumebriday/external_link_to" class="underlined" target="_blank">external_link_to</a>.
 
 ## Mes helpers préférés dans Rails
 
-Attention à ne pas reécrire des *helpers* déjà existant déjà. Voici une liste non-exhaustive de mes *helpers* préférés dans Rails.
+Attention à ne pas reécrire des *helpers* qui existe déjà. Voici une liste non-exhaustive de mes *helpers* préférés dans Rails.
 
 ```ruby
 number_to_currency(50) # "$ 50"
