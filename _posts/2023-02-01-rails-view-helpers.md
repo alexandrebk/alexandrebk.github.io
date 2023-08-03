@@ -61,7 +61,7 @@ module NumberHelper
 end
 ```
 
-Les helpers sont aussi très pratique pour choisir une classe css pour un label, <a href="https://getbootstrap.com/docs/4.0/components/badge/" class="underlined" target="_blank">ici un lable Bootstrap</a>
+Les helpers sont aussi très pratique pour choisir une classe css pour un label, <a href="https://getbootstrap.com/docs/4.0/components/badge/" class="underlined" target="_blank">ici un label Bootstrap</a>
 
 ```ruby
 module InvoiceHelper
