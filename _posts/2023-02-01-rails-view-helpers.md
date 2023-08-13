@@ -61,7 +61,7 @@ module NumberHelper
 end
 ```
 
-Les helpers sont aussi très pratique pour choisir une classe css pour un label, <a href="https://getbootstrap.com/docs/4.0/components/badge/" class="underlined" target="_blank">ici un lable Bootstrap</a>
+Les helpers sont aussi très pratique pour choisir une classe css pour un label, <a href="https://getbootstrap.com/docs/4.0/components/badge/" class="underlined" target="_blank">ici un label Bootstrap</a>
 
 ```ruby
 module InvoiceHelper
@@ -115,7 +115,9 @@ module SvgHelper
 end
 ```
 
-Ce `embed_svg` permet ensuite de le manipuler en css, ce que ne te permet pas `image_tag`. Par exemple bien pratique quand il faut changer la couleur au hover. Sans cette méthode, pour manipuler le svg, tu serais obligé de le mettre en inline dans le code source sur svg. Il existe aussi une gem qui fait à peu près la même chose: <a href="https://github.com/jamesmartin/inline_svg" class="underlined" target="_blank">inline_svg</a>.
+Ce `embed_svg` permet ensuite de le manipuler en css, ce que ne te permet pas `image_tag`. Par exemple bien pratique quand il faut changer la couleur au hover. Sans cette méthode, pour manipuler le svg, tu serais obligé de le mettre en inline dans le code source sur svg. Il existe la gem <a href="https://github.com/jamesmartin/inline_svg" class="underlined" target="_blank">inline_svg</a> qui fait à peu près la même chose. Enfin sur son blog <a href="https://www.akshaykhot.com/how-to-render-svg-icons-in-rails/?ref=akshays-blog-newsletter" class="underlined" target="_blank">Akshay</a> a une approche similaire.
+
+
 
 ## Comment gémifier ses helpers ?
 
