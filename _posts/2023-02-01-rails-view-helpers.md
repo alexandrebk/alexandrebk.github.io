@@ -7,7 +7,7 @@ difficulty: 1
 status: tech
 ---
 
-Avant de commencer, il me faut rappeler qu'en théorie dans le pattern *MVC* on ne doit pas mettre de logique dans les vues. Mais parfois, il est juste impossible de mettre la logique ailleurs que dans une vue. C'est à ça que servent les *helpers*.
+Avant de commencer, il me faut rappeler qu'en théorie dans le pattern *MVC* on ne doit pas mettre de logique dans les vues. Mais parfois, il est juste impossible de mettre la logique ailleurs que dans une vue. Et c'est à ça que servent les **helpers**.
 
 ## Des exemples de code qui peuvent être importés dans n'importe quel projet
 
@@ -96,7 +96,7 @@ module NavbarHelper
            locals: { button_title:  button_title,
                      text_to_copy:  text_to_copy,
                      feedback_text: feedback_text,
-                     classes:       classes}
+                     classes:       classes }
   end
 end
 ```
@@ -115,7 +115,7 @@ module SvgHelper
 end
 ```
 
-Ce `embed_svg` permet ensuite de le manipuler en css, ce que ne te permet pas `image_tag`. Par exemple bien pratique quand il faut changer la couleur au hover. Sans cette méthode, pour manipuler le svg, tu serais obligé de le mettre en inline dans le code source sur svg.
+Ce `embed_svg` permet ensuite de le manipuler en css, ce que ne te permet pas `image_tag`. Par exemple bien pratique quand il faut changer la couleur au hover. Sans cette méthode, pour manipuler le svg, tu serais obligé de le mettre en inline dans le code source sur svg. Il existe aussi une gem qui fait à peu près la même chose: <a href="https://github.com/jamesmartin/inline_svg" class="underlined" target="_blank">inline_svg</a>.
 
 ## Comment gémifier ses helpers ?
 
@@ -129,6 +129,8 @@ Attention à ne pas reécrire des *helpers* qui existe déjà. Voici une liste n
 number_to_currency(50) # "$ 50"
 number_to_human(10_000) # "10 Thousand"
 time_ago_in_words(Time.now) # "less than a minute"
+time_ago_in_words(2.years.ago) # "about 2 years"
+distance_of_time_in_words(Time.now, 15.minutes.ago) # 15 minutes
 ```
 
 ## Pour aller plus loin

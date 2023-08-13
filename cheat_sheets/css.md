@@ -91,4 +91,8 @@ Console.log for css
   Exemples de codes
 </a>
 <br>
-https://github.com/atherosai/ui/tree/main/dropdown-menu-02
+<a href="https://keithjgrant.com/posts/2023/04/transitioning-to-height-auto/"
+   class="underlined"
+   target="_blank">
+  Transition from 0 to auto with only CSS
+</a>

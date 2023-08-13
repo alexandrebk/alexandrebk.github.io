@@ -56,13 +56,19 @@ FROM matches_per_month
 
 `GROUP BY` c'est que pour les aggrégateurs de type `SUM`, `COUNT`, `AVG` etc.
 
-Order table by size :
+Order tables by size :
 
 ```sql
 SELECT table_name, pg_size_pretty(pg_table_size(quote_ident(table_name))), pg_table_size(quote_ident(table_name))
 FROM information_schema.tables
 WHERE table_schema = 'public'
 ORDER BY 3 DESC;
+```
+
+Create Index concurrently for huge table
+
+```sql
+CREATE INDEX CONCURRENTLY ON products (sku)
 ```
 
 <h2>Des articles pour aller plus loin</h2>

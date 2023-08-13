@@ -22,6 +22,30 @@ Jump to next method with `]m`
 
 Paste from system clipboard `+p`
 
+
+Use & in your replacement patterns to insert the matched text. For example, adding markdown links to URLs: `%s/https.*/[&]()/g`
+
+[Source](https://vimtricks.com/p/vimtrick-insert-matched-pattern/)
+
+Remove lines matching a pattern : `:g/pattern/d`
+
+[Source](https://vimtricks.com/p/remove-lines-matching-a-pattern-in-vim/)
+
+Replace across multiple files in Vim, without any plugins:
+
+- `:args path/to/file/glob/*.js` populate the args list with the list of files you want to search across
+- `:argdo %s/pattern/replacement/g` perform the substitution across those files
+- `:argdo update` save all the files
+
+[Source](https://vimtricks.com/p/vimtrick-replace-across-files/)
+
+Indent your code:
+
+- `4==` indent current line and next 3
+- `=ap` indent around paragraph
+- `=%` indent to end of method
+
+
 Plugins
 
 ## SplitJoin

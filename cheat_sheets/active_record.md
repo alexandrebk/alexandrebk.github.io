@@ -116,17 +116,13 @@ Order.all.explain
 Where avec une date
 
 ```ruby
-# Find all posts created in the last week
-Post.where(created_at: 1.week.ago..)
-
-# Find all posts having less than 10 likes
-Post.where(likes: 1.week.ago..)
+Post.where(created_at: 1.week.ago..) # Find all posts created in the last week
 ```
 
-Where avec un like
+Where avec un ilike (i pour case Insentitive)
 
 ```ruby
-Post.where("title LIKE ?", "%blog%")
+Post.where("title ILIKE ?", "%blog%")
 ```
 
 Where avec une longue query
@@ -167,6 +163,17 @@ class User < ApplicationRecord
 end
 ```
 
+Has Nested Attributes (<a href="https://api.rubyonrails.org/classes/ActiveRecord/NestedAttributes/ClassMethods.html" class="underlined" target="_blank">Rails documentation</a>)
+
+```ruby
+class Book < ActiveRecord::Base
+  has_one :author
+  has_many :pages
+
+  accepts_nested_attributes_for :author, :pages
+end
+```
+
 <h2>Des articles pour aller plus loin sur les bases de données dans Rails :</h2>
 
 <a href="https://blog.appsignal.com/2020/01/22/rails-is-fast-optimize-your-view-performance.html" class="underlined" target="_blank">Résoudre et les problèmes de query N+1</a>
@@ -177,7 +184,16 @@ end
 <br>
 <a href="https://blog.appsignal.com/2022/01/26/test-and-optimize-your-ruby-on-rails-database-performance.html" class="underlined" target="_blank">Comment optimiser sa base de données sour Rails</a>
 <br>
-<a href="https://apidock.com/rails/ActiveRecord/Associations/CollectionProxy/build" class="underlined" target="_blank">CollectionProxy#build : build a collection of objects related to another </a>
-<br>
 <a href="https://reinteractive.com/articles/activerecord-optimisation-utilising-exists-any-and-size" class="underlined" target="_blank">ActiveRecord Optimisation: Utilising .exists?, .any? and .size</a>
-
+<br>
+<a href="https://rubyhero.dev/advanced-active-record"
+   class="underlined"
+   target="_blank">
+  Advanced Active Record: Optimizing Performance and Robustness with Locking, UUIDs, Fulltext Search, Database Views, and Geospatial Data
+</a>
+<br>
+<a href="https://andycroll.com/ruby/assign-a-default-to-an-attribute-active-record/"
+   class="underlined"
+   target="_blank">
+  Assign a default value to an attribute in Active Record
+</a>

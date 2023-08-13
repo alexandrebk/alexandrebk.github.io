@@ -163,3 +163,10 @@ scalingo run bundle exec rails console
    target="_blank">
   Notes on Performance Optimization in Rails Applications
 </a>
+<br>
+<a href="https://railsinspire.com/"
+   class="underlined"
+   target="_blank">
+  Rails inspire: A curated collection of code samples from Ruby on Rails projects
+</a>
+<br>

@@ -27,7 +27,7 @@ eval("a << b") # => [1, 2, 3]
 Multiline string
 
 ```ruby
-string = <<STRING
+string = <<-STRING
 Hello John
 How are you today ?
 Goodbye
