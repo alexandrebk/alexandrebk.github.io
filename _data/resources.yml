@@ -49,3 +49,6 @@
 - title:   "Icons"
   link:    "https://icones.js.org/"
   content: "All icons for all providers"
+- title:   "Captive Tech radar 2023"
+  link:    "https://captive.notion.site/Captive-Tech-radar-2023-c83103b08c0b4e2d9e1ab09c9161811b"
+  content: "Ce document a pour but de décrire les **outils et méthodologies passées, présentes et futures**, utilisées par Captive pour notre système de production."
