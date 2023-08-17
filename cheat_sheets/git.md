@@ -32,7 +32,17 @@ Auto Setup Remote for push
 git config --global push.autoSetupRemote true
 ```
 
-https://dev.to/ambroseotundo/creating-git-aliases-3nng
+Open git in your browser
+
+```bash
+git instaweb
+```
+
+Clean up (Git Garbage Collector)
+
+```bash
+git gc
+```
 
 <h2>Des articles pour aller plus loin</h2>
 

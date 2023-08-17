@@ -18,6 +18,8 @@ rails stats     # thousands of lines of code and test ratio
 rails about     # information about your application's environment
 rails db:reset  # drop database + create tables found in schema.rb
 rails runner path/script.rb # exécuter un fichier
+bundle audit    # print gem with criticality security file
+bundle outdated # print table with current and latest gem version
 ```
 
 Active Support

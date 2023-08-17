@@ -156,7 +156,6 @@ Friendly Url in routes with #to_param
 
 ```ruby
 class User < ApplicationRecord
-
   def to_params
     "#{id}-#{title.parameterize}"
   end
@@ -171,6 +170,30 @@ class Book < ActiveRecord::Base
   has_many :pages
 
   accepts_nested_attributes_for :author, :pages
+end
+```
+
+Money rails <a href="https://github.com/RubyMoney/money-rails" class="underlined" target="_blank">lien de la gem</a>
+
+```ruby
+class Product
+  monetize :price_cents
+end
+
+Product.last.price #=> #<Money cents:100 currency:EUR>
+```
+
+Counter cache pour les relations
+
+```ruby
+class Items
+  belongs_to :orders, counter_cache: true
+end
+
+class AddItemsCountToOrders < ActiveRecord::Migration[7.0]
+  def change
+    add_column :orders, :items_count, :integer, default: 0, null: false
+  end
 end
 ```
 

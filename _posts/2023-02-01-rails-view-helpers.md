@@ -137,4 +137,4 @@ distance_of_time_in_words(Time.now, 15.minutes.ago) # 15 minutes
 
 ## Pour aller plus loin
 
-Si vous voulez en savoir plus, je vous recommande <a href="https://blog.appsignal.com/2023/02/01/a-guide-to-rails-view-helpers.html" class="underlined" target="_blank">cet article</a> en anglais du blog AppSignal.
+Si vous voulez en savoir plus, je vous recommande <a href="https://blog.appsignal.com/2023/02/01/a-guide-to-rails-view-helpers.html?utm_source=alexandrebouvier.fr" class="underlined" target="_blank">cet article</a> en anglais du blog AppSignal.
