@@ -172,3 +172,9 @@ scalingo run bundle exec rails console
   Rails inspire: A curated collection of code samples from Ruby on Rails projects
 </a>
 <br>
+<a href="https://allaboutcoding.ghinda.com/first-commits-in-a-ruby-on-rails-app"
+   class="underlined"
+   target="_blank">
+  First commits in a Ruby on Rails app
+</a>
+<br>
