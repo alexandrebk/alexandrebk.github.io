@@ -16,12 +16,10 @@ title:  Blog Ruby on Rails
                 {{ post.title }}
               </h2>
               <p>
+                Publié le
                 <span class="text-light-upcase">
-                  {{ post.date | date: "%d %B %Y" }}
+                  {{ post.date | date: "%d/%m/%Y" }}
                 </span>
-              </p>
-              <p>
-                {{ post.description }}
               </p>
             </a>
           </div>

@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "Les index en SQL"
+title:  "Les index dans les base de données relationnelles"
 description: "Qu'est-ce qu'un index dans une base de donnée ?"
-seo_description: "Index SQL BDD"
+seo_description: "Index SQL database PostGreSQL"
 difficulty: 1
 status: tech
 ---
