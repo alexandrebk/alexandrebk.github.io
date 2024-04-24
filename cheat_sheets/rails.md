@@ -17,6 +17,7 @@ rails dbconsole # database console
 rails stats     # thousands of lines of code and test ratio
 rails about     # information about your application's environment
 rails db:reset  # drop database + create tables found in schema.rb
+rails routes --unused # unused routes
 rails runner path/script.rb # exécuter un fichier
 bundle audit    # print gem with criticality security file
 bundle outdated # print table with current and latest gem version
@@ -28,6 +29,9 @@ Active Support
 Time.current.since(60 * 60)
 # Same as
 1.hour.from_now
+Time.current.all_day # Range
+Time.current.all_week # Range
+Time.current.all_month # Range
 ```
 
 Active Job (<a href="https://guides.rubyonrails.org/active_job_basics.html" class="underlined" target="_blank">Rails documentation</a>)
@@ -87,9 +91,27 @@ String Inquirer ([source](https://apidock.com/rails/ActiveSupport/StringInquirer
 
 ```ruby
 class Order < ApplicationRecord
+  AUTHORIZED_CATEGORIES = ['api', 'default']
+
   def category
     super&.inquiry
   end
+end
+
+order.category.api?
+order.category.default?
+```
+
+Routing in multiples files
+
+```ruby
+Rails.application.routes.draw do
+  draw :api
+end
+
+# config/routes/api.rb
+namespace :api do
+  resources :orders
 end
 ```
 
@@ -108,6 +130,8 @@ CLI Scalingo ([source](https://doc.scalingo.com/platform/cli/start))
 git remote add scalingo git@ssh.osc-fr1.scalingo.com:app-name.git
 scalingo run bundle exec rails console
 ```
+
+
 
 <h2>Liste de gems utiles pour les projets</h2>
 
@@ -178,3 +202,14 @@ scalingo run bundle exec rails console
   First commits in a Ruby on Rails app
 </a>
 <br>
+<a href="https://ouidou.fr/2020/11/12/rails-nest-pas-simple/"
+   class="underlined"
+   target="_blank">
+  Rails n’est pas simple !
+</a>
+<br>
+<a href="https://gist.github.com/DRBragg/fee79a67b5c8862b1fe0852f4e7ba428"
+   class="underlined"
+   target="_blank">
+  Rails Active Storage Cheatsheet
+</a>

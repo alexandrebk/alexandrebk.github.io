@@ -24,7 +24,7 @@ Grille avec 3 colonnes
 }
 ```
 
-CSS Grid minmax: [démo ici](https://www.pinterest.fr/pin/710865122455863798/)
+CSS Grid minmax: (<a href="https://www.pinterest.fr/pin/710865122455863798/" class="underlined" target="_blank">démo ici</a>)
 
 ```css
 .container{
@@ -95,4 +95,16 @@ Console.log for css
    class="underlined"
    target="_blank">
   Transition from 0 to auto with only CSS
+</a>
+<br>
+<a href="https://web.dev/articles/5-css-snippets-every-front-end-developer-should-know-in-2024"
+   class="underlined"
+   target="_blank">
+  5 extraits CSS que tout développeur front-end devrait connaître en 2024
+</a>
+<br>
+<a href="https://moderncss.dev/12-modern-css-one-line-upgrades/"
+   class="underlined"
+   target="_blank">
+  12 Modern CSS One-Line Upgrades
 </a>

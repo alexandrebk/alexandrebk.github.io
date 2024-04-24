@@ -48,7 +48,7 @@ Has many
 
 ```ruby
 class Author
-  has_many :articles
+  has_many :articles, strict_loading: true # avoid N+1 query
   has_many :comments, through: :articles
   has_many :authorized_articles, -> { where(allowed: true) }, class_name: 'Articles'
 end

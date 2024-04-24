@@ -82,7 +82,12 @@ stringify = proc { |object| object.to_s }
 (1..10).map(&stringify) # => ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]
 ```
 
-Source code
+Lambda
+
+```ruby
+[1, 2, 3].map { _1 + 3 }
+=> [4, 5, 6]
+```
 
 ```ruby
 User.new.method(:confirmed?).source.display

@@ -75,4 +75,9 @@ git gc
    target="_blank">
   Git Interactive Rebase, Squash, Amend and Other Ways of Rewriting History
 </a>
-
+<br>
+<a href="https://ouidou.fr/2021/06/23/quatres-astuces-pour-maitriser-ses-rebases/"
+   class="underlined"
+   target="_blank">
+  Quatres astuces pour maitriser ses rebases
+</a>
