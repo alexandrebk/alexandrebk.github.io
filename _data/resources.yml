@@ -32,3 +32,5 @@
   content: "A Guide to database performance for Developers"
 - link:    "https://refactoring.guru/"
   content: "Refactoring and Design Patterns."
+- link:    "https://blog.stephane-robert.info/docs/services/web/apache/"
+  content: "Documentation Apache HTTP Server"
