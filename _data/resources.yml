@@ -34,3 +34,7 @@
   content: "Refactoring and Design Patterns."
 - link:    "https://blog.stephane-robert.info/docs/services/web/apache/"
   content: "Documentation Apache HTTP Server"
+- link:    "https://www.pappers.fr/"
+  content: "Toutes les entreprises avec leurs bilans, statuts, chiffre d'affaires, dirigeants, actionnaires, levées de fonds, annonces légales, numéro APE, NAF, TVA, RCS, SIREN, SIRET."
+- link:    "https://immobilier.pappers.fr"
+  content: "Toutes les données immobilières en open data rassemblées au sein d'une plateforme unique"
