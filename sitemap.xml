@@ -159,16 +159,6 @@
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>http://www.alexandrebouvier.fr/cheat_sheet/python</loc>
-    <lastmod>2022-07-23T12:00:53+00:00</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
-    <loc>http://www.alexandrebouvier.fr/cheat_sheet/pandas</loc>
-    <lastmod>2022-07-23T12:00:53+00:00</lastmod>
-    <priority>0.80</priority>
-  </url>
-  <url>
     <loc>http://www.alexandrebouvier.fr/cheat_sheet/docker</loc>
     <lastmod>2022-07-23T12:00:53+00:00</lastmod>
     <priority>0.80</priority>
