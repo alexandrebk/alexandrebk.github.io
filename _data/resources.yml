@@ -38,3 +38,5 @@
   content: "Toutes les entreprises avec leurs bilans, statuts, chiffre d'affaires, dirigeants, actionnaires, levées de fonds, annonces légales, numéro APE, NAF, TVA, RCS, SIREN, SIRET."
 - link:    "https://immobilier.pappers.fr"
   content: "Toutes les données immobilières en open data rassemblées au sein d'une plateforme unique"
+- link:    "https://whatismyipaddress.com/"
+  content: "Trouver son adresse IP"
