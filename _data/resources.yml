@@ -1,3 +1,7 @@
+- link:    "https://blog.stephane-robert.info/docs/"
+  content: "Comment se former à la démarche et aux outils DevOps"
+- link:    "https://books.writesoftwarewell.com/3/rails-router/"
+  content: "Everything you need to know about the incredible routing system in Rails."
 - link:    "https://awesome-ruby.com/"
   content: "Une liste de plus de 900 outils et bibliothèque pour Ruby"
 - link:    "https://excalidraw.com/"
@@ -40,3 +44,5 @@
   content: "Toutes les données immobilières en open data rassemblées au sein d'une plateforme unique"
 - link:    "https://whatismyipaddress.com/"
   content: "Trouver son adresse IP"
+- link:    "https://fingerprint.com/demo/"
+  content: "Stop fraud, detect bots, or delight customers. Identify good and bad visitors with industry-leading accuracy - even if they're anonymous."
