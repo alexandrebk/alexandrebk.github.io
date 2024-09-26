@@ -56,7 +56,7 @@ class Message < ApplicationRecord
 end
 ```
 
-A l'inverse, nous allons créer deux méthodes dans `User`. Une pour retrouver une liste de toutes les conversations (*friends*). Et une autre pour le contenu d'une conversation (*conversation_with*).
+A l'inverse, nous allons créer une méthode dans `User` pour retrouver le contenu d'une conversation (*messages_with*).
 
 ```ruby
 # app/model/user.rb
@@ -64,15 +64,8 @@ A l'inverse, nous allons créer deux méthodes dans `User`. Une pour retrouver u
 class User < ApplicationRecord
   [...]
 
-  def friends
-    friends = Message.where(sender: self).map { |message| message.receiver} + Message.where(receiver: self).map { |message| message.sender}
-    friends.uniq
-  end
-
-  def conversation_with(friend_id)
-    friend       = User.find(friend_id)
-    conversation = Message.where(sender: self, receiver: friend) + Message.where(sender: friend, receiver: self)
-    conversation.sort_by { |message| message.created_at }
+  def messages_with(user)
+    Message.where(sender: self, receiver: user).or(Message.where(sender: user, receiver: self)).order('created_at')
   end
 end
 ```
@@ -81,47 +74,40 @@ end
 
 Ensuite nous allons créer 3 routes :
 
-1. une route qui recense toutes les conversations
+1. une route qui recense tous les utilsateurs avec qui vous pouvez avoir des conversations
 2. une route pour afficher la conversation avec un utilisateur
 3. une route pour créer un message
 
-Comme nous avons besoin de l'*id* d'un autre utilisateur il faudra nester la ressource pour les deux dernières.
+Comme nous avons besoin de l'*id* d'un autre utilisateur pour créer un message, il faudra nester la ressource pour créer un message. Dans notre cas les routes conversations ne sont pas
 
 ```ruby
 # config/routes.rb
 
 Rails.application.routes.draw do
   [...]
-  get 'conversations', to: 'messages#conversations'
   resources :users do
-    resources :messages, only: [:index, :create]
+    resources :messages, only: [:create]
   end
+  resources :conversations, only: [:index, :show]
 end
 ```
-
-<!--
-TODO : Ajouter un channel number pour chaque utiliser
-resources :conversations, only: [:index, :show] do
-  resources :messages, only: [:create]
-end
- -->
 
 ### Quatrième étape : Le contrôleur et les vues
 
 Maintenant que nous avons créé les routes, il faut créer le *controller* associé.
 
 ```sh
-rails generate controller messages conversations index create
+rails generate controller conversations index show
 ```
 
-Commençons par la liste des conversations dans le *controller*. On les récupère grâce à la méthode d'instance `.friends`.
+Commençons par l'index des conversations.
 
 ```ruby
-# app/controllers/messages_controller.rb
+# app/controllers/conversations_controller.rb
 
-class MessagesController < ApplicationController
-  def conversations
-    @users_with_conversation = current_user.friends
+class ConversationsController < ApplicationController
+  def index
+    @users = User.all
   end
 end
 ```
@@ -129,16 +115,12 @@ end
 Et la vue éponyme.
 
 ```erb
-<!-- app/views/messages/conversations.html.erb -->
+<!-- app/views/conversations/index.html.erb -->
 
-<% if @users_with_conversation.empty? %>
-  <h3>Vous n'avez pas encore de conversation</h3>
-<% else %>
-  <h3>Mes conversations</h3>
-  <% @users_with_conversation.each do |user| %>
-    <%= link_to user_messages_path(user) do %>
-      <p>Conversation avec <%= user.first_name %></p>
-    <% end %>
+<h3>Mes conversations</h3>
+<% @users.each do |user| %>
+  <%= link_to user_messages_path(user) do %>
+    <p>Conversation avec <%= user.first_name %></p>
   <% end %>
 <% end %>
 ```
@@ -146,13 +128,14 @@ Et la vue éponyme.
 Ensuite nous voulons afficher les messages échangés avec une personne.
 
 ```ruby
-# app/controllers/messages_controller.rb
-class MessagesController < ApplicationController
+# app/controllers/conversations_controller.rb
+
+class ConversationsController < ApplicationController
   [...]
-  def index
-    @messages = current_user.conversation_with(params[:user_id])
+  def show
+    @receiver = User.find(params[:user_id])
+    @messages = current_user.messages_with(@receiver)
     @message  = Message.new
-    @friend   = User.find(params[:user_id])
   end
 end
 ```
@@ -160,7 +143,7 @@ end
 ```erb
 <!-- app/views/messages/index.html.erb -->
 
-<h3>Ma conversation avec <%= @friend.first_name %></h3>
+<h3>Ma conversation avec <%= @receiver.first_name %></h3>
   <% @messages.each do |message| %>
     <ul>
       <li><p><%= message.sender.first_name %> dit : <%= message.content %></p></li>
@@ -179,8 +162,13 @@ Message.create(sender: User.last, receiver: User.first, content: "Hello, good an
 
 <img src="/images/posts/messages/affichage_messages.gif" class="image" alt="affichage messages">
 
-
 ### Cinquième étape : Créer un message
+
+Pour créer un message, il faut générer le controller messages.
+
+```sh
+rails generate controller messages create
+```
 
 Puis nous voulons envoyer un message depuis une conversation.
 
@@ -196,9 +184,9 @@ class MessagesController < ApplicationController
     if @message.save
       redirect_to user_messages_path(@message.receiver)
     else
-      @friend   = User.find(params[:user_id])
-      @messages = current_user.conversation_with(params[:user_id])
-      render :index
+      @receiver = User.find(params[:user_id])
+      @messages = current_user.messages_with(@receiver)
+      render 'conversations/show'
     end
   end
 
@@ -211,10 +199,10 @@ end
 ```
 
 ```erb
-<!-- app/views/messages/index.html.erb -->
+<!-- app/views/conversations/show.html.erb -->
 
 [...]
-<%= simple_form_for [@friend, @message] do |f| %>
+<%= simple_form_for [@receiver, @message] do |f| %>
   <%= f.input :content %>
   <%= f.submit "Envoyer un message", class: "btn btn-primary" %>
 <% end %>
@@ -222,10 +210,9 @@ end
 
 <img src="/images/posts/messages/new_message.gif" class="image" alt="creation message">
 
-
 ### Bonus pour les *marketplaces*
 
-Pour finir ajoutons un lien depuis la *show* d'un *booking* pour pouvoir contacter le propriétaire.
+Prenons le cas d'une app comme Airbnb avec des réservations (`bookings`) sur des appartements (`flat`). Nous allons ajouter un lien depuis la *show* d'un *booking* pour pouvoir contacter le propriétaire.
 
 ```erb
 <!-- app/views/bookings/show.html.erb -->
