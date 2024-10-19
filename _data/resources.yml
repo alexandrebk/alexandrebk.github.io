@@ -48,3 +48,5 @@
   content: "Stop fraud, detect bots, or delight customers. Identify good and bad visitors with industry-leading accuracy - even if they're anonymous."
 - link:    "https://saaslit.com/blog/ruby/the-simplest-turbo-frame-example"
   content: "The simplest turbo-frame example"
+- link:    "https://thoughtbot.com/ruby-science/introduction.html"
+  content: "Ruby Science Book by Thoughtbot"
