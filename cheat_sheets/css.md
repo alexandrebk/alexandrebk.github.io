@@ -4,6 +4,37 @@ title: Cheat Sheet CSS
 permalink: /cheat_sheets/css
 ---
 
+<a href="https://getbootstrap.com/docs/5.0/utilities/text/#font-size" class="underlined" target="_blank">Font size with Bootstrap</a>
+
+```css
+.fs-1 { font-size: 42px; }
+.fs-2 { font-size: 32px; }
+.fs-3 { font-size: 26px; }
+.fs-4 { font-size: 20px; }
+.fs-5 { font-size: 18px; }
+.fs-6 { font-size: 16px; }
+```
+
+<a href="https://getbootstrap.com/docs/5.0/utilities/text/#ont-weight-and-italics" class="underlined" target="_blank">Font weight with Bootstrap</a>
+
+```css
+.fw-light    { font-weight: 300; }
+.fw-normal   { font-weight: 400; }
+.fw-medium   { font-weight: 500; }
+.fw-semibold { font-weight: 600; }
+.fw-bold     { font-weight: 700; }
+```
+
+<a href="https://getbootstrap.com/docs/5.0/utilities/spacing/" class="underlined" target="_blank">Padding/Margin</a>
+
+```css
+.p-1 .m-1 { 4px; }
+.p-2 .m-2 { 8px; }
+.p-3 .m-3 { 16px; }
+.p-4 .m-4 { 24px; }
+.p-5 .m-5 { 48px; }
+```
+
 Aligner horizontalement et verticalement un contenu
 
 ```css
@@ -107,4 +138,10 @@ Console.log for css
    class="underlined"
    target="_blank">
   12 Modern CSS One-Line Upgrades
+</a>
+<br>
+<a href="https://dev.to/tene/css-cheat-sheet-everything-you-need-to-know-in-one-place-157m"
+   class="underlined"
+   target="_blank">
+  CSS Cheat Sheet: Everything You Need to Know in One Place
 </a>
