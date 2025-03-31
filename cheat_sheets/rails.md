@@ -124,14 +124,12 @@ ActiveRecord::Base.logger.extend(
 ActiveRecord::LogSubscriber.attach_to :active_record
 ```
 
-CLI Scalingo ([source](https://doc.scalingo.com/platform/cli/start))
+Source location:
 
-```bash
-git remote add scalingo git@ssh.osc-fr1.scalingo.com:app-name.git
-scalingo run bundle exec rails console
+```ruby
+User.method(:find_by).source_location
+# ["/Users/alexandrebouvier/.rbenv/versions/3.3.5/lib/ruby/gems/3.3.0/gems/activerecord-7.1.4/lib/active_record/core.rb", 256]
 ```
-
-
 
 <h2>Liste de gems utiles pour les projets</h2>
 
