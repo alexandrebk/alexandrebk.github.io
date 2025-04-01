@@ -4,9 +4,22 @@ title: Cheat Sheet Git
 permalink: /cheat_sheets/git
 ---
 
+Rebase process
+
 ```bash
-git reset HEAD~ --hard
+git rebase master -i
+git add .
+git rebase --continue
 ```
+
+Rebase sans changer de branches
+
+```bash
+git fetch origin features/toto:features/toto
+git rebase features/toto
+```
+
+Ajouter une remote
 
 ```bash
 git remote add origin git@github.com:username/existing_project.git
@@ -18,13 +31,6 @@ Ajouter un fichier dans le précédent commit
 git commit --amend --no-edit
 ```
 
-Rebase process
-
-```bash
-git rebase master -i
-git add .
-git rebase --continue
-```
 
 Auto Setup Remote for push
 
