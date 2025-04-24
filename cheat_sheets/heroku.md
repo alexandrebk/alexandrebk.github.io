@@ -101,23 +101,3 @@ Voir toutes les connexions sur la BDD (attention si c'est un serveur partagé ou
 ```bash
 heroku pg:psql -c 'select usename, application_name, backend_start, wait_event, backend_type from pg_stat_activity;' --remote staging
 ```
-
-<h2>Des articles pour aller plus loin </h2>
-
-<a href="https://help.heroku.com/7NIXUF1V/how-do-i-change-the-billing-app-for-my-heroku-postgres-database"
-   class="underlined"
-   target="_blank">
-  Copy app accross applications
-</a>
-<br>
-<a href="https://devcenter.heroku.com/articles/heroku-postgres-backups"
-   class="underlined"
-   target="_blank">
-  Heroku PGBackups
-</a>
-<br>
-<a href="https://devcenter.heroku.com/articles/heroku-postgres-import-export"
-   class="underlined"
-   target="_blank">
-  Importing and Exporting Heroku Postgres Databases
-</a>

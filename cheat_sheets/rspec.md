@@ -65,11 +65,3 @@ within '.flash' do
   expect(page).to have_content('Merci pour votre retour')
 end
 ```
-
-<h2>Des articles pour aller plus loin</h2>
-
-<a href="https://blog.appsignal.com/2024/01/24/behaviour-driven-development-in-ruby-with-rspec.html"
-   class="underlined"
-   target="_blank">
-  Behaviour Driven Development in Ruby with RSpec
-</a>
