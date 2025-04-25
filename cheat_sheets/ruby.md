@@ -103,6 +103,32 @@ User.new.method(:active?).source_location
 # ["/Users/alexandrebouvier/my_app/app/models/user.rb", 63]
 ```
 
+Pattern Matching ([voir article](https://blog.appsignal.com/2021/07/28/introduction-to-pattern-matching-in-ruby.html))
+
+```ruby
+def greet(hash = {})
+  case hash
+  in {greeting: greeting, first_name: first_name, last_name: last_name}
+    greet(greeting: greeting, name: "#{first_name} #{last_name}")
+  in {greeting: greeting, name: name}
+    puts "#{greeting}, #{name}"
+  in {name: name}
+    greet(greeting: "Hello", name: name)
+  in {greeting: greeting}
+    greet(greeting: greeting, name: "Anonymous")
+  else
+    greet(greeting: "Hello", name: "Anonymous")
+  end
+end
+
+greet # Hello, Anonymous
+greet(name: "John") # Hello, John
+greet(first_name: "John", last_name: "Doe") # Hello, John Doe
+greet(greeting: "Bonjour", first_name: "John", last_name: "Doe") # Bonjour, John Doe
+greet(greeting: "Bonjour") # Bonjour, Anonymous
+
+```
+
 Ruby lookup method of last resort
 
 ```ruby
@@ -151,23 +177,3 @@ gem_name/
 - Autoloading       : Seulement charger les fichier quand on fait appel à eux
 - DSL               : Domain Specific Language
 - SRP               : Single Responsability Principle
-
-<h2>Des articles pour aller plus loin</h2>
-
-<a href="https://blog.appsignal.com/2021/07/28/introduction-to-pattern-matching-in-ruby.html"
-   class="underlined"
-   target="_blank">
-  Une introduction au Pattern Matching avec Ruby (App Signal)
-</a>
-<br>
-<a href="https://www.openmymind.net/2010/6/25/Learning-Ruby-class-self/"
-   class="underlined"
-   target="_blank">
-  MetaClass et self dans Ruby
-</a>
-<br>
-<a href="https://www.codewithjason.com/ampersand-ruby-block/"
-   class="underlined"
-   target="_blank">
-  Qu'est qu'un block en Ruby ? (Code With Jason)
-</a>
