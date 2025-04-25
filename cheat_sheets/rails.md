@@ -140,34 +140,14 @@ User.method(:find_by).source_location
 
 <h2>Des articles pour aller plus loin</h2>
 
-<a href="https://www.lewagon.com/blog/setup-meta-tags-rails" class="underlined" target="_blank">Setup des meta data dans Rails</a>
-<br>
-<a href="https://blog.appsignal.com/2020/06/17/using-service-objects-in-ruby-on-rails.html" class="underlined" target="_blank">Comment faire des Services dans Rails</a>
-<br>
-<a href="https://www.honeybadger.io/blog/ruby-view-components/" class="underlined" target="_blank">Une introduction à la gem ViewComponent</a>
-<br>
-<a href="https://www.hotrails.dev/"
-   class="underlined"
-   target="_blank">
-  Tuto sur Turbo
-</a>
-<br>
-<a href="https://medium.com/le-wagon/how-to-use-nil-blank-present-exists-in-rails-5-fe03e78ab979"
-   class="underlined"
-   target="_blank">
-  How to use .nil? .empty? .blank? .present? in Rails 6
+<a href="https://www.lewagon.com/blog/setup-meta-tags-rails" class="underlined" target="_blank">
+  Setup des meta data dans Rails
 </a>
 <br>
 <a href="https://dev.to/ahmadraza/mastering-eager-loading-and-beyond-rails-7-5eie"
    class="underlined"
    target="_blank">
   Mastering Eager Loading and Beyond! Rails 7 (includes, join, preload)
-</a>
-<br>
-<a href="https://www.youtube.com/watch?v=phAwVI2BcK4&t=155s&ab_channel=DriftingRuby"
-   class="underlined"
-   target="_blank">
-  Drifintg Ruby Episode #387 - Demystifying the Asset Pipeline (video)
 </a>
 <br>
 <a href="https://medium.com/@ungrandjour/how-to-build-skeleton-loaders-in-rails-with-ajax-and-very-little-js-b9177956f88b"
