@@ -197,26 +197,19 @@ class AddItemsCountToOrders < ActiveRecord::Migration[7.0]
 end
 ```
 
+Différence entre present? et any?
+
+```ruby
+User.where(sign_in_count: 5).present?
+# SELECT * FROM "users" WHERE "users"."sign_in_count" = 5
+User.where(sign_in_count: 5).exists?
+# SELECT * FROM "users" WHERE "users"."sign_in_count" = 5 LIMIT 1
+```
+
 <h2>Des articles pour aller plus loin sur les bases de données dans Rails :</h2>
 
-<a href="https://blog.appsignal.com/2020/01/22/rails-is-fast-optimize-your-view-performance.html" class="underlined" target="_blank">Résoudre et les problèmes de query N+1</a>
+<a href="https://www.honeybadger.io/blog/avoid-race-condition-in-rails/" class="underlined" target="_blank">Les Transactions et Race Conditions dans Rails</a>
 <br>
-<a href="https://www.honeybadger.io/blog/avoid-race-condition-in-rails/" class="underlined" target="_blank">Les Transactions dans Rails</a>
-<br>
-<a href="https://shopify.engineering/changing-polymorphic-type-rails" class="underlined" target="_blank"> Le Polymorphisme dans Rails</a>
-<br>
-<a href="https://blog.appsignal.com/2022/01/26/test-and-optimize-your-ruby-on-rails-database-performance.html" class="underlined" target="_blank">Comment optimiser sa base de données sour Rails</a>
-<br>
-<a href="https://reinteractive.com/articles/activerecord-optimisation-utilising-exists-any-and-size" class="underlined" target="_blank">ActiveRecord Optimisation: Utilising .exists?, .any? and .size</a>
-<br>
-<a href="https://rubyhero.dev/advanced-active-record"
-   class="underlined"
-   target="_blank">
-  Advanced Active Record: Optimizing Performance and Robustness with Locking, UUIDs, Fulltext Search, Database Views, and Geospatial Data
-</a>
-<br>
-<a href="https://andycroll.com/ruby/assign-a-default-to-an-attribute-active-record/"
-   class="underlined"
-   target="_blank">
-  Assign a default value to an attribute in Active Record
+<a href="https://shopify.engineering/changing-polymorphic-type-rails" class="underlined" target="_blank">
+  Un autre moyen de faire du polymorphisme dans Rails par Shopify
 </a>
