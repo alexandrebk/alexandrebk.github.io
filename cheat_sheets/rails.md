@@ -168,24 +168,6 @@ User.method(:find_by).source_location
   Notes on Performance Optimization in Rails Applications
 </a>
 <br>
-<a href="https://railsinspire.com/"
-   class="underlined"
-   target="_blank">
-  Rails inspire: A curated collection of code samples from Ruby on Rails projects
-</a>
-<br>
-<a href="https://allaboutcoding.ghinda.com/first-commits-in-a-ruby-on-rails-app"
-   class="underlined"
-   target="_blank">
-  First commits in a Ruby on Rails app
-</a>
-<br>
-<a href="https://ouidou.fr/2020/11/12/rails-nest-pas-simple/"
-   class="underlined"
-   target="_blank">
-  Rails n’est pas simple !
-</a>
-<br>
 <a href="https://gist.github.com/DRBragg/fee79a67b5c8862b1fe0852f4e7ba428"
    class="underlined"
    target="_blank">
