@@ -206,6 +206,16 @@ User.where(sign_in_count: 5).exists?
 # SELECT * FROM "users" WHERE "users"."sign_in_count" = 5 LIMIT 1
 ```
 
+Trier en SQL avec in_order_of
+
+```ruby
+class Task < ApplicationRecord
+  enum status: { pending: 0, in_progress: 1, completed: 2, archived: 3 }
+end
+
+Task.in_order_of(:status, [:in_progress, :pending, :completed, :archived])
+```
+
 <h2>Des articles pour aller plus loin sur les bases de données dans Rails :</h2>
 
 <a href="https://www.honeybadger.io/blog/avoid-race-condition-in-rails/" class="underlined" target="_blank">Les Transactions et Race Conditions dans Rails</a>
