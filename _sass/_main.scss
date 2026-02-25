@@ -76,10 +76,32 @@ p {
   color: $white;
 }
 
-.resource {
-  padding: 8px 0;
+.resource-category {
+  margin-bottom: 2rem;
 
-  p {
-    font-size: 1rem;
+  h3 {
+    color: $light-green;
+    border-bottom: 1px solid $dark-green;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+  }
+}
+
+.resource-item {
+  padding: 0.4rem 0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+
+  .resource-domain {
+    font-weight: 700;
+  }
+
+  a:hover .resource-domain {
+    color: $dark-green;
+  }
+
+  .resource-description {
+    font-family: 'Times New Roman', serif;
+    color: $white2;
   }
 }

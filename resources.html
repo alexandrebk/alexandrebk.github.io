@@ -8,13 +8,22 @@ title: Ressources Utiles
     <div class="page-title">
       <h2>Voici des <b>ressources</b> pour continuer à apprendre et des <b>outils</b> pour améliorer son quotidien de dév.</h2>
     </div>
-    {% for resource in site.data.resources %}
-      <div class="resource">
-        <a href="{{ resource.link }}" target="_blank">
-          <h3>{{ resource.content }}</h3>
-          <p><u>{{ resource.link }}</u></p>
-        </a>
-      </div>
+    {% assign categories = "Ruby & Rails,DevOps & Infra,Base de données,Outils,Divers" | split: "," %}
+    {% for category in categories %}
+      {% assign resources = site.data.resources | where: "category", category %}
+      {% if resources.size > 0 %}
+        <div class="resource-category">
+          <h3>{{ category }}</h3>
+          {% for resource in resources %}
+            <div class="resource-item">
+              <a href="{{ resource.link }}" target="_blank">
+                <span class="resource-domain">{{ resource.link | remove: "https://" | remove: "http://" | remove: "www." | split: "/" | first }}</span>
+              </a>
+              <span class="resource-description">— {{ resource.content }}</span>
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
     {% endfor %}
   </div>
 </div>
