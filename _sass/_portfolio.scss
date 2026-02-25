@@ -12,6 +12,11 @@
   aspect-ratio:  16/10;
 }
 
+.page-portfolio {
+  list-style: none;
+  padding-left: 0;
+}
+
 .page-portfolio li:last-child {
   border-bottom: 1px solid $light-grey;
 }
